@@ -38,7 +38,7 @@ export function Screenshot({ src, alt, caption, width, height, className }: Scre
     <>
       <figure className={clsx(styles.figure, className)}>
         <div
-          className={styles.imageWrapper}
+          className={styles.browserChrome}
           onClick={() => setLightboxOpen(true)}
           role="button"
           tabIndex={0}
@@ -50,6 +50,11 @@ export function Screenshot({ src, alt, caption, width, height, className }: Scre
             }
           }}
         >
+          <div className={styles.browserBar}>
+            <span className={styles.browserDot} style={{ background: '#FF5F57' }} />
+            <span className={styles.browserDot} style={{ background: '#FFBD2E' }} />
+            <span className={styles.browserDot} style={{ background: '#28C840' }} />
+          </div>
           <img
             src={src}
             alt={alt}
