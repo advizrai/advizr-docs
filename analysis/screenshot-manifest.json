@@ -1,0 +1,105 @@
+[
+  {
+    "filename": "login.png",
+    "url": "https://advizrclients.com/template/login",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:40:20.341Z",
+    "status": "success"
+  },
+  {
+    "filename": "dashboard-home.png",
+    "url": "https://advizrclients.com/template",
+    "width": 1440,
+    "height": 1785,
+    "timestamp": "2026-05-28T05:40:38.756Z",
+    "status": "success"
+  },
+  {
+    "filename": "chat.png",
+    "url": "https://advizrclients.com/template/chat",
+    "width": 1440,
+    "height": 1063,
+    "timestamp": "2026-05-28T05:40:44.796Z",
+    "status": "success"
+  },
+  {
+    "filename": "goals.png",
+    "url": "https://advizrclients.com/template/goals",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:40:48.580Z",
+    "status": "success"
+  },
+  {
+    "filename": "documents.png",
+    "url": "https://advizrclients.com/template/documents",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:40:54.774Z",
+    "status": "success"
+  },
+  {
+    "filename": "proposals.png",
+    "url": "https://advizrclients.com/template/proposals",
+    "width": 1440,
+    "height": 942,
+    "timestamp": "2026-05-28T05:41:00.074Z",
+    "status": "success"
+  },
+  {
+    "filename": "learn.png",
+    "url": "https://advizrclients.com/template/learn",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:41:03.944Z",
+    "status": "success"
+  },
+  {
+    "filename": "book.png",
+    "url": "https://advizrclients.com/template/book",
+    "width": 1440,
+    "height": 2204,
+    "timestamp": "2026-05-28T05:41:09.235Z",
+    "status": "success"
+  },
+  {
+    "filename": "help.png",
+    "url": "https://advizrclients.com/template/help",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:41:14.363Z",
+    "status": "success"
+  },
+  {
+    "filename": "runs.png",
+    "url": "https://advizrclients.com/template/runs",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:41:19.499Z",
+    "status": "success"
+  },
+  {
+    "filename": "analytics.png",
+    "url": "https://advizrclients.com/template/analytics",
+    "status": "failed",
+    "error": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://advizrclients.com/template/analytics\", waiting until \"networkidle\"\u001b[22m\n",
+    "timestamp": "2026-05-28T05:41:39.504Z"
+  },
+  {
+    "filename": "team.png",
+    "url": "https://advizrclients.com/template/team",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:41:44.983Z",
+    "status": "success"
+  },
+  {
+    "filename": "settings.png",
+    "url": "https://advizrclients.com/template/settings",
+    "width": 1440,
+    "height": 900,
+    "timestamp": "2026-05-28T05:41:49.555Z",
+    "status": "success"
+  }
+]

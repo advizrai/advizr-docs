@@ -1,3 +1,9 @@
 # System Architecture
 
 A complete overview of the Advizr platform architecture - from the DOE framework that separates AI judgment from deterministic code, to the multi-tenant database topology, deployment infrastructure, and automation pipelines. Start here to understand how the pieces fit together.
+
+## DOE at a glance
+
+The entire system is built on three layers. Directives define the goal. Orchestration (AI) routes work and handles errors. Execution (Python) runs deterministic code with no probabilistic AI.
+
+<Screenshot src="/images/architecture/doe-framework.svg" alt="DOE Architecture - three layers separating directives, orchestration, and execution" caption="The three layers of Advizr's DOE architecture" />

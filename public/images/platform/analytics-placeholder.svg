@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#f5f5f5" rx="8"/>
+  <rect x="2" y="2" width="1436" height="896" fill="none" stroke="#d1d5db" stroke-width="2" stroke-dasharray="8 4" rx="8"/>
+  <text x="720" y="430" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#94a3b8" font-weight="600">Screenshot: Analytics Dashboard</text>
+  <text x="720" y="470" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#cbd5e1">Capture from advizrclients.com/template/analytics</text>
+</svg>

@@ -1,0 +1,87 @@
+.figure {
+  margin: var(--advizr-space-6) 0;
+  padding: 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  box-shadow: var(--advizr-shadow-sm);
+  cursor: zoom-in;
+  transition: box-shadow var(--advizr-transition-fast),
+              border-color var(--advizr-transition-fast);
+}
+
+.image:hover {
+  box-shadow: var(--advizr-shadow-md);
+  border-color: var(--advizr-blue-300);
+}
+
+:global(html[class~="dark"]) .image {
+  border-color: var(--advizr-border-strong);
+}
+
+:global(html[class~="dark"]) .image:hover {
+  border-color: var(--advizr-blue-500);
+}
+
+.caption {
+  margin-top: var(--advizr-space-2);
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-secondary);
+  text-align: center;
+  line-height: var(--advizr-text-sm-lh);
+}
+
+/* Lightbox overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity var(--advizr-transition-base);
+  pointer-events: none;
+}
+
+.overlayVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlayImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--advizr-radius-lg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--advizr-space-4);
+  right: var(--advizr-space-4);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--advizr-radius-full);
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background var(--advizr-transition-fast);
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

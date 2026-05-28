@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <marker id="arrowRight" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8" fill="none" stroke="#475569" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="600" fill="#334155">Client Routing Architecture</text>
+
+  <!-- Box 1: User Request -->
+  <rect x="20" y="100" width="140" height="80" rx="10" ry="10" fill="rgba(71,85,105,0.12)" stroke="#475569" stroke-width="2"/>
+  <text x="90" y="132" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#334155">User Request</text>
+  <text x="90" y="156" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#64748b">advizrclients.com</text>
+  <text x="90" y="170" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#64748b">/acme</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="140" x2="210" y2="140" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Box 2: Router -->
+  <rect x="220" y="100" width="140" height="80" rx="10" ry="10" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="290" y="132" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#1e40af">Router</text>
+  <text x="290" y="156" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#475569">Middleware</text>
+  <text x="290" y="170" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#475569">reads slug</text>
+
+  <!-- Arrow 2 -->
+  <line x1="360" y1="140" x2="410" y2="140" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Box 3: Lookup -->
+  <rect x="420" y="100" width="140" height="80" rx="10" ry="10" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="490" y="132" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#1e40af">Lookup</text>
+  <text x="490" y="156" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="400" fill="#475569">Query master DB</text>
+
+  <!-- Fan-out arrows -->
+  <line x1="560" y1="120" x2="630" y2="82" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <line x1="560" y1="140" x2="630" y2="140" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <line x1="560" y1="160" x2="630" y2="198" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+
+  <!-- Box 4a: Client A -->
+  <rect x="640" y="55" width="140" height="55" rx="8" ry="8" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+  <text x="710" y="77" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#047857">Client A App</text>
+  <text x="710" y="96" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="400" fill="#475569">Custom branding + own Supabase</text>
+
+  <!-- Box 4b: Client B -->
+  <rect x="640" y="118" width="140" height="45" rx="8" ry="8" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+  <text x="710" y="146" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#047857">Client B App</text>
+
+  <!-- Box 4c: Client C -->
+  <rect x="640" y="172" width="140" height="45" rx="8" ry="8" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+  <text x="710" y="200" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#047857">Client C App</text>
+</svg>

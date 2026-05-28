@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300">
+  <defs>
+    <marker id="arrowRight" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8" fill="none" stroke="#475569" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="600" fill="#334155">Lead Generation Pipeline</text>
+
+  <!-- Stage 1: Reply Detection -->
+  <rect x="30" y="75" width="140" height="90" rx="12" ry="12" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="100" y="112" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#1e40af">Reply Detection</text>
+  <text x="100" y="138" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">Monitor inbox</text>
+
+  <!-- Arrow 1-2 -->
+  <line x1="170" y1="120" x2="202" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Stage 2: Research -->
+  <rect x="212" y="75" width="140" height="90" rx="12" ry="12" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="282" y="112" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#1e40af">Research</text>
+  <text x="282" y="134" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">Company data,</text>
+  <text x="282" y="150" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">LinkedIn</text>
+
+  <!-- Arrow 2-3 -->
+  <line x1="352" y1="120" x2="384" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Stage 3: Strategy -->
+  <rect x="394" y="75" width="140" height="90" rx="12" ry="12" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+  <text x="464" y="112" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#047857">Strategy</text>
+  <text x="464" y="134" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">AI personalized</text>
+  <text x="464" y="150" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">approach</text>
+
+  <!-- Arrow 3-4 -->
+  <line x1="534" y1="120" x2="566" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Stage 4: Deck Build -->
+  <rect x="576" y="75" width="140" height="90" rx="12" ry="12" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+  <text x="646" y="112" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#047857">Deck Build</text>
+  <text x="646" y="134" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">Auto-generate</text>
+  <text x="646" y="150" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">proposal</text>
+
+  <!-- Arrow 4-5 -->
+  <line x1="716" y1="120" x2="748" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Stage 5: Send -->
+  <rect x="758" y="75" width="120" height="90" rx="12" ry="12" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="818" y="112" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#b45309">Send</text>
+  <text x="818" y="134" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">Email with</text>
+  <text x="818" y="150" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#475569">tracking</text>
+
+  <!-- Bottom annotation -->
+  <text x="450" y="230" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="400" font-style="italic" fill="#64748b">All orchestrated by AI, executed by deterministic scripts</text>
+</svg>
