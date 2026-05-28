@@ -1,7 +1,7 @@
 import nextra from 'nextra'
 
 const withNextra = nextra({
-  contentDirBasePath: '/'
+  contentDirBasePath: '/docs'
 })
 
 export default withNextra({})

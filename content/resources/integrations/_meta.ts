@@ -1,5 +1,5 @@
 export default {
-  index: 'Overview',
+  overview: 'Overview',
   slack: 'Slack',
   'google-workspace': 'Google Workspace',
   crm: 'CRM',

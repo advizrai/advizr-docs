@@ -1,4 +1,5 @@
 export default {
+  index: 'Overview',
   'terms-of-service': 'Terms of Service',
   'privacy-policy': 'Privacy Policy',
   'data-processing': 'Data Processing',

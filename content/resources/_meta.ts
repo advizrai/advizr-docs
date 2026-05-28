@@ -1,4 +1,5 @@
 export default {
+  index: 'Overview',
   guides: 'Guides',
   templates: 'Templates',
   changelog: 'Changelog',
