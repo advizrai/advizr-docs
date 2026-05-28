@@ -56,11 +56,11 @@ const variantMap: Record<CalloutType, string> = {
 export function Callout({ type = 'info', title, children, className }: CalloutProps) {
   return (
     <aside className={clsx(styles.callout, variantMap[type], className)} role="note">
-      <div className={styles.header}>
-        <span className={styles.icon}>{icons[type]}</span>
-        {title && <span className={styles.title}>{title}</span>}
+      <span className={styles.icon}>{icons[type]}</span>
+      <div className={styles.content}>
+        {title && <div className={styles.title}>{title}</div>}
+        {children}
       </div>
-      <div className={styles.content}>{children}</div>
     </aside>
   )
 }
