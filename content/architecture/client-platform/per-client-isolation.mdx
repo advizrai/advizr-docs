@@ -1,0 +1,3 @@
+# Per-Client Isolation
+
+Every client organisation gets its own Supabase instance, ensuring complete data isolation between tenants. The master Supabase handles shared authentication and organisation lookup, while each client Supabase holds that client's documents, objectives, chat history, and proposals. This page explains the isolation model, security boundaries, and how cross-tenant data leakage is prevented.
