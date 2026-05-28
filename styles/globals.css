@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @import './tokens.css';
 
 /* ==========================================================================
@@ -6,10 +8,10 @@
    ========================================================================== */
 
 :root {
-  /* Nextra primary color - Advizr blue-500 (#3399FF) in HSL */
-  --nextra-primary-hue: 210deg;
-  --nextra-primary-saturation: 100%;
-  --nextra-primary-lightness: 60%;
+  /* Nextra primary color - Indigo (#6366F1) in HSL */
+  --nextra-primary-hue: 239deg;
+  --nextra-primary-saturation: 84%;
+  --nextra-primary-lightness: 67%;
 
   /* Nextra background - white for light mode (raw RGB channels) */
   --nextra-bg: 255, 255, 255;
@@ -20,10 +22,10 @@
 
 html[class~="dark"] {
   /* Slightly lighter primary in dark mode for readability */
-  --nextra-primary-lightness: 65%;
+  --nextra-primary-lightness: 72%;
 
-  /* Nextra background - slate-900 (#0F172A) for dark mode */
-  --nextra-bg: 15, 23, 42;
+  /* Nextra background - deep navy (#0B1120) for dark mode */
+  --nextra-bg: 11, 17, 32;
 }
 
 /* ==========================================================================
@@ -32,10 +34,20 @@ html[class~="dark"] {
 
 body {
   font-family: var(--advizr-font-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   color: var(--advizr-text-primary);
   background-color: var(--advizr-bg-primary);
   font-size: var(--advizr-text-base);
-  line-height: var(--advizr-text-base-lh);
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------
+   Selection
+   -------------------------------------------------------------------- */
+
+::selection {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: inherit;
 }
 
 /* --------------------------------------------------------------------
@@ -47,6 +59,7 @@ h1 {
   line-height: var(--advizr-text-4xl-lh);
   font-weight: var(--advizr-font-bold);
   color: var(--advizr-text-primary);
+  letter-spacing: -0.025em;
   margin-top: var(--advizr-space-12);
   margin-bottom: var(--advizr-space-6);
 }
@@ -56,6 +69,7 @@ h2 {
   line-height: var(--advizr-text-3xl-lh);
   font-weight: var(--advizr-font-bold);
   color: var(--advizr-text-primary);
+  letter-spacing: -0.025em;
   margin-top: var(--advizr-space-10);
   margin-bottom: var(--advizr-space-4);
 }
@@ -65,6 +79,7 @@ h3 {
   line-height: var(--advizr-text-2xl-lh);
   font-weight: var(--advizr-font-semibold);
   color: var(--advizr-text-primary);
+  letter-spacing: -0.025em;
   margin-top: var(--advizr-space-8);
   margin-bottom: var(--advizr-space-3);
 }
@@ -103,12 +118,13 @@ h6 {
 a {
   color: var(--advizr-blue-500);
   text-decoration: none;
-  transition: color var(--advizr-transition-fast);
+  transition: color var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--advizr-blue-600);
+  box-shadow: inset 0 -1px 0 var(--advizr-blue-500);
 }
 
 html[class~="dark"] a {
@@ -117,6 +133,7 @@ html[class~="dark"] a {
 
 html[class~="dark"] a:hover {
   color: var(--advizr-blue-300);
+  box-shadow: inset 0 -1px 0 var(--advizr-blue-400);
 }
 
 /* --------------------------------------------------------------------
@@ -125,8 +142,10 @@ html[class~="dark"] a:hover {
 
 pre {
   background-color: var(--advizr-bg-code);
-  border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-lg);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--advizr-blue-500);
+  border-radius: var(--advizr-radius-xl);
   padding: var(--advizr-space-4);
   overflow-x: auto;
   font-family: var(--advizr-font-mono);
@@ -136,7 +155,8 @@ pre {
 
 html[class~="dark"] pre {
   background-color: var(--advizr-bg-code);
-  border-color: var(--advizr-border);
+  border-color: rgba(255, 255, 255, 0.06);
+  border-left-color: var(--advizr-blue-500);
 }
 
 /* --------------------------------------------------------------------
@@ -163,8 +183,12 @@ html[class~="dark"] :not(pre) > code {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin: var(--advizr-space-6) 0;
+  border-radius: var(--advizr-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--advizr-border);
 }
 
 th {
@@ -180,8 +204,12 @@ td {
   border-bottom: 1px solid var(--advizr-border);
 }
 
-tr:nth-child(even) {
+tr:hover {
   background-color: var(--advizr-bg-secondary);
+}
+
+tr:last-child td {
+  border-bottom: none;
 }
 
 html[class~="dark"] th {
@@ -218,6 +246,95 @@ hr {
   border: none;
   border-top: 1px solid var(--advizr-border);
   margin: var(--advizr-space-8) 0;
+}
+
+/* ==========================================================================
+   Scrollbar Styling (Dark Mode)
+   ========================================================================== */
+
+html[class~="dark"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html[class~="dark"] ::-webkit-scrollbar-track {
+  background: var(--advizr-bg-primary);
+}
+
+html[class~="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--advizr-border-strong);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Nextra Sidebar Overrides
+   ========================================================================== */
+
+nav[class*="nextra-sidebar"] a,
+aside[class*="nextra-sidebar"] a,
+.nextra-sidebar-container a {
+  font-size: 0.875rem;
+  transition: all var(--advizr-transition-fast);
+  border-radius: var(--advizr-radius-md);
+}
+
+nav[class*="nextra-sidebar"] a[data-active="true"],
+aside[class*="nextra-sidebar"] a[data-active="true"],
+.nextra-sidebar-container a[data-active="true"] {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--advizr-blue-500);
+  font-weight: var(--advizr-font-medium);
+}
+
+html[class~="dark"] nav[class*="nextra-sidebar"] a[data-active="true"],
+html[class~="dark"] aside[class*="nextra-sidebar"] a[data-active="true"],
+html[class~="dark"] .nextra-sidebar-container a[data-active="true"] {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: var(--advizr-blue-400);
+}
+
+/* ==========================================================================
+   Nextra Search Overrides
+   ========================================================================== */
+
+[data-nextra-search] input {
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  font-family: var(--advizr-font-sans);
+  transition: border-color var(--advizr-transition-fast),
+              box-shadow var(--advizr-transition-fast);
+}
+
+[data-nextra-search] input:focus {
+  border-color: var(--advizr-blue-500);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+[data-nextra-search] [role="listbox"] {
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  box-shadow: var(--advizr-shadow-xl);
+  background-color: var(--advizr-bg-primary);
+  backdrop-filter: blur(12px);
+}
+
+[data-nextra-search] [role="option"] {
+  border-radius: var(--advizr-radius-md);
+  transition: background-color var(--advizr-transition-fast);
+}
+
+html[class~="dark"] [data-nextra-search] input {
+  border-color: var(--advizr-border);
+}
+
+html[class~="dark"] [data-nextra-search] input:focus {
+  border-color: var(--advizr-blue-400);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+html[class~="dark"] [data-nextra-search] [role="listbox"] {
+  border-color: var(--advizr-border);
+  box-shadow: var(--advizr-shadow-xl);
+  background-color: var(--advizr-bg-primary);
 }
 
 /* ==========================================================================
@@ -374,6 +491,7 @@ html[class~="dark"] .advizr-badge {
   background-color: var(--advizr-blue-600);
   text-decoration: none;
   color: #FFFFFF;
+  box-shadow: none;
 }
 
 .advizr-btn-secondary {
@@ -396,48 +514,5 @@ html[class~="dark"] .advizr-badge {
   background-color: var(--advizr-bg-secondary);
   border-color: var(--advizr-blue-400);
   text-decoration: none;
-}
-
-/* --------------------------------------------------------------------
-   Search
-   -------------------------------------------------------------------- */
-
-[data-nextra-search] input {
-  border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-lg);
-  font-family: var(--advizr-font-sans);
-  transition: border-color var(--advizr-transition-fast),
-              box-shadow var(--advizr-transition-fast);
-}
-
-[data-nextra-search] input:focus {
-  border-color: var(--advizr-blue-500);
-  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.15);
-}
-
-[data-nextra-search] [role="listbox"] {
-  border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-xl);
-  box-shadow: var(--advizr-shadow-xl);
-  background-color: var(--advizr-bg-primary);
-}
-
-[data-nextra-search] [role="option"] {
-  border-radius: var(--advizr-radius-md);
-  transition: background-color var(--advizr-transition-fast);
-}
-
-html[class~="dark"] [data-nextra-search] input {
-  border-color: var(--advizr-border);
-}
-
-html[class~="dark"] [data-nextra-search] input:focus {
-  border-color: var(--advizr-blue-400);
-  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
-}
-
-html[class~="dark"] [data-nextra-search] [role="listbox"] {
-  border-color: var(--advizr-border);
-  box-shadow: var(--advizr-shadow-xl);
-  background-color: var(--advizr-bg-primary);
+  box-shadow: none;
 }

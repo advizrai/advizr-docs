@@ -81,10 +81,12 @@ export default async function RootLayout({ children }) {
   )
   const pageMap = await getPageMap()
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" className="dark" suppressHydrationWarning>
       <Head />
-      <body>
+      <body style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
         <Layout
+          darkMode={true}
+          nextThemes={{ defaultTheme: 'dark' }}
           navbar={navbar}
           footer={<CustomFooter />}
           editLink="Edit this page on GitHub"

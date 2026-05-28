@@ -5,18 +5,33 @@
 
 :root {
   /* --------------------------------------------------------------------
-     Color Palette - Primary (Blue)
+     Color Palette - Primary (Indigo)
+     Variable names kept as blue-* for backward compatibility.
      -------------------------------------------------------------------- */
-  --advizr-blue-50:  #EBF5FF;
-  --advizr-blue-100: #D6EBFF;
-  --advizr-blue-200: #ADD6FF;
-  --advizr-blue-300: #85C2FF;
-  --advizr-blue-400: #5CADFF;
-  --advizr-blue-500: #3399FF;
-  --advizr-blue-600: #297ACC;
-  --advizr-blue-700: #1F5C99;
-  --advizr-blue-800: #143D66;
-  --advizr-blue-900: #0A1F33;
+  --advizr-blue-50:  #EEF2FF;
+  --advizr-blue-100: #E0E7FF;
+  --advizr-blue-200: #C7D2FE;
+  --advizr-blue-300: #A5B4FC;
+  --advizr-blue-400: #818CF8;
+  --advizr-blue-500: #6366F1;
+  --advizr-blue-600: #4F46E5;
+  --advizr-blue-700: #4338CA;
+  --advizr-blue-800: #3730A3;
+  --advizr-blue-900: #312E81;
+
+  /* --------------------------------------------------------------------
+     Color Palette - Accent (Emerald)
+     -------------------------------------------------------------------- */
+  --advizr-accent-50:  #ECFDF5;
+  --advizr-accent-100: #D1FAE5;
+  --advizr-accent-200: #A7F3D0;
+  --advizr-accent-300: #6EE7B7;
+  --advizr-accent-400: #34D399;
+  --advizr-accent-500: #10B981;
+  --advizr-accent-600: #059669;
+  --advizr-accent-700: #047857;
+  --advizr-accent-800: #065F46;
+  --advizr-accent-900: #064E3B;
 
   /* --------------------------------------------------------------------
      Color Palette - Neutral (Slate)
@@ -69,20 +84,20 @@
      Surface Colors - Light Mode
      -------------------------------------------------------------------- */
   --advizr-bg-primary:     #FFFFFF;
-  --advizr-bg-secondary:   #F8FAFC;
-  --advizr-bg-tertiary:    #F1F5F9;
-  --advizr-bg-code:        #F8FAFC;
-  --advizr-text-primary:   #0F172A;
-  --advizr-text-secondary: #475569;
-  --advizr-text-tertiary:  #94A3B8;
-  --advizr-border:         #E2E8F0;
-  --advizr-border-strong:  #CBD5E1;
+  --advizr-bg-secondary:   #F9FAFB;
+  --advizr-bg-tertiary:    #F3F4F6;
+  --advizr-bg-code:        #1E1E2E;
+  --advizr-text-primary:   #111827;
+  --advizr-text-secondary: #6B7280;
+  --advizr-text-tertiary:  #9CA3AF;
+  --advizr-border:         #E5E7EB;
+  --advizr-border-strong:  #D1D5DB;
 
   /* --------------------------------------------------------------------
      Typography - Font Families
      -------------------------------------------------------------------- */
-  --advizr-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --advizr-font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --advizr-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --advizr-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
   /* --------------------------------------------------------------------
      Typography - Font Sizes (with line heights)
@@ -103,6 +118,10 @@
   --advizr-text-3xl-lh:  2.25rem;
   --advizr-text-4xl:     2.25rem;
   --advizr-text-4xl-lh:  2.5rem;
+  --advizr-text-5xl:     3rem;
+  --advizr-text-5xl-lh:  1.1;
+  --advizr-text-6xl:     3.75rem;
+  --advizr-text-6xl-lh:  1.05;
 
   /* --------------------------------------------------------------------
      Typography - Font Weights
@@ -111,6 +130,7 @@
   --advizr-font-medium:   500;
   --advizr-font-semibold: 600;
   --advizr-font-bold:     700;
+  --advizr-font-extrabold: 800;
 
   /* --------------------------------------------------------------------
      Spacing Scale (base 4px)
@@ -129,29 +149,42 @@
   --advizr-space-24: 6rem;
 
   /* --------------------------------------------------------------------
-     Shadows
+     Gradients
      -------------------------------------------------------------------- */
-  --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --advizr-gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%);
+  --advizr-gradient-accent: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+  --advizr-gradient-hero: linear-gradient(180deg, rgba(99,102,241,0.08) 0%, transparent 50%);
+  --advizr-gradient-hero-dark: linear-gradient(180deg, rgba(99,102,241,0.15) 0%, transparent 50%);
+  --advizr-gradient-surface: linear-gradient(180deg, var(--advizr-bg-secondary) 0%, var(--advizr-bg-primary) 100%);
+  --advizr-gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.06), transparent 40%);
+
+  /* --------------------------------------------------------------------
+     Shadows (light mode)
+     -------------------------------------------------------------------- */
+  --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --advizr-shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+  --advizr-shadow-glow-lg: 0 0 40px rgba(99, 102, 241, 0.2);
 
   /* --------------------------------------------------------------------
      Border Radius
      -------------------------------------------------------------------- */
-  --advizr-radius-sm:   0.25rem;
-  --advizr-radius-md:   0.375rem;
-  --advizr-radius-lg:   0.5rem;
-  --advizr-radius-xl:   0.75rem;
-  --advizr-radius-2xl:  1rem;
+  --advizr-radius-sm:   0.375rem;
+  --advizr-radius-md:   0.5rem;
+  --advizr-radius-lg:   0.75rem;
+  --advizr-radius-xl:   1rem;
+  --advizr-radius-2xl:  1.25rem;
   --advizr-radius-full: 9999px;
 
   /* --------------------------------------------------------------------
      Transitions
      -------------------------------------------------------------------- */
-  --advizr-transition-fast: 150ms ease;
-  --advizr-transition-base: 200ms ease;
-  --advizr-transition-slow: 300ms ease;
+  --advizr-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --advizr-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --advizr-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --advizr-transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ========================================================================
@@ -159,18 +192,20 @@
    ======================================================================== */
 
 html[class~="dark"] {
-  --advizr-bg-primary:     #0F172A;
-  --advizr-bg-secondary:   #1E293B;
-  --advizr-bg-tertiary:    #334155;
-  --advizr-bg-code:        #1E293B;
-  --advizr-text-primary:   #F8FAFC;
+  --advizr-bg-primary:     #0B1120;
+  --advizr-bg-secondary:   #131C2E;
+  --advizr-bg-tertiary:    #1C2640;
+  --advizr-bg-code:        #0D1117;
+  --advizr-text-primary:   #F1F5F9;
   --advizr-text-secondary: #94A3B8;
   --advizr-text-tertiary:  #64748B;
-  --advizr-border:         #334155;
-  --advizr-border-strong:  #475569;
+  --advizr-border:         #1E293B;
+  --advizr-border-strong:  #334155;
 
   --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.25);
+  --advizr-shadow-glow: 0 0 20px rgba(99, 102, 241, 0.25);
+  --advizr-shadow-glow-lg: 0 0 40px rgba(99, 102, 241, 0.35);
 }
