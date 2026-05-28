@@ -25,6 +25,7 @@ export default function NavbarExtra() {
               key={href}
               href={href}
               className={`${styles.sectionLink} ${isActive ? styles.sectionLinkActive : ''}`}
+              {...(isActive ? { 'aria-current': 'page' as const } : {})}
             >
               {label}
             </Link>
