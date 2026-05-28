@@ -1,0 +1,281 @@
+---
+title: Component Library
+description: Reference page showing all custom MDX components available in Advizr docs
+---
+
+# Component Library
+
+Reference page showing all custom components available in Advizr docs. Each component is globally registered and can be used in any MDX file without imports.
+
+---
+
+## Callout
+
+Use callouts to highlight important information, warnings, or tips.
+
+<Callout type="info">
+  The Advizr API uses rate limiting. Free tier accounts are limited to 100 requests per minute.
+</Callout>
+
+<Callout type="warning" title="Breaking Change">
+  The v1 authentication endpoint was deprecated in March 2026. Migrate to v2 before June 2026.
+</Callout>
+
+<Callout type="danger">
+  Never share your API keys publicly or commit them to version control. Rotate any exposed keys immediately.
+</Callout>
+
+<Callout type="tip" title="Keyboard Shortcut">
+  Press Cmd+K (or Ctrl+K on Windows) to open the command palette from anywhere in your dashboard.
+</Callout>
+
+<Callout type="note">
+  This feature is available on Acceleration and Partnership plans only.
+</Callout>
+
+```mdx
+<Callout type="warning" title="Breaking Change">
+  The v1 authentication endpoint was deprecated in March 2026.
+</Callout>
+```
+
+---
+
+## Steps
+
+Use steps to walk users through a sequential process.
+
+<Steps>
+  <Step title="Create your account">
+    Sign up at advizrclients.com and verify your email address. You will receive a confirmation link within a few minutes.
+  </Step>
+  <Step title="Complete the onboarding questionnaire">
+    Answer a few questions about your business, goals, and current tech stack. This helps us configure your dashboard.
+  </Step>
+  <Step title="Review your personalized dashboard">
+    Your AI-powered dashboard is ready. Explore your tasks, automations, and learning resources.
+  </Step>
+</Steps>
+
+```mdx
+<Steps>
+  <Step title="Create your account">
+    Sign up at advizrclients.com and verify your email.
+  </Step>
+  <Step title="Complete onboarding">
+    Answer questions about your business.
+  </Step>
+</Steps>
+```
+
+---
+
+## Tabs
+
+Use tabs to organize related content that users can switch between.
+
+<Tabs>
+  <Tab label="React">
+    Install the Advizr SDK for React:
+
+    ```bash
+    npm install @advizr/react
+    ```
+
+    Then import and initialize:
+
+    ```jsx
+    import { AdvizrProvider } from '@advizr/react'
+    ```
+  </Tab>
+  <Tab label="Python">
+    Install the Advizr SDK for Python:
+
+    ```bash
+    pip install advizr
+    ```
+
+    Then import and initialize:
+
+    ```python
+    from advizr import Client
+    client = Client(api_key="your-key")
+    ```
+  </Tab>
+  <Tab label="CLI">
+    Install the Advizr CLI globally:
+
+    ```bash
+    npm install -g @advizr/cli
+    advizr init
+    ```
+  </Tab>
+</Tabs>
+
+```mdx
+<Tabs>
+  <Tab label="React">React content here</Tab>
+  <Tab label="Python">Python content here</Tab>
+</Tabs>
+```
+
+---
+
+## CodeBlock
+
+Use CodeBlock to add a title or description above a fenced code block.
+
+<CodeBlock title="advizr.config.json" description="Add this to your project root">
+
+```json
+{
+  "apiKey": "your-key-here",
+  "environment": "production",
+  "features": {
+    "analytics": true,
+    "automations": true
+  }
+}
+```
+
+</CodeBlock>
+
+<CodeBlock title="API Request" language="bash">
+
+```bash
+curl -X POST https://api.advizr.ca/v2/tasks \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Follow up with client", "priority": "high"}'
+```
+
+</CodeBlock>
+
+````mdx
+<CodeBlock title="config.json" description="Project configuration">
+
+```json
+{ "key": "value" }
+```
+
+</CodeBlock>
+````
+
+---
+
+## Details
+
+Use details for expandable content that is useful but not essential to the main flow.
+
+<Details title="What browsers are supported?">
+  Advizr supports all modern browsers including Chrome, Firefox, Safari, and Edge.
+  Internet Explorer is not supported. We recommend keeping your browser updated
+  to the latest version for the best experience.
+</Details>
+
+<Details title="How do I reset my password?" defaultOpen>
+  Go to **Settings > Security > Change Password** in your dashboard, or use the
+  "Forgot Password" link on the login page. You will receive a reset link via email
+  within a few minutes.
+</Details>
+
+```mdx
+<Details title="How do I reset my password?" defaultOpen>
+  Go to Settings > Security > Change Password.
+</Details>
+```
+
+---
+
+## LinkCard
+
+Use link cards to create prominent navigation links to other documentation pages.
+
+<LinkCard
+  title="Getting Started Guide"
+  description="Everything you need to set up your Advizr account and start automating."
+  href="/docs/platform/getting-started"
+  icon="🚀"
+/>
+
+<LinkCard
+  title="API Reference"
+  description="Full endpoint documentation for building custom integrations."
+  href="/docs/architecture/api-reference"
+  icon="📡"
+/>
+
+```mdx
+<LinkCard
+  title="Getting Started Guide"
+  description="Set up your account in under 5 minutes."
+  href="/docs/platform/getting-started"
+  icon="🚀"
+/>
+```
+
+---
+
+## Screenshot
+
+Use screenshot to display documentation images with borders, captions, and click-to-zoom.
+
+<Screenshot
+  src="/images/dashboard-overview.png"
+  alt="Advizr Dashboard Overview"
+  caption="The main dashboard shows your tasks, updates, and quick actions at a glance."
+/>
+
+```mdx
+<Screenshot
+  src="/images/dashboard-overview.png"
+  alt="Advizr Dashboard Overview"
+  caption="The main dashboard shows your key metrics."
+/>
+```
+
+---
+
+## ComparisonTable
+
+Use comparison tables to show feature differences across plans or products.
+
+<ComparisonTable
+  columns={["Feature", "Catalyst", "Acceleration", "Partnership"]}
+  rows={[
+    { feature: "AI Dashboard", values: [true, true, true] },
+    { feature: "Workflow Automation", values: ["1 workflow", "5 workflows", "Unlimited"] },
+    { feature: "Education Sessions", values: ["2/month", "4/month", "Unlimited"] },
+    { feature: "Custom Integrations", values: [false, true, true] },
+    { feature: "Dedicated Strategist", values: [false, false, true] },
+    { feature: "Custom AI Workflows", values: [false, true, true] },
+  ]}
+/>
+
+```mdx
+<ComparisonTable
+  columns={["Feature", "Starter", "Pro"]}
+  rows={[
+    { feature: "Dashboard", values: [true, true] },
+    { feature: "API Access", values: [false, true] },
+  ]}
+/>
+```
+
+---
+
+## VideoEmbed
+
+Use video embeds for YouTube or Loom walkthroughs.
+
+<VideoEmbed
+  url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  title="Platform Overview Walkthrough"
+/>
+
+```mdx
+<VideoEmbed
+  url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  title="Platform Overview"
+/>
+```

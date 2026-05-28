@@ -1,0 +1,90 @@
+.wrapper {
+  margin: var(--advizr-space-4) 0;
+  overflow-x: auto;
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--advizr-text-sm);
+  line-height: var(--advizr-text-sm-lh);
+}
+
+.th {
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  text-align: center;
+  font-weight: var(--advizr-font-semibold);
+  font-size: var(--advizr-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--advizr-text-secondary);
+  background: var(--advizr-bg-secondary);
+  border-bottom: 1px solid var(--advizr-border);
+  white-space: nowrap;
+}
+
+.th:first-child {
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--advizr-text-sm);
+}
+
+.td {
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  border-bottom: 1px solid var(--advizr-border);
+}
+
+.featureCell {
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-primary);
+  white-space: nowrap;
+}
+
+.valueCell {
+  text-align: center;
+  color: var(--advizr-text-secondary);
+}
+
+.valueCell svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.table tbody tr:nth-child(even) {
+  background: var(--advizr-bg-secondary);
+}
+
+.table tbody tr:last-child .td {
+  border-bottom: none;
+}
+
+/* Sticky first column on mobile */
+.stickyCol {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--advizr-bg-primary);
+}
+
+.table thead .stickyCol {
+  background: var(--advizr-bg-secondary);
+}
+
+.table tbody tr:nth-child(even) .stickyCol {
+  background: var(--advizr-bg-secondary);
+}
+
+/* Dark mode */
+:global(html[class~="dark"]) .valueCell svg circle {
+  opacity: 0.3;
+}
+
+@media (max-width: 639px) {
+  .th,
+  .td {
+    padding: var(--advizr-space-2) var(--advizr-space-3);
+  }
+}

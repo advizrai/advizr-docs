@@ -1,0 +1,127 @@
+.callout {
+  margin: var(--advizr-space-4) 0;
+  padding: var(--advizr-space-4);
+  border-left: 4px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-md);
+  background: var(--advizr-bg-secondary);
+  font-size: var(--advizr-text-sm);
+  line-height: var(--advizr-text-sm-lh);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--advizr-space-2);
+  margin-bottom: var(--advizr-space-2);
+}
+
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-weight: var(--advizr-font-semibold);
+  font-size: var(--advizr-text-sm);
+}
+
+.content {
+  color: var(--advizr-text-secondary);
+}
+
+.content :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+/* Variants */
+.info {
+  border-left-color: var(--advizr-info);
+  background: var(--advizr-blue-50);
+}
+
+.info .icon,
+.info .title {
+  color: var(--advizr-info);
+}
+
+.warning {
+  border-left-color: var(--advizr-warning);
+  background: var(--advizr-amber-50);
+}
+
+.warning .icon,
+.warning .title {
+  color: var(--advizr-amber-700);
+}
+
+.danger {
+  border-left-color: var(--advizr-error);
+  background: var(--advizr-red-50);
+}
+
+.danger .icon,
+.danger .title {
+  color: var(--advizr-error);
+}
+
+.tip {
+  border-left-color: var(--advizr-success);
+  background: var(--advizr-green-50);
+}
+
+.tip .icon,
+.tip .title {
+  color: var(--advizr-green-700);
+}
+
+.note {
+  border-left-color: var(--advizr-slate-400);
+  background: var(--advizr-slate-50);
+}
+
+.note .icon,
+.note .title {
+  color: var(--advizr-slate-600);
+}
+
+/* Dark mode */
+:global(html[class~="dark"]) .info {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+:global(html[class~="dark"]) .warning {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+:global(html[class~="dark"]) .danger {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+:global(html[class~="dark"]) .tip {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+:global(html[class~="dark"]) .note {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+:global(html[class~="dark"]) .note .icon,
+:global(html[class~="dark"]) .note .title {
+  color: var(--advizr-slate-400);
+}
+
+:global(html[class~="dark"]) .warning .icon,
+:global(html[class~="dark"]) .warning .title {
+  color: var(--advizr-warning);
+}
+
+:global(html[class~="dark"]) .content {
+  color: var(--advizr-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .callout {
+    transition: none;
+  }
+}

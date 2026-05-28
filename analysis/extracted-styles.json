@@ -1,0 +1,11 @@
+{
+  "callout": {
+    "borderLeft": "5px solid rgb(76, 179, 212)",
+    "backgroundColor": "rgb(238, 249, 253)",
+    "padding": "16px 24px",
+    "borderRadius": "4px",
+    "fontSize": "16px",
+    "color": "rgb(25, 60, 71)",
+    "margin": "0px 0px 16px"
+  }
+}

@@ -1,0 +1,57 @@
+.codeBlock {
+  margin: var(--advizr-space-4) 0;
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--advizr-space-3);
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+  background: var(--advizr-bg-tertiary);
+  border-bottom: 1px solid var(--advizr-border);
+  font-size: var(--advizr-text-xs);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--advizr-space-2);
+  min-width: 0;
+}
+
+.label {
+  font-weight: var(--advizr-font-semibold);
+  color: var(--advizr-text-primary);
+  white-space: nowrap;
+}
+
+.description {
+  color: var(--advizr-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.language {
+  color: var(--advizr-text-tertiary);
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.body :global(pre) {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.body :global(pre:first-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

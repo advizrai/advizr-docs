@@ -5,5 +5,6 @@ export default {
   changelog: 'Changelog',
   integrations: 'Integrations',
   status: 'System Status',
-  'component-preview': 'Component Preview'
+  'component-preview': 'Component Preview',
+  'component-demo': 'Component Library'
 }
