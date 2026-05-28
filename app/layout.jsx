@@ -70,9 +70,12 @@ export default async function RootLayout({ children }) {
   const navbar = (
     <Navbar
       logo={
-        <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>
-          Advizr
-        </span>
+        <img
+          src="/advizr-logo-white.png"
+          alt="Advizr"
+          className="advizr-navbar-logo"
+          style={{ height: '28px', width: 'auto' }}
+        />
       }
       projectLink="https://github.com/advizrai/advizr-docs"
     >
