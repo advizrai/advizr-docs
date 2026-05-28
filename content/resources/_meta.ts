@@ -4,5 +4,6 @@ export default {
   templates: 'Templates',
   changelog: 'Changelog',
   integrations: 'Integrations',
-  status: 'System Status'
+  status: 'System Status',
+  'component-preview': 'Component Preview'
 }

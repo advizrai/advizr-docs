@@ -1,0 +1,131 @@
+---
+title: Component Preview
+description: Visual reference for all custom Advizr documentation components
+---
+
+# Component Preview
+
+This page demonstrates all custom components available in the Advizr docs.
+
+---
+
+## Hero
+
+<Hero
+  title="Welcome to Advizr"
+  description="Everything you need to transform your business with AI."
+  variant="gradient"
+>
+  <Button href="/docs/platform">Get Started</Button>
+  <Button href="/docs/services" variant="secondary">Learn More</Button>
+</Hero>
+
+<Hero
+  title="Subtle Variant"
+  description="A minimal hero with just padding and a bottom border."
+  variant="subtle"
+/>
+
+---
+
+## Cards
+
+<CardGrid columns={3}>
+  <Card
+    title="Platform Guide"
+    description="Learn how to use every feature in your dashboard."
+    href="/docs/platform"
+    icon="📊"
+  />
+  <Card
+    title="Services"
+    description="Understand what Advizr builds for your business."
+    href="/docs/services"
+    icon="🔧"
+    variant="action"
+    arrow
+  />
+  <Card
+    title="Academy"
+    description="AI education courses for business owners."
+    href="/docs/academy"
+    icon="🎓"
+    variant="outline"
+  />
+</CardGrid>
+
+<CardGrid columns={2} gap="lg">
+  <Card title="Ghost Card" variant="ghost" description="No border, no shadow - just content." />
+  <Card title="Default Card" description="Standard card with border and shadow." />
+</CardGrid>
+
+---
+
+## Buttons
+
+<div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+  <Button href="/docs">Primary</Button>
+  <Button href="/docs" variant="secondary">Secondary</Button>
+  <Button href="/docs" variant="ghost">Ghost</Button>
+</div>
+
+<div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+  <Button href="/docs" size="sm">Small</Button>
+  <Button href="/docs" size="md">Medium</Button>
+  <Button href="/docs" size="lg">Large</Button>
+</div>
+
+---
+
+## Badges
+
+<div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+  <Badge>Default</Badge>
+  <Badge variant="new">New</Badge>
+  <Badge variant="beta">Beta</Badge>
+  <Badge variant="coming-soon">Coming Soon</Badge>
+  <Badge variant="deprecated">Deprecated</Badge>
+</div>
+
+---
+
+## Features
+
+<Feature icon="⚡" title="Fast Setup" description="Get your AI-powered dashboard running in under 24 hours." />
+<Feature icon="🔒" title="Secure by Default" description="Enterprise-grade security with SOC 2 compliance." />
+<Feature icon="📈" title="Measurable ROI" description="Track time saved and revenue impact from day one." />
+
+---
+
+## Tabs
+
+<Tabs items={['Overview', 'Setup', 'API']}>
+  <div>
+    This is the **Overview** tab. It shows general information about the feature.
+  </div>
+  <div>
+    This is the **Setup** tab. Follow these steps to get started:
+
+    1. Install the package
+    2. Configure your environment
+    3. Run the setup wizard
+  </div>
+  <div>
+    This is the **API** tab. Reference documentation for endpoints and parameters.
+  </div>
+</Tabs>
+
+---
+
+## Section
+
+<Section title="Highlighted Section" description="This section uses the highlight variant to draw attention." variant="highlight">
+
+Content inside a section wrapper. It can contain any markdown or components.
+
+<CardGrid columns={2}>
+  <Card title="Inside Section" description="Cards work inside sections." icon="📦" />
+  <Card title="Composable" description="Components nest naturally." icon="🧩" />
+</CardGrid>
+
+</Section>
