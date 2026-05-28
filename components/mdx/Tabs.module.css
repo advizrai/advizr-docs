@@ -1,33 +1,55 @@
+/* ==========================================================================
+   Tabs - Vercel-style underline indicator
+   ========================================================================== */
+
 .tabs {
   margin: var(--advizr-space-4) 0;
 }
 
 .tabList {
   display: flex;
-  gap: var(--advizr-space-1);
   border-bottom: 1px solid var(--advizr-border);
   margin: 0;
   padding: 0;
   overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabList::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
+  position: relative;
   padding: var(--advizr-space-2) var(--advizr-space-4);
   font-size: var(--advizr-text-sm);
   font-weight: var(--advizr-font-medium);
   color: var(--advizr-text-secondary);
   background: none;
   border: none;
-  border-bottom: 2px solid transparent;
   cursor: pointer;
+  border-radius: var(--advizr-radius-md) var(--advizr-radius-md) 0 0;
   transition: color var(--advizr-transition-fast),
-              border-color var(--advizr-transition-fast);
-  margin-bottom: -1px;
+              background-color var(--advizr-transition-fast);
   white-space: nowrap;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  border-radius: 1px 1px 0 0;
+  transition: background-color var(--advizr-transition-fast);
 }
 
 .tab:hover {
   color: var(--advizr-text-primary);
+  background-color: var(--advizr-bg-secondary);
 }
 
 .tab:focus-visible {
@@ -38,12 +60,22 @@
 
 .tabActive {
   color: var(--advizr-blue-500);
-  border-bottom-color: var(--advizr-blue-500);
+}
+
+.tabActive::after {
+  background: var(--advizr-blue-500);
 }
 
 :global(html[class~="dark"]) .tabActive {
   color: var(--advizr-blue-300);
-  border-bottom-color: var(--advizr-blue-300);
+}
+
+:global(html[class~="dark"]) .tabActive::after {
+  background: var(--advizr-blue-300);
+}
+
+:global(html[class~="dark"]) .tab:hover {
+  background-color: var(--advizr-bg-secondary);
 }
 
 .panel {
@@ -52,6 +84,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .tab {
+    transition: none;
+  }
+
+  .tab::after {
     transition: none;
   }
 }
