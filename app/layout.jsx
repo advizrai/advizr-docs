@@ -1,8 +1,11 @@
-import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+import { Layout, Navbar } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
 import '../styles/globals.css'
+import NavbarExtra from '../components/NavbarExtra'
+import CustomFooter from '../components/CustomFooter'
+import BackToTop from '../components/BackToTop'
 
 export const metadata = {
   title: {
@@ -18,11 +21,13 @@ export default async function RootLayout({ children }) {
     <Navbar
       logo={
         <span style={{ fontWeight: 700, fontSize: '1.1rem' }}>
-          Advizr Docs
+          Advizr
         </span>
       }
       projectLink="https://github.com/advizrai/advizr-docs"
-    />
+    >
+      <NavbarExtra />
+    </Navbar>
   )
   const pageMap = await getPageMap()
   return (
@@ -31,7 +36,7 @@ export default async function RootLayout({ children }) {
       <body>
         <Layout
           navbar={navbar}
-          footer={<Footer>{new Date().getFullYear()} Advizr AI Inc.</Footer>}
+          footer={<CustomFooter />}
           editLink="Edit this page on GitHub"
           docsRepositoryBase="https://github.com/advizrai/advizr-docs/blob/main"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
@@ -39,6 +44,7 @@ export default async function RootLayout({ children }) {
         >
           {children}
         </Layout>
+        <BackToTop />
       </body>
     </html>
   )
