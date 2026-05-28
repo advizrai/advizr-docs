@@ -33,27 +33,32 @@
 .tierHeader.recommended {
   background: var(--advizr-blue-50);
   border-top: 3px solid var(--advizr-blue-500);
+  box-shadow: inset 0 3px 12px -4px rgba(99, 102, 241, 0.1);
 }
 
 :global(html[class~="dark"]) .tierHeader.recommended {
-  background: rgba(51, 153, 255, 0.08);
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: inset 0 3px 12px -4px rgba(99, 102, 241, 0.15);
 }
 
 .badge {
   display: inline-block;
-  padding: var(--advizr-space-1) var(--advizr-space-2);
+  padding: var(--advizr-space-1) var(--advizr-space-3);
   font-size: var(--advizr-text-xs);
   font-weight: var(--advizr-font-semibold);
   color: #ffffff;
-  background: var(--advizr-blue-500);
+  background: var(--advizr-gradient-primary);
   border-radius: var(--advizr-radius-full);
   line-height: 1;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
 }
 
 .tierName {
   font-size: var(--advizr-text-lg);
   font-weight: var(--advizr-font-bold);
   color: var(--advizr-text-primary);
+  letter-spacing: -0.01em;
 }
 
 .tierPrice {
@@ -66,6 +71,7 @@
   display: grid;
   grid-template-columns: 1fr repeat(3, 1fr);
   border-top: 1px solid var(--advizr-border);
+  transition: background-color var(--advizr-transition-fast);
 }
 
 .altRow {
@@ -90,15 +96,15 @@
 }
 
 .recommendedCol {
-  background: rgba(51, 153, 255, 0.03);
+  background: rgba(99, 102, 241, 0.03);
 }
 
 :global(html[class~="dark"]) .recommendedCol {
-  background: rgba(51, 153, 255, 0.04);
+  background: rgba(99, 102, 241, 0.05);
 }
 
 .checkIcon {
-  color: var(--advizr-success);
+  color: var(--advizr-accent-600);
 }
 
 .xIcon {
@@ -142,6 +148,11 @@
 .recommendedCard {
   border-color: var(--advizr-blue-500);
   border-width: 2px;
+  box-shadow: var(--advizr-shadow-glow);
+}
+
+:global(html[class~="dark"]) .recommendedCard {
+  box-shadow: var(--advizr-shadow-glow-lg);
 }
 
 .mobileCardHeader {

@@ -14,15 +14,15 @@ interface ComparisonTableProps {
 
 const CheckIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="Yes" role="img">
-    <circle cx="9" cy="9" r="8" fill="var(--advizr-green-100)" />
-    <path d="M5.5 9l2.5 2.5 4.5-5" stroke="var(--advizr-green-700)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="9" cy="9" r="8" fill="var(--advizr-accent-100)" />
+    <path d="M5.5 9l2.5 2.5 4.5-5" stroke="var(--advizr-accent-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
 const XIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="No" role="img">
-    <circle cx="9" cy="9" r="8" fill="var(--advizr-red-100)" />
-    <path d="M6.5 6.5l5 5M11.5 6.5l-5 5" stroke="var(--advizr-red-700)" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="9" cy="9" r="8" fill="var(--advizr-slate-100)" />
+    <path d="M6.5 6.5l5 5M11.5 6.5l-5 5" stroke="var(--advizr-slate-400)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 )
 

@@ -10,7 +10,8 @@
   text-decoration: none;
   cursor: pointer;
   line-height: 1;
-  transition: background var(--advizr-transition-base),
+  transition: background-color var(--advizr-transition-base),
+              background-position var(--advizr-transition-slow),
               border-color var(--advizr-transition-base),
               color var(--advizr-transition-base),
               transform var(--advizr-transition-base),
@@ -37,18 +38,24 @@
 
 /* Primary */
 .primary {
-  background: var(--advizr-blue-500);
+  background: var(--advizr-gradient-primary);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
   color: #ffffff;
 }
 
 .primary:hover {
-  background: var(--advizr-blue-600);
-  transform: scale(1.02);
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow: var(--advizr-shadow-glow), var(--advizr-shadow-md);
 }
 
 .primary:active {
   transform: scale(0.98);
+}
+
+:global(html[class~="dark"]) .primary:hover {
+  box-shadow: var(--advizr-shadow-glow-lg), var(--advizr-shadow-md);
 }
 
 /* Secondary */
@@ -60,7 +67,7 @@
 
 .secondary:hover {
   background: var(--advizr-blue-50);
-  transform: scale(1.02);
+  transform: translateY(-1px);
 }
 
 .secondary:active {
@@ -87,6 +94,7 @@
   .primary:hover,
   .secondary:hover {
     transform: none;
+    background-position: 0% 50%;
   }
 
   .bookCallButton:hover .arrow {
