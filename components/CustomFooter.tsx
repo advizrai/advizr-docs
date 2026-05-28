@@ -88,7 +88,10 @@ export default function CustomFooter() {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div>
-            <span className={styles.brandName}>Advizr</span>
+            <span className={styles.brandName}>
+              Advizr
+              <span className={styles.statusDot} aria-hidden="true" />
+            </span>
             <p className={styles.tagline}>
               AI transformation for business owners who want results, not buzzwords.
             </p>
