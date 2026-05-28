@@ -1,37 +1,46 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import styles from './CookieConsent.module.css';
 
 type ConsentState = 'granted' | 'declined' | null;
 
 export function CookieConsent() {
+  const [render, setRender] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('advizr-cookie-consent') as ConsentState;
     if (stored) return; // Already decided - don't show
 
-    const timer = setTimeout(() => setVisible(true), 2000);
+    const timer = setTimeout(() => {
+      setRender(true);
+      requestAnimationFrame(() => setVisible(true));
+    }, 2000);
     return () => clearTimeout(timer);
+  }, []);
+
+  const dismiss = useCallback(() => {
+    setVisible(false);
+    setTimeout(() => setRender(false), 200);
   }, []);
 
   function handleAccept() {
     localStorage.setItem('advizr-cookie-consent', 'granted');
     window.dispatchEvent(new Event('cookie-consent-granted'));
-    setVisible(false);
+    dismiss();
   }
 
   function handleDecline() {
     localStorage.setItem('advizr-cookie-consent', 'declined');
-    setVisible(false);
+    dismiss();
   }
 
-  if (!visible) return null;
+  if (!render) return null;
 
   return (
     <div
-      className={styles.banner}
+      className={`${styles.banner} ${!visible ? styles.bannerHiding : ''}`}
       role="dialog"
       aria-label="Cookie consent"
       aria-describedby="cookie-consent-text"

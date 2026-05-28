@@ -2,34 +2,65 @@
   position: fixed;
   bottom: var(--advizr-space-8);
   right: var(--advizr-space-8);
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--advizr-blue-500);
-  color: #fff;
-  border: none;
+  background: var(--advizr-bg-secondary);
+  color: var(--advizr-text-primary);
+  border: 1px solid var(--advizr-border);
   border-radius: var(--advizr-radius-full);
   box-shadow: var(--advizr-shadow-md);
   cursor: pointer;
   z-index: 50;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(8px);
+  transform: translateY(8px) scale(0.95);
   transition: opacity var(--advizr-transition-base),
-    transform var(--advizr-transition-base),
+    transform var(--advizr-transition-spring),
     background-color var(--advizr-transition-fast),
+    border-color var(--advizr-transition-fast),
     box-shadow var(--advizr-transition-fast);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+:global(html[class~="dark"]) .button {
+  background: rgba(19, 28, 46, 0.8);
+  border-color: var(--advizr-border);
 }
 
 .button:hover {
-  background-color: var(--advizr-blue-600);
-  box-shadow: var(--advizr-shadow-lg);
+  background-color: var(--advizr-bg-tertiary);
+  border-color: var(--advizr-blue-400);
+  box-shadow: var(--advizr-shadow-glow);
+  transform: translateY(0) scale(1.05);
+}
+
+:global(html[class~="dark"]) .button:hover {
+  background: rgba(28, 38, 64, 0.9);
+  border-color: var(--advizr-blue-500);
+  box-shadow: var(--advizr-shadow-glow);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--advizr-blue-500);
+  outline-offset: 2px;
+}
+
+.button:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .visible {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
 }
