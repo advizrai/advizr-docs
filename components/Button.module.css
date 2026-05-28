@@ -2,16 +2,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--advizr-font-semibold);
-  border-radius: var(--advizr-radius-lg);
+  gap: 0.5rem;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid transparent;
+  position: relative;
+  border-radius: var(--advizr-radius-lg, 0.75rem);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
   line-height: 1;
-  transition: background var(--advizr-transition-fast),
-              border-color var(--advizr-transition-fast),
-              box-shadow var(--advizr-transition-fast),
-              color var(--advizr-transition-fast);
 }
 
 .button:focus-visible {
@@ -21,65 +20,69 @@
 
 /* Sizes */
 .sm {
-  padding: var(--advizr-space-1\.5, 0.375rem) var(--advizr-space-3);
-  font-size: var(--advizr-text-sm);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .md {
-  padding: var(--advizr-space-2) var(--advizr-space-4);
-  font-size: var(--advizr-text-base);
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
 }
 
 .lg {
-  padding: var(--advizr-space-3) var(--advizr-space-6);
-  font-size: var(--advizr-text-lg);
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
 }
 
 /* Primary */
 .primary {
-  background: var(--advizr-blue-500);
+  background: var(--advizr-blue-500, #6366F1);
   color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .primary:hover {
-  background: var(--advizr-blue-600);
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+  background: var(--advizr-blue-600, #4F46E5);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* Secondary */
 .secondary {
-  background: transparent;
-  color: var(--advizr-blue-500);
-  border-color: var(--advizr-blue-500);
+  background: var(--advizr-bg-primary);
+  color: var(--advizr-text-primary);
+  border: 1px solid var(--advizr-border-strong);
 }
 
 .secondary:hover {
-  background: var(--advizr-blue-50);
+  border-color: var(--advizr-blue-300);
+  background: var(--advizr-bg-secondary);
+  box-shadow: var(--advizr-shadow-sm);
 }
 
 :global(html[class~="dark"]) .secondary {
-  color: var(--advizr-blue-300);
-  border-color: var(--advizr-blue-300);
+  background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .secondary:hover {
-  background: rgba(51, 153, 255, 0.1);
+  border-color: var(--advizr-blue-600);
 }
 
 /* Ghost */
 .ghost {
   background: transparent;
-  color: var(--advizr-blue-500);
+  color: var(--advizr-text-secondary);
+  border: 1px solid transparent;
 }
 
 .ghost:hover {
-  background: var(--advizr-blue-50);
-}
-
-:global(html[class~="dark"]) .ghost {
-  color: var(--advizr-blue-300);
-}
-
-:global(html[class~="dark"]) .ghost:hover {
-  background: rgba(51, 153, 255, 0.1);
+  color: var(--advizr-text-primary);
+  background: var(--advizr-bg-tertiary);
 }

@@ -1,5 +1,7 @@
 .grid {
   display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -7,25 +9,28 @@
 
 /* Gap variants */
 .gapSm { gap: var(--advizr-space-3); }
-.gapMd { gap: var(--advizr-space-6); }
+.gapMd { gap: 1.25rem; }
 .gapLg { gap: var(--advizr-space-8); }
 
-/* Column variants */
-.cols2 { grid-template-columns: repeat(2, 1fr); }
-.cols3 { grid-template-columns: repeat(3, 1fr); }
-.cols4 { grid-template-columns: repeat(4, 1fr); }
-
-@media (max-width: 1023px) {
+/* Mobile-first: 2 columns at 640px+ */
+@media (min-width: 640px) {
+  .cols2,
   .cols3,
   .cols4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 639px) {
-  .cols2,
-  .cols3,
+/* 3 columns at 768px+ */
+@media (min-width: 768px) {
+  .cols3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 columns at 1024px+ */
+@media (min-width: 1024px) {
   .cols4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }

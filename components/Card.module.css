@@ -1,12 +1,37 @@
 .card {
   display: block;
-  padding: var(--advizr-space-6);
-  border-radius: var(--advizr-radius-xl);
+  padding: 1.5rem;
+  border-radius: var(--advizr-radius-xl, 1rem);
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--advizr-transition-fast),
-              box-shadow var(--advizr-transition-fast),
-              transform var(--advizr-transition-fast);
+  position: relative;
+  overflow: hidden;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mouse-tracking glow */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.04),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+  pointer-events: none;
+}
+
+a.card:hover::before {
+  opacity: 1;
 }
 
 a.card:hover {
@@ -21,55 +46,68 @@ a.card:hover {
 }
 
 .default:hover {
+  border-color: var(--advizr-blue-200);
   box-shadow: var(--advizr-shadow-md);
-  border-color: var(--advizr-blue-300);
 }
 
 :global(html[class~="dark"]) .default {
   background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .default:hover {
-  border-color: var(--advizr-blue-500);
+  border-color: var(--advizr-blue-700);
+  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(99, 102, 241, 0.15));
 }
 
 /* Action variant */
 .action {
   border: 1px solid var(--advizr-border);
-  border-left: 4px solid var(--advizr-blue-500);
   background: var(--advizr-bg-primary);
   box-shadow: var(--advizr-shadow-sm);
 }
 
+.action::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--advizr-gradient-primary, linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%));
+  z-index: 2;
+}
+
 .action:hover {
+  border-color: var(--advizr-blue-200);
   box-shadow: var(--advizr-shadow-md);
-  border-color: var(--advizr-blue-300);
-  border-left-color: var(--advizr-blue-500);
 }
 
 :global(html[class~="dark"]) .action {
   background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .action:hover {
-  border-color: var(--advizr-blue-400);
-  border-left-color: var(--advizr-blue-400);
+  border-color: var(--advizr-blue-700);
+  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(99, 102, 241, 0.15));
 }
 
 /* Outline variant */
 .outline {
-  border: 1px dashed var(--advizr-border-strong);
+  border: 1px solid var(--advizr-border);
   background: transparent;
 }
 
 .outline:hover {
-  border-style: solid;
+  background: var(--advizr-bg-secondary);
   border-color: var(--advizr-blue-300);
   box-shadow: var(--advizr-shadow-md);
 }
 
 :global(html[class~="dark"]) .outline:hover {
-  border-color: var(--advizr-blue-500);
+  border-color: var(--advizr-blue-600);
 }
 
 /* Ghost variant */
@@ -87,17 +125,17 @@ a.card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--advizr-radius-full);
-  background: var(--advizr-blue-50);
-  font-size: 1.5rem;
-  margin-bottom: var(--advizr-space-3);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--advizr-radius-lg, 0.75rem);
+  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(99, 102, 241, 0.08) 100%);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
   line-height: 1;
 }
 
 :global(html[class~="dark"]) .icon {
-  background: rgba(51, 153, 255, 0.1);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* Image */
@@ -111,25 +149,25 @@ a.card:hover {
 
 /* Title */
 .title {
-  font-size: var(--advizr-text-base);
-  font-weight: var(--advizr-font-semibold);
-  margin: 0 0 var(--advizr-space-2);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
   color: var(--advizr-text-primary);
   display: flex;
   align-items: center;
-  gap: var(--advizr-space-2);
+  gap: 0.375rem;
 }
 
 /* Arrow */
 .arrow {
   display: inline-block;
-  font-size: var(--advizr-text-sm);
-  color: var(--advizr-blue-500);
-  transition: transform var(--advizr-transition-fast);
+  font-size: 0.875rem;
+  color: var(--advizr-blue-500, #6366F1);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a.card:hover .arrow {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 :global(html[class~="dark"]) .arrow {
@@ -138,8 +176,8 @@ a.card:hover .arrow {
 
 /* Description / children */
 .body {
-  font-size: var(--advizr-text-sm);
+  font-size: 0.875rem;
   color: var(--advizr-text-secondary);
+  line-height: 1.6;
   margin: 0;
-  line-height: var(--advizr-text-sm-lh);
 }

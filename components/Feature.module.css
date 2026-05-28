@@ -1,10 +1,16 @@
 .feature {
   display: flex;
-  gap: var(--advizr-space-4);
+  gap: 1rem;
   align-items: flex-start;
+  padding: 1rem;
+  border-radius: var(--advizr-radius-lg);
   text-decoration: none;
   color: inherit;
-  padding: var(--advizr-space-3) 0;
+  transition: background-color 200ms;
+}
+
+a.feature:hover {
+  background: var(--advizr-bg-secondary);
 }
 
 a.feature:hover .title {
@@ -16,19 +22,19 @@ a.feature:hover .title {
 }
 
 .icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--advizr-radius-full);
-  background: var(--advizr-blue-50);
+  border-radius: var(--advizr-radius-md);
+  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(99, 102, 241, 0.06) 100%);
   font-size: 1.125rem;
-  flex-shrink: 0;
 }
 
 :global(html[class~="dark"]) .icon {
-  background: rgba(51, 153, 255, 0.1);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .content {
