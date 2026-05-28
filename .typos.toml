@@ -1,0 +1,71 @@
+[default]
+locale = "en"
+
+[default.extend-words]
+# Advizr-specific terms
+advizr = "advizr"
+Advizr = "Advizr"
+advizrai = "advizrai"
+advizrclients = "advizrclients"
+advizrinternal = "advizrinternal"
+
+# Technology terms
+Nextra = "Nextra"
+Supabase = "Supabase"
+Vercel = "Vercel"
+nextjs = "nextjs"
+MDX = "MDX"
+mdx = "mdx"
+frontmatter = "frontmatter"
+webhook = "webhook"
+webhooks = "webhooks"
+oauth = "oauth"
+RBAC = "RBAC"
+signup = "signup"
+onboarding = "onboarding"
+ecommerce = "ecommerce"
+
+# Names
+Breez = "Breez"
+PandaDoc = "PandaDoc"
+Airwallex = "Airwallex"
+Loom = "Loom"
+
+# Common abbreviations
+ROI = "ROI"
+SOP = "SOP"
+SOPs = "SOPs"
+CTA = "CTA"
+ICP = "ICP"
+GTM = "GTM"
+LLM = "LLM"
+LLMs = "LLMs"
+API = "API"
+APIs = "APIs"
+CORS = "CORS"
+JWT = "JWT"
+SMTP = "SMTP"
+
+[files]
+extend-exclude = [
+    "node_modules/",
+    ".next/",
+    "package-lock.json",
+    "*.svg",
+    "*.png",
+    "*.jpg",
+    "*.ico",
+    "*.woff",
+    "*.woff2"
+]
+
+[default.extend-identifiers]
+# Code identifiers that should not be spell-checked
+mdxPath = "mdxPath"
+contentDirBasePath = "contentDirBasePath"
+httpOnly = "httpOnly"
+classList = "classList"
+addEventListener = "addEventListener"
+querySelector = "querySelector"
+localStorage = "localStorage"
+gtag = "gtag"

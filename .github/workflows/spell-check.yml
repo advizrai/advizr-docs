@@ -1,0 +1,23 @@
+name: Spell Check
+
+on:
+  pull_request:
+    branches: [master, main]
+    paths:
+      - 'content/**'
+      - '*.md'
+      - '.typos.toml'
+
+jobs:
+  typos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check spelling
+        uses: crate-ci/typos@v1
+        with:
+          config: .typos.toml

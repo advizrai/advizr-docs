@@ -1,0 +1,42 @@
+name: Link Check
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Every Monday at 9am UTC
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --accept 200..=299
+            --exclude-path node_modules
+            --exclude-path .next
+            --exclude-path package-lock.json
+            --exclude 'advizr\.ca'
+            --exclude 'advizrclients\.com'
+            --exclude 'localhost'
+            'content/**/*.mdx'
+            'content/**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create issue on failure
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: 'Link check: broken links detected'
+          content-filepath: ./lychee/out.md
+          labels: 'bug,documentation'
