@@ -6,3 +6,5 @@ out/
 next-env.d.ts
 public/_pagefind/
 analysis/
+.env
+.env.local

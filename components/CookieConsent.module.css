@@ -1,0 +1,98 @@
+.banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--advizr-space-6);
+  padding: var(--advizr-space-4) var(--advizr-space-6);
+  background-color: var(--advizr-slate-900);
+  border-top: 1px solid var(--advizr-slate-700);
+  box-shadow: var(--advizr-shadow-xl);
+  animation: slideUp var(--advizr-transition-slow) ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.text {
+  margin: 0;
+  font-size: var(--advizr-text-sm);
+  line-height: var(--advizr-text-sm-lh);
+  color: var(--advizr-slate-200);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--advizr-space-3);
+  flex-shrink: 0;
+}
+
+.accept {
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+  background-color: var(--advizr-blue-500);
+  color: #fff;
+  border: none;
+  border-radius: var(--advizr-radius-md);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  cursor: pointer;
+  transition: background-color var(--advizr-transition-fast);
+  white-space: nowrap;
+}
+
+.accept:hover {
+  background-color: var(--advizr-blue-600);
+}
+
+.accept:focus-visible {
+  outline: 2px solid var(--advizr-blue-400);
+  outline-offset: 2px;
+}
+
+.decline {
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+  background: transparent;
+  color: var(--advizr-slate-300);
+  border: none;
+  border-radius: var(--advizr-radius-md);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  cursor: pointer;
+  transition: color var(--advizr-transition-fast);
+  white-space: nowrap;
+}
+
+.decline:hover {
+  color: var(--advizr-slate-100);
+}
+
+.decline:focus-visible {
+  outline: 2px solid var(--advizr-slate-400);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--advizr-space-4);
+    gap: var(--advizr-space-4);
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}

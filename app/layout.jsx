@@ -6,6 +6,10 @@ import '../styles/globals.css'
 import NavbarExtra from '../components/NavbarExtra'
 import CustomFooter from '../components/CustomFooter'
 import BackToTop from '../components/BackToTop'
+import { Analytics } from '../components/Analytics'
+import { GoogleAnalytics } from '../components/GoogleAnalytics'
+import { CookieConsent } from '../components/CookieConsent'
+import { EventTracking } from '../components/EventTracking'
 
 export const metadata = {
   title: {
@@ -99,6 +103,10 @@ export default async function RootLayout({ children }) {
           {children}
         </Layout>
         <BackToTop />
+        <Analytics />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <CookieConsent />
+        <EventTracking />
       </body>
     </html>
   )
