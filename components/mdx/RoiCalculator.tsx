@@ -169,11 +169,11 @@ export function RoiCalculator({ className }: RoiCalculatorProps) {
         </div>
         <div className={styles.outputCard}>
           <span className={styles.outputLabel}>Projected monthly savings</span>
-          <span className={styles.outputNumber}>{formatCurrency(animMonthlySavings)}</span>
+          <span className={clsx(styles.outputNumber, styles.savingsNumber)}>{formatCurrency(animMonthlySavings)}</span>
         </div>
         <div className={styles.outputCard}>
           <span className={styles.outputLabel}>Annual ROI</span>
-          <span className={styles.outputNumber}>{formatCurrency(animAnnualRoi)}</span>
+          <span className={clsx(styles.outputNumber, styles.savingsNumber)}>{formatCurrency(animAnnualRoi)}</span>
         </div>
         <div className={styles.outputCard}>
           <span className={styles.outputLabel}>Payback period</span>
