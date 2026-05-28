@@ -42,7 +42,7 @@
 }
 
 .summary:focus-visible {
-  outline: 2px solid var(--advizr-blue-500, #6366F1);
+  outline: 2px solid var(--advizr-blue-500, #0A7AFF);
   outline-offset: -2px;
 }
 

@@ -43,7 +43,7 @@
   width: 30px;
   height: 30px;
   border-radius: var(--advizr-radius-full, 9999px);
-  background: var(--advizr-blue-500, #6366F1);
+  background: var(--advizr-blue-500, #0A7AFF);
   color: #fff;
   font-size: var(--advizr-text-sm, 0.875rem);
   font-weight: var(--advizr-font-semibold, 600);

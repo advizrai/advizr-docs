@@ -75,7 +75,7 @@ a.card:hover {
   right: 1rem;
   height: 2px;
   border-radius: 0 0 2px 2px;
-  background: var(--advizr-gradient-primary, linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%));
+  background: var(--advizr-gradient-primary, linear-gradient(135deg, #0A7AFF 0%, #3AAFFF 100%));
   z-index: 2;
 }
 
@@ -162,7 +162,7 @@ a.card:hover {
 .arrow {
   display: inline-block;
   font-size: 0.875rem;
-  color: var(--advizr-blue-500, #6366F1);
+  color: var(--advizr-blue-500, #0A7AFF);
   transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 

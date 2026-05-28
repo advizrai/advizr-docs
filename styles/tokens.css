@@ -5,19 +5,19 @@
 
 :root {
   /* --------------------------------------------------------------------
-     Color Palette - Primary (Indigo)
-     Variable names kept as blue-* for backward compatibility.
+     Color Palette - Primary (Advizr Brand Blue)
+     Derived from the Advizr logo gradient: cyan-blue to deep blue.
      -------------------------------------------------------------------- */
-  --advizr-blue-50:  #EEF2FF;
-  --advizr-blue-100: #E0E7FF;
-  --advizr-blue-200: #C7D2FE;
-  --advizr-blue-300: #A5B4FC;
-  --advizr-blue-400: #818CF8;
-  --advizr-blue-500: #6366F1;
-  --advizr-blue-600: #4F46E5;
-  --advizr-blue-700: #4338CA;
-  --advizr-blue-800: #3730A3;
-  --advizr-blue-900: #312E81;
+  --advizr-blue-50:  #EBF5FF;
+  --advizr-blue-100: #D6EBFF;
+  --advizr-blue-200: #A8D4FF;
+  --advizr-blue-300: #5CB3FF;
+  --advizr-blue-400: #1A8FFF;
+  --advizr-blue-500: #0A7AFF;
+  --advizr-blue-600: #0066FF;
+  --advizr-blue-700: #0052CC;
+  --advizr-blue-800: #003D99;
+  --advizr-blue-900: #002966;
 
   /* --------------------------------------------------------------------
      Color Palette - Accent (Emerald)
@@ -151,12 +151,12 @@
   /* --------------------------------------------------------------------
      Gradients
      -------------------------------------------------------------------- */
-  --advizr-gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%);
+  --advizr-gradient-primary: linear-gradient(135deg, #3AAFFF 0%, #0A7AFF 50%, #0066FF 100%);
   --advizr-gradient-accent: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-  --advizr-gradient-hero: linear-gradient(180deg, rgba(99,102,241,0.08) 0%, transparent 50%);
-  --advizr-gradient-hero-dark: linear-gradient(180deg, rgba(99,102,241,0.15) 0%, transparent 50%);
+  --advizr-gradient-hero: linear-gradient(180deg, rgba(10,122,255,0.08) 0%, transparent 50%);
+  --advizr-gradient-hero-dark: linear-gradient(180deg, rgba(10,122,255,0.15) 0%, transparent 50%);
   --advizr-gradient-surface: linear-gradient(180deg, var(--advizr-bg-secondary) 0%, var(--advizr-bg-primary) 100%);
-  --advizr-gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.06), transparent 40%);
+  --advizr-gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(10,122,255,0.06), transparent 40%);
 
   /* --------------------------------------------------------------------
      Shadows (light mode)
@@ -165,8 +165,8 @@
   --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
   --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
   --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --advizr-shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
-  --advizr-shadow-glow-lg: 0 0 40px rgba(99, 102, 241, 0.2);
+  --advizr-shadow-glow: 0 0 20px rgba(10, 122, 255, 0.15);
+  --advizr-shadow-glow-lg: 0 0 40px rgba(10, 122, 255, 0.2);
 
   /* --------------------------------------------------------------------
      Border Radius
@@ -206,6 +206,6 @@ html[class~="dark"] {
   --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
   --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
   --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.25);
-  --advizr-shadow-glow: 0 0 20px rgba(99, 102, 241, 0.25);
-  --advizr-shadow-glow-lg: 0 0 40px rgba(99, 102, 241, 0.35);
+  --advizr-shadow-glow: 0 0 20px rgba(10, 122, 255, 0.25);
+  --advizr-shadow-glow-lg: 0 0 40px rgba(10, 122, 255, 0.35);
 }

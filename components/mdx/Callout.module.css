@@ -45,11 +45,11 @@
 .info {
   background: rgba(99, 102, 241, 0.04);
   border-color: rgba(99, 102, 241, 0.1);
-  border-left: 3px solid var(--advizr-blue-500, #6366F1);
+  border-left: 3px solid var(--advizr-blue-500, #0A7AFF);
 }
 
 .info .icon {
-  color: var(--advizr-blue-500, #6366F1);
+  color: var(--advizr-blue-500, #0A7AFF);
 }
 
 /* ---------------------------------------------------------------------------

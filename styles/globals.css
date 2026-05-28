@@ -8,10 +8,10 @@
    ========================================================================== */
 
 :root {
-  /* Nextra primary color - Indigo (#6366F1) in HSL */
-  --nextra-primary-hue: 239deg;
-  --nextra-primary-saturation: 84%;
-  --nextra-primary-lightness: 67%;
+  /* Nextra primary color - Advizr Brand Blue (#0A7AFF) in HSL */
+  --nextra-primary-hue: 212deg;
+  --nextra-primary-saturation: 100%;
+  --nextra-primary-lightness: 52%;
 
   /* Nextra background - white for light mode (raw RGB channels) */
   --nextra-bg: 255, 255, 255;
