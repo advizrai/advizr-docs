@@ -1,124 +1,144 @@
-.callout {
-  margin: var(--advizr-space-4) 0;
-  padding: var(--advizr-space-4);
-  border-left: 4px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-md);
-  background: var(--advizr-bg-secondary);
-  font-size: var(--advizr-text-sm);
-  line-height: var(--advizr-text-sm-lh);
-}
+/* ==========================================================================
+   Callout - Stripe/Vercel-style documentation callouts
+   ========================================================================== */
 
-.header {
+.callout {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: var(--advizr-space-2);
-  margin-bottom: var(--advizr-space-2);
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border: 1px solid transparent;
+  border-radius: var(--advizr-radius-lg, 0.75rem);
+  font-size: 0.9375rem;
+  line-height: 1.65;
 }
 
 .icon {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-}
-
-.title {
-  font-weight: var(--advizr-font-semibold);
-  font-size: var(--advizr-text-sm);
+  font-size: 1rem;
+  margin-top: 0.15rem;
 }
 
 .content {
-  color: var(--advizr-text-secondary);
+  flex: 1;
+  min-width: 0;
 }
 
 .content :global(p:last-child) {
   margin-bottom: 0;
 }
 
-/* Variants */
-.info {
-  border-left-color: var(--advizr-info);
-  background: var(--advizr-blue-50);
+.title {
+  font-weight: var(--advizr-font-semibold, 600);
+  margin-bottom: 0.25rem;
+  color: inherit;
 }
 
-.info .icon,
-.info .title {
-  color: var(--advizr-info);
+/* ---------------------------------------------------------------------------
+   Variant: Info (Indigo)
+   --------------------------------------------------------------------------- */
+
+.info {
+  background: rgba(99, 102, 241, 0.04);
+  border-color: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid var(--advizr-blue-500, #6366F1);
 }
+
+.info .icon {
+  color: var(--advizr-blue-500, #6366F1);
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Warning (Amber)
+   --------------------------------------------------------------------------- */
 
 .warning {
-  border-left-color: var(--advizr-warning);
-  background: var(--advizr-amber-50);
+  background: rgba(245, 158, 11, 0.04);
+  border-color: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid var(--advizr-warning, #F59E0B);
 }
 
-.warning .icon,
-.warning .title {
-  color: var(--advizr-amber-700);
+.warning .icon {
+  color: var(--advizr-warning, #F59E0B);
 }
+
+/* ---------------------------------------------------------------------------
+   Variant: Danger (Red)
+   --------------------------------------------------------------------------- */
 
 .danger {
-  border-left-color: var(--advizr-error);
-  background: var(--advizr-red-50);
+  background: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid var(--advizr-error, #EF4444);
 }
 
-.danger .icon,
-.danger .title {
-  color: var(--advizr-error);
+.danger .icon {
+  color: var(--advizr-error, #EF4444);
 }
+
+/* ---------------------------------------------------------------------------
+   Variant: Tip (Emerald)
+   --------------------------------------------------------------------------- */
 
 .tip {
-  border-left-color: var(--advizr-success);
-  background: var(--advizr-green-50);
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid var(--advizr-accent-500, #10B981);
 }
 
-.tip .icon,
-.tip .title {
-  color: var(--advizr-green-700);
+.tip .icon {
+  color: var(--advizr-accent-500, #10B981);
 }
+
+/* ---------------------------------------------------------------------------
+   Variant: Note (Neutral)
+   --------------------------------------------------------------------------- */
 
 .note {
-  border-left-color: var(--advizr-slate-400);
-  background: var(--advizr-slate-50);
+  background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border);
+  border-left: 3px solid var(--advizr-text-tertiary);
 }
 
-.note .icon,
-.note .title {
-  color: var(--advizr-slate-600);
+.note .icon {
+  color: var(--advizr-text-tertiary);
 }
 
-/* Dark mode */
+/* ---------------------------------------------------------------------------
+   Dark mode overrides
+   --------------------------------------------------------------------------- */
+
 :global(html[class~="dark"]) .info {
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.15);
 }
 
 :global(html[class~="dark"]) .warning {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.15);
 }
 
 :global(html[class~="dark"]) .danger {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.15);
 }
 
 :global(html[class~="dark"]) .tip {
-  background: rgba(16, 185, 129, 0.1);
-}
-
-:global(html[class~="dark"]) .note {
-  background: rgba(148, 163, 184, 0.1);
-}
-
-:global(html[class~="dark"]) .note .icon,
-:global(html[class~="dark"]) .note .title {
-  color: var(--advizr-slate-400);
-}
-
-:global(html[class~="dark"]) .warning .icon,
-:global(html[class~="dark"]) .warning .title {
-  color: var(--advizr-warning);
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.15);
 }
 
 :global(html[class~="dark"]) .content {
   color: var(--advizr-text-secondary);
 }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .callout {

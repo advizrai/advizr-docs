@@ -1,23 +1,31 @@
+/* ==========================================================================
+   Details - Premium accordion with animated chevron
+   ========================================================================== */
+
 .details {
-  margin: var(--advizr-space-4) 0;
-  border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-md);
+  margin: 1rem 0;
+  border: 1px solid var(--advizr-border, #E5E7EB);
+  border-radius: var(--advizr-radius-lg, 0.75rem);
   overflow: hidden;
 }
+
+/* ---------------------------------------------------------------------------
+   Summary (trigger)
+   --------------------------------------------------------------------------- */
 
 .summary {
   display: flex;
   align-items: center;
-  gap: var(--advizr-space-2);
-  padding: var(--advizr-space-3) var(--advizr-space-4);
-  font-weight: var(--advizr-font-semibold);
-  font-size: var(--advizr-text-sm);
+  justify-content: space-between;
+  gap: var(--advizr-space-3, 0.75rem);
+  padding: 0.75rem 1rem;
+  font-weight: var(--advizr-font-medium, 500);
+  font-size: var(--advizr-text-sm, 0.875rem);
   color: var(--advizr-text-primary);
   cursor: pointer;
-  background: var(--advizr-bg-secondary);
   list-style: none;
   user-select: none;
-  transition: background var(--advizr-transition-fast);
+  transition: background var(--advizr-transition-fast, 150ms cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .summary::-webkit-details-marker {
@@ -30,39 +38,51 @@
 }
 
 .summary:hover {
-  background: var(--advizr-bg-tertiary);
+  background: var(--advizr-bg-secondary, #F9FAFB);
 }
 
 .summary:focus-visible {
-  outline: 2px solid var(--advizr-blue-500);
+  outline: 2px solid var(--advizr-blue-500, #6366F1);
   outline-offset: -2px;
 }
 
+/* ---------------------------------------------------------------------------
+   Chevron (right-aligned, rotates on open)
+   --------------------------------------------------------------------------- */
+
 .chevron {
   flex-shrink: 0;
-  color: var(--advizr-text-tertiary);
-  transition: transform var(--advizr-transition-fast);
+  color: var(--advizr-text-tertiary, #9CA3AF);
+  transition: transform var(--advizr-transition-fast, 150ms cubic-bezier(0.4, 0, 0.2, 1));
 }
 
 .chevronOpen {
   transform: rotate(90deg);
 }
 
+/* ---------------------------------------------------------------------------
+   Content & text
+   --------------------------------------------------------------------------- */
+
 .summaryText {
   flex: 1;
 }
 
 .content {
-  padding: var(--advizr-space-4);
-  font-size: var(--advizr-text-sm);
-  line-height: var(--advizr-text-sm-lh);
-  color: var(--advizr-text-secondary);
-  border-top: 1px solid var(--advizr-border);
+  padding: 1rem;
+  font-size: var(--advizr-text-sm, 0.875rem);
+  line-height: var(--advizr-text-sm-lh, 1.25rem);
+  color: var(--advizr-text-secondary, #6B7280);
+  border-top: 1px solid var(--advizr-border, #E5E7EB);
 }
 
 .content :global(p:last-child) {
   margin-bottom: 0;
 }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .chevron {

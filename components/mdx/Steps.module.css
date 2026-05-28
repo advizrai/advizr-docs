@@ -1,102 +1,107 @@
+/* ==========================================================================
+   Steps - Vercel-style vertical stepper with CSS counters
+   ========================================================================== */
+
 .steps {
-  margin: var(--advizr-space-6) 0;
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 2rem 0;
   counter-reset: step;
 }
 
-.stepWrapper {
-  position: relative;
+/* Vertical connecting line */
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--advizr-border, #E5E7EB);
 }
 
+/* ---------------------------------------------------------------------------
+   Individual step
+   --------------------------------------------------------------------------- */
+
 .step {
-  display: flex;
-  gap: var(--advizr-space-4);
+  position: relative;
+  padding-bottom: 2rem;
   counter-increment: step;
 }
 
-.indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.number {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--advizr-radius-full);
-  background: var(--advizr-blue-500);
-  color: #fff;
-  font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-semibold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.number::before {
-  content: counter(step);
-}
-
-.line {
-  width: 2px;
-  flex: 1;
-  background: var(--advizr-border);
-  min-height: var(--advizr-space-4);
-}
-
-.lastStep .line {
-  display: none;
-}
-
-.body {
-  padding-bottom: var(--advizr-space-6);
-  flex: 1;
-  min-width: 0;
-}
-
-.lastStep .body {
+.step:last-child {
   padding-bottom: 0;
 }
 
+/* Numbered circle */
+.step::before {
+  content: counter(step);
+  position: absolute;
+  left: -2.5rem;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--advizr-radius-full, 9999px);
+  background: var(--advizr-blue-500, #6366F1);
+  color: #fff;
+  font-size: var(--advizr-text-sm, 0.875rem);
+  font-weight: var(--advizr-font-semibold, 600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
 .stepTitle {
-  font-weight: var(--advizr-font-semibold);
-  font-size: var(--advizr-text-base);
-  line-height: 32px;
+  font-weight: var(--advizr-font-semibold, 600);
+  font-size: var(--advizr-text-base, 1rem);
+  line-height: 30px;
   color: var(--advizr-text-primary);
 }
 
 .stepContent {
-  margin-top: var(--advizr-space-2);
+  margin-top: var(--advizr-space-2, 0.5rem);
   color: var(--advizr-text-secondary);
-  font-size: var(--advizr-text-sm);
-  line-height: var(--advizr-text-sm-lh);
+  font-size: var(--advizr-text-sm, 0.875rem);
+  line-height: var(--advizr-text-sm-lh, 1.25rem);
 }
 
 .stepContent :global(p:last-child) {
   margin-bottom: 0;
 }
 
-/* Dark mode */
-:global(html[class~="dark"]) .number {
-  background: var(--advizr-blue-400);
+/* ---------------------------------------------------------------------------
+   Dark mode
+   --------------------------------------------------------------------------- */
+
+:global(html[class~="dark"]) .step::before {
+  background: var(--advizr-blue-400, #818CF8);
 }
 
-/* Responsive */
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+
 @media (max-width: 639px) {
-  .number {
-    width: 28px;
-    height: 28px;
-    font-size: var(--advizr-text-xs);
+  .steps {
+    padding-left: 2rem;
+  }
+
+  .steps::before {
+    left: 11px;
+  }
+
+  .step::before {
+    left: -2rem;
+    width: 24px;
+    height: 24px;
+    font-size: var(--advizr-text-xs, 0.75rem);
   }
 
   .stepTitle {
-    line-height: 28px;
-    font-size: var(--advizr-text-sm);
-  }
-
-  .step {
-    gap: var(--advizr-space-3);
+    line-height: 24px;
+    font-size: var(--advizr-text-sm, 0.875rem);
   }
 }
 

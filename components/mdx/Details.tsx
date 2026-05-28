@@ -21,6 +21,7 @@ export function Details({ title, defaultOpen = false, children, className }: Det
       onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
     >
       <summary className={styles.summary}>
+        <span className={styles.summaryText}>{title}</span>
         <svg
           className={clsx(styles.chevron, open && styles.chevronOpen)}
           width="16"
@@ -37,7 +38,6 @@ export function Details({ title, defaultOpen = false, children, className }: Det
             strokeLinejoin="round"
           />
         </svg>
-        <span className={styles.summaryText}>{title}</span>
       </summary>
       <div className={styles.content}>{children}</div>
     </details>
