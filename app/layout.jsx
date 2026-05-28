@@ -1,5 +1,5 @@
 import { Layout, Navbar } from 'nextra-theme-docs'
-import { Head } from 'nextra/components'
+import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
 import '../styles/globals.css'
@@ -87,6 +87,14 @@ export default async function RootLayout({ children }) {
           docsRepositoryBase="https://github.com/advizrai/advizr-docs/blob/main"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={pageMap}
+          search={
+            <Search
+              placeholder="Search docs..."
+              emptyResult="No results found. Try different keywords."
+              errorText="Failed to load search index."
+              loading="Searching..."
+            />
+          }
         >
           {children}
         </Layout>

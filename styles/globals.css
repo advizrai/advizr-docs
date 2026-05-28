@@ -397,3 +397,47 @@ html[class~="dark"] .advizr-badge {
   border-color: var(--advizr-blue-400);
   text-decoration: none;
 }
+
+/* --------------------------------------------------------------------
+   Search
+   -------------------------------------------------------------------- */
+
+[data-nextra-search] input {
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  font-family: var(--advizr-font-sans);
+  transition: border-color var(--advizr-transition-fast),
+              box-shadow var(--advizr-transition-fast);
+}
+
+[data-nextra-search] input:focus {
+  border-color: var(--advizr-blue-500);
+  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.15);
+}
+
+[data-nextra-search] [role="listbox"] {
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  box-shadow: var(--advizr-shadow-xl);
+  background-color: var(--advizr-bg-primary);
+}
+
+[data-nextra-search] [role="option"] {
+  border-radius: var(--advizr-radius-md);
+  transition: background-color var(--advizr-transition-fast);
+}
+
+html[class~="dark"] [data-nextra-search] input {
+  border-color: var(--advizr-border);
+}
+
+html[class~="dark"] [data-nextra-search] input:focus {
+  border-color: var(--advizr-blue-400);
+  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
+}
+
+html[class~="dark"] [data-nextra-search] [role="listbox"] {
+  border-color: var(--advizr-border);
+  box-shadow: var(--advizr-shadow-xl);
+  background-color: var(--advizr-bg-primary);
+}
