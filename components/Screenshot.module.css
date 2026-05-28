@@ -3,29 +3,54 @@
   padding: 0;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
+.browserChrome {
   border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-lg);
-  box-shadow: var(--advizr-shadow-sm);
+  border-radius: var(--advizr-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--advizr-shadow-md);
   cursor: zoom-in;
   transition: box-shadow var(--advizr-transition-fast),
               border-color var(--advizr-transition-fast);
 }
 
-.image:hover {
-  box-shadow: var(--advizr-shadow-md);
+.browserChrome:hover {
+  box-shadow: var(--advizr-shadow-lg);
   border-color: var(--advizr-blue-300);
 }
 
-:global(html[class~="dark"]) .image {
+:global(html[class~="dark"]) .browserChrome {
   border-color: var(--advizr-border-strong);
 }
 
-:global(html[class~="dark"]) .image:hover {
+:global(html[class~="dark"]) .browserChrome:hover {
   border-color: var(--advizr-blue-500);
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: var(--advizr-space-2);
+  padding: 10px 14px;
+  background: var(--advizr-bg-secondary);
+  border-bottom: 1px solid var(--advizr-border);
+}
+
+:global(html[class~="dark"]) .browserBar {
+  background: var(--advizr-bg-tertiary);
+}
+
+.browserDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--advizr-radius-full);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .caption {

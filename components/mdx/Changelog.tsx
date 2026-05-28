@@ -6,6 +6,7 @@ import changelogData from '../../public/changelog.json'
 
 interface ChangelogEntry {
   date: string
+  version?: string
   title: string
   description: string
   category: 'feature' | 'improvement' | 'fix' | 'breaking'
@@ -48,6 +49,9 @@ export function Changelog({ className }: ChangelogProps) {
           <div className={styles.dot} />
           <div className={styles.content}>
             <div className={styles.meta}>
+              {entry.version && (
+                <span className={styles.versionBadge}>v{entry.version}</span>
+              )}
               <time className={styles.date} dateTime={entry.date}>
                 {formatDate(entry.date)}
               </time>

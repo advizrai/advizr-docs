@@ -1,9 +1,18 @@
 .videoEmbed {
   margin: var(--advizr-space-6) 0;
-  border-radius: var(--advizr-radius-lg);
+  border-radius: var(--advizr-radius-xl);
   overflow: hidden;
-  box-shadow: var(--advizr-shadow-sm);
+  box-shadow: var(--advizr-shadow-md);
   border: 1px solid var(--advizr-border);
+  transition: box-shadow var(--advizr-transition-fast);
+}
+
+.videoEmbed:hover {
+  box-shadow: var(--advizr-shadow-lg);
+}
+
+:global(html[class~="dark"]) .videoEmbed {
+  border-color: var(--advizr-border-strong);
 }
 
 .iframe {

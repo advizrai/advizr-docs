@@ -54,6 +54,24 @@
   font-weight: var(--advizr-font-medium);
 }
 
+.versionBadge {
+  display: inline-block;
+  padding: 2px var(--advizr-space-2);
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  font-weight: var(--advizr-font-semibold);
+  line-height: 1.4;
+  color: var(--advizr-text-secondary);
+  background: var(--advizr-bg-tertiary);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-md);
+}
+
+:global(html[class~="dark"]) .versionBadge {
+  background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border-strong);
+}
+
 .categoryBadge {
   display: inline-block;
   padding: 2px var(--advizr-space-2);

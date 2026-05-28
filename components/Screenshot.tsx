@@ -35,15 +35,21 @@ export function Screenshot({ src, alt, caption, width, height }: ScreenshotProps
   return (
     <>
       <figure className={styles.figure}>
-        <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading="lazy"
-          className={styles.image}
-          onClick={() => setOpen(true)}
-        />
+        <div className={styles.browserChrome} onClick={() => setOpen(true)}>
+          <div className={styles.browserBar}>
+            <span className={styles.browserDot} style={{ background: '#FF5F57' }} />
+            <span className={styles.browserDot} style={{ background: '#FFBD2E' }} />
+            <span className={styles.browserDot} style={{ background: '#28C840' }} />
+          </div>
+          <img
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            loading="lazy"
+            className={styles.image}
+          />
+        </div>
         {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
       </figure>
 
