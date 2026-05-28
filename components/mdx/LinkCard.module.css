@@ -1,23 +1,27 @@
+/* ==========================================================================
+   LinkCard - Stripe-style documentation card with hover lift
+   ========================================================================== */
+
 .linkCard {
   display: flex;
   align-items: center;
   gap: var(--advizr-space-3);
-  padding: var(--advizr-space-4);
+  padding: var(--advizr-space-4) var(--advizr-space-5);
   margin: var(--advizr-space-3) 0;
   border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-lg);
+  border-radius: var(--advizr-radius-xl);
   background: var(--advizr-bg-primary);
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--advizr-transition-fast),
-              box-shadow var(--advizr-transition-fast),
-              transform var(--advizr-transition-fast);
+  transition: border-color var(--advizr-transition-base),
+              box-shadow var(--advizr-transition-base),
+              transform var(--advizr-transition-base);
 }
 
 .linkCard:hover {
-  border-color: var(--advizr-blue-500);
-  box-shadow: var(--advizr-shadow-sm);
-  transform: translateY(-1px);
+  border-color: var(--advizr-blue-400);
+  box-shadow: var(--advizr-shadow-md);
+  transform: translateY(-2px);
 }
 
 .linkCard:focus-visible {
@@ -27,14 +31,16 @@
 
 .icon {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  background: var(--advizr-bg-tertiary);
-  border-radius: var(--advizr-radius-md);
+  background: var(--advizr-gradient-primary);
+  color: white;
+  border-radius: var(--advizr-radius-lg);
+  box-shadow: var(--advizr-shadow-sm);
 }
 
 .body {
@@ -60,16 +66,18 @@
 .arrow {
   flex-shrink: 0;
   color: var(--advizr-text-tertiary);
-  transition: transform var(--advizr-transition-fast);
+  transition: transform var(--advizr-transition-base),
+              color var(--advizr-transition-base);
 }
 
 .linkCard:hover .arrow {
-  transform: translateX(2px);
+  transform: translateX(4px);
   color: var(--advizr-blue-500);
 }
 
 :global(html[class~="dark"]) .linkCard:hover {
   border-color: var(--advizr-blue-400);
+  box-shadow: var(--advizr-shadow-md), 0 0 20px rgba(99, 102, 241, 0.08);
 }
 
 :global(html[class~="dark"]) .linkCard:hover .arrow {
