@@ -1,0 +1,35 @@
+.button {
+  position: fixed;
+  bottom: var(--advizr-space-8);
+  right: var(--advizr-space-8);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--advizr-blue-500);
+  color: #fff;
+  border: none;
+  border-radius: var(--advizr-radius-full);
+  box-shadow: var(--advizr-shadow-md);
+  cursor: pointer;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity var(--advizr-transition-base),
+    transform var(--advizr-transition-base),
+    background-color var(--advizr-transition-fast),
+    box-shadow var(--advizr-transition-fast);
+}
+
+.button:hover {
+  background-color: var(--advizr-blue-600);
+  box-shadow: var(--advizr-shadow-lg);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
