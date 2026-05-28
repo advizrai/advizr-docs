@@ -60,9 +60,9 @@ export const metadata = {
     canonical: 'https://docs.advizr.ca'
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg'
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png'
   }
 }
 
