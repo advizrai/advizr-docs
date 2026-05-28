@@ -12,8 +12,54 @@ export const metadata = {
     default: 'Advizr Docs',
     template: '%s - Advizr Docs'
   },
-  description: 'Documentation for the Advizr AI transformation platform',
-  metadataBase: new URL('https://docs.advizr.ca')
+  description: 'Documentation for the Advizr AI transformation platform. Guides, courses, and technical reference for business owners.',
+  metadataBase: new URL('https://docs.advizr.ca'),
+  applicationName: 'Advizr Docs',
+  authors: [{ name: 'Advizr AI', url: 'https://advizr.ca' }],
+  creator: 'Advizr AI Inc.',
+  publisher: 'Advizr AI Inc.',
+  keywords: [
+    'AI transformation',
+    'business automation',
+    'AI for business',
+    'workflow automation',
+    'AI consulting',
+    'Advizr',
+    'AI documentation',
+    'business AI platform'
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: 'https://docs.advizr.ca',
+    siteName: 'Advizr Docs',
+    title: 'Advizr Docs',
+    description: 'Documentation for the Advizr AI transformation platform. Guides, courses, and technical reference for business owners.'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Advizr Docs',
+    description: 'Documentation for the Advizr AI transformation platform.'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
+  },
+  alternates: {
+    canonical: 'https://docs.advizr.ca'
+  },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg'
+  }
 }
 
 export default async function RootLayout({ children }) {
@@ -32,7 +78,7 @@ export default async function RootLayout({ children }) {
   const pageMap = await getPageMap()
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="A" />
+      <Head />
       <body>
         <Layout
           navbar={navbar}
