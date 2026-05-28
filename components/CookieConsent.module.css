@@ -1,42 +1,67 @@
 .banner {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: var(--advizr-space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - var(--advizr-space-8));
+  max-width: 480px;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--advizr-space-6);
-  padding: var(--advizr-space-4) var(--advizr-space-6);
-  background-color: var(--advizr-slate-900);
-  border-top: 1px solid var(--advizr-slate-700);
+  gap: var(--advizr-space-4);
+  padding: var(--advizr-space-4) var(--advizr-space-5);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-2xl);
   box-shadow: var(--advizr-shadow-xl);
-  animation: slideUp var(--advizr-transition-slow) ease-out;
+  animation: slideUpToast var(--advizr-transition-slow) ease-out;
 }
 
-@keyframes slideUp {
+.bannerHiding {
+  animation: slideDownToast var(--advizr-transition-base) ease-in forwards;
+}
+
+@keyframes slideUpToast {
   from {
-    transform: translateY(100%);
+    transform: translateX(-50%) translateY(24px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
   }
+}
+
+@keyframes slideDownToast {
+  from {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 0;
+  }
+}
+
+:global(html[class~="dark"]) .banner {
+  background: rgba(19, 28, 46, 0.85);
+  border-color: var(--advizr-border-strong);
 }
 
 .text {
   margin: 0;
   font-size: var(--advizr-text-sm);
   line-height: var(--advizr-text-sm-lh);
-  color: var(--advizr-slate-200);
+  color: var(--advizr-text-secondary);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--advizr-space-3);
+  gap: var(--advizr-space-2);
   flex-shrink: 0;
 }
 
@@ -45,16 +70,23 @@
   background-color: var(--advizr-blue-500);
   color: #fff;
   border: none;
-  border-radius: var(--advizr-radius-md);
+  border-radius: var(--advizr-radius-lg);
   font-size: var(--advizr-text-sm);
   font-weight: var(--advizr-font-medium);
   cursor: pointer;
-  transition: background-color var(--advizr-transition-fast);
+  transition: background-color var(--advizr-transition-fast),
+    box-shadow var(--advizr-transition-fast),
+    transform var(--advizr-transition-fast);
   white-space: nowrap;
 }
 
 .accept:hover {
   background-color: var(--advizr-blue-600);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
+}
+
+.accept:active {
+  transform: scale(0.97);
 }
 
 .accept:focus-visible {
@@ -63,24 +95,30 @@
 }
 
 .decline {
-  padding: var(--advizr-space-2) var(--advizr-space-4);
+  padding: var(--advizr-space-2) var(--advizr-space-3);
   background: transparent;
-  color: var(--advizr-slate-300);
+  color: var(--advizr-text-tertiary);
   border: none;
-  border-radius: var(--advizr-radius-md);
+  border-radius: var(--advizr-radius-lg);
   font-size: var(--advizr-text-sm);
   font-weight: var(--advizr-font-medium);
   cursor: pointer;
-  transition: color var(--advizr-transition-fast);
+  transition: color var(--advizr-transition-fast),
+    background-color var(--advizr-transition-fast);
   white-space: nowrap;
 }
 
 .decline:hover {
-  color: var(--advizr-slate-100);
+  color: var(--advizr-text-primary);
+  background-color: var(--advizr-bg-tertiary);
+}
+
+:global(html[class~="dark"]) .decline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .decline:focus-visible {
-  outline: 2px solid var(--advizr-slate-400);
+  outline: 2px solid var(--advizr-blue-400);
   outline-offset: 2px;
 }
 
@@ -88,11 +126,20 @@
   .banner {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--advizr-space-3);
     padding: var(--advizr-space-4);
-    gap: var(--advizr-space-4);
+    max-width: none;
+    width: calc(100% - var(--advizr-space-6));
   }
 
   .actions {
     justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner,
+  .bannerHiding {
+    animation: none;
   }
 }
