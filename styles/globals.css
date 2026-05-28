@@ -24,8 +24,8 @@ html[class~="dark"] {
   /* Slightly lighter primary in dark mode for readability */
   --nextra-primary-lightness: 72%;
 
-  /* Nextra background - deep navy (#0B1120) for dark mode */
-  --nextra-bg: 11, 17, 32;
+  /* Nextra background - pure black for dark mode */
+  --nextra-bg: 0, 0, 0;
 }
 
 /* ==========================================================================

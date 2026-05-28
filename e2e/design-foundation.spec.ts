@@ -59,10 +59,10 @@ test.describe('Design Foundation', () => {
       document.documentElement.classList.contains('dark')
     );
     // Either dark class is present or the bg-primary is the dark value
-    expect(isDark || bgPrimary.toLowerCase() === '#0b1120').toBe(true);
+    expect(isDark || /^#0{3,6}$/.test(bgPrimary.toLowerCase())).toBe(true);
   });
 
-  test('dark mode has deep navy background', async ({ page }) => {
+  test('dark mode has black background', async ({ page }) => {
     await page.goto('/docs');
     // Ensure dark mode is active
     const isDark = await page.evaluate(() =>
@@ -72,7 +72,7 @@ test.describe('Design Foundation', () => {
       const bgPrimary = await page.evaluate(() =>
         getComputedStyle(document.documentElement).getPropertyValue('--advizr-bg-primary').trim()
       );
-      expect(bgPrimary.toLowerCase()).toBe('#0b1120');
+      expect(bgPrimary.toLowerCase()).toMatch(/^#0{3,6}$/);
     }
   });
 

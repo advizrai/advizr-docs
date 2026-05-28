@@ -192,10 +192,10 @@
    ======================================================================== */
 
 html[class~="dark"] {
-  --advizr-bg-primary:     #0B1120;
-  --advizr-bg-secondary:   #131C2E;
-  --advizr-bg-tertiary:    #1C2640;
-  --advizr-bg-code:        #0D1117;
+  --advizr-bg-primary:     #000000;
+  --advizr-bg-secondary:   #0A0A0A;
+  --advizr-bg-tertiary:    #141414;
+  --advizr-bg-code:        #0A0A0A;
   --advizr-text-primary:   #F1F5F9;
   --advizr-text-secondary: #94A3B8;
   --advizr-text-tertiary:  #64748B;

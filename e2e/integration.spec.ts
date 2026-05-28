@@ -140,7 +140,7 @@ test.describe('Integration - Full Site', () => {
     const pages = ['/docs', '/docs/platform', '/docs/services'];
     for (const url of pages) {
       await page.goto(url);
-      const footer = page.locator('footer');
+      const footer = page.locator('footer[class*="Footer"]');
       await expect(footer).toBeVisible();
     }
   });
@@ -167,14 +167,14 @@ test.describe('Integration - Full Site', () => {
     // Hero should be visible
     await expect(page.locator('h1').first()).toBeVisible();
     // CTA should be visible
-    const cta = page.locator('a[href*="book"]');
+    const cta = page.locator('header a[href*="book"]');
     if (await cta.count() > 0) {
       await expect(cta.first()).toBeVisible();
     }
     // Footer should be present
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(500);
-    const footer = page.locator('footer');
+    const footer = page.locator('footer[class*="Footer"]');
     await expect(footer).toBeVisible();
   });
 
