@@ -1,3 +1,68 @@
 # Billing
 
-The Billing page shows your current subscription plan, payment history, and invoices. Admins can update payment methods and view upcoming charges. This page explains how billing works, how to access invoices, and how to make changes to your plan.
+The Billing page shows your current subscription, payment history, and invoices. Only users with the Client Admin role can view and manage billing information. Payments are processed through Stripe, and you can cancel at any time with no long-term commitment.
+
+<Screenshot
+  src="/images/platform/billing.png"
+  alt="Billing page"
+  caption="View your plan, invoices, and payment details."
+/>
+
+## Your subscription
+
+The Billing page shows your current plan, what is included, and when your next payment is due. Your subscription covers access to the platform, your FDE's time, workflow development, and ongoing support.
+
+If you have questions about what is included in your plan or want to discuss upgrades, talk to your FDE in [Chat](/docs/platform/dashboard/chat) or [book a call](/docs/platform/dashboard/book).
+
+## Viewing invoices
+
+All past invoices are listed on the Billing page in reverse chronological order. Each invoice shows:
+
+- Invoice date and number
+- Amount charged
+- Payment status (paid, pending, or failed)
+- A link to download the invoice as PDF
+
+Invoices are generated automatically by Stripe and emailed to the Client Admin on record.
+
+## Updating your payment method
+
+<Steps>
+  <Step title="Open the Billing page">
+    Navigate to Account and then Billing from the sidebar or Settings.
+  </Step>
+  <Step title="Click Update Payment Method">
+    This opens a secure Stripe form where you can enter new card details.
+  </Step>
+  <Step title="Enter your new card information">
+    Fill in the card number, expiry date, and CVC. Stripe handles the payment processing - your card details are never stored on the Advizr platform.
+  </Step>
+  <Step title="Save changes">
+    Click Save. Your next invoice will be charged to the new card.
+  </Step>
+</Steps>
+
+<Callout type="info">
+  Only Client Admins can update payment methods and view billing details. If you need billing access and do not have the Client Admin role, ask your organisation's admin. See [Roles and Permissions](/docs/platform/account/roles-and-permissions) for details.
+</Callout>
+
+## Cancellation
+
+You can cancel your subscription at any time. There are no long-term contracts or early termination fees. To cancel, contact your FDE in Chat or book a call to discuss. Your access continues until the end of the current billing period.
+
+<Callout type="tip">
+  Before cancelling, consider whether pausing your engagement might be a better fit. Talk to your FDE about options.
+</Callout>
+
+## Questions about billing
+
+If you see an unexpected charge, have a question about your invoice, or need a receipt for accounting purposes, contact your Advizr team through [Chat](/docs/platform/dashboard/chat) or email your FDE directly.
+
+## Next steps
+
+<LinkCard
+  title="General FAQ"
+  description="Answers to common questions about the Advizr platform."
+  href="/docs/platform/faq/general"
+  icon="❓"
+/>

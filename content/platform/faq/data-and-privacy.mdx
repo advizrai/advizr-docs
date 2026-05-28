@@ -1,3 +1,71 @@
 # Data and Privacy
 
-Answers to questions about how Advizr handles your data, where it is stored, who can access it, and how long it is retained. Each client's data is isolated in a dedicated Supabase database. This page covers data ownership, security practices, and your rights.
+Your data security and privacy are fundamental to how the Advizr platform works. Every client organisation gets an isolated database, strict access controls, and encrypted communications. This page answers the most common questions about how your data is handled.
+
+<Screenshot
+  src="/images/platform/settings.png"
+  alt="Privacy settings"
+  caption="Your data lives in an isolated database, separate from every other client."
+/>
+
+<Callout type="info">
+  Each client organisation gets its own dedicated database. Your data is never mixed with, visible to, or accessible by any other client.
+</Callout>
+
+<Details title="Where is my data stored?">
+  Your business data - documents, conversations, goals, and activity - is stored in a dedicated Supabase database provisioned specifically for your organisation. This database is separate from every other client's database and from the authentication system. Supabase infrastructure runs on cloud providers with data centres in secure, audited facilities.
+</Details>
+
+<Details title="Who can access my data?">
+  Only two groups of people can access your data:
+
+  1. **Your team** - Anyone you have invited to the platform with a Client Admin, Client Viewer, or Client Consumer role
+  2. **Your assigned Advizr staff** - Your FDE and any Advizr team members assigned to your engagement (Admin role)
+
+  No other clients, no other Advizr staff outside your engagement, and no third parties can see your data.
+</Details>
+
+<Details title="Is my data shared between clients?">
+  No. Client data is never shared between organisations. Each client has a completely separate database. There is no shared data layer, no cross-client analytics, and no way for one client's data to appear in another client's workspace.
+</Details>
+
+<Details title="Do you use my data to train AI models?">
+  No. Your documents, conversations, and business data are never used to train, fine-tune, or improve AI models. Your data is used only to provide you with relevant responses and recommendations within your own workspace.
+</Details>
+
+<Details title="How is my data protected in transit and at rest?">
+  All data is encrypted:
+
+  - **In transit** - All traffic between your browser and the platform uses HTTPS (TLS encryption)
+  - **At rest** - Database storage is encrypted using industry-standard encryption
+  - **Passwords** - Stored as secure hashes, never in plain text
+
+  The dual-database architecture adds an additional layer of protection - your login credentials and your business data are stored in separate systems.
+</Details>
+
+<Details title="How long is my data retained?">
+  Your data is retained for as long as your subscription is active. If you cancel your subscription, your data is retained for 30 days after the end of your billing period to allow for reactivation. After 30 days, data is scheduled for permanent deletion. If you need data exported before cancellation, contact your FDE.
+</Details>
+
+<Details title="Can I export my data?">
+  Yes. You can download your uploaded documents at any time from the [Documents](/docs/platform/dashboard/documents) section. For a full data export - including conversations, goals, and activity history - contact your FDE through Chat. They will arrange the export and provide it in a standard format.
+
+  If you are planning to cancel, request your export before the end of your billing period.
+</Details>
+
+<Details title="Can I request data deletion?">
+  Yes. You can request deletion of specific documents by removing them from the Documents section. For a complete data deletion request - including all conversations, activity logs, and processed data - contact your FDE. Complete deletion is processed within 14 business days.
+</Details>
+
+## Questions about compliance
+
+If you have specific compliance questions - for example, whether the platform meets requirements for your industry or jurisdiction - contact your FDE. They can provide detailed information about the security measures and certifications relevant to your situation.
+
+## Next steps
+
+<LinkCard
+  title="Platform Overview"
+  description="Return to the main platform documentation."
+  href="/docs/platform"
+  icon="🏠"
+/>

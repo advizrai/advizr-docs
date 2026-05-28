@@ -1,3 +1,64 @@
 # Login and Security
 
-Authentication is handled through a Master Supabase instance, while your organisation's data lives in a separate per-client Supabase database. This page covers how to log in, reset your password, manage your session, and understand how your credentials are secured.
+Your Advizr account is secured through Supabase authentication. Login is email and password. Your credentials are stored in a master authentication database, while your organisation's business data lives in a separate, isolated database. This page covers how to log in, manage your password, and understand how your account is protected.
+
+<Screenshot
+  src="/images/platform/login.png"
+  alt="Login screen"
+  caption="Sign in at advizrclients.com."
+/>
+
+## Logging in
+
+Visit advizrclients.com and enter your email address and password. After authentication, you are redirected to your organisation's dashboard. If your organisation has multiple team members, each person logs in with their own credentials.
+
+The platform works in all modern browsers - Chrome, Firefox, Safari, and Edge. On mobile, use your phone's browser and bookmark the page or add it to your home screen for quick access.
+
+## Resetting your password
+
+If you forget your password, you can reset it from the login page.
+
+<Steps>
+  <Step title="Click 'Forgot password'">
+    On the login page, click the "Forgot password" link below the password field.
+  </Step>
+  <Step title="Enter your email">
+    Type the email address associated with your account and click Submit.
+  </Step>
+  <Step title="Check your inbox">
+    You will receive an email with a password reset link. Click the link to set a new password. The link expires after one hour.
+  </Step>
+  <Step title="Set your new password">
+    Choose a strong password and confirm it. You will be redirected to the login page where you can sign in with your new credentials.
+  </Step>
+</Steps>
+
+## Session management
+
+When you log in, the platform creates a session token that lasts 24 hours. After 24 hours, the token expires and you will need to log in again. The session renews automatically while you are actively using the platform, so you will only be prompted to log in again after extended periods of inactivity.
+
+<Callout type="warning">
+  If you are logged out unexpectedly, your session has likely expired. Log in again with your email and password. If you are still having trouble, try clearing your browser cache or see [Troubleshooting](/docs/platform/faq/troubleshooting).
+</Callout>
+
+## How your account is secured
+
+The platform uses several layers of security:
+
+- **HTTPS encryption** - All traffic between your browser and the platform is encrypted in transit
+- **Encrypted storage** - Passwords are hashed and never stored in plain text
+- **Dual-database architecture** - Your login credentials are stored separately from your business data. Even if you access multiple services, your business data stays in your isolated client database
+- **Role-based access** - Each team member sees only what their role allows (see [Roles and Permissions](/docs/platform/account/roles-and-permissions))
+
+## Browser compatibility
+
+The platform supports the latest two major versions of Chrome, Firefox, Safari, and Edge. Internet Explorer is not supported. For the best experience, keep your browser updated.
+
+## Next steps
+
+<LinkCard
+  title="Roles and Permissions"
+  description="Understand what each role can see and do in the platform."
+  href="/docs/platform/account/roles-and-permissions"
+  icon="🛡️"
+/>

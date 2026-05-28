@@ -1,3 +1,90 @@
 # Roles and Permissions
 
-The platform uses role-based access control with four roles: ADMIN, CLIENT_ADMIN, CLIENT_VIEWER, and CLIENT_CONSUMER. Each role determines what a user can see and do within the platform. This page details the permissions for each role and how role assignments are managed.
+The platform uses role-based access control (RBAC) to manage what each person can see and do. Every user is assigned one role, and that role determines their permissions across the platform. There are four roles in total - one for the Advizr team and three for client users.
+
+<Screenshot
+  src="/images/platform/roles.png"
+  alt="Roles overview"
+  caption="Each role determines what a user can see and do."
+/>
+
+## The four roles
+
+### Admin
+
+The Admin role is reserved for Advizr internal staff. Admins have full access to all client workspaces and are responsible for building workflows, managing proposals, and supporting your engagement. You will not assign this role - it is used by your FDE and other Advizr team members.
+
+<Callout type="info">
+  You will never need to create or manage Admin accounts. These are managed internally by the Advizr team.
+</Callout>
+
+### Client Admin
+
+This is your organisation's primary role. Client Admins have full access to everything in their workspace:
+
+- View and interact with all dashboard sections
+- Create and edit goals and objectives
+- Upload and manage documents
+- Approve or request changes to proposals
+- Invite and remove team members
+- Manage billing and organisation settings
+- Configure notification preferences
+
+Most organisations have one or two Client Admins - typically the business owner or primary decision-maker.
+
+### Client Viewer
+
+Client Viewers have read-only access. They can see everything in the dashboard but cannot make changes:
+
+- View the Home screen, goals, documents, and proposals
+- Read chat history (but not start new threads)
+- Access learning content and track their own progress
+- View analytics and run history
+
+Client Viewer is a good fit for team members who need visibility into the engagement without editing rights.
+
+### Client Consumer
+
+Client Consumer is a simplified experience designed for broader team access. The interface is streamlined with a reduced sidebar, focused primarily on Chat:
+
+- Access Chat as their primary interaction point
+- View relevant dashboard content
+- Access learning content
+- Book calls with the Advizr team
+
+Client Consumer is ideal for team members who want to use the AI tools without managing the full platform.
+
+## Permissions comparison
+
+<ComparisonTable
+  columns={["Capability", "Client Admin", "Client Viewer", "Client Consumer"]}
+  rows={[
+    { feature: "View dashboard and Home", values: [true, true, true] },
+    { feature: "Use Chat", values: [true, "Read only", true] },
+    { feature: "Create and edit goals", values: [true, false, false] },
+    { feature: "Upload documents", values: [true, false, false] },
+    { feature: "Approve proposals", values: [true, false, false] },
+    { feature: "Comment on proposals", values: [true, true, false] },
+    { feature: "Manage team members", values: [true, false, false] },
+    { feature: "Manage billing", values: [true, false, false] },
+    { feature: "Access learning content", values: [true, true, true] },
+    { feature: "Book calls", values: [true, true, true] },
+    { feature: "View analytics", values: [true, true, false] },
+    { feature: "Configure settings", values: [true, false, false] },
+  ]}
+/>
+
+## Changing roles
+
+Only Client Admins can change team member roles. To update a role, go to [Team Management](/docs/platform/features/team-management), find the team member, and select a new role. The change takes effect immediately.
+
+If you need your own role changed and you are not a Client Admin, ask your organisation's Client Admin or contact your FDE.
+
+## Next steps
+
+<LinkCard
+  title="Billing"
+  description="View your subscription, invoices, and payment details."
+  href="/docs/platform/account/billing"
+  icon="💳"
+/>
