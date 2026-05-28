@@ -13,7 +13,7 @@
 }
 
 .th {
-  padding: var(--advizr-space-3) var(--advizr-space-4);
+  padding: var(--advizr-space-4) var(--advizr-space-5);
   text-align: center;
   font-weight: var(--advizr-font-semibold);
   font-size: var(--advizr-text-xs);
@@ -33,7 +33,7 @@
 }
 
 .td {
-  padding: var(--advizr-space-3) var(--advizr-space-4);
+  padding: var(--advizr-space-3) var(--advizr-space-5);
   border-bottom: 1px solid var(--advizr-border);
 }
 
@@ -53,8 +53,25 @@
   vertical-align: middle;
 }
 
+.valueCell span {
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-primary);
+}
+
+.table tbody tr {
+  transition: background-color var(--advizr-transition-fast);
+}
+
 .table tbody tr:nth-child(even) {
   background: var(--advizr-bg-secondary);
+}
+
+.table tbody tr:hover {
+  background-color: var(--advizr-bg-tertiary);
+}
+
+.table tbody tr:hover .stickyCol {
+  background: var(--advizr-bg-tertiary);
 }
 
 .table tbody tr:last-child .td {
@@ -79,12 +96,18 @@
 
 /* Dark mode */
 :global(html[class~="dark"]) .valueCell svg circle {
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 @media (max-width: 639px) {
   .th,
   .td {
     padding: var(--advizr-space-2) var(--advizr-space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .table tbody tr {
+    transition: none;
   }
 }
