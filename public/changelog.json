@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-05-20",
+    "title": "AI Chat v2 Released",
+    "description": "Upgraded the AI chat engine with faster response times, context awareness across your entire workspace, and support for file attachments.",
+    "category": "feature"
+  },
+  {
+    "date": "2026-05-10",
+    "title": "Dashboard Performance Improvements",
+    "description": "Reduced dashboard load times by 60% through optimized database queries and client-side caching.",
+    "category": "improvement"
+  },
+  {
+    "date": "2026-04-28",
+    "title": "New Onboarding Flow",
+    "description": "Simplified the onboarding questionnaire from 25 questions to 8 focused prompts that build your initial AI strategy.",
+    "category": "feature"
+  }
+]

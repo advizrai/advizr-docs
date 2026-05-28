@@ -1,0 +1,210 @@
+.wrapper {
+  margin: var(--advizr-space-6) 0;
+}
+
+/* ---------- Desktop table ---------- */
+.table {
+  display: block;
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  overflow: hidden;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1fr);
+}
+
+.featureHeader {
+  padding: var(--advizr-space-4);
+}
+
+.tierHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--advizr-space-1);
+  padding: var(--advizr-space-6) var(--advizr-space-4);
+  text-align: center;
+  background: var(--advizr-bg-secondary);
+  border-left: 1px solid var(--advizr-border);
+}
+
+.tierHeader.recommended {
+  background: var(--advizr-blue-50);
+  border-top: 3px solid var(--advizr-blue-500);
+}
+
+:global(html[class~="dark"]) .tierHeader.recommended {
+  background: rgba(51, 153, 255, 0.08);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--advizr-space-1) var(--advizr-space-2);
+  font-size: var(--advizr-text-xs);
+  font-weight: var(--advizr-font-semibold);
+  color: #ffffff;
+  background: var(--advizr-blue-500);
+  border-radius: var(--advizr-radius-full);
+  line-height: 1;
+}
+
+.tierName {
+  font-size: var(--advizr-text-lg);
+  font-weight: var(--advizr-font-bold);
+  color: var(--advizr-text-primary);
+}
+
+.tierPrice {
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-secondary);
+}
+
+/* Feature rows */
+.featureRow {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1fr);
+  border-top: 1px solid var(--advizr-border);
+}
+
+.altRow {
+  background: var(--advizr-bg-secondary);
+}
+
+.featureName {
+  display: flex;
+  align-items: center;
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-primary);
+}
+
+.featureCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  border-left: 1px solid var(--advizr-border);
+}
+
+.recommendedCol {
+  background: rgba(51, 153, 255, 0.03);
+}
+
+:global(html[class~="dark"]) .recommendedCol {
+  background: rgba(51, 153, 255, 0.04);
+}
+
+.checkIcon {
+  color: var(--advizr-success);
+}
+
+.xIcon {
+  color: var(--advizr-text-tertiary);
+}
+
+.textValue {
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-primary);
+  font-weight: var(--advizr-font-medium);
+}
+
+/* CTA row */
+.ctaRow {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1fr);
+  border-top: 1px solid var(--advizr-border);
+}
+
+.ctaCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--advizr-space-4);
+  border-left: 1px solid var(--advizr-border);
+}
+
+/* ---------- Mobile cards ---------- */
+.mobileCards {
+  display: none;
+  flex-direction: column;
+  gap: var(--advizr-space-4);
+}
+
+.mobileCard {
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  overflow: hidden;
+}
+
+.recommendedCard {
+  border-color: var(--advizr-blue-500);
+  border-width: 2px;
+}
+
+.mobileCardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--advizr-space-1);
+  padding: var(--advizr-space-4);
+  background: var(--advizr-bg-secondary);
+  text-align: center;
+}
+
+.mobileFeatures {
+  padding: var(--advizr-space-2) 0;
+}
+
+.mobileFeatureRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+}
+
+.mobileFeatureRow:nth-child(even) {
+  background: var(--advizr-bg-secondary);
+}
+
+.mobileFeatureName {
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-primary);
+}
+
+.mobileFeatureValue {
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-primary);
+}
+
+.mobileCtaWrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--advizr-space-4);
+  border-top: 1px solid var(--advizr-border);
+}
+
+/* ---------- Hover on rows ---------- */
+.featureRow:hover {
+  background: var(--advizr-bg-tertiary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .table {
+    display: none;
+  }
+
+  .mobileCards {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureRow {
+    transition: none;
+  }
+}

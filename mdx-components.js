@@ -3,7 +3,8 @@ import { Hero, Card, CardGrid, Section, Button, Badge, Feature } from './compone
 import {
   Callout, Steps, Step, Tabs, Tab,
   CodeBlock, Details, LinkCard, Screenshot,
-  ComparisonTable, VideoEmbed
+  ComparisonTable, VideoEmbed,
+  RoiCalculator, PricingTable, CopyButton, Changelog, BookCallButton
 } from './components/mdx'
 
 const docsComponents = getDocsMDXComponents()
@@ -28,5 +29,10 @@ export const useMDXComponents = components => ({
   Screenshot,
   ComparisonTable,
   VideoEmbed,
+  RoiCalculator,
+  PricingTable,
+  CopyButton,
+  Changelog,
+  BookCallButton,
   ...components
 })
