@@ -1,65 +1,77 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: var(--advizr-space-0\.5, 0.125rem) var(--advizr-space-2);
-  font-size: var(--advizr-text-xs);
-  font-weight: var(--advizr-font-semibold);
-  line-height: var(--advizr-text-xs-lh);
+  gap: 0.25rem;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   border-radius: var(--advizr-radius-full);
+  line-height: 1.5;
   white-space: nowrap;
 }
 
 /* Default */
 .default {
-  background: var(--advizr-slate-100);
-  color: var(--advizr-slate-600);
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-secondary);
+  border: 1px solid var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .default {
-  background: var(--advizr-slate-800);
-  color: var(--advizr-slate-400);
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-secondary);
+  border-color: var(--advizr-border);
 }
 
 /* New */
 .new {
-  background: var(--advizr-green-100);
-  color: var(--advizr-green-700);
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--advizr-blue-600);
+  border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 :global(html[class~="dark"]) .new {
-  background: rgba(21, 128, 61, 0.15);
-  color: #4ade80;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--advizr-blue-300);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 
 /* Beta */
 .beta {
-  background: var(--advizr-blue-100);
-  color: var(--advizr-blue-700);
+  background: rgba(245, 158, 11, 0.08);
+  color: #B45309;
+  border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 :global(html[class~="dark"]) .beta {
-  background: rgba(51, 153, 255, 0.15);
-  color: var(--advizr-blue-300);
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.25);
 }
 
 /* Coming Soon */
 .comingSoon {
-  background: var(--advizr-amber-100);
-  color: var(--advizr-amber-700);
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-tertiary);
+  border: 1px solid var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .comingSoon {
-  background: rgba(180, 83, 9, 0.15);
-  color: #fbbf24;
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-tertiary);
+  border-color: var(--advizr-border);
 }
 
 /* Deprecated */
 .deprecated {
-  background: var(--advizr-red-100);
-  color: var(--advizr-red-700);
+  background: rgba(239, 68, 68, 0.08);
+  color: #B91C1C;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 :global(html[class~="dark"]) .deprecated {
-  background: rgba(185, 28, 28, 0.15);
+  background: rgba(239, 68, 68, 0.12);
   color: #f87171;
+  border-color: rgba(239, 68, 68, 0.25);
 }

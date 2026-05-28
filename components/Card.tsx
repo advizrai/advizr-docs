@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, type MouseEvent } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import styles from './Card.module.css'
@@ -32,6 +35,16 @@ export function Card({
   children,
   className,
 }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = (e: MouseEvent) => {
+    const card = cardRef.current
+    if (!card) return
+    const rect = card.getBoundingClientRect()
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+  }
+
   const content = (
     <>
       {image && <img src={image} alt="" className={styles.image} />}
@@ -54,13 +67,15 @@ export function Card({
   if (href) {
     return (
       <Link href={href} className={cls}>
-        {content}
+        <div ref={cardRef} onMouseMove={handleMouseMove} className={styles.inner}>
+          {content}
+        </div>
       </Link>
     )
   }
 
   return (
-    <div className={cls}>
+    <div ref={cardRef} onMouseMove={handleMouseMove} className={cls}>
       {content}
     </div>
   )
