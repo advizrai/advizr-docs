@@ -1,5 +1,6 @@
 .section {
-  padding: var(--advizr-space-16) var(--advizr-space-6);
+  padding: var(--advizr-space-20) var(--advizr-space-6);
+  position: relative;
 }
 
 .inner {
@@ -7,40 +8,53 @@
   margin: 0 auto;
 }
 
-/* Variants */
+/* ---- Variants ---- */
+
 .muted {
   background: var(--advizr-bg-secondary);
+  border-top: 1px solid var(--advizr-border);
+  border-bottom: 1px solid var(--advizr-border);
 }
 
 .highlight {
-  background: var(--advizr-blue-50);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(16, 185, 129, 0.04) 100%);
+  border-top: 1px solid var(--advizr-border);
 }
 
 :global(html[class~="dark"]) .highlight {
-  background: rgba(51, 153, 255, 0.06);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
 }
+
+/* ---- Title ---- */
 
 .title {
-  font-size: var(--advizr-text-3xl);
-  font-weight: var(--advizr-font-bold);
-  margin: 0 0 var(--advizr-space-3);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: center;
+  margin: 0 0 0.75rem;
   color: var(--advizr-text-primary);
-  letter-spacing: -0.02em;
 }
 
+/* ---- Description ---- */
+
 .description {
-  font-size: var(--advizr-text-lg);
+  text-align: center;
   color: var(--advizr-text-secondary);
-  margin: 0 0 var(--advizr-space-8);
-  line-height: var(--advizr-text-lg-lh);
+  max-width: 600px;
+  margin: 0 auto var(--advizr-space-12);
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
+
+/* ---- Responsive ---- */
 
 @media (max-width: 640px) {
   .section {
-    padding: var(--advizr-space-10) var(--advizr-space-4);
+    padding: var(--advizr-space-12) var(--advizr-space-4);
   }
 
   .title {
-    font-size: var(--advizr-text-2xl);
+    font-size: var(--advizr-text-xl);
   }
 }
