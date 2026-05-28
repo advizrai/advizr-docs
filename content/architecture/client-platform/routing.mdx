@@ -1,3 +1,5 @@
 # Client Routing
 
 The Advizr client router maps each client organisation to its dedicated resources - Supabase instance, feature flags, and branding configuration. This page explains how the router resolves client identity from the request, loads the correct project mapping, and serves the appropriate template experience.
+
+<Screenshot src="/images/architecture/client-routing.svg" alt="Client routing flow from user request through router and lookup to client apps" caption="Request flow: slug resolution, master DB lookup, then routing to the correct client resources." />

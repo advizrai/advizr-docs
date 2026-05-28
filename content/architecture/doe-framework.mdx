@@ -1,3 +1,5 @@
 # DOE Framework
 
 Directive-Orchestration-Execution is the core architectural pattern behind Advizr. Directives define the goal in markdown SOPs. Orchestration is the AI agent layer that reads directives, routes work, and handles errors. Execution is deterministic Python - API calls, data processing, file operations - with no probabilistic AI. This separation exists because chaining multiple LLM steps compounds error rates, so complexity is pushed into reliable code while AI handles judgment-based decisions only.
+
+<Screenshot src="/images/architecture/doe-framework.svg" alt="DOE Architecture diagram showing Directives, Orchestration, and Execution layers" caption="Directives define the what. Orchestration handles judgment. Execution runs deterministic code." />

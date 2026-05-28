@@ -1,3 +1,5 @@
 # Database Architecture
 
 Advizr uses a multi-tenant Supabase topology with three categories of database - master, per-client, and knowledge base. Each serves a distinct purpose and has its own schema, access patterns, and security model. This section covers all three in detail along with migration procedures.
+
+<Screenshot src="/images/architecture/database-isolation.svg" alt="Database isolation architecture showing master Supabase with per-client satellite databases" caption="Each client gets an isolated Supabase instance. The master DB handles routing and shared data." />
