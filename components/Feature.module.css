@@ -1,0 +1,59 @@
+.feature {
+  display: flex;
+  gap: var(--advizr-space-4);
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  padding: var(--advizr-space-3) 0;
+}
+
+a.feature:hover .title {
+  color: var(--advizr-blue-500);
+}
+
+:global(html[class~="dark"]) a.feature:hover .title {
+  color: var(--advizr-blue-300);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--advizr-radius-full);
+  background: var(--advizr-blue-50);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+:global(html[class~="dark"]) .icon {
+  background: rgba(51, 153, 255, 0.1);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--advizr-text-base);
+  font-weight: var(--advizr-font-semibold);
+  margin: 0 0 var(--advizr-space-1);
+  color: var(--advizr-text-primary);
+  transition: color var(--advizr-transition-fast);
+}
+
+.description {
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-secondary);
+  margin: 0;
+  line-height: var(--advizr-text-sm-lh);
+}
+
+@media (max-width: 480px) {
+  .feature {
+    flex-direction: column;
+    gap: var(--advizr-space-2);
+  }
+}
