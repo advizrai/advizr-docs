@@ -1,0 +1,399 @@
+@import './tokens.css';
+
+/* ==========================================================================
+   Nextra Theme Overrides
+   Map Advizr tokens to Nextra's CSS variables.
+   ========================================================================== */
+
+:root {
+  /* Nextra primary color - Advizr blue-500 (#3399FF) in HSL */
+  --nextra-primary-hue: 210deg;
+  --nextra-primary-saturation: 100%;
+  --nextra-primary-lightness: 60%;
+
+  /* Nextra background - white for light mode (raw RGB channels) */
+  --nextra-bg: 255, 255, 255;
+
+  /* Nextra content width */
+  --nextra-content-width: 90rem;
+}
+
+html[class~="dark"] {
+  /* Slightly lighter primary in dark mode for readability */
+  --nextra-primary-lightness: 65%;
+
+  /* Nextra background - slate-900 (#0F172A) for dark mode */
+  --nextra-bg: 15, 23, 42;
+}
+
+/* ==========================================================================
+   Base Element Styles
+   ========================================================================== */
+
+body {
+  font-family: var(--advizr-font-sans);
+  color: var(--advizr-text-primary);
+  background-color: var(--advizr-bg-primary);
+  font-size: var(--advizr-text-base);
+  line-height: var(--advizr-text-base-lh);
+}
+
+/* --------------------------------------------------------------------
+   Headings
+   -------------------------------------------------------------------- */
+
+h1 {
+  font-size: var(--advizr-text-4xl);
+  line-height: var(--advizr-text-4xl-lh);
+  font-weight: var(--advizr-font-bold);
+  color: var(--advizr-text-primary);
+  margin-top: var(--advizr-space-12);
+  margin-bottom: var(--advizr-space-6);
+}
+
+h2 {
+  font-size: var(--advizr-text-3xl);
+  line-height: var(--advizr-text-3xl-lh);
+  font-weight: var(--advizr-font-bold);
+  color: var(--advizr-text-primary);
+  margin-top: var(--advizr-space-10);
+  margin-bottom: var(--advizr-space-4);
+}
+
+h3 {
+  font-size: var(--advizr-text-2xl);
+  line-height: var(--advizr-text-2xl-lh);
+  font-weight: var(--advizr-font-semibold);
+  color: var(--advizr-text-primary);
+  margin-top: var(--advizr-space-8);
+  margin-bottom: var(--advizr-space-3);
+}
+
+h4 {
+  font-size: var(--advizr-text-xl);
+  line-height: var(--advizr-text-xl-lh);
+  font-weight: var(--advizr-font-semibold);
+  color: var(--advizr-text-primary);
+  margin-top: var(--advizr-space-6);
+  margin-bottom: var(--advizr-space-2);
+}
+
+h5 {
+  font-size: var(--advizr-text-lg);
+  line-height: var(--advizr-text-lg-lh);
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-primary);
+  margin-top: var(--advizr-space-4);
+  margin-bottom: var(--advizr-space-2);
+}
+
+h6 {
+  font-size: var(--advizr-text-base);
+  line-height: var(--advizr-text-base-lh);
+  font-weight: var(--advizr-font-medium);
+  color: var(--advizr-text-secondary);
+  margin-top: var(--advizr-space-4);
+  margin-bottom: var(--advizr-space-2);
+}
+
+/* --------------------------------------------------------------------
+   Links
+   -------------------------------------------------------------------- */
+
+a {
+  color: var(--advizr-blue-500);
+  text-decoration: none;
+  transition: color var(--advizr-transition-fast);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--advizr-blue-600);
+}
+
+html[class~="dark"] a {
+  color: var(--advizr-blue-400);
+}
+
+html[class~="dark"] a:hover {
+  color: var(--advizr-blue-300);
+}
+
+/* --------------------------------------------------------------------
+   Code Blocks
+   -------------------------------------------------------------------- */
+
+pre {
+  background-color: var(--advizr-bg-code);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  padding: var(--advizr-space-4);
+  overflow-x: auto;
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-sm);
+  line-height: var(--advizr-text-lg-lh);
+}
+
+html[class~="dark"] pre {
+  background-color: var(--advizr-bg-code);
+  border-color: var(--advizr-border);
+}
+
+/* --------------------------------------------------------------------
+   Inline Code
+   -------------------------------------------------------------------- */
+
+:not(pre) > code {
+  background-color: var(--advizr-bg-tertiary);
+  padding: 0.125rem var(--advizr-space-1);
+  border-radius: var(--advizr-radius-sm);
+  font-family: var(--advizr-font-mono);
+  font-size: 0.875em;
+  border: 1px solid var(--advizr-border);
+}
+
+html[class~="dark"] :not(pre) > code {
+  background-color: var(--advizr-bg-tertiary);
+  border-color: var(--advizr-border);
+}
+
+/* --------------------------------------------------------------------
+   Tables
+   -------------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--advizr-space-6) 0;
+}
+
+th {
+  text-align: left;
+  font-weight: var(--advizr-font-semibold);
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  border-bottom: 2px solid var(--advizr-border-strong);
+  color: var(--advizr-text-primary);
+}
+
+td {
+  padding: var(--advizr-space-3) var(--advizr-space-4);
+  border-bottom: 1px solid var(--advizr-border);
+}
+
+tr:nth-child(even) {
+  background-color: var(--advizr-bg-secondary);
+}
+
+html[class~="dark"] th {
+  border-bottom-color: var(--advizr-border-strong);
+}
+
+html[class~="dark"] td {
+  border-bottom-color: var(--advizr-border);
+}
+
+/* --------------------------------------------------------------------
+   Blockquotes
+   -------------------------------------------------------------------- */
+
+blockquote {
+  border-left: 4px solid var(--advizr-blue-300);
+  background-color: var(--advizr-bg-secondary);
+  padding: var(--advizr-space-4) var(--advizr-space-6);
+  margin: var(--advizr-space-6) 0;
+  border-radius: 0 var(--advizr-radius-md) var(--advizr-radius-md) 0;
+  color: var(--advizr-text-secondary);
+}
+
+html[class~="dark"] blockquote {
+  border-left-color: var(--advizr-blue-600);
+  background-color: var(--advizr-bg-secondary);
+}
+
+/* --------------------------------------------------------------------
+   Horizontal Rule
+   -------------------------------------------------------------------- */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--advizr-border);
+  margin: var(--advizr-space-8) 0;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------- */
+
+.advizr-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--advizr-space-4);
+  padding-right: var(--advizr-space-4);
+}
+
+@media (min-width: 640px) {
+  .advizr-container {
+    padding-left: var(--advizr-space-6);
+    padding-right: var(--advizr-space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .advizr-container {
+    padding-left: var(--advizr-space-8);
+    padding-right: var(--advizr-space-8);
+  }
+}
+
+.advizr-section {
+  padding-top: var(--advizr-space-16);
+  padding-bottom: var(--advizr-space-16);
+}
+
+@media (min-width: 768px) {
+  .advizr-section {
+    padding-top: var(--advizr-space-20);
+    padding-bottom: var(--advizr-space-20);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Card
+   -------------------------------------------------------------------- */
+
+.advizr-card {
+  background-color: var(--advizr-bg-primary);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  box-shadow: var(--advizr-shadow-sm);
+  padding: var(--advizr-space-6);
+  transition: box-shadow var(--advizr-transition-base);
+}
+
+.advizr-card:hover {
+  box-shadow: var(--advizr-shadow-md);
+}
+
+/* --------------------------------------------------------------------
+   Grids
+   -------------------------------------------------------------------- */
+
+.advizr-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--advizr-space-6);
+}
+
+.advizr-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--advizr-space-6);
+}
+
+.advizr-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--advizr-space-6);
+}
+
+@media (min-width: 640px) {
+  .advizr-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advizr-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advizr-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .advizr-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .advizr-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Badge
+   -------------------------------------------------------------------- */
+
+.advizr-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem var(--advizr-space-2);
+  font-size: var(--advizr-text-xs);
+  line-height: var(--advizr-text-xs-lh);
+  font-weight: var(--advizr-font-medium);
+  border-radius: var(--advizr-radius-full);
+  background-color: var(--advizr-blue-50);
+  color: var(--advizr-blue-700);
+  border: 1px solid var(--advizr-blue-200);
+}
+
+html[class~="dark"] .advizr-badge {
+  background-color: var(--advizr-blue-900);
+  color: var(--advizr-blue-200);
+  border-color: var(--advizr-blue-700);
+}
+
+/* --------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------- */
+
+.advizr-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  line-height: var(--advizr-text-sm-lh);
+  color: #FFFFFF;
+  background-color: var(--advizr-blue-500);
+  border: 1px solid transparent;
+  border-radius: var(--advizr-radius-md);
+  cursor: pointer;
+  transition: background-color var(--advizr-transition-fast);
+}
+
+.advizr-btn-primary:hover {
+  background-color: var(--advizr-blue-600);
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.advizr-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--advizr-space-2) var(--advizr-space-4);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-medium);
+  line-height: var(--advizr-text-sm-lh);
+  color: var(--advizr-text-primary);
+  background-color: var(--advizr-bg-primary);
+  border: 1px solid var(--advizr-border-strong);
+  border-radius: var(--advizr-radius-md);
+  cursor: pointer;
+  transition: all var(--advizr-transition-fast);
+}
+
+.advizr-btn-secondary:hover {
+  background-color: var(--advizr-bg-secondary);
+  border-color: var(--advizr-blue-400);
+  text-decoration: none;
+}
