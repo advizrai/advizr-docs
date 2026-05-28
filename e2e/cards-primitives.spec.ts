@@ -45,8 +45,9 @@ test.describe('Cards & Primitives', () => {
 
   test('primary button has indigo background', async ({ page }) => {
     await page.goto('/docs');
-    const btn = page.locator('a[class*="primary"], a[class*="button"]').first();
-    if (await btn.isVisible()) {
+    // Scope to main content to avoid matching Nextra sidebar links on mobile
+    const btn = page.locator('main a[class*="primary"], main a[class*="button"], [class*="hero"] a[class*="primary"], [class*="hero"] a[class*="button"]').first();
+    if (await btn.count() > 0 && await btn.isVisible()) {
       const bg = await btn.evaluate((el) => getComputedStyle(el).backgroundColor);
       expect(bg).not.toBe('rgba(0, 0, 0, 0)');
     }
@@ -54,8 +55,9 @@ test.describe('Cards & Primitives', () => {
 
   test('button hover lifts and adds shadow', async ({ page }) => {
     await page.goto('/docs');
-    const btn = page.locator('a[class*="primary"], a[class*="button"]').first();
-    if (await btn.isVisible()) {
+    // Scope to main content to avoid matching Nextra sidebar links on mobile
+    const btn = page.locator('main a[class*="primary"], main a[class*="button"], [class*="hero"] a[class*="primary"], [class*="hero"] a[class*="button"]').first();
+    if (await btn.count() > 0 && await btn.isVisible()) {
       await btn.hover();
       await page.waitForTimeout(250);
       const shadow = await btn.evaluate((el) => getComputedStyle(el).boxShadow);

@@ -104,8 +104,8 @@ export default function CustomFooter() {
         <div className={styles.bottom}>
           <span>&copy; {new Date().getFullYear()} Advizr AI Inc. All rights reserved.</span>
           <div className={styles.legalLinks}>
-            <Link href="/docs/legal/terms">Terms</Link>
-            <Link href="/docs/legal/privacy">Privacy</Link>
+            <Link href="/docs/legal/terms-of-service">Terms</Link>
+            <Link href="/docs/legal/privacy-policy">Privacy</Link>
           </div>
         </div>
       </div>
