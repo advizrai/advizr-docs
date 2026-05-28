@@ -266,7 +266,7 @@ html[class~="dark"] ::-webkit-scrollbar-thumb {
 }
 
 /* ==========================================================================
-   Navbar Logo - invert for light mode
+   Navbar Logo
    ========================================================================== */
 
 .advizr-navbar-logo {
@@ -275,6 +275,41 @@ html[class~="dark"] ::-webkit-scrollbar-thumb {
 
 html[class~="dark"] .advizr-navbar-logo {
   filter: none;
+}
+
+/* ==========================================================================
+   Nextra Navbar Layout Override
+   Logo left, glow nav to its right, search + github far right.
+   ========================================================================== */
+
+/* The top-level Nextra nav bar - make it a proper flex row */
+header nav[class*="nextra"] {
+  display: flex;
+  align-items: center;
+}
+
+/* The logo link (Nextra wraps our logo prop in an <a>) */
+header nav a:has(.advizr-navbar-logo) {
+  order: -2;
+  margin-right: var(--advizr-space-4);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Copy Page Button Fix
+   ========================================================================== */
+
+/* Move the Nextra "Copy page" button to the TOC sidebar area */
+article > div[class*="float-end"]:has(button) {
+  float: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 20;
+}
+
+article {
+  position: relative;
 }
 
 /* ==========================================================================

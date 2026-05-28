@@ -71,10 +71,10 @@ export default async function RootLayout({ children }) {
     <Navbar
       logo={
         <img
-          src="/advizr-logo-white.png"
+          src="/advizr-logo.png"
           alt="Advizr"
           className="advizr-navbar-logo"
-          style={{ height: '28px', width: 'auto' }}
+          style={{ height: '24px', width: 'auto' }}
         />
       }
       projectLink="https://github.com/advizrai/advizr-docs"
