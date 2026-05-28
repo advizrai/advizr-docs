@@ -1,3 +1,67 @@
 # Reading Your Dashboard
 
-How to interpret the data on your Advizr client dashboard. Covers each section of the Home screen, what the metrics mean, how to track progress against your objectives, and how to use the dashboard to identify what is working and what needs attention.
+Your dashboard is where you see what your automations are doing. This page teaches you how to read it, what the numbers mean, and when to take action.
+
+## Understanding runs
+
+Every time an automation executes, that's a "run." If your lead response workflow fires 15 times today, that's 15 runs. Each run is logged with a timestamp, the data it processed, and the result.
+
+## Run statuses
+
+Each run has one of four statuses:
+
+- **Triggered** - the automation detected its trigger condition. It's about to start.
+- **Running** - the workflow is actively executing its steps.
+- **Completed** - everything finished successfully. The output was delivered.
+- **Failed** - something went wrong. The run stopped before completing.
+
+A healthy automation shows almost all "completed" statuses. The occasional failure is normal - an API timeout, a malformed input, a temporary outage. Repeated failures are not normal and need attention.
+
+## Reading run history
+
+Your run history shows a chronological list of every execution. For each run, you can see:
+
+- **What triggered it** - the event or schedule that started the run
+- **When it ran** - timestamp down to the minute
+- **What it did** - each step the automation executed, in order
+- **The result** - what was produced, sent, or updated
+
+Click into any individual run to see the full detail. This is especially useful when troubleshooting.
+
+## Understanding logs
+
+When a run fails, the log tells you why. Common failure reasons include:
+
+- A connected service was temporarily unavailable
+- The input data was missing a required field
+- A rate limit was hit (too many requests too fast)
+- Authentication expired and needs to be refreshed
+
+You don't need to fix these yourself. But understanding what the log says helps you communicate the issue clearly and get it resolved faster.
+
+## Analytics to watch
+
+Your dashboard surfaces key metrics:
+
+- **Success rate** - percentage of runs that complete without errors. Aim for 95%+.
+- **Volume trends** - are your automations running more or less over time? Growth usually means they're working.
+- **Time savings** - estimated hours saved based on run count and average manual time per task.
+
+<Callout>
+Check your dashboard once a week. Set a recurring 15-minute calendar block. That's all it takes to stay on top of your automations.
+</Callout>
+
+## When to flag something
+
+Reach out to your Advizr team when you see:
+
+- The same automation failing multiple times in a row
+- Success rate dropping below 90%
+- Results that look wrong or unexpected
+- A sudden spike or drop in run volume you can't explain
+
+Catching these early prevents small issues from becoming big problems.
+
+## Next steps
+
+Once you're comfortable reading your dashboard, learn how to improve your workflows in [Optimizing Workflows](/docs/academy/workflow-mastery/optimizing-workflows).

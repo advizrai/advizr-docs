@@ -1,3 +1,57 @@
 # Automation Basics
 
-The building blocks of business automation. Covers triggers, actions, and conditions; connecting AI to your existing tools; and the difference between full automation and human-in-the-loop workflows. Provides a practical introduction to designing automations that are reliable and maintainable.
+You don't need to write code to understand automation. This page breaks down how it works so you can design workflows, brief your team, and have informed conversations about what's possible.
+
+## The three building blocks
+
+Every automation has the same structure:
+
+1. **Trigger** - something happens that kicks off the workflow. A form is submitted, an email arrives, a calendar event starts, or a scheduled time is reached.
+2. **Action** - something is done in response. An email is sent, a spreadsheet row is updated, a task is created, a notification goes out.
+3. **Data flow** - information moves from the trigger to the action. The form submission data populates the email. The calendar event details create the task.
+
+That's it. Trigger, action, data flow. Every automation - from a simple email auto-reply to a complex multi-step workflow - is built from these three pieces.
+
+## A real example
+
+Here's what a lead response automation looks like in practice:
+
+1. **Trigger**: A new lead fills out your contact form
+2. **Action 1**: AI researches the lead's company (website, size, industry)
+3. **Action 2**: AI drafts a personalized response using that research
+4. **Action 3**: The response is sent to the lead within 5 minutes
+
+Without automation, this takes 20-30 minutes of manual research and writing. With automation, it happens in under 5 minutes - every time, without fail.
+
+## Three types of automation
+
+- **Scheduled** - runs on a timer. Every morning at 8am, pull yesterday's metrics and send a summary. Every Friday, generate the weekly report.
+- **Triggered** - runs when something happens. New form submission, new email, file uploaded, payment received.
+- **Manual** - runs when someone presses a button. Useful for tasks that need human judgment on when to start, but not on how to execute.
+
+Most businesses start with triggered automations because the value is immediately obvious.
+
+## The build process
+
+Building an automation follows six steps:
+
+1. **Identify** - find the opportunity (you just learned how)
+2. **Design** - map out the trigger, actions, and data flow on paper
+3. **Build** - configure the automation in your platform
+4. **Test** - run it with sample data, check the output
+5. **Deploy** - turn it on with real data
+6. **Monitor** - watch for failures and unexpected results
+
+<Callout>
+Don't skip the design step. Spend 10 minutes sketching the workflow on paper before building anything. It saves hours of rework.
+</Callout>
+
+## Human-in-the-loop vs. full automation
+
+Not everything should run without oversight. For high-stakes tasks - client communication, financial transactions, legal documents - consider a "human-in-the-loop" design. The automation does the heavy lifting, then pauses for a human to review and approve before the final step executes.
+
+Start with human-in-the-loop. Move to full automation once you trust the output.
+
+## Next steps
+
+With the basics understood, learn how to track your automations in [Reading Your Dashboard](/docs/academy/workflow-mastery/reading-your-dashboard).

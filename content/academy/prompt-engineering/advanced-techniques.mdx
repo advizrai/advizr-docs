@@ -1,3 +1,69 @@
 # Advanced Techniques
 
-Beyond the basics - chain-of-thought prompting, few-shot learning, system prompts, and multi-step workflows. Covers how to break complex tasks into manageable steps, use AI to check its own work, and design prompts that handle edge cases gracefully. For practitioners ready to push past simple question-and-answer interactions.
+Once you have the basics down, these techniques let you handle more complex tasks and get consistently better results.
+
+## Chain-of-thought prompting
+
+Adding "Think through this step by step" to your prompt forces the AI to show its reasoning instead of jumping to a conclusion. This is especially useful for analysis, calculations, and decision-making.
+
+> Analyze whether I should hire a full-time bookkeeper or continue outsourcing. My revenue is £800k, I spend £1,200/month on outsourced bookkeeping, and I process about 300 transactions per month. Think through this step by step before giving a recommendation.
+
+The AI will lay out the logic - cost comparison, workload analysis, hidden costs - before reaching a conclusion. You can spot where it went wrong and correct it.
+
+## Few-shot examples
+
+Instead of describing what you want, show 2-3 examples of the finished product. The AI will match the pattern.
+
+> Write product descriptions for my items. Here are two examples of the style I want:
+>
+> "Oak Dining Table - Solid oak, seats 6. Built to last 20 years. £1,200."
+>
+> "Leather Armchair - Full-grain leather, walnut frame. Gets better with age. £850."
+>
+> Now write descriptions for: Standing Desk, Bookshelf, Coffee Table.
+
+This is faster and more reliable than trying to explain your style in words.
+
+## System prompts
+
+A system prompt is a persistent instruction that applies to an entire conversation. Think of it as a standing brief. Many AI tools let you set these in settings or at the start of a chat.
+
+> You are a business advisor for UK-based SMEs. Always consider UK tax law and regulations. Use plain English. When you reference numbers, use GBP. Keep all responses under 300 words unless I ask for more detail.
+
+Set this once, and every message in that conversation follows these rules.
+
+## Structured output
+
+When you need data you can actually use, ask for a specific format.
+
+> List my top 5 expenses from this bank statement as a table with columns: Category, Monthly Amount, Percentage of Total Revenue, Suggested Action.
+
+You can also request JSON, CSV, or bullet-point formats. The key is being explicit about the structure you need.
+
+## Multi-step prompting
+
+For complex tasks, break the work into sequential steps rather than asking for everything at once.
+
+- Step 1: "Summarize this 40-page contract in 10 bullet points"
+- Step 2: "Now identify the 3 clauses that carry the most financial risk"
+- Step 3: "Draft an email to my solicitor asking about those 3 clauses"
+
+Each step builds on the last. You review and correct between steps, which keeps errors from compounding.
+
+## When to use each technique
+
+| Technique | Best for |
+|-----------|----------|
+| Chain-of-thought | Decisions, analysis, calculations |
+| Few-shot examples | Matching a specific style or format |
+| System prompts | Recurring tasks with consistent rules |
+| Structured output | Reports, comparisons, data you will reuse |
+| Multi-step | Complex projects with multiple deliverables |
+
+<Callout>
+You do not need to use all of these at once. Pick one technique, try it on a real task this week, and see the difference. Stack techniques as you get comfortable.
+</Callout>
+
+## Next steps
+
+Techniques are tool-agnostic, but different AI tools have different strengths. Learn which tool to reach for in [Tools and Models](/docs/academy/prompt-engineering/tools-and-models).

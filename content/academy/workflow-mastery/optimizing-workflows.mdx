@@ -1,3 +1,61 @@
 # Optimizing Workflows
 
-Once your automations are running, this module covers how to make them better. Covers monitoring performance, identifying bottlenecks, refining prompts based on real output, adjusting triggers and conditions, and iterating toward higher accuracy and lower manual intervention.
+Your automations are running. Now make them better. Optimization is not a one-time event - it's an ongoing process that turns a good automation into a great one.
+
+## The iteration timeline
+
+Don't try to optimize everything on day one. Follow this schedule:
+
+- **Week 1** - Monitor only. Watch runs, read outputs, note anything that looks off. Don't change anything yet.
+- **Weeks 2-4** - Adjust. Fix the obvious issues: wrong triggers, missing data, poor formatting. Small tweaks, not overhauls.
+- **Month 2+** - Optimize. Now you have enough data to make informed improvements. Refine prompts, add conditions, tighten logic.
+
+This timeline keeps you from over-engineering before you understand real-world performance.
+
+## A/B testing different approaches
+
+When you're unsure which approach works better, test both. Run version A for a week, then version B for a week, and compare results.
+
+Examples of what to test:
+
+- Two different email subject lines in your outreach automation
+- Different response times (immediate vs. 30-minute delay)
+- Short vs. detailed AI-generated summaries
+- Different trigger conditions for the same workflow
+
+Let the data decide. Your dashboard will show you which version performs better.
+
+## Error handling and fallbacks
+
+Every automation will eventually fail. The question is: what happens when it does?
+
+Good error handling means building a backup plan into the workflow:
+
+- If the AI can't research a lead, fall back to a generic but still personalized template
+- If a notification fails to send, queue it for retry 5 minutes later
+- If a data source is unavailable, alert a team member instead of producing bad output
+
+The goal is graceful degradation - when something breaks, the system handles it instead of silently failing.
+
+## Common optimizations
+
+Once you have a few weeks of data, look for these improvements:
+
+- **Better prompts** - Refine the instructions your AI receives. Small wording changes can dramatically improve output quality.
+- **Smarter triggers** - Filter out noise. If your automation fires on every email but only 30% are relevant, add a condition to filter first.
+- **Additional data sources** - Enrich your workflows with more context. Pull in CRM data, website analytics, or calendar availability.
+- **Reduced steps** - Combine or eliminate unnecessary steps to speed up execution.
+
+## The 80/20 rule
+
+Your first version captures about 80% of the total value. That's good enough to launch. The remaining 20% comes from optimization over time.
+
+Don't let perfectionism delay deployment. Get it running, then improve it.
+
+<Callout>
+Keep a simple log of every change you make to a workflow and what happened after. This "optimization journal" prevents you from repeating failed experiments and helps you spot patterns.
+</Callout>
+
+## Next steps
+
+You're optimizing your workflows - now prove their value. Learn how in [Measuring ROI](/docs/academy/workflow-mastery/measuring-roi).

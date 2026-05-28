@@ -1,3 +1,105 @@
 # Glossary
 
-Definitions for key terms used throughout the Advizr Academy and documentation. Covers AI and machine learning terminology, Advizr-specific concepts like DOE and self-annealing, and business terms related to automation and digital transformation. Use this as a quick reference when you encounter an unfamiliar term.
+Plain-language definitions for AI and business terms used throughout the Academy. No jargon. No circular definitions.
+
+<Callout>
+Terms evolve fast. This glossary reflects common usage as of 2026.
+</Callout>
+
+## A
+
+**Adoption** - The process of getting people in your organisation to actually use new tools and processes. Technology only works if people use it. Adoption is about behaviour change, not software installation.
+
+**Agent** - An AI system that can take actions on its own, not just answer questions. An agent might research a topic, draft a document, send an email, and update a spreadsheet - all from a single instruction.
+
+**AI (Artificial Intelligence)** - Software that can perform tasks that normally require human judgment. In a business context, this usually means tools that can read, write, analyse, and make decisions based on patterns in data.
+
+**API (Application Programming Interface)** - A way for two software systems to talk to each other. When your AI tool pulls data from your accounting software, it uses an API. You do not need to build APIs yourself - you need to know they exist and what they connect.
+
+**Automation** - Using technology to perform tasks without human intervention. AI-powered automation handles tasks that require judgment (like reading an email and deciding how to respond), unlike traditional automation which only handles rigid, rule-based tasks.
+
+## C
+
+**Chain of thought** - A technique where AI works through a problem step by step, showing its reasoning. This produces better results on complex tasks because it forces the AI to break problems down rather than jumping to an answer.
+
+**Change management** - The structured approach to transitioning people from current ways of working to new ones. When you introduce AI tools, change management determines whether your team embraces them or ignores them.
+
+**Context window** - The amount of text an AI model can consider at once. Think of it as working memory. A larger context window means the AI can read longer documents or consider more information when generating a response. Measured in tokens.
+
+## D
+
+**Deterministic** - A process that produces the same output every time given the same input. A spreadsheet formula is deterministic. Traditional software is deterministic. AI is generally not - which is why you build critical processes with deterministic code and use AI for judgment-based steps.
+
+## E
+
+**Embedding** - A way to represent text (or images, or other data) as numbers so that similar things have similar numbers. This is how AI tools understand that "car" and "vehicle" mean roughly the same thing. Embeddings power search, recommendations, and categorisation.
+
+**Execution** - In the context of AI systems, execution refers to the deterministic code that carries out specific actions - sending emails, updating databases, generating files. Execution code does not make judgment calls; it follows instructions precisely.
+
+## F
+
+**Few-shot learning** - Giving an AI a few examples of what you want before asking it to perform the task. Instead of explaining the format you need, you show it three completed examples and say "do it like these." Usually more effective than lengthy instructions.
+
+**Fine-tuning** - Training an AI model on your specific data so it performs better on your specific tasks. Like hiring a generalist and then training them on your industry. Most businesses do not need fine-tuning - good prompts and context usually get the job done.
+
+## H
+
+**Hallucination** - When an AI generates information that sounds confident but is factually wrong. AI models do not "know" things - they predict likely text. Sometimes those predictions are plausible but incorrect. Always verify critical facts.
+
+## L
+
+**LLM (Large Language Model)** - The type of AI that powers tools like ChatGPT, Claude, and Gemini. LLMs are trained on vast amounts of text and can read, write, summarise, translate, analyse, and reason about language. They are the engine behind most modern AI tools.
+
+## M
+
+**Multimodal** - An AI system that can work with multiple types of input - text, images, audio, video. A multimodal model can look at a photo of a receipt and extract the amounts, or watch a video and summarise what happened.
+
+## O
+
+**Orchestration** - The coordination layer that decides what to do, in what order, and routes work to the right tools. In an AI system, orchestration is the "brain" that reads a request, breaks it into steps, and delegates each step to the appropriate tool or process.
+
+## P
+
+**Probabilistic** - A process where the output can vary each time, even with the same input. AI responses are probabilistic - ask the same question twice and you may get slightly different answers. This is a feature, not a bug, but it means you should not use raw AI output for tasks requiring exact consistency.
+
+**Prompt** - The instruction you give to an AI. The quality of the output depends heavily on the quality of the prompt. A vague prompt gets a vague answer. A specific prompt with context, examples, and constraints gets a useful answer.
+
+## R
+
+**RAG (Retrieval-Augmented Generation)** - A technique where AI retrieves relevant information from your documents or databases before generating a response. Instead of relying only on its training data, the AI first searches your files, then answers using what it found. This keeps responses grounded in your actual data.
+
+**ROI (Return on Investment)** - The measurable benefit you get relative to what you spent. For AI projects, ROI usually shows up as time saved, errors reduced, or revenue increased. Measure it. If you cannot measure it, you cannot justify expanding it.
+
+## S
+
+**Semantic search** - Search that understands meaning, not just keywords. Traditional search finds documents containing the exact words you typed. Semantic search finds documents about the concept you meant, even if they use different words.
+
+**SOP (Standard Operating Procedure)** - A documented, step-by-step process for completing a specific task. SOPs are essential for AI automation because they define exactly what needs to happen, making it possible to translate human processes into automated workflows.
+
+**System prompt** - Hidden instructions that define how an AI tool behaves. When you use a custom AI tool, the system prompt tells it what role to play, what rules to follow, and how to respond. You do not see the system prompt, but it shapes every response.
+
+## T
+
+**Temperature** - A setting that controls how creative or predictable AI output is. Low temperature (closer to 0) produces consistent, safe responses. High temperature produces more varied, creative output. For business tasks, lower temperature is usually better.
+
+**Token** - The basic unit AI uses to process text. Roughly, one token equals about three-quarters of a word. Tokens matter because AI models charge by the token and have limits on how many they can process at once (the context window).
+
+**Trigger** - An event that starts an automated workflow. A trigger might be a new email arriving, a form submission, a calendar event, or a scheduled time. Triggers are the starting gun for automation.
+
+## V
+
+**Vector database** - A specialised database designed to store and search embeddings. When you build a system that searches your company's documents using AI, the documents are converted to embeddings and stored in a vector database. This enables fast semantic search across large collections.
+
+## W
+
+**Webhook** - A way for one system to notify another when something happens. When a customer submits a form on your website and that automatically creates a task in your project management tool, a webhook is doing the work. Think of it as an automated tap on the shoulder.
+
+**Workflow** - A sequence of steps that accomplishes a specific business task. An AI workflow might receive an email, extract key information, update a database, draft a response, and flag it for review. Each step connects to the next automatically.
+
+## Z
+
+**Zero-shot** - Asking an AI to perform a task without giving it any examples. You describe what you want and the AI figures it out from its training. Works well for simple tasks. For complex or specific formats, few-shot learning (providing examples) usually works better.
+
+## Next steps
+
+Continue exploring the Academy: [Academy overview](/docs/academy)
