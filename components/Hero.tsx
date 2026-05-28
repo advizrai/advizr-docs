@@ -33,6 +33,7 @@ export function Hero({
         className,
       )}
     >
+      <div className={styles.glow} aria-hidden="true" />
       <div className={styles.inner}>
         <h1 className={styles.title}>{title}</h1>
         {description && <p className={styles.description}>{description}</p>}
