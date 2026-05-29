@@ -30,12 +30,12 @@ test.describe('Navbar Premium Redesign', () => {
     await expect(activeLink).toHaveText('Platform');
   });
 
-  test('CTA has emerald background', async ({ page }) => {
+  test('CTA has gradient background', async ({ page }) => {
     await page.goto('/docs');
     const cta = page.locator('header a[href="https://advizr.ca/book"]');
-    const bg = await cta.evaluate((el) => getComputedStyle(el).backgroundColor);
-    // accent-500 = #10B981 = rgb(16, 185, 129)
-    expect(bg).toBe('rgb(16, 185, 129)');
+    const bgImage = await cta.evaluate((el) => getComputedStyle(el).backgroundImage);
+    // Uses brand blue gradient
+    expect(bgImage).toContain('linear-gradient');
   });
 
   test('section links have color transition', async ({ page }, testInfo) => {
