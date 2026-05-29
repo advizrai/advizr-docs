@@ -136,6 +136,31 @@ html[class~="dark"] a:hover {
   box-shadow: inset 0 -1px 0 var(--advizr-blue-400);
 }
 
+/* CTA buttons with explicit white text - override global link color */
+a[class*="primary"],
+a[class*="bookCall"],
+a[class*="cta"] {
+  color: #ffffff;
+}
+
+a[class*="primary"]:hover,
+a[class*="bookCall"]:hover,
+a[class*="cta"]:hover {
+  color: #ffffff;
+}
+
+html[class~="dark"] a[class*="primary"],
+html[class~="dark"] a[class*="bookCall"],
+html[class~="dark"] a[class*="cta"] {
+  color: #ffffff;
+}
+
+html[class~="dark"] a[class*="primary"]:hover,
+html[class~="dark"] a[class*="bookCall"]:hover,
+html[class~="dark"] a[class*="cta"]:hover {
+  color: #ffffff;
+}
+
 /* --------------------------------------------------------------------
    Code Blocks
    -------------------------------------------------------------------- */
