@@ -130,7 +130,7 @@ export default function NavbarExtra() {
         </ul>
       </motion.nav>
       <a
-        href="https://advizr.ca/book"
+        href="https://cal.com/team/advizr/ai-strategy-call"
         className={styles.cta}
         target="_blank"
         rel="noopener noreferrer"

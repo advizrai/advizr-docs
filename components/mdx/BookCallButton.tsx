@@ -18,7 +18,7 @@ const variantMap: Record<string, string> = {
 export function BookCallButton({
   text = 'Book a Call',
   variant = 'primary',
-  href = '#',
+  href = 'https://cal.com/team/advizr/ai-strategy-call',
   className,
 }: BookCallButtonProps) {
   return (

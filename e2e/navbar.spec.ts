@@ -16,7 +16,7 @@ test.describe('Navbar Premium Redesign', () => {
 
   test('CTA is visible with correct href and target', async ({ page }) => {
     await page.goto('/docs');
-    const cta = page.locator('header a[href="https://advizr.ca/book"]');
+    const cta = page.locator('header a[href="https://cal.com/team/advizr/ai-strategy-call"]');
     await expect(cta).toBeVisible();
     await expect(cta).toHaveAttribute('target', '_blank');
     await expect(cta).toHaveText('Book a Call');
@@ -32,7 +32,7 @@ test.describe('Navbar Premium Redesign', () => {
 
   test('CTA has gradient background', async ({ page }) => {
     await page.goto('/docs');
-    const cta = page.locator('header a[href="https://advizr.ca/book"]');
+    const cta = page.locator('header a[href="https://cal.com/team/advizr/ai-strategy-call"]');
     const bgImage = await cta.evaluate((el) => getComputedStyle(el).backgroundImage);
     // Uses brand blue gradient
     expect(bgImage).toContain('linear-gradient');
@@ -48,7 +48,7 @@ test.describe('Navbar Premium Redesign', () => {
 
   test('CTA has transform and box-shadow transitions', async ({ page }) => {
     await page.goto('/docs');
-    const cta = page.locator('header a[href="https://advizr.ca/book"]');
+    const cta = page.locator('header a[href="https://cal.com/team/advizr/ai-strategy-call"]');
     const transition = await cta.evaluate((el) => getComputedStyle(el).transition);
     expect(transition).toContain('transform');
     expect(transition).toContain('box-shadow');
@@ -56,7 +56,7 @@ test.describe('Navbar Premium Redesign', () => {
 
   test('CTA has pill shape (large border-radius)', async ({ page }) => {
     await page.goto('/docs');
-    const cta = page.locator('header a[href="https://advizr.ca/book"]');
+    const cta = page.locator('header a[href="https://cal.com/team/advizr/ai-strategy-call"]');
     const radius = await cta.evaluate((el) => getComputedStyle(el).borderRadius);
     // radius-full = 9999px
     expect(radius).toBe('9999px');
@@ -72,7 +72,7 @@ test.describe('Navbar Premium Redesign', () => {
   test('CTA remains visible on mobile', async ({ page }, testInfo) => {
     if (testInfo.project.name !== 'mobile') test.skip();
     await page.goto('/docs');
-    const cta = page.locator('header a[href="https://advizr.ca/book"]');
+    const cta = page.locator('header a[href="https://cal.com/team/advizr/ai-strategy-call"]');
     await expect(cta).toBeVisible();
   });
 
