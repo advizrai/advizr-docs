@@ -18,7 +18,7 @@
   pointer-events: none;
   transform: translateY(8px) scale(0.95);
   transition: opacity var(--advizr-transition-base),
-    transform var(--advizr-transition-spring),
+    transform var(--advizr-transition-base),
     background-color var(--advizr-transition-fast),
     border-color var(--advizr-transition-fast),
     box-shadow var(--advizr-transition-fast);
@@ -27,7 +27,7 @@
 }
 
 :global(html[class~="dark"]) .button {
-  background: rgba(19, 28, 46, 0.8);
+  background: var(--advizr-surface-overlay);
   border-color: var(--advizr-border);
 }
 

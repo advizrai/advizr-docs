@@ -11,7 +11,7 @@ test.describe('Navbar Premium Redesign', () => {
     const links = nav.locator('a:not([tabindex="-1"])');
     await expect(links).toHaveCount(5);
     const labels = await links.allTextContents();
-    expect(labels).toEqual(['Platform', 'Services', 'Architecture', 'Academy', 'Resources']);
+    expect(labels).toEqual(['Platform', 'Services', 'Academy', 'Architecture', 'Resources']);
   });
 
   test('CTA is visible with correct href and target', async ({ page }) => {

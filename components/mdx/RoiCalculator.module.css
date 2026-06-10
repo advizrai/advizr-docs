@@ -69,7 +69,7 @@
   border-radius: var(--advizr-radius-full);
   background: var(--advizr-gradient-primary);
   border: 3px solid #ffffff;
-  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(99, 102, 241, 0.1);
+  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.1);
   cursor: pointer;
   transition: transform var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
 }
@@ -86,7 +86,7 @@
   border-radius: var(--advizr-radius-full);
   background: var(--advizr-gradient-primary);
   border: 3px solid #ffffff;
-  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(99, 102, 241, 0.1);
+  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.1);
   cursor: pointer;
   transition: transform var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
 }
@@ -110,12 +110,12 @@
 
 :global(html[class~="dark"]) .slider::-webkit-slider-thumb {
   border-color: var(--advizr-bg-primary);
-  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(99, 102, 241, 0.3);
+  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.3);
 }
 
 :global(html[class~="dark"]) .slider::-moz-range-thumb {
   border-color: var(--advizr-bg-primary);
-  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(99, 102, 241, 0.3);
+  box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.3);
 }
 
 /* ---------- Outputs ---------- */

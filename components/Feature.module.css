@@ -29,12 +29,12 @@ a.feature:hover .title {
   align-items: center;
   justify-content: center;
   border-radius: var(--advizr-radius-md);
-  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(99, 102, 241, 0.06) 100%);
+  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(10, 122, 255, 0.06) 100%);
   font-size: 1.125rem;
 }
 
 :global(html[class~="dark"]) .icon {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(10, 122, 255, 0.1);
 }
 
 .content {
