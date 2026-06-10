@@ -9,3 +9,7 @@ analysis/
 .env
 .env.local
 test-results/
+# generated AI-readable surface (postbuild)
+public/llms.txt
+public/llms-full.txt
+public/docs/

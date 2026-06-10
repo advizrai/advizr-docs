@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npx pagefind --site .next/server/app --output-path public/_pagefind",
+    "postbuild": "npx pagefind --site .next/server/app --output-path public/_pagefind && node scripts/generate-llms.mjs",
     "start": "next start"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@types/node": "25.9.1",
     "@types/react": "19.2.15",
     "playwright": "^1.60.0"

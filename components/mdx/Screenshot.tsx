@@ -69,7 +69,7 @@ export function Screenshot({ src, alt, caption, width, height, className }: Scre
 
       {lightboxOpen && (
         <div className={styles.lightbox} onClick={close} role="dialog" aria-label={alt}>
-          <img
+          <img loading="lazy" decoding="async"
             src={src}
             alt={alt}
             className={styles.lightboxImage}

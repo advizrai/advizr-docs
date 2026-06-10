@@ -130,6 +130,25 @@ a {
   transition: color var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
 }
 
+/* WCAG 1.4.1: links inside prose need a non-color cue — a soft underline
+   that strengthens on hover (component links opt out via their modules) */
+article a:not([class]),
+article p a,
+article li a,
+article td a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+article a:not([class]):hover,
+article p a:hover,
+article li a:hover,
+article td a:hover {
+  text-decoration-color: currentColor;
+}
+
 a:hover {
   text-decoration: none;
   color: var(--advizr-blue-600);

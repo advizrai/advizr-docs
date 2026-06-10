@@ -2,6 +2,7 @@ import { Layout, Navbar } from 'nextra-theme-docs'
 import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import localFont from 'next/font/local'
+import Image from 'next/image'
 import '../styles/app.css'
 import NavbarExtra from '../components/NavbarExtra'
 import { SkipLink } from '../components/SkipLink'
@@ -107,11 +108,13 @@ export default async function RootLayout({ children }) {
   const navbar = (
     <Navbar
       logo={
-        <img
+        <Image
           src="/advizr-logo.png"
           alt="Advizr"
           className="advizr-navbar-logo"
-          style={{ height: '36px', width: 'auto' }}
+          width={36}
+          height={36}
+          priority
         />
       }
       projectLink="https://github.com/advizrai/advizr-docs"

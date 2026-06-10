@@ -37,6 +37,17 @@ export function MotionEffects() {
       targets.forEach((el) => io?.observe(el))
     }
 
+    // a11y patch: Nextra's theme-switcher (headlessui Listbox) ships without
+    // an accessible name. React re-renders wipe one-shot attributes, so a
+    // MutationObserver keeps the label applied (upstream: nextra-theme-docs).
+    const labelThemeSwitch = () =>
+      document
+        .querySelectorAll('button[id^="headlessui-listbox-button"]:not([aria-label])')
+        .forEach((b) => b.setAttribute('aria-label', 'Change theme'))
+    labelThemeSwitch()
+    const labelObserver = new MutationObserver(labelThemeSwitch)
+    labelObserver.observe(document.body, { childList: true, subtree: true })
+
     const header = document.querySelector('header')
     const onScroll = () => {
       if (header) header.toggleAttribute('data-scrolled', window.scrollY > 8)
@@ -46,6 +57,7 @@ export function MotionEffects() {
 
     return () => {
       io?.disconnect()
+      labelObserver.disconnect()
       window.removeEventListener('scroll', onScroll)
     }
   }, [pathname])
