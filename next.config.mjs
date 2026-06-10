@@ -32,6 +32,10 @@ export default withNextra({
       { source: '/docs/resources/component-preview', destination: '/docs/resources', permanent: true },
       // Placeholder status page removed until a real status provider ships
       { source: '/docs/resources/status', destination: '/docs/resources', permanent: false },
+      // _drafts briefly built as live pages (Nextra's underscore exclusion
+      // covers meta files only, not directories — drafts now live outside
+      // content/ in /drafts)
+      { source: '/docs/architecture/_drafts/:path*', destination: '/docs/architecture', permanent: false },
       // Architecture subsections collapsed while pages are rebuilt with verified content;
       // remove each entry as its subsection returns to the sidebar
       { source: '/docs/architecture/infrastructure/:path*', destination: '/docs/architecture', permanent: false },

@@ -20,6 +20,15 @@ How the Advizr platform is built, starting with the DOE framework that separates
 
 The entire system is built on three layers. Directives define the goal. Orchestration (AI) routes work and handles errors. Execution (Python) runs deterministic code with no probabilistic AI.
 
+<FlowDiagram
+  stages={[
+    { label: 'Directives', sublabel: 'SOPs define goals' },
+    { label: 'Orchestration', sublabel: 'AI routes & decides' },
+    { label: 'Execution', sublabel: 'Deterministic code' }
+  ]}
+  caption="Why it works: 90% accuracy per step compounds to 59% over five steps — so complexity is pushed into deterministic code."
+/>
+
 <Screenshot src="/images/architecture/doe-framework.svg" alt="DOE Architecture - three layers separating directives, orchestration, and execution" caption="The three layers of Advizr's DOE architecture" />
 
 ## What's coming

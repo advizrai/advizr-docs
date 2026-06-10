@@ -4,7 +4,8 @@ import {
   Callout, Steps, Step, Tabs, Tab,
   CodeBlock, Details, LinkCard, Screenshot,
   ComparisonTable, VideoEmbed,
-  RoiCalculator, PricingTable, CopyButton, Changelog, BookCallButton
+  RoiCalculator, PricingTable, CopyButton, Changelog, BookCallButton,
+  Stat, StatRow, FlowDiagram
 } from './components/mdx'
 
 const docsComponents = getDocsMDXComponents()
@@ -38,5 +39,8 @@ export const useMDXComponents = components => ({
   CopyButton,
   Changelog,
   BookCallButton,
+  Stat,
+  StatRow,
+  FlowDiagram,
   ...components
 })

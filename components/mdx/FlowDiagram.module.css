@@ -1,0 +1,108 @@
+.wrap {
+  margin: var(--advizr-space-8) 0;
+  overflow-x: auto;
+}
+
+.svg {
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+  display: block;
+}
+
+.node {
+  fill: var(--advizr-bg-secondary);
+  stroke: var(--advizr-border);
+  stroke-width: 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--advizr-duration-reveal) var(--advizr-ease-out),
+    transform var(--advizr-duration-reveal) var(--advizr-ease-out),
+    stroke var(--advizr-duration-base) var(--advizr-ease-out);
+}
+
+:global(html[class~="dark"]) .node {
+  fill: var(--advizr-surface-raised);
+}
+
+.label {
+  font-family: var(--advizr-font-sans);
+  font-size: 13px;
+  font-weight: 510;
+  fill: var(--advizr-text-primary);
+  opacity: 0;
+  transition: opacity var(--advizr-duration-reveal) var(--advizr-ease-out);
+}
+
+.sublabel {
+  font-family: var(--advizr-font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--advizr-text-tertiary);
+  opacity: 0;
+  transition: opacity var(--advizr-duration-reveal) var(--advizr-ease-out);
+}
+
+.connector {
+  stroke: var(--section-accent, var(--advizr-blue-500));
+  stroke-width: 1.5;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset var(--advizr-duration-reveal) var(--advizr-ease-inout);
+}
+
+.arrow {
+  fill: none;
+  stroke: var(--section-accent, var(--advizr-blue-500));
+  stroke-width: 1.5;
+  opacity: 0;
+  transition: opacity var(--advizr-duration-base) var(--advizr-ease-out);
+}
+
+.beam {
+  fill: var(--advizr-blue-400);
+  opacity: 0;
+  filter: drop-shadow(0 0 4px var(--advizr-blue-400));
+}
+
+/* ---- Visible state: draw everything in ---- */
+
+.visible .node,
+.visible .label,
+.visible .sublabel,
+.visible .arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.visible .connector {
+  stroke-dashoffset: 0;
+}
+
+.visible .beam {
+  opacity: 1;
+  transition: opacity var(--advizr-duration-slow) var(--advizr-ease-out) 1s;
+}
+
+/* ---- Reduced motion: render finished, no beams ---- */
+
+.reduced .node,
+.reduced .label,
+.reduced .sublabel,
+.reduced .arrow {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.reduced .connector {
+  stroke-dashoffset: 0 !important;
+}
+
+.caption {
+  font-size: var(--advizr-text-sm);
+  color: var(--advizr-text-tertiary);
+  text-align: center;
+  margin-top: var(--advizr-space-2);
+}
