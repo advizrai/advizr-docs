@@ -1,12 +1,13 @@
-# Notifications
+---
+title: Manage your notifications
+description: "Control what the Advizr platform notifies you about: in-app alerts from the bell icon, daily or weekly email digests, and muting specific types."
+---
+
+# Manage your notifications
 
 The platform keeps you informed about important events through two channels: in-app notifications and email digests. You control what you receive and how often, so you stay up to date without being overwhelmed.
 
-<Screenshot
-  src="/images/platform/notifications.png"
-  alt="Notification preferences"
-  caption="Choose what you get notified about and how."
-/>
+{/* TODO: capture notifications.png */}
 
 ## What triggers notifications
 
@@ -21,7 +22,7 @@ You receive notifications when something happens that may need your attention:
 
 ## In-app notifications
 
-A notification badge appears on the bell icon in the top bar when new events arrive. Click the bell to see a list of recent notifications. Each notification links directly to the relevant section - click a proposal notification to jump to the proposal, click a run notification to see the results.
+A notification badge appears on the bell icon in the top bar when new events arrive. Click the bell to see a list of recent notifications. Each notification links directly to the relevant section — click a proposal notification to jump to the proposal, click a run notification to see the results.
 
 Notifications are grouped by type and sorted with the most recent at the top. You can mark notifications as read individually or mark all as read at once.
 
@@ -37,19 +38,54 @@ In addition to in-app notifications, the platform sends email summaries of activ
   If you only check the platform occasionally, set your email digest to daily. The summary email keeps you informed even when you are not logged in.
 </Callout>
 
-## Configuring your preferences
+## Configure your preferences
 
-You can adjust notification settings from [Settings](/docs/platform/features/settings) or from the notification panel directly. Options include:
+<Steps>
+  <Step title="Open notification preferences">
+    Open **Settings** and select your notification preferences, or open them directly from the bell icon's notification panel. {/* GATE0: confirm exact path to notification preferences with James */}
+  </Step>
+  <Step title="Set your email digest">
+    Toggle email digests on or off, and choose daily or weekly frequency.
+  </Step>
+  <Step title="Mute types you do not need">
+    Turn off specific notification types — for example, mute document processing alerts if you upload files frequently.
+  </Step>
+</Steps>
 
-- Toggle email digests on or off
-- Choose digest frequency (daily or weekly)
-- Mute specific notification types (for example, turn off document processing alerts if you upload files frequently)
+You should now see your updated preferences saved, and future notifications arriving only through the channels and types you selected.
+
+<Details title="Why there are two channels">
+  In-app notifications are immediate and tied to a specific item, so they work best while you are already in the portal. Email digests batch everything into one summary on your schedule, so you stay informed during weeks when you do not log in. Keeping the channels separate means muting one never silences the other — you can run email-only, in-app-only, or both.
+</Details>
+
+## If something goes wrong
+
+- **Digest emails are not arriving.** Check your spam folder, confirm your digest is not set to Off, and verify the email address on your profile in [Settings](/docs/platform/features/settings).
+- **The bell badge will not clear.** Click the bell and use mark all as read. If the badge persists, refresh the page.
+- **You are getting too many notifications.** Mute the noisiest types in your preferences — document processing and goal updates are the usual culprits.
+- **A notification links to something you cannot open.** Your role may not have access to that section. Check [Roles and permissions](/docs/platform/account/roles-and-permissions) or ask your Client Admin.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Settings"
-  description="Manage your profile, preferences, and organisation configuration."
-  href="/docs/platform/features/settings"
-  icon="settings"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Configure your settings"
+    description="Manage your profile, preferences, and organization configuration."
+    href="/docs/platform/features/settings"
+    icon="settings"
+  />
+  <LinkCard
+    title="Monitor runs and workflows"
+    description="Follow up on the run completions your notifications point to."
+    href="/docs/platform/features/runs-and-workflows"
+    icon="workflow"
+  />
+  <LinkCard
+    title="Proposals"
+    description="Review and approve the proposals you get notified about."
+    href="/docs/platform/dashboard/proposals"
+    icon="clipboard-list"
+  />
+</CardGrid>

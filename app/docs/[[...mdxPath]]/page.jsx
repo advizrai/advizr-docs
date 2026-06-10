@@ -1,6 +1,8 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
 import { useMDXComponents as getMDXComponents } from '../../../mdx-components'
 import { JsonLd } from '@/components/JsonLd'
+import { CopyPageMenu } from '@/components/CopyPageMenu'
+import { FeedbackWidget } from '@/components/FeedbackWidget'
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath')
 
@@ -77,7 +79,9 @@ export default async function Page(props) {
           description={metadata.description}
           url={url}
         />
+        <CopyPageMenu />
         <MDXContent {...props} params={params} />
+        <FeedbackWidget />
       </Wrapper>
     </div>
   )

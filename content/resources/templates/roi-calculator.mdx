@@ -1,3 +1,47 @@
-# ROI Calculator
+---
+title: ROI Calculator
+description: "An interactive calculator that estimates what manual work costs your business each month and what automating it is worth, with every assumption stated."
+---
 
-A template for calculating the return on investment from AI initiatives. Input your current costs - time, labour, error rates - and your projected improvements to generate a clear ROI figure. Includes guidance on which metrics to measure and how to present the business case to decision-makers.
+<Eyebrow>Templates</Eyebrow>
+
+# ROI calculator
+
+Three inputs — hours of manual work per week, what an hour costs you, and how many people are affected — produce an estimate of what that work costs today and what automating it is worth. If you've completed the [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit), use the hours-per-week figures from your shortlist; they're better inputs than a gut estimate.
+
+<RoiCalculator />
+
+## How to read the results
+
+The calculator is deliberately simple, and every assumption is visible:
+
+- **Monthly cost of manual work** = hours per week × hourly cost × employees affected × 4.33 (the average number of weeks in a month).
+- **Projected monthly savings** assumes automation displaces **70%** of that cost — not 100%, because well-designed systems keep humans on review gates, exceptions, and judgment calls. See [How we work](/docs/services/how-it-works) for why.
+- **Annual ROI** is twelve months of projected savings.
+- **Payback period** divides a representative all-in investment of $15,000 CAD by your projected monthly savings. Your actual investment depends on tier and scope — see [pricing](/docs/services/pricing) for the real ranges.
+
+These are estimates based on industry averages, not a quote and not a guarantee. Actual results vary by engagement.
+
+## Getting honest inputs
+
+- **Hourly cost should be loaded cost** — salary plus benefits, tools, and overhead — not base wage. Using base wage understates what manual work actually costs you.
+- **Count everyone who touches the workflow.** The hidden hours are usually in handoffs: the person who checks the work, the manager who chases the stragglers.
+- **If you're unsure, run it twice** — once with conservative numbers, once with realistic ones. If even the conservative case pays back quickly, the decision is easy.
+
+## From estimate to measured ROI
+
+This calculator models the question "is this worth a conversation?" An engagement answers it properly: we capture a baseline before anything is built, every deployed system logs its own runs, and your FDE reports measured hours displaced against that baseline monthly. The [ROI methodology](/docs/services/roi-methodology) documents the formula, and the [2x ROI guarantee](/docs/services/guarantees) is measured over 90 days using it.
+
+The calculator also leaves value out: it doesn't model reduced error cost or revenue impact (faster follow-up, more leads contacted). We only count those in measured ROI when they're directly attributable — so treat the number above as a floor, not a ceiling.
+
+<Callout type="tip">
+  Screenshot your results before a discovery call. Walking in with "this workflow costs us roughly $4,000 CAD a month" makes the scoping conversation immediately concrete.
+</Callout>
+
+<BookCallButton text="Book a Discovery Call" />
+
+## Next steps
+
+- [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit) — find the workflows worth running through this calculator
+- [How we measure ROI](/docs/services/roi-methodology) — the measured version of this estimate
+- [Measuring ROI](/docs/academy/workflow-mastery/measuring-roi) — what to track once systems are live

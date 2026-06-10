@@ -1,3 +1,67 @@
-# Custom Integrations
+---
+title: Custom Integrations
+description: "If your tool isn't covered by a dedicated guide, your FDE can still connect it. What to prepare, how requests are scoped, and what you own afterward."
+---
 
-For tools not covered by built-in integrations. Covers the Advizr API, webhook configuration, and how to work with your Advizr team to build custom connections to proprietary or niche systems. Includes requirements, timelines, and what to prepare before requesting a custom integration.
+<Eyebrow>Integrations</Eyebrow>
+
+# Custom integrations
+
+The dedicated guides cover [Slack](/docs/resources/integrations/slack), [Google Workspace](/docs/resources/integrations/google-workspace), and [CRM systems](/docs/resources/integrations/crm). Everything else routes through a conversation with your FDE — and "everything else" is most of what we actually connect. The working rule: if your tool has an API, we can connect it. If it doesn't have a standard API, we can often still build a connection — that's a scoping conversation, not an automatic no.
+
+## What routes through here
+
+Tools we connect regularly that don't need their own guide:
+
+- **Accounting and finance** — QuickBooks, Xero, FreshBooks; invoicing, payments, and reconciliation flows
+- **Project management** — Asana, Monday, ClickUp, Jira; task routing, status updates, deadline tracking
+- **Communication** — Microsoft Teams, email platforms, calendar and scheduling tools
+- **Proprietary and industry-specific systems** — internal tools your business built, vertical platforms your industry runs on
+- **Legacy systems** — older software with an available API, even an awkward one
+
+## What to prepare before the conversation
+
+You don't need technical answers — your FDE handles the technical investigation. But five facts make the scoping conversation immediately productive:
+
+| What to bring | Why |
+|---|---|
+| The tool's name, and your plan or version | API availability often varies by plan |
+| Who administers the account | They'll need to grant access when the time comes |
+| What data needs to move, and in which direction | "Invoices from X into Y, daily" is a scopeable sentence |
+| Rough volumes | Ten records a day and ten thousand are different builds |
+| A link to the tool's API documentation, if you know it | Optional — it saves a step, but we'll find it either way |
+
+If the integration serves a workflow you haven't mapped yet, fill in the [workflow design worksheet](/docs/resources/templates/workflow-design) first — the data in/data out section is exactly what integration scoping needs.
+
+## How a request gets scoped and built
+
+<Steps>
+  <Step title="Raise it">
+    If you're an existing client, mention it to your FDE in [Chat](/docs/platform/dashboard/chat) or in a strategy session. New opportunities come back to you as a [proposal](/docs/platform/dashboard/proposals) with scope and effort — builds don't start until you approve.
+  </Step>
+  <Step title="Feasibility check">
+    Your FDE investigates the tool's API, your plan's access, and any constraints, and tells you honestly what's possible. If something can't be done well, you hear that before any commitment — not after.
+  </Step>
+  <Step title="Built in sprint cadence">
+    Approved integrations are built like everything else we ship: in one-to-two-week sprints, tested against your real data, with a working deliverable at the end. Straightforward connections often fit within a single sprint; legacy or no-API systems take longer, and the proposal says so up front.
+  </Step>
+  <Step title="Documented, monitored, maintained">
+    The connection is documented as it's built, monitored after launch, and updated when the vendor changes their API. Runs are visible in [Runs](/docs/platform/features/runs-and-workflows).
+  </Step>
+</Steps>
+
+## What you own
+
+Custom work built for your business is yours — the documentation, the data flows, and for custom-built solutions, the code and intellectual property. Active hosting and maintenance require a subscription, but there's no lock-in: if you ever bring integration management in-house or work with another team, the work product and documentation go with you. See [custom solutions](/docs/services/what-we-build/custom-solutions) for the full ownership terms.
+
+<Callout type="info">
+  If you're evaluating Advizr and a specific integration is make-or-break for you, raise it on the discovery call. Feasibility gets checked before you commit to anything — that's what the call is for.
+</Callout>
+
+<BookCallButton text="Discuss Your Integration" />
+
+## Next steps
+
+- [Integrations overview](/docs/resources/integrations/overview) — how all connections work in an engagement
+- [What we build: integrations](/docs/services/what-we-build/integrations) — the service view, with the full category list
+- [Workflow design worksheet](/docs/resources/templates/workflow-design) — map the workflow your integration will serve

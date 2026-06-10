@@ -1,0 +1,51 @@
+---
+title: Tech Stack
+description: "The technologies behind every Advizr layer — Next.js and Vercel on the front, Python services on Railway behind, Supabase PostgreSQL underneath — and why."
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Tech stack
+
+We pick boring, proven technology and spend the innovation budget on the AI layer. Every choice below optimizes for the same things we promise clients: reliability, auditability, and systems a small team can actually operate.
+
+## Web applications
+
+| Layer | Technology | Why |
+|---|---|---|
+| Framework | Next.js (App Router) + React + TypeScript | One framework across every property; server components keep client bundles small |
+| Hosting | Vercel | Push-to-deploy, preview URLs per pull request, zero ops |
+| Styling | Tailwind CSS + shadcn/ui (apps); design-token CSS (this site) | Speed in apps; full control where brand matters |
+| Testing | Playwright + Vitest | End-to-end checks gate every deploy |
+
+## Backend services
+
+Python services run on Railway, deliberately separate from the web tier:
+
+| Service | Job |
+|---|---|
+| Knowledge-base API | Search, ingestion, and agent memory over the agency knowledge vault |
+| Text embedder | Converts text to vectors for semantic search |
+| Quality worker | Background jobs: message scoring, quality alerts, cleanup |
+| Lead-gen pipeline | Webhook-driven execution of the automation pipeline — reply detection through deck generation |
+
+## Data
+
+| Concern | Choice |
+|---|---|
+| Database | Supabase (PostgreSQL) — one master instance for auth and internal data, **one isolated instance per client** |
+| Isolation | Client data never shares a database with other clients; row-level security inside each instance |
+| Vectors | pgvector for semantic search and agent memory |
+
+## AI layer
+
+Model-agnostic by architecture: AI vendors (typically Anthropic and OpenAI) are called from the orchestration layer only, behind the [DOE framework](/docs/architecture/doe-framework). Models make decisions; deterministic Python executes them. Swapping a model is a configuration change, not a rebuild.
+
+## Why this matters to clients
+
+This is the same stack we deploy for client builds. When we say your team can operate what we hand over, it's because the stack is learnable: one web framework, one database, plain Python, and documentation like this page.
+
+## Next steps
+
+- [Repositories](/docs/architecture/infrastructure/repositories) — where each piece lives
+- [Knowledge base](/docs/architecture/knowledge-base) — the system our agents learn from

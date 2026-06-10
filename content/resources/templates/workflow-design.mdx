@@ -1,3 +1,132 @@
-# Workflow Design Template
+---
+title: Workflow Design Worksheet
+description: "A worksheet for mapping a workflow — trigger, steps, decisions, data in and out, failure modes — clearly enough that your FDE can build from it."
+---
 
-A template for designing AI-powered workflows before implementation. Map out triggers, decision points, AI steps, human review gates, and outputs. Use this to document a workflow clearly enough that your Advizr team can build it, or to evaluate whether a proposed automation will actually deliver value.
+<Eyebrow>Templates</Eyebrow>
+
+# Workflow design worksheet
+
+A workflow mapped on this worksheet is detailed enough for your FDE to scope and build from — and detailed enough for you to judge whether automating it will actually deliver value. It's also a useful diagnostic: if you can't fill in the trigger, the decisions, and the failure modes, the workflow isn't understood well enough to automate yet.
+
+Map one workflow per worksheet. Start with your top scorer from the [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit).
+
+## What to capture
+
+Seven fields, in order:
+
+1. **Name and owner** — what the workflow is called and the one person accountable for it working.
+2. **Trigger** — the event that starts a run. Be precise: "an email with a PDF attachment arrives in accounts@" is a trigger; "when invoices come in" is not.
+3. **Steps** — what happens, in sequence, including the boring parts. Number them.
+4. **Decision points** — every place the path forks, and the rule that decides which branch. Decisions are where AI judgment or a human gate lives, so vague rules here become bugs later. The [DOE framework](/docs/architecture/doe-framework) explains how we separate these decisions from the deterministic steps around them.
+5. **Data in / data out** — what the workflow reads, and what it produces or changes, in which systems.
+6. **Human review gates** — the points where a person must approve before the workflow continues. If a mistake is expensive, there should be a gate in front of it.
+7. **Failure modes** — the ways runs go wrong today, and what should happen when they do. "It fails sometimes" is not a failure mode; "the PDF is an illegible scan" is.
+
+## Worked example: supplier invoice intake
+
+A real pattern from the document-handling automations we build — extracting key information from invoices and entering it into an accounting tool (see [workflow automation](/docs/services/what-we-build/workflow-automation)).
+
+**Name and owner:** Supplier invoice intake — owned by the office manager.
+
+**Trigger:** An email with a PDF attachment arrives in the accounts@ inbox.
+
+**Steps:**
+
+| # | Step | Done by |
+|---|---|---|
+| 1 | Classify the email — is the attachment a supplier invoice? | System |
+| 2 | Extract fields: supplier, invoice number, date, amount, tax, PO reference | System |
+| 3 | Match the supplier and PO against existing records | System |
+| 4 | Create a draft bill in the accounting tool | System |
+| 5 | Review and approve flagged bills | Human |
+| 6 | Archive the PDF to the shared invoices folder and log the run | System |
+
+**Decision points:**
+
+| Decision | Rule | If yes | If no |
+|---|---|---|---|
+| Is the attachment an invoice? | Classification confidence above threshold | Continue to extraction | Leave in inbox, notify office manager |
+| Is the supplier known? | Supplier matches an existing record | Continue | Flag for human review |
+| Is the amount under $5,000 CAD? | Amount field vs threshold | Create draft bill directly | Route to approval gate first |
+
+**Data in / data out:**
+
+| Direction | Data | System |
+|---|---|---|
+| In | Invoice PDF | Email inbox |
+| In | Supplier and PO records | Accounting tool |
+| Out | Draft bill | Accounting tool |
+| Out | Archived PDF | Shared drive folder |
+| Out | Run log entry and exception notifications | Workflow system |
+
+**Human review gates:** new suppliers, amounts of $5,000 CAD or more, and any extraction below the confidence threshold. Everything else flows through and stays visible in the run log.
+
+**Failure modes:**
+
+| Failure | How it shows up | What should happen |
+|---|---|---|
+| Illegible or scanned-image PDF | Extraction confidence is low | Route to human queue with the original attached |
+| Duplicate invoice | Invoice number already exists | Skip creation, notify with a link to the existing bill |
+| Missing PO reference | PO field empty | Create the draft bill but hold it at the approval gate |
+| Non-invoice attachment (statement, receipt) | Classifier flags mismatch | Leave in inbox untouched |
+
+## Blank template
+
+Copy this into a document and fill it in — one workflow per copy:
+
+```text
+WORKFLOW DESIGN WORKSHEET
+
+Name: ______________________  Owner: ______________________
+Runs per week: _____  Hours/week it consumes today: _____
+
+TRIGGER (the precise event that starts a run):
+- ___________________________________________________________
+
+STEPS (in sequence; mark each Human or System-candidate):
+1. __________________________________________  [Human/System]
+2. __________________________________________  [Human/System]
+3. __________________________________________  [Human/System]
+4. __________________________________________  [Human/System]
+5. __________________________________________  [Human/System]
+
+DECISION POINTS (where the path forks, and the rule):
+- Decision: ____________________ Rule: ______________________
+  If yes: ______________________ If no: _____________________
+- Decision: ____________________ Rule: ______________________
+  If yes: ______________________ If no: _____________________
+
+DATA IN (what the workflow reads, and from where):
+- ___________________________________________________________
+- ___________________________________________________________
+
+DATA OUT (what it produces or changes, and where):
+- ___________________________________________________________
+- ___________________________________________________________
+
+HUMAN REVIEW GATES (where a person must approve):
+- ___________________________________________________________
+
+FAILURE MODES (how runs go wrong, and what should happen):
+- Failure: _____________________ Handling: __________________
+- Failure: _____________________ Handling: __________________
+- Failure: _____________________ Handling: __________________
+
+EDGE CASES / NOTES:
+- ___________________________________________________________
+```
+
+## What your FDE does with this
+
+During week 0 of an engagement, your FDE maps your workflows in exactly this shape before anything is built — a completed worksheet shortens that work and sharpens the [first sprint](/docs/services/how-it-works). The steps marked "System" become build candidates, the decision points determine where AI judgment versus fixed rules belong, and the failure modes become test cases. If you're already a client, share completed worksheets with your FDE in [Chat](/docs/platform/dashboard/chat).
+
+<Callout type="info">
+  If the worksheet reveals that nobody agrees on the rules — two people fill in different decision logic for the same workflow — that's a process problem, not an automation problem. We'll help you fix the process first; automating disagreement just makes it faster.
+</Callout>
+
+## Next steps
+
+- [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit) — decide which workflow deserves this treatment
+- [Automation basics](/docs/academy/workflow-mastery/automation-basics) — the concepts behind triggers, steps, and gates
+- [How we work](/docs/services/how-it-works) — where workflow mapping fits in the engagement

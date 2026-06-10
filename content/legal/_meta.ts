@@ -5,5 +5,5 @@ export default {
   'data-processing': 'Data Processing',
   'software-licensing': 'Software Licensing',
   'acceptable-use': 'Acceptable Use',
-  security: 'Security'
+  security: 'Security & Compliance'
 }

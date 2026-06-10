@@ -1,4 +1,9 @@
-# Team Management
+---
+title: Add and manage team members
+description: "Invite colleagues to the Advizr portal, assign Client Admin, Viewer, or Consumer roles, and change or revoke access at any time from Team Management."
+---
+
+# Add and manage team members
 
 Team Management lets you invite colleagues to the platform so they can see what is happening with your Advizr engagement. You control who has access and what they can do through role assignments. Only users with the Client Admin role can manage the team.
 
@@ -8,11 +13,17 @@ Team Management lets you invite colleagues to the platform so they can see what 
   caption="Invite colleagues and assign roles."
 />
 
-## Adding a team member
+## Where to find Team Management
+
+Team Management does not appear in the main sidebar (Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, Help). It lives under Settings, with Advanced mode turned on. {/* GATE0: confirm Team Management lives under Settings -> Advanced mode */}
+
+## Add a team member
+
+If you have the Client Admin role, you can invite new members:
 
 <Steps>
   <Step title="Open Team Management">
-    Navigate to Team Management from the Features section of the sidebar. You will see a list of current team members with their roles.
+    Open **Settings**, then select **Team Management**. You will see a list of current team members with their roles. {/* GATE0: confirm exact navigation path with James */}
   </Step>
   <Step title="Click Invite">
     Click the **Invite** button at the top of the page. Enter the person's email address.
@@ -21,9 +32,11 @@ Team Management lets you invite colleagues to the platform so they can see what 
     Select the role you want to assign. See below for what each role can do.
   </Step>
   <Step title="Send the invitation">
-    Click Send. The person will receive an email with a link to set up their account and access the platform.
+    Click **Send**. The person will receive an email with a link to set up their account and access the platform.
   </Step>
 </Steps>
+
+You should now see the person listed under pending invitations until they accept, at which point they move into the team member list with their assigned role.
 
 ## Available roles
 
@@ -37,9 +50,9 @@ When you invite someone, you assign one of three client-facing roles:
   Only Client Admins can invite or remove team members. If you need someone added and you are a Client Viewer or Client Consumer, ask your Client Admin.
 </Callout>
 
-For a detailed breakdown of what each role can access, see [Roles and Permissions](/docs/platform/account/roles-and-permissions).
+For a detailed breakdown of what each role can access, see [Roles and permissions](/docs/platform/account/roles-and-permissions).
 
-## Managing existing members
+## Manage existing members
 
 From the Team Management page you can:
 
@@ -47,19 +60,38 @@ From the Team Management page you can:
 - **Remove a member** - Click the remove button to revoke their access immediately
 - **Resend an invitation** - If someone has not accepted their invite, resend it from the pending invitations list
 
-## When to add team members
+<Details title="When to add team members">
+  Most clients start with one or two users and add more after the initial onboarding period. Add team members when you want colleagues to have visibility into the work being done, when specific staff need to interact with the AI for their role, or when you want a second person with admin access for continuity. There is no benefit to inviting everyone on day one — access is quick to grant whenever someone actually needs it.
+</Details>
 
-Most clients start with one or two users and add more after the initial onboarding period. Consider adding team members when:
+## If something goes wrong
 
-- You want colleagues to have visibility into the work being done
-- Specific team members need to interact with the AI for their role
-- You want someone else to have admin access for continuity
+- **You cannot see the Invite button.** Only Client Admins can manage the team. Check your role with your Client Admin, or ask them to send the invitation.
+- **The invitation email never arrived.** Ask the invitee to check their spam folder, confirm the address you entered, then resend the invite from the pending invitations list.
+- **An invitee's link has expired or fails.** Resend the invitation — the new email replaces the old link.
+- **You removed the wrong person.** Send a fresh invitation to the same email address; their access is restored when they accept.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Notifications"
-  description="Configure how and when you receive updates from the platform."
-  href="/docs/platform/features/notifications"
-  icon="bell"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Roles and permissions"
+    description="The detailed breakdown of what each role can see and do."
+    href="/docs/platform/account/roles-and-permissions"
+    icon="shield"
+  />
+  <LinkCard
+    title="Manage your notifications"
+    description="Configure how and when you receive updates from the platform."
+    href="/docs/platform/features/notifications"
+    icon="bell"
+  />
+  <LinkCard
+    title="Configure your settings"
+    description="Profile, preferences, and organization-level configuration."
+    href="/docs/platform/features/settings"
+    icon="settings"
+  />
+</CardGrid>

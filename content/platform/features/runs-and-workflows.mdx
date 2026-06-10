@@ -1,6 +1,11 @@
-# Runs and Workflows
+---
+title: Monitor runs and workflows
+description: "Check the status of your automated Advizr workflows, read step-by-step run logs, review outputs, and know exactly what happens when a run fails."
+---
 
-Your Advizr team builds automated workflows that handle tasks for your business - things like generating reports, processing documents, analysing data, and executing multi-step processes. Each time a workflow executes, it creates a "run" that you can monitor and review. The Runs section shows you what is running, what has completed, and what the results are.
+# Monitor runs and workflows
+
+Your Advizr team builds automated workflows that handle tasks for your business — things like generating reports, processing documents, analyzing data, and executing multi-step processes. Each time a workflow executes, it creates a "run" that you can monitor and review. The Runs view shows you what is running, what has completed, and what the results are.
 
 <Screenshot
   src="/images/platform/runs.png"
@@ -8,34 +13,43 @@ Your Advizr team builds automated workflows that handle tasks for your business 
   caption="Monitor automated workflow progress and review outputs."
 />
 
-## What are workflows?
+## Where to find Runs
+
+Runs does not appear in the main sidebar (Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, Help). It is part of Advanced mode, which you turn on in Settings. {/* GATE0: confirm Runs lives under Settings -> Advanced mode */}
+
+If you have never switched modes, see [Configure your settings](/docs/platform/features/settings) for how Simple and Advanced mode work.
+
+## What workflows are
 
 Workflows are automated sequences that your FDE builds to address your business objectives. For example:
 
 - A workflow that generates a monthly financial summary from your uploaded data
 - A workflow that processes incoming leads and enriches them with public data
-- A workflow that analyses customer feedback and produces a trends report
+- A workflow that analyzes customer feedback and produces a trends report
 - A workflow that drafts email sequences based on your brand guidelines
 
 Each workflow is configured specifically for your business using the documents and context you have provided.
 
-## How runs work
+<Details title="Why your Advizr team builds workflows for you">
+  Workflows come out of your objectives and approved proposals, and they depend on correct configuration — data sources, schedules, error handling. Your FDE owns that setup so the automation is reliable from day one. You never need to configure a workflow yourself; your job is to review the outputs and tell your team what to adjust.
+</Details>
 
-A run is a single execution of a workflow. Runs can be triggered in three ways:
+## How runs are triggered
+
+A run is a single execution of a workflow. Runs start in three ways:
 
 - **By your FDE** - Your team member starts a run manually as part of their work
 - **By you via Chat** - Ask in Chat to run a specific workflow and it can be triggered directly
 - **On a schedule** - Some workflows run automatically at set intervals (daily, weekly, monthly)
 
-<Callout type="info">
-  Workflows are built by your Advizr team based on your objectives and proposals. You do not need to configure them yourself.
-</Callout>
-
-## Monitoring a run
+## Monitor a run
 
 <Steps>
-  <Step title="Open the Runs section">
-    Click Runs in the sidebar or navigate to it from a notification. You will see a list of recent runs with their status.
+  <Step title="Turn on Advanced mode">
+    Open **Settings** and switch the interface to Advanced mode so the Runs view is visible. {/* GATE0: confirm exact toggle label and location with James */}
+  </Step>
+  <Step title="Open the Runs view">
+    Open Runs from the navigation, or follow the link in a run notification. You will see a list of recent runs with their status.
   </Step>
   <Step title="Check the status">
     Each run shows one of four statuses: **Triggered** (queued to start), **Running** (in progress), **Completed** (finished successfully), or **Failed** (something went wrong).
@@ -45,19 +59,40 @@ A run is a single execution of a workflow. Runs can be triggered in three ways:
   </Step>
 </Steps>
 
-## Reviewing outputs
+You should now see the run's detail view with its step log, and for completed runs, the output ready to download or review.
+
+## Review outputs
 
 When a run completes, its output appears in the run detail view. Depending on the workflow, outputs might include generated documents, data tables, analysis summaries, or status reports. You can download outputs or reference them in Chat.
 
-## When a run fails
+## If something goes wrong
 
-If a run fails, the detail view shows which step failed and why. Your FDE is automatically notified of failed runs and will investigate. You do not need to take action, but you can mention it in Chat if you want an update.
+- **You cannot find the Runs view.** Check that Advanced mode is turned on in [Settings](/docs/platform/features/settings) — Runs is hidden in Simple mode.
+- **A run shows Failed.** Open the run to see which step failed. Your FDE is automatically notified of failed runs and will investigate — you do not need to take action, but you can ask for an update in Chat.
+- **A run sits in Triggered or Running for a long time.** Some workflows take a while, especially document-heavy ones. If nothing changes after an hour, mention the run in Chat.
+- **An output is missing or looks wrong.** Tell your FDE in Chat which run and which output — they can re-run the workflow or correct the configuration.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Analytics"
-  description="Track workflow performance and measure the impact on your business."
-  href="/docs/platform/features/analytics"
-  icon="bar-chart"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Analytics"
+    description="Track workflow performance and measure the impact on your business."
+    href="/docs/platform/features/analytics"
+    icon="bar-chart"
+  />
+  <LinkCard
+    title="Proposals"
+    description="See where workflows come from: review and approve proposed work."
+    href="/docs/platform/dashboard/proposals"
+    icon="clipboard-list"
+  />
+  <LinkCard
+    title="Configure your settings"
+    description="Turn on Advanced mode and control what appears in your portal."
+    href="/docs/platform/features/settings"
+    icon="settings"
+  />
+</CardGrid>

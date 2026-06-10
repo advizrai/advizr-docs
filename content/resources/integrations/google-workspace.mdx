@@ -1,3 +1,74 @@
-# Google Workspace Integration
+---
+title: Google Workspace Integration
+description: "How Advizr workflows connect to Gmail, Drive, Docs, and Sheets: what it enables, the access your FDE requests, prerequisites, and troubleshooting."
+---
 
-Connect Advizr to Google Drive, Docs, Sheets, and Gmail. Covers OAuth setup, document syncing, automated report delivery to Google Docs, data imports from Google Sheets, and email integration for the automation pipeline.
+<Eyebrow>Integrations</Eyebrow>
+
+# Google Workspace
+
+For most clients, Google Workspace is where the raw material of their workflows lives — invoices arrive in Gmail, processes run on Sheets, documents sit in Drive. Connecting it is done by your FDE as part of a build, scoped to the specific mailboxes, folders, and files a workflow needs. There is no self-serve OAuth flow in the client portal today.
+
+## What it enables
+
+The most common Google Workspace-backed builds (see [workflow automation](/docs/services/what-we-build/workflow-automation)):
+
+- **Email processing** — sorting, categorizing, and routing messages in a mailbox based on content and intent, such as an accounts@ or support@ inbox.
+- **Data extraction from email and documents** — pulling information out of attachments and Drive files (invoices, contracts, applications) into your systems automatically.
+- **Report generation and delivery** — scheduled or on-demand reports written to Docs or Sheets, in a folder your team already checks.
+- **Data imports from Sheets** — using spreadsheets your team maintains as live inputs to workflows and [dashboards](/docs/services/what-we-build/dashboards).
+- **Scheduling and coordination** — automated booking, reminders, and follow-ups built on your calendars.
+
+## What access your FDE will request
+
+Access is scoped per workflow, not granted wholesale. Typical requests look like:
+
+- **Read access to a specific mailbox** for an email-processing workflow — not your whole domain's mail.
+- **Read or write access to named Drive folders** — a watched intake folder, an output folder for generated reports.
+- **Access to specific Sheets** that act as workflow inputs or outputs.
+- **Send-as access on a specific mailbox**, only when a workflow actually sends email.
+
+Each request names the workflow it serves, so you can match access to purpose. Depending on your setup, granting it may involve your Google Workspace admin approving access or sharing the relevant folders and files with a dedicated account — your FDE will walk your admin through the exact steps for your domain.
+
+<Callout type="info">
+  If a request seems broader than the workflow needs — for example, mail access when the workflow only reads a Drive folder — push back. Least privilege is the standing rule, and your FDE should be able to justify every scope.
+</Callout>
+
+## Prerequisites
+
+| Prerequisite | Why it matters |
+|---|---|
+| A Google Workspace admin available to grant access | Most grants need admin approval; the build stalls without them |
+| Clarity on which mailboxes, folders, and Sheets are in scope | Scoped access can't be requested until you've named the targets |
+| A shared folder for workflow outputs | Generated reports need a home your team will actually check |
+| Reasonably tidy source data | A Sheet with merged cells and three header rows fights automation — see the [data preparation guide](/docs/resources/guides/data-preparation) |
+
+## What the process looks like
+
+<Steps>
+  <Step title="Scoped with the workflow">
+    Your FDE identifies exactly which mailboxes, folders, and files the workflow reads and writes, and confirms them with you.
+  </Step>
+  <Step title="Access request sent">
+    You receive the scope list — what, why, and for which workflow. Your admin grants access or shares the named resources.
+  </Step>
+  <Step title="Tested against real data">
+    The workflow runs against the live mailbox or folder in a controlled way — outputs to a test location first — so extraction quality and edge cases surface before go-live.
+  </Step>
+  <Step title="Live, monitored, documented">
+    Outputs move to their real destinations. The connection is documented, and runs are visible in [Runs](/docs/platform/features/runs-and-workflows).
+  </Step>
+</Steps>
+
+## Troubleshooting basics
+
+- **A workflow stopped processing email or files.** The usual causes: access was revoked, the account whose access the workflow uses was suspended or had credentials reset, or the watched folder/label was renamed or moved. Check whether the resource still exists under the same name, then check [Runs](/docs/platform/features/runs-and-workflows).
+- **Reports stopped appearing in the folder.** Confirm the output folder wasn't moved or had sharing changed; folder restructures are the most common silent breaker.
+- **Extraction quality dropped.** Often a change in the source — a supplier redesigned their invoice layout, a Sheet gained a new column. Send your FDE a recent example in [Chat](/docs/platform/dashboard/chat); workflows are updated as your inputs evolve.
+- **Security review questions from your admin.** Your FDE can provide the scope list, what each scope is used for, and the data-handling terms — see [data and privacy](/docs/platform/faq/data-and-privacy).
+
+## Next steps
+
+- [Integrations overview](/docs/resources/integrations/overview) — how all connections work in an engagement
+- [Data preparation guide](/docs/resources/guides/data-preparation) — getting Sheets and documents automation-ready
+- [Slack](/docs/resources/integrations/slack) — where the outputs of these workflows often get announced

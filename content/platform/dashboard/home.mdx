@@ -1,4 +1,9 @@
-# Home
+---
+title: Start your day from Home
+description: How to use the Home screen in the Advizr client portal - act on action cards, track your progress checklist, and scan the activity feed each day.
+---
+
+# Start your day from Home
 
 The Home screen is your daily starting point. It gives you a quick view of what needs your attention, how your engagement is progressing, and what has happened since your last visit. Think of it as your morning briefing.
 
@@ -8,26 +13,32 @@ The Home screen is your daily starting point. It gives you a quick view of what 
   caption="Your daily overview of tasks, progress, and recent activity."
 />
 
-## Action cards
+## Review what needs your attention
 
-At the top of the Home screen you will see action cards - tasks that need your attention. These might include:
+<Steps>
+  <Step title="Open Home from the sidebar">
+    Click **Home** in the left sidebar. On mobile, tap the menu icon in the top-left corner first.
+  </Step>
+  <Step title="Work through the action cards">
+    Action cards at the top of the screen are tasks waiting on you - a proposal to review, a completed workflow with results to check, a document that needs more information, or a call to schedule. Click a card to jump straight to the relevant section.
+  </Step>
+  <Step title="Check your progress checklist">
+    Below the action cards, the checklist shows where you are in the engagement. Completed items are marked with a checkmark; outstanding items show what to focus on next.
+  </Step>
+  <Step title="Scan the activity feed">
+    The feed lists recent events across your workspace in chronological order, newest first. Click any event to open its full context.
+  </Step>
+</Steps>
 
-- A new proposal waiting for your review
-- A completed workflow with results to check
-- A document that needs additional information
-- A call to schedule or confirm
+You should now see zero unactioned cards at the top of Home and know exactly what is happening in your workspace today.
 
-Each card links directly to the relevant section, so you can act on it immediately without navigating through the sidebar.
+<Callout type="tip">
+  Check Home at the start of each day. The action cards and activity feed keep you up to date without needing to visit every section individually.
+</Callout>
 
-## Progress checklist
+## What the activity feed covers
 
-Below the action cards is your progress checklist. During onboarding, this tracks the five setup steps. After onboarding, it shifts to engagement milestones - things like "first workflow delivered," "first objective closed," or "team member added."
-
-The checklist gives you a clear picture of where you are in the engagement and what comes next. Completed items are marked with a tick; outstanding items show what to focus on.
-
-## Activity feed
-
-The activity feed shows recent events across your workspace:
+The feed shows recent events across your workspace:
 
 - Messages from your Advizr team
 - Workflow completions and results
@@ -35,21 +46,42 @@ The activity feed shows recent events across your workspace:
 - Document processing completions
 - Team changes and new member invitations
 
-The feed is chronological, with the most recent events at the top. Click any event to jump to its full context.
-
-<Callout type="tip">
-  Check Home at the start of each day. The action cards and activity feed keep you up to date without needing to visit every section individually.
-</Callout>
-
 ## Quick actions
 
 The Home screen includes shortcuts to the most common tasks - start a new chat, book a call, upload a document, or view your latest proposal. These are the same actions available in the sidebar, but grouped here for convenience.
 
+<Details title="Why the checklist changes after onboarding">
+  During onboarding, the progress checklist tracks the five setup steps. Once onboarding is complete, it shifts to engagement milestones - things like "first workflow delivered," "first objective closed," or "team member added." This keeps the checklist relevant at every stage: it always answers "where am I, and what comes next?" rather than repeating setup tasks you have already finished.
+</Details>
+
+## If something goes wrong
+
+- **Home looks empty.** If your account is new, action cards and feed events appear only once there is activity in your workspace. Complete the onboarding steps and check back after your kickoff call.
+- **The checklist still shows onboarding steps you have finished.** Refresh the page. If a completed step still shows as outstanding, mention it in Chat so your team can update it.
+- **The activity feed seems out of date.** Refresh the page - new events can take a moment to appear after a workflow or upload completes.
+- **An action card links to a page you cannot act on.** Some actions, like approving proposals, require the Client Admin role. See [Roles and permissions](/docs/platform/account/roles-and-permissions).
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
+
 ## Next steps
 
-<LinkCard
-  title="Chat"
-  description="Learn how the chat interface works and what you can ask."
-  href="/docs/platform/dashboard/chat"
-  icon="message-circle"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Chat"
+    description="Learn how the chat interface works and what you can ask."
+    href="/docs/platform/dashboard/chat"
+    icon="message-circle"
+  />
+  <LinkCard
+    title="Goals"
+    description="Set and track the business objectives that drive your engagement."
+    href="/docs/platform/dashboard/goals"
+    icon="target"
+  />
+  <LinkCard
+    title="Notifications"
+    description="Control how and when the platform alerts you to new activity."
+    href="/docs/platform/features/notifications"
+    icon="bell"
+  />
+</CardGrid>

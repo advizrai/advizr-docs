@@ -1,4 +1,9 @@
-# Proposals
+---
+title: Review and approve proposals
+description: How to review, comment on, and approve transformation proposals in the Advizr client portal, including the proposal lifecycle and approval roles.
+---
+
+# Review and approve proposals
 
 Proposals are transformation recommendations prepared by your Advizr team. When your FDE identifies an opportunity to automate a process, build a new workflow, or improve an existing system, they create a proposal for your review. The Proposals section is where you read the details, leave feedback, and approve or request changes.
 
@@ -8,49 +13,75 @@ Proposals are transformation recommendations prepared by your Advizr team. When 
   caption="Review, comment on, and approve transformation proposals."
 />
 
-## What a proposal contains
+## Respond to a proposal
 
-Each proposal typically includes:
+<Steps>
+  <Step title="Open Proposals from the sidebar">
+    Click **Proposals** in the left sidebar. On mobile, tap the menu icon in the top-left corner first.
+  </Step>
+  <Step title="Select a proposal in Review status">
+    Proposals waiting on you are marked **Review**. Use the status filter to narrow the list if needed.
+  </Step>
+  <Step title="Read the details">
+    Each proposal typically includes a **summary** (what is being recommended and why), the **scope** (what will be built, changed, or automated), a **timeline** with key milestones, the **expected outcomes** (time saved, costs reduced, processes improved), and the **connected goals** it supports.
+  </Step>
+  <Step title="Approve, request changes, or comment">
+    Click **Approve** to confirm the work should proceed as described, **Request changes** to ask your FDE to adjust the scope, timeline, or approach, or leave a **comment** on a specific part of the proposal.
+  </Step>
+</Steps>
 
-- **Summary** - A brief description of what is being recommended and why
-- **Scope** - What will be built, changed, or automated
-- **Timeline** - How long the work will take and key milestones
-- **Expected outcomes** - What you can expect to gain (time saved, costs reduced, processes improved)
-- **Connected goals** - Which of your business objectives this proposal supports
+You should now see the proposal's status change - to **Approved** if you approved it, or back with your FDE if you requested changes.
 
-Proposals are written in plain language. If anything is unclear, leave a comment or ask in Chat.
+<Callout type="info">
+  Only users with the Client Admin role can approve proposals. Client Viewers can read proposals and leave comments but cannot approve them. See [Roles and permissions](/docs/platform/account/roles-and-permissions).
+</Callout>
 
-## Proposal lifecycle
+## The proposal lifecycle
 
 Proposals move through a set of stages:
 
 1. **Draft** - Your FDE is still working on the details. You may see drafts if your FDE shares early for feedback.
 2. **Review** - The proposal is ready for you to read and respond to.
 3. **Approved** - You have approved the work. Your FDE begins building.
-4. **In Progress** - The work is underway. You can track progress from the Goals and Runs sections.
+4. **In Progress** - The work is underway. You can track progress from Goals, and in the Runs view if you have Advanced mode turned on in Settings. {/* GATE0: confirm Runs lives under Settings -> Advanced mode */}
 5. **Completed** - The work is done and delivered. Results are available in your dashboard.
 
-## Responding to proposals
+## Find past proposals
 
-When a proposal is in Review status, you can:
+All proposals - active and completed - are listed on the Proposals page. Use the status filter to narrow the view. Completed proposals include a summary of what was delivered and the outcomes achieved.
 
-- **Approve** - Confirm that you want the work to proceed as described
-- **Request changes** - Ask your FDE to adjust the scope, timeline, or approach
-- **Comment** - Leave questions or notes on specific parts of the proposal
+<Details title="Why proposals are written in plain language">
+  A proposal is an agreement about what gets built next, so it has to be understandable without technical background. Your FDE writes proposals to be read in minutes, not hours: what the work is, why it matters to your goals, and what you can expect to gain. Reviewing completed proposals over time is also the simplest way to track the cumulative value of your engagement. If anything is unclear, leave a comment or ask in Chat.
+</Details>
 
-<Callout type="info">
-  Only users with the Client Admin role can approve proposals. Client Viewers can read proposals and leave comments but cannot approve them. See [Roles and Permissions](/docs/platform/account/roles-and-permissions) for details.
-</Callout>
+## If something goes wrong
 
-## Finding past proposals
+- **The Approve button is greyed out or missing.** Approving requires the Client Admin role. If you are a Client Viewer, ask your organization's admin to approve, or request a role change.
+- **A proposal has been in Draft for a while.** Drafts are still being written by your FDE. If you are expecting one to reach Review, ask for a status update in Chat.
+- **Your comment did not post.** Refresh the page and check the comment thread before retyping - it may have saved without confirming.
+- **You cannot find an older proposal.** Clear the status filter so completed and archived proposals are included in the list.
 
-All proposals - active and completed - are listed on the Proposals page. Use the status filter to narrow the view. Completed proposals include a summary of what was delivered and the outcomes achieved, which is useful for tracking the value of your engagement over time.
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Learn"
-  description="Access educational content tailored to your engagement phase."
-  href="/docs/platform/dashboard/learn"
-  icon="library"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Learn"
+    description="Access educational content tailored to your engagement phase."
+    href="/docs/platform/dashboard/learn"
+    icon="library"
+  />
+  <LinkCard
+    title="Roles and permissions"
+    description="Who can approve proposals, and what each role can do."
+    href="/docs/platform/account/roles-and-permissions"
+    icon="users"
+  />
+  <LinkCard
+    title="Runs and workflows"
+    description="Monitor the work that begins after a proposal is approved."
+    href="/docs/platform/features/runs-and-workflows"
+    icon="workflow"
+  />
+</CardGrid>

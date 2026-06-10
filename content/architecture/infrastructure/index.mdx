@@ -1,0 +1,24 @@
+---
+title: Infrastructure Overview
+description: "How Advizr's platform is hosted and organized: Vercel for web apps, Railway for Python services, Supabase for isolated per-client databases, GitHub for everything."
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Infrastructure
+
+Every Advizr system runs on the same four pillars. This keeps client builds consistent, auditable, and cheap to operate — the same reasons we recommend boring infrastructure to clients.
+
+| Pillar | What runs there |
+|---|---|
+| **Vercel** | All web applications — the internal dashboard, the client platform, this docs site. Push to the default branch deploys to production. |
+| **Railway** | Python services: the knowledge-base API, text embedding, background quality workers, and the lead-generation pipeline. |
+| **Supabase** | PostgreSQL + authentication. One master instance for auth and internal data, plus an isolated instance per client. |
+| **GitHub** | Every repository, private, under one organization. CI runs build and spell checks on every pull request. |
+
+## In this section
+
+<CardGrid columns={2}>
+  <Card icon="git-branch" title="Repositories" description="Every repo in the organization, what it does, and where it deploys." href="/docs/architecture/infrastructure/repositories" arrow />
+  <Card icon="layers" title="Tech stack" description="The technologies behind each layer and why we chose them." href="/docs/architecture/infrastructure/tech-stack" arrow />
+</CardGrid>

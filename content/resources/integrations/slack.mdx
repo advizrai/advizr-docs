@@ -1,3 +1,70 @@
-# Slack Integration
+---
+title: Slack Integration
+description: "What connecting Slack to your Advizr systems enables, the access your FDE will request, what setup looks like in practice, and how to troubleshoot it."
+---
 
-Connect Advizr to your Slack workspace for notifications, updates, and quick interactions. Covers installation, channel configuration, notification types, and how to use Slack as a lightweight interface for common Advizr actions without logging into the dashboard.
+<Eyebrow>Integrations</Eyebrow>
+
+# Slack
+
+Slack connections are built into your workflows by your FDE — there is no self-serve "Add to Slack" button in the client portal today. When a workflow we build needs to tell your team something or ask them something, Slack is usually the best place for it to happen, because that's where your team already is.
+
+Note the distinction: the client portal's own notifications are [in-app and email](/docs/platform/features/notifications). Slack messages come from the workflow systems we build for you, not from the portal.
+
+## What it enables
+
+Drawn from the systems we build most often (see [workflow automation](/docs/services/what-we-build/workflow-automation)):
+
+- **Workflow notifications** — a run finished, a document was processed, an exception needs eyes. Routed to the channel that owns the workflow instead of another inbox.
+- **Approval prompts** — approval workflows route requests to the right people with the right context; a Slack message with the details and a clear yes/no is often the fastest gate.
+- **Report delivery** — scheduled reports posted to a channel, so the Monday numbers arrive before the Monday meeting.
+- **Exception queues** — when a workflow hits a case it can't handle (a failure mode from your [workflow design worksheet](/docs/resources/templates/workflow-design)), the item lands in a channel with what went wrong and what to do.
+
+## What access your FDE will request
+
+Typically, a Slack app with a bot token that can post messages to the channels you choose, plus whatever the specific workflow needs — for example, reading a channel's history if a workflow responds to messages, or uploading files if it delivers reports as attachments. The exact scope list depends on what's being built and comes with the access request, so you can see precisely what's being granted before approving.
+
+Installing a Slack app requires approval from a workspace owner or admin (or whoever your workspace's app-approval settings designate).
+
+## Prerequisites
+
+| Prerequisite | Why it matters |
+|---|---|
+| A Slack workspace your team actively uses | Notifications nobody reads are worse than none |
+| A workspace owner or admin available to approve the app install | The install stalls without them |
+| A decision on which channels receive what | One noisy catch-all channel kills adoption; one channel per workflow usually works better |
+| A test channel (recommended) | Lets the connection prove itself before it posts where everyone looks |
+
+## What the process looks like
+
+<Steps>
+  <Step title="Scoped with the workflow">
+    When a build includes Slack delivery, your FDE confirms which messages go to which channels and who should be able to act on them.
+  </Step>
+  <Step title="Access request sent">
+    You receive the specific app and scope list. Your workspace admin approves the installation and invites the bot to the agreed channels.
+  </Step>
+  <Step title="Tested in a test channel">
+    The workflow posts to a sandbox channel first so you can check content, formatting, and frequency against real runs.
+  </Step>
+  <Step title="Live and documented">
+    Messages move to the real channels. What posts where — and what each message means — is documented with the rest of the system.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Be deliberate about frequency at the test stage. If a workflow runs fifty times a day, you want a daily digest or exceptions-only posting — not fifty messages. Tuning this early is much easier than retraining a team that has learned to ignore the channel.
+</Callout>
+
+## Troubleshooting basics
+
+- **Messages stopped appearing.** Most often the bot was removed from the channel, the channel was renamed or archived, or the app was uninstalled during a workspace cleanup. Check the channel's integrations list first, then check [Runs](/docs/platform/features/runs-and-workflows) to see whether the workflow itself ran.
+- **Messages arrive but look wrong or are missing data.** That's a workflow issue, not a Slack issue — flag it to your FDE in [Chat](/docs/platform/dashboard/chat) with a link to the message.
+- **Duplicate messages.** Usually two workflows posting to the same channel, or a retry after a timeout. Your FDE can trace it from the run logs.
+- **Anything else.** Raise it in [Chat](/docs/platform/dashboard/chat). Monitoring and maintaining integrations is part of the engagement — you should never be debugging a connection alone.
+
+## Next steps
+
+- [Integrations overview](/docs/resources/integrations/overview) — how all connections work in an engagement
+- [Google Workspace](/docs/resources/integrations/google-workspace) — the other half of most communication workflows
+- [Custom integrations](/docs/resources/integrations/custom) — Microsoft Teams and everything else

@@ -1,3 +1,99 @@
-# Data Processing Agreement
+---
+title: Data processing
+description: "How Advizr processes client data: per-client database isolation, security measures, named subprocessors, breach notification, and return or deletion."
+---
 
-The data processing terms that govern how Advizr handles client data on your behalf. Covers processor obligations, sub-processors, data transfer mechanisms, security measures, breach notification procedures, and audit rights. Required for clients subject to GDPR or similar data protection regulations.
+<Eyebrow>Legal</Eyebrow>
+
+# Data processing
+
+Effective date: pending legal review
+
+<Callout type="warning">Draft pending legal review. These terms are provided for transparency while our counsel completes review; the signed agreement for your engagement governs.</Callout>
+
+These terms describe how Advizr AI Inc. ("Advizr", "we", "us") processes data on behalf of clients. They supplement the [Terms of service](/docs/legal/terms-of-service) and the [Privacy policy](/docs/legal/privacy-policy) and form part of your engagement terms. If your organization needs a separately executed data processing agreement, ask us — we'll work from this document.
+
+## Roles and scope
+
+For the business data your organization puts into Advizr systems — documents, conversations, goals, workflow inputs and outputs, and contact data used by automation tools — **you are the organization responsible for the data and Advizr is the service provider processing it on your instructions**. In GDPR terminology, you act as controller and Advizr as processor; under PIPEDA, you remain accountable for personal information you transfer to us for processing, and we process it only to deliver the services.
+
+These terms cover all client data processed through the Advizr client platform, custom-built systems we host for you, and Advizr proprietary tools used in your engagement.
+
+## What we process and why
+
+| Category | Examples | Purpose |
+|---|---|---|
+| Account data | Names, emails, roles of your team members | Authentication and access control |
+| Business content | Documents, chat conversations, goals, activity | Delivering the platform and services |
+| Workflow data | Inputs and outputs of custom-built systems | Running the systems built for you |
+| Outreach data | Contact and prospect data used by automation tools | Running lead generation and email systems you've commissioned |
+
+Processing lasts for the duration of your subscription plus the 30-day retention window described below.
+
+## Our commitments as your service provider
+
+- **Instructions only.** We process your data only to deliver the services you've engaged us for, on your documented instructions, and as required by law. If a law requires us to process differently, we'll tell you before we do unless the law prevents it.
+- **No model training.** Your data is never used to train, fine-tune, or improve AI models.
+- **No pooling.** Your data is never mixed with, visible to, or accessible by any other client. There is no shared data layer and no cross-client analytics.
+- **Confidentiality.** Access is limited to your team and the Advizr staff assigned to your engagement, all of whom are bound by confidentiality obligations.
+- **Assistance.** If an individual asks you for access, correction, or deletion of their personal information held in our systems, we'll assist you in responding within the timelines privacy law requires.
+
+## Security measures
+
+The technical measures protecting your data, described in full on the [Security and compliance](/docs/legal/security) page:
+
+- A dedicated, isolated database per client organization
+- A dual-database architecture: login credentials in a master authentication database, separate from business data
+- Encryption in transit (HTTPS/TLS) and at rest; passwords stored as secure hashes
+- Role-based access control (Client Admin, Client Viewer, Client Consumer, plus assigned Advizr staff)
+- Session tokens that expire after 24 hours of inactivity
+
+## Subprocessors
+
+We use the following subprocessors to deliver the services:
+
+| Subprocessor | Service | Data involved |
+|---|---|---|
+| Vercel | Hosting for websites and web applications | Data transiting the platform |
+| Supabase | Database and authentication infrastructure | Account credentials; business data (isolated per client) |
+| Railway | Hosting for backend Python services | Data processed by automation pipelines |
+| Stripe | Payment processing | Billing contact and payment data (card details held by Stripe, not Advizr) |
+| Google (Analytics 4) | Website analytics, consent-gated, websites only | Site usage data — never platform business data |
+| Anthropic and OpenAI | AI model processing | Content submitted to AI features |
+
+{/* GATE0: confirm this subprocessor list is complete and current with James */}
+
+If we add or replace a subprocessor that will process your data, we'll update this page and notify active clients in advance. If you object on reasonable data protection grounds, we'll work with you on an alternative; if none is workable, you can cancel under the standard 30-day terms. {/* GATE0: confirm advance-notice period for subprocessor changes with James */}
+
+## International transfers
+
+Some subprocessors operate infrastructure outside Canada, so your data may be stored or processed in other jurisdictions and be subject to the laws there. We require subprocessors to protect data to a standard consistent with these terms. {/* GATE0: confirm data residency regions for Supabase and Vercel with James */}
+
+## Breach notification
+
+If we become aware of a breach of security affecting your data, we will notify your Client Admin without undue delay after confirming it, with what we know about the nature of the breach, the data affected, and the steps we're taking. {/* GATE0: confirm a specific notification window (e.g., 72 hours) with James */} Where a breach involving personal information creates a real risk of significant harm, PIPEDA also requires reporting to the Office of the Privacy Commissioner of Canada and notification to affected individuals; we'll coordinate with you on those obligations.
+
+## Audits and security reviews
+
+If your organization runs vendor security reviews, we answer security questionnaires directly and walk through our architecture on a call with your team — [book a call](https://cal.com/team/advizr/ai-strategy-call) or raise it with your assigned engineer. We do not currently support on-site audits. Our current certification posture is stated honestly on the [Security and compliance](/docs/legal/security) page.
+
+## Return and deletion of data
+
+- **During your engagement** — you can download your documents at any time, and you can request a full export (conversations, goals, activity history) through your assigned engineer.
+- **On cancellation** — your data is retained for 30 days after the end of your billing period to allow for reactivation. Request your export before the billing period ends.
+- **After 30 days** — data is scheduled for permanent deletion.
+- **On request** — complete deletion requests are processed within 14 business days, subject to billing records we must keep under Canadian tax and accounting law.
+
+See [data and privacy](/docs/platform/faq/data-and-privacy) for the practical steps.
+
+## Term
+
+These terms apply for as long as we process data on your behalf — the life of your subscription plus the retention and deletion windows above.
+
+## Governing law
+
+These terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable in Ontario. {/* GATE0: confirm governing law with James */}
+
+## Contact
+
+Data processing questions or to request a signed copy of these terms: email legal@advizr.ca. {/* GATE0: confirm contact address with James */}

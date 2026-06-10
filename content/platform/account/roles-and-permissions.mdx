@@ -1,36 +1,41 @@
-# Roles and Permissions
+---
+title: Roles and permissions
+description: "Understand the four Advizr platform roles — Admin, Client Admin, Client Viewer, and Client Consumer — and how to change a team member's role."
+---
 
-The platform uses role-based access control (RBAC) to manage what each person can see and do. Every user is assigned one role, and that role determines their permissions across the platform. There are four roles in total - one for the Advizr team and three for client users.
+# Understand roles and permissions
+
+Every person on the platform is assigned one role, and that role determines what they can see and do. There are four roles in total — one for the Advizr team and three for client users. If you're a Client Admin, you assign and change roles from Team management.
 
 <Screenshot
-  src="/images/platform/roles.png"
-  alt="Roles overview"
-  caption="Each role determines what a user can see and do."
+  src="/images/platform/team.png"
+  alt="Team management page showing members and their role badges"
+  caption="Assign and change roles from Team management."
 />
 
 ## The four roles
 
 ### Admin
 
-The Admin role is reserved for Advizr internal staff. Admins have full access to all client workspaces and are responsible for building workflows, managing proposals, and supporting your engagement. You will not assign this role - it is used by your FDE and other Advizr team members.
+The Admin role is reserved for Advizr internal staff. Admins have full access to all client workspaces and are responsible for building workflows, managing proposals, and supporting your engagement. You will never assign this role — it's used by your FDE and other Advizr team members.
 
 <Callout type="info">
-  You will never need to create or manage Admin accounts. These are managed internally by the Advizr team.
+  You never need to create or manage Admin accounts. These are managed internally by the Advizr team.
 </Callout>
 
 ### Client Admin
 
-This is your organisation's primary role. Client Admins have full access to everything in their workspace:
+This is your organization's primary role. Client Admins have full access to everything in their workspace:
 
 - View and interact with all dashboard sections
 - Create and edit goals and objectives
 - Upload and manage documents
 - Approve or request changes to proposals
 - Invite and remove team members
-- Manage billing and organisation settings
+- Manage billing and organization settings
 - Configure notification preferences
 
-Most organisations have one or two Client Admins - typically the business owner or primary decision-maker.
+Most organizations have one or two Client Admins — typically the business owner or primary decision-maker.
 
 ### Client Viewer
 
@@ -54,6 +59,10 @@ Client Consumer is a simplified experience designed for broader team access. The
 
 Client Consumer is ideal for team members who want to use the AI tools without managing the full platform.
 
+<Details title="Why the platform uses role-based access">
+  The platform uses role-based access control (RBAC): permissions are attached to roles, not to individual people. This keeps access predictable — when someone joins or changes responsibilities, you change one role assignment instead of managing dozens of individual permissions. It also limits exposure: each person sees only what their work requires.
+</Details>
+
 ## Permissions comparison
 
 <ComparisonTable
@@ -74,17 +83,53 @@ Client Consumer is ideal for team members who want to use the AI tools without m
   ]}
 />
 
-## Changing roles
+## Change a team member's role
 
-Only Client Admins can change team member roles. To update a role, go to [Team Management](/docs/platform/features/team-management), find the team member, and select a new role. The change takes effect immediately.
+Only Client Admins can change roles. Team management doesn't appear in the main sidebar — it lives under Settings. {/* GATE0: confirm with James that Team management is opened from Settings -> Advanced mode */}
 
-If you need your own role changed and you are not a Client Admin, ask your organisation's Client Admin or contact your FDE.
+<Steps>
+  <Step title="Open Settings, then select Team management">
+    You'll see a list of current team members with a role badge next to each name.
+  </Step>
+  <Step title="Find the team member">
+    Locate the person whose role you want to change.
+  </Step>
+  <Step title="Click the role badge and select the new role">
+    The change takes effect immediately.
+  </Step>
+</Steps>
+
+You should now see the updated role badge next to the team member's name. The next time they load the platform, their interface reflects the new role.
+
+If you need your own role changed and you're not a Client Admin, ask your organization's Client Admin or contact your FDE.
+
+## If something goes wrong
+
+- **You can't see Team management.** Only Client Admins can manage the team. Ask your organization's Client Admin to make the change, or have them update your role first.
+- **A role change doesn't seem to apply.** Ask the team member to refresh the page or log out and back in — their interface updates on the next load.
+- **None of the three client roles fits.** Roles are fixed, but your FDE can advise on the closest fit for what the person needs to do. Message them in Chat.
+
+Still stuck? Send your FDE a message in [Chat](/docs/platform/dashboard/chat) with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
 <LinkCard
+  title="Team management"
+  description="Invite colleagues, assign roles, and remove team members."
+  href="/docs/platform/features/team-management"
+  icon="users"
+/>
+
+<LinkCard
   title="Billing"
-  description="View your subscription, invoices, and payment details."
+  description="View your subscription, invoices, and payment details — Client Admins only."
   href="/docs/platform/account/billing"
   icon="credit-card"
+/>
+
+<LinkCard
+  title="Login and security"
+  description="How sessions, encryption, and isolated databases keep your account secure."
+  href="/docs/platform/account/login-and-security"
+  icon="lock"
 />

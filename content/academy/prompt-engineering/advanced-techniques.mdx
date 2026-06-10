@@ -1,4 +1,10 @@
-# Advanced Techniques
+---
+title: Advanced techniques
+description: Five advanced prompting techniques - chain-of-thought, few-shot examples, system prompts, structured output, and multi-step prompting - with examples.
+duration: 3 min
+---
+
+# Advanced techniques
 
 Once you have the basics down, these techniques let you handle more complex tasks and get consistently better results.
 
@@ -6,7 +12,7 @@ Once you have the basics down, these techniques let you handle more complex task
 
 Adding "Think through this step by step" to your prompt forces the AI to show its reasoning instead of jumping to a conclusion. This is especially useful for analysis, calculations, and decision-making.
 
-> Analyze whether I should hire a full-time bookkeeper or continue outsourcing. My revenue is £800k, I spend £1,200/month on outsourced bookkeeping, and I process about 300 transactions per month. Think through this step by step before giving a recommendation.
+> Analyze whether I should hire a full-time bookkeeper or continue outsourcing. My revenue is $1.4M CAD, I spend $2,000 CAD/month on outsourced bookkeeping, and I process about 300 transactions per month. Think through this step by step before giving a recommendation.
 
 The AI will lay out the logic - cost comparison, workload analysis, hidden costs - before reaching a conclusion. You can spot where it went wrong and correct it.
 
@@ -16,9 +22,9 @@ Instead of describing what you want, show 2-3 examples of the finished product. 
 
 > Write product descriptions for my items. Here are two examples of the style I want:
 >
-> "Oak Dining Table - Solid oak, seats 6. Built to last 20 years. £1,200."
+> "Oak Dining Table - Solid oak, seats 6. Built to last 20 years. $2,000 CAD."
 >
-> "Leather Armchair - Full-grain leather, walnut frame. Gets better with age. £850."
+> "Leather Armchair - Full-grain leather, walnut frame. Gets better with age. $1,450 CAD."
 >
 > Now write descriptions for: Standing Desk, Bookshelf, Coffee Table.
 
@@ -28,7 +34,7 @@ This is faster and more reliable than trying to explain your style in words.
 
 A system prompt is a persistent instruction that applies to an entire conversation. Think of it as a standing brief. Many AI tools let you set these in settings or at the start of a chat.
 
-> You are a business advisor for UK-based SMEs. Always consider UK tax law and regulations. Use plain English. When you reference numbers, use GBP. Keep all responses under 300 words unless I ask for more detail.
+> You are a business advisor for Canadian SMEs. Always consider Canadian tax law and regulations. Use plain English. When you reference numbers, use CAD. Keep all responses under 300 words unless I ask for more detail.
 
 Set this once, and every message in that conversation follows these rules.
 
@@ -63,6 +69,20 @@ Each step builds on the last. You review and correct between steps, which keeps 
 <Callout>
 You do not need to use all of these at once. Pick one technique, try it on a real task this week, and see the difference. Stack techniques as you get comfortable.
 </Callout>
+
+## Check your understanding
+
+<Details title="Question: When should you use chain-of-thought prompting?">
+  For decisions, analysis, and calculations. Adding "Think through this step by step" forces the AI to show its reasoning, so you can spot where it went wrong and correct it.
+</Details>
+
+<Details title="Question: What is a few-shot prompt?">
+  Instead of describing what you want, you show 2-3 examples of the finished product and the AI matches the pattern. It is faster and more reliable than explaining your style in words.
+</Details>
+
+<Details title="Question: Why break complex tasks into multiple steps?">
+  You review and correct between steps, which keeps errors from compounding. Each step builds on the last.
+</Details>
 
 ## Next steps
 

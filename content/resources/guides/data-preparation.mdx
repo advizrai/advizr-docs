@@ -1,3 +1,126 @@
-# Data Preparation
+---
+title: Preparing your data for AI
+description: "How to prepare documents and data for the Advizr platform: what to upload first, formats and size limits, file naming, and sensitive information."
+---
 
-How to prepare your data and documents for AI processing. Covers file formats, naming conventions, data quality requirements, sensitive information handling, and how to organise materials for upload to your Advizr dashboard. Proper preparation dramatically improves the quality of AI-generated outputs.
+<Eyebrow>Guides</Eyebrow>
+
+# Preparing your data for AI
+
+Everything the platform does for you — Chat answers, workflow builds, your FDE's understanding of your business — draws on the documents you upload. Clean, current, well-chosen documents produce specific answers and systems that work on day one; a dump of stale files produces generic advice and rework. This guide covers what to upload, how to prepare it, and how to handle sensitive information.
+
+The mechanics of uploading are covered in [Upload your documents](/docs/platform/onboarding/uploading-documents) (during onboarding) and the [Documents section](/docs/platform/dashboard/documents) (any time after). This guide is about what to put in.
+
+## Choose documents in priority order
+
+You don't need to upload everything — start with the files that best describe how your business operates today, and add more as the engagement surfaces gaps. Work down this list:
+
+1. **Process documents first.** SOPs, process maps, and flowcharts that describe repeatable work. These are where automation has the biggest impact, so they're what your FDE reads first.
+2. **Structure second.** An org chart or a one-page who-does-what, so recommendations land with the right people.
+3. **Numbers third.** Financial summaries, cost breakdowns, or budget documents relevant to your objective — they anchor the ROI conversation.
+4. **Customers fourth.** Anonymized customer lists, survey results, or feedback reports, if your objective touches sales, marketing, or service.
+5. **Marketing materials last.** Brochures, pitch decks, and brand guidelines help the AI match your voice, but they rarely change what gets built.
+
+<Callout type="tip">
+  If a document describes a process someone repeats every day or week, upload it. Repeatable processes are where AI-powered automation pays back fastest.
+</Callout>
+
+## Check formats and size
+
+The platform accepts:
+
+| Type | Formats |
+|---|---|
+| Documents | PDF, DOCX, TXT |
+| Spreadsheets | XLSX, CSV |
+| Images | PNG, JPG, JPEG |
+
+Maximum file size is 25 MB per file. If a file is larger, split it into sections or ask your Advizr team to handle the import.
+
+Where you have the choice, export PDFs from the source application rather than scanning paper — the platform extracts text content from your files, and a clean text layer beats a photographed page.
+
+## Name files so people can find them
+
+The platform doesn't require a naming convention, but your future self and your FDE both benefit from one. A pattern that works:
+
+```text
+<what-it-is>-<scope>-<date>.<ext>
+
+invoicing-sop-2026-05.pdf
+org-chart-2026-06.png
+q1-financial-summary-2026.xlsx
+customer-feedback-survey-2026-04.csv
+```
+
+Two rules matter more than the exact pattern:
+
+- **Descriptive over clever.** "invoicing-sop" beats "process_doc_final_v2_FINAL".
+- **One current version per document.** Upload the version that reflects reality today. If you upload the wrong file, upload the correct one and tell your FDE in [Chat](/docs/platform/dashboard/chat) which to disregard.
+
+## Clean spreadsheets before uploading
+
+Spreadsheets carry the most data and cause the most confusion. Five minutes of cleanup goes a long way:
+
+- Put column headers in the first row, one header per column
+- Keep one table per sheet — delete stale tabs and scratch areas
+- Use consistent date and currency formats throughout
+- Avoid merged cells and embedded charts where you can
+- Remove rows that are notes-to-self rather than data
+
+## Handle sensitive information
+
+Your documents are stored in a database provisioned for your organization alone, encrypted in transit and at rest, never shared with other clients, and never used to train AI models. [Data and privacy](/docs/platform/faq/data-and-privacy) covers the full picture. Within that boundary, two habits are still worth keeping:
+
+- **Anonymize where identity isn't needed.** If a customer list is going in as context for, say, a feedback analysis, names and emails usually add nothing — strip or pseudonymize them before export.
+- **Don't over-strip.** Systems are built against your real data, and systems built against fake data break against real data. If you're unsure whether a field is needed, ask your FDE in Chat before redacting it.
+
+If you need a document gone later, remove it from the Documents section; for complete deletion of processed data, your FDE can arrange it.
+
+<Callout type="warning">
+  Deleting a document removes it from your knowledge base — Chat and workflows stop drawing on it. If a workflow was built around a file, tell your FDE before removing it.
+</Callout>
+
+## Keep documents current
+
+Uploaded documents don't update themselves. When an SOP changes, a report cycle closes, or a team restructures, upload the new version — the AI always works from the most recent files you've given it, so a stale SOP means confidently wrong answers. A quick monthly pass over your Documents library is enough for most businesses.
+
+## What Advizr does and what you do
+
+| What Advizr does | What you do |
+|---|---|
+| Processes each upload and adds it to your knowledge base | Choose documents that describe repeatable processes first |
+| Draws on your documents in Chat, workflows, and build planning | Use clear file names and keep one current version per document |
+| Stores files in your isolated database; never trains models on them | Anonymize customer data where identity isn't needed |
+| Requests specific documents when the build needs more context | Respond to document requests within a couple of days |
+| Handles oversized files and unusual imports on request | Stay within supported formats and the 25 MB limit, or ask for help |
+
+## Data preparation checklist
+
+```text
+Data preparation — client checklist
+
+Choose
+[ ] 2-3 documents describing repeatable processes (SOPs, process maps)
+[ ] Org chart or a one-page who-does-what
+[ ] A recent financial summary tied to your objective
+[ ] Anonymized customer data, if relevant to your objective
+
+Clean
+[ ] One current version per document; drafts and duplicates removed
+[ ] Descriptive file names with dates (invoicing-sop-2026-05.pdf)
+[ ] Spreadsheets: headers in row 1, one table per tab, consistent dates
+[ ] Sensitive fields anonymized where identity isn't needed
+[ ] Every file in a supported format and under 25 MB
+
+Upload and maintain
+[ ] Upload via the wizard or the Documents section; confirm "ready" status
+[ ] Tell your FDE in Chat which documents matter most
+[ ] Re-upload when a process or report changes
+[ ] Remove mistaken uploads and flag them in Chat
+```
+
+## Keep going
+
+- [Upload your documents](/docs/platform/onboarding/uploading-documents) — the upload flow, step by step
+- [Documents](/docs/platform/dashboard/documents) — managing your library after onboarding
+- [Data and privacy](/docs/platform/faq/data-and-privacy) — where your data lives, who can see it, and how to export or delete it

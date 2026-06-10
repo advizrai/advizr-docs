@@ -1,3 +1,75 @@
-# CRM Integration
+---
+title: CRM Integration
+description: "How Advizr connects Salesforce, HubSpot, Pipedrive, and other CRMs: what it enables, access and prerequisites, field mapping, and troubleshooting."
+---
 
-Connect Advizr to your CRM system for lead tracking, contact synchronisation, and pipeline visibility. Covers supported CRM platforms, field mapping, sync frequency, and how AI-generated insights feed back into your existing sales workflow.
+<Eyebrow>Integrations</Eyebrow>
+
+# CRM systems
+
+We connect Salesforce, HubSpot, Pipedrive, and other CRM platforms — in practice, any CRM with an API, which is nearly all of them. As with every Advizr integration, the connection is built by your FDE for the specific workflows in your engagement; there is no generic two-way sync toggle to switch on in the portal.
+
+That specificity matters most with CRMs, because a CRM connection is only as good as its field mapping — and field mapping is a design decision, not a default.
+
+## What it enables
+
+- **Leads delivered into your pipeline.** Our [lead generation systems](/docs/services/what-we-build/lead-generation) source, research, and qualify prospects, then deliver them into your sales process — with the research attached, so your team opens every conversation informed.
+- **Pipeline dashboards.** [Dashboards](/docs/services/what-we-build/dashboards) that pull live CRM data: where every deal stands, conversion rates by stage, revenue forecasts — without anyone compiling a report.
+- **Record hygiene automations.** Keeping contacts and deals updated from the other systems in your stack, instead of relying on reps to copy-paste.
+- **Follow-up workflows.** Automated reminders and routing so deals don't stall because a task sat unassigned.
+
+## What your FDE will request
+
+Typically, a dedicated integration user or API credential with access limited to the objects the workflows touch — usually contacts, companies, and deals, plus the specific custom fields involved. A dedicated credential (rather than borrowing a rep's login) keeps the integration's activity visible in your CRM's audit history and survives staff changes.
+
+The request names the objects, the access level (read versus write), and the workflow each grant serves.
+
+## Prerequisites
+
+| Prerequisite | Why it matters |
+|---|---|
+| CRM admin access available to create credentials | Only an admin can issue an integration user or API key |
+| API access included in your CRM plan | Some CRM tiers restrict or meter API access — your FDE confirms this during scoping, before anything is promised |
+| Defined pipeline stages and required fields | Mapping needs a source of truth; "we use stages loosely" becomes "the dashboard is wrong" |
+| A duplicate-handling decision | When an inbound lead matches an existing contact, should the workflow update, skip, or flag? Decide once, up front |
+
+## Field mapping: the part worth slowing down for
+
+Before anything is written to your CRM, you and your FDE agree on a mapping: which workflow outputs land in which CRM fields, which system wins when both have a value, and what happens to records that don't match cleanly. This is documented and shared — when someone asks "where did this field come from?" six months later, there's an answer.
+
+<Callout type="warning">
+  Workflows that write to your CRM are modifying your system of record. Review the field mapping carefully before approving go-live, and start write-enabled workflows on a small segment first. Bulk-fixing records after a bad mapping is far more painful than a careful review up front.
+</Callout>
+
+## What the process looks like
+
+<Steps>
+  <Step title="Scoped with the workflow">
+    Your FDE identifies the objects, fields, and direction of flow each workflow needs, and confirms your CRM plan supports the API access involved.
+  </Step>
+  <Step title="Credentials issued">
+    Your CRM admin creates the integration user or API key per the access request.
+  </Step>
+  <Step title="Field mapping agreed">
+    You review and sign off on the mapping document — fields, conflict rules, duplicate handling.
+  </Step>
+  <Step title="Tested on a controlled segment">
+    The workflow runs against a small, agreed slice of records so you can verify behaviour in your real CRM before it touches everything.
+  </Step>
+  <Step title="Live, monitored, documented">
+    Full go-live, with runs visible in [Runs](/docs/platform/features/runs-and-workflows) and the mapping kept current as your CRM evolves.
+  </Step>
+</Steps>
+
+## Troubleshooting basics
+
+- **Records stopped flowing.** Check whether the integration credential was deactivated (common during CRM user audits) and whether your CRM's API limits were hit. Then check [Runs](/docs/platform/features/runs-and-workflows) for failed executions.
+- **Data landing in the wrong fields.** Almost always a CRM-side change — a field renamed, a stage added, a required field introduced. Tell your FDE what changed in [Chat](/docs/platform/dashboard/chat); the mapping gets updated as part of the engagement.
+- **Duplicates appearing.** Revisit the duplicate-handling rule — it may be correct but mismatched to how your team actually enters records.
+- **Numbers on the dashboard don't match the CRM.** Usually a filter or stage-definition mismatch rather than missing data. Flag the specific record that looks wrong; one concrete example beats a general report.
+
+## Next steps
+
+- [Integrations overview](/docs/resources/integrations/overview) — how all connections work in an engagement
+- [Lead generation systems](/docs/services/what-we-build/lead-generation) — the build that makes a CRM connection earn its keep
+- [Custom integrations](/docs/resources/integrations/custom) — for CRMs or sales tools beyond the usual platforms

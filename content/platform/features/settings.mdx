@@ -1,12 +1,44 @@
-# Settings
+---
+title: Configure your settings
+description: "Manage your Advizr profile, switch between Simple and Advanced mode to reveal Runs, Analytics, and Team Management, and find admin-only options."
+---
 
-The Settings page is where you manage your account, preferences, and organisation configuration. What you see here depends on your role - Client Admins have access to organisation-level settings, while other roles see personal settings only.
+# Configure your settings
+
+Settings is where you manage your account, preferences, and organization configuration. What you see here depends on your role — Client Admins have access to organization-level settings, while other roles see personal settings only.
 
 <Screenshot
   src="/images/platform/settings.png"
   alt="Settings page"
-  caption="Manage your profile, preferences, and organisation settings."
+  caption="Manage your profile, preferences, and organization settings."
 />
+
+## Simple and Advanced mode
+
+The single most important setting to know about is the **Simple/Advanced toggle**, because it controls what your portal shows:
+
+- **Simple mode** shows the core sidebar — Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, and Help. This is the default, and it covers everything most clients do day to day.
+- **Advanced mode** reveals the additional views: **Runs**, **Analytics**, **Team Management**, and other technical settings. If you have read about a feature in these docs and cannot find it in your portal, this toggle is almost always the reason. {/* GATE0: confirm Runs/Analytics/Team Management live under Settings -> Advanced mode and the exact toggle label */}
+
+### Switch modes
+
+<Steps>
+  <Step title="Open Settings">
+    Click **Settings** in the portal. {/* GATE0: confirm with James where Settings is opened from (sidebar footer vs profile menu) */}
+  </Step>
+  <Step title="Find the Simple/Advanced toggle">
+    The toggle is in your preferences.
+  </Step>
+  <Step title="Switch to Advanced">
+    Turn on Advanced mode. The interface updates immediately.
+  </Step>
+</Steps>
+
+You should now see the additional views — including Runs, Analytics, and Team Management — available in your portal navigation.
+
+<Details title="Why the platform hides features by default">
+  Progressive disclosure keeps the portal approachable. Most clients interact through Chat, Goals, and Documents, and showing run logs or workflow metrics from day one adds noise without value. Advanced mode exists so the depth is there when you want it — switch over once you are comfortable, or stay in Simple mode and let your FDE surface anything that needs your attention.
+</Details>
 
 ## Profile
 
@@ -23,15 +55,12 @@ Changes to your profile take effect immediately across the platform.
 Preferences control how the platform looks and behaves for you:
 
 - **Theme** - Choose between light and dark mode, or follow your system setting
-- **Notification preferences** - Configure email digest frequency and mute specific notification types (see [Notifications](/docs/platform/features/notifications) for details)
+- **Notification preferences** - Configure email digest frequency and mute specific notification types (see [Manage your notifications](/docs/platform/features/notifications) for details)
+- **Simple/Advanced mode** - The interface toggle described above
 
-<Callout type="info" title="Progressive disclosure">
-  The platform supports a Simple/Advanced toggle. In Simple mode, the interface shows the core features - Chat, Goals, Documents, and the essentials. Advanced mode reveals additional sections like detailed analytics, workflow configuration, and technical settings. Most clients start in Simple mode and switch to Advanced as they get comfortable.
-</Callout>
+## Organization settings (Client Admin only)
 
-## Organisation settings (Client Admin only)
-
-If you have the Client Admin role, you also see organisation-level settings:
+If you have the Client Admin role, you also see organization-level settings:
 
 - **Company information** - Your company name, industry, and description as shown in the platform
 - **Team management** - Quick link to [Team Management](/docs/platform/features/team-management) for adding or removing members
@@ -40,13 +69,36 @@ If you have the Client Admin role, you also see organisation-level settings:
 
 ## Security settings
 
-Security-related options are covered separately in [Login and Security](/docs/platform/account/login-and-security). From Settings you can access the password change form and review your active sessions.
+Security-related options are covered separately in [Login and security](/docs/platform/account/login-and-security). From Settings you can access the password change form and review your active sessions.
+
+## If something goes wrong
+
+- **You cannot find Runs, Analytics, or Team Management.** Turn on Advanced mode using the steps above — those views are hidden in Simple mode.
+- **You do not see organization settings.** They are visible to Client Admins only. Ask your Client Admin to make the change or update your role.
+- **A change does not seem to save.** Refresh the page to confirm. If the old value comes back, note what you changed and tell your FDE.
+- **You switched modes and the interface looks unfamiliar.** Switch back to Simple mode — nothing is lost, the extra views are just hidden again.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Login and Security"
-  description="Manage your password, sessions, and account security."
-  href="/docs/platform/account/login-and-security"
-  icon="lock"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Login and security"
+    description="Manage your password, sessions, and account security."
+    href="/docs/platform/account/login-and-security"
+    icon="lock"
+  />
+  <LinkCard
+    title="Monitor runs and workflows"
+    description="Use your new Advanced mode access to follow automated work."
+    href="/docs/platform/features/runs-and-workflows"
+    icon="workflow"
+  />
+  <LinkCard
+    title="Add and manage team members"
+    description="Invite colleagues and control their access with roles."
+    href="/docs/platform/features/team-management"
+    icon="users"
+  />
+</CardGrid>

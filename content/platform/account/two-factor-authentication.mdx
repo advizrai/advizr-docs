@@ -1,0 +1,49 @@
+---
+title: Two-factor authentication
+description: "Where two-factor authentication stands on the Advizr platform today, the protections that secure your account now, and how to keep your login safe."
+---
+
+# Account security today
+
+Two-factor authentication (2FA) is not currently available on the Advizr platform. Login is email and password, handled by Supabase authentication. This page explains what protects your account today and what you can do to keep it secure.
+
+{/* GATE0: confirm 2FA roadmap with James */}
+
+## What protects your account today
+
+The platform secures your account through several layers:
+
+- **HTTPS encryption** - all traffic between your browser and the platform is encrypted in transit
+- **Encrypted storage** - passwords are hashed and never stored in plain text
+- **Dual-database architecture** - your login credentials live in a master authentication database, separate from your organization's business data, which stays in its own isolated database
+- **Role-based access** - each team member sees only what their role allows (see [Roles and permissions](/docs/platform/account/roles-and-permissions))
+- **Session expiry** - session tokens last 24 hours and renew only while you are actively using the platform
+
+For the full login flow, including password resets, see [Login and security](/docs/platform/account/login-and-security).
+
+## How to keep your account secure
+
+Until 2FA is available, your password is the single key to your account. Treat it accordingly:
+
+- Use a long, unique password that you do not reuse on any other service
+- Store it in a password manager rather than a browser note or document
+- Never share credentials between team members - each person gets their own login, and shared accounts defeat role-based access
+- If you use a shared or public computer, log out when you finish
+- If you suspect your password has been exposed, reset it immediately from the login page using the "Forgot password" link
+
+<Callout type="warning">
+  If you believe your account has been compromised, reset your password right away and contact your Advizr team so they can review recent activity on your organization's account.
+</Callout>
+
+## Requesting two-factor authentication
+
+If 2FA matters for your organization's security or compliance requirements, raise it with your Advizr team through Chat or on your next call. Knowing which clients need it helps prioritize the work.
+
+## Next steps
+
+<LinkCard
+  title="Login and security"
+  description="How to log in, reset your password, and understand session management."
+  href="/docs/platform/account/login-and-security"
+  icon="lock"
+/>
