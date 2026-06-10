@@ -178,8 +178,10 @@ test.describe('MDX Interactive Components', () => {
       const check = page.locator('svg[aria-label="Included"]').first();
       if (await check.count() > 0) {
         const color = await check.evaluate((el) => getComputedStyle(el).color);
-        expect(color).toContain('5');
-        expect(color).toContain('150');
+        const [r, g, b] = (color.match(/\d+/g) || []).map(Number);
+        // Emerald in either mode: green channel dominates
+        expect(g).toBeGreaterThan(r);
+        expect(g).toBeGreaterThan(b);
       }
     });
 
@@ -203,13 +205,20 @@ test.describe('MDX Interactive Components', () => {
       await expect(partnership.first()).toBeVisible();
     });
 
-    test('recommended mobile card has glow shadow', async ({ page }, testInfo) => {
+    test('recommended mobile card is highlighted with brand border (glow is rationed)', async ({ page }, testInfo) => {
       if (testInfo.project.name !== 'mobile') test.skip();
       await page.goto('/docs/services/pricing/whats-included');
       const card = page.locator('[class*="recommendedCard"]').first();
       if (await card.count() > 0 && await card.isVisible()) {
-        const shadow = await card.evaluate((el) => getComputedStyle(el).boxShadow);
-        expect(shadow).not.toBe('none');
+        const { borderColor, borderWidth } = await card.evaluate((el) => {
+          const cs = getComputedStyle(el);
+          return { borderColor: cs.borderTopColor, borderWidth: cs.borderTopWidth };
+        });
+        expect(parseFloat(borderWidth)).toBeGreaterThanOrEqual(1);
+        const [r, g, b] = (borderColor.match(/\d+/g) || []).map(Number);
+        // Brand blue: blue channel dominates
+        expect(b).toBeGreaterThan(r);
+        expect(b).toBeGreaterThan(g);
       }
     });
   });

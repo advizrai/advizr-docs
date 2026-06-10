@@ -3,48 +3,7 @@
 import clsx from 'clsx'
 import styles from './PricingTable.module.css'
 import { BookCallButton } from './BookCallButton'
-
-interface Tier {
-  name: string
-  price: string
-  description: string
-  recommended?: boolean
-}
-
-const TIERS: Tier[] = [
-  {
-    name: 'Catalyst',
-    price: '$3-5k initial + $500-1k/mo',
-    description: 'Entry-level AI engagement to get started fast.',
-  },
-  {
-    name: 'Acceleration',
-    price: '$5-10k initial + $1-3k/mo',
-    description: 'Deeper builds with training and proprietary tools.',
-  },
-  {
-    name: 'Partnership',
-    price: '$10k+ initial + $3-5k/mo',
-    description: 'Full transformation with dedicated support.',
-    recommended: true,
-  },
-]
-
-interface Feature {
-  name: string
-  values: (boolean | string)[]
-}
-
-const FEATURES: Feature[] = [
-  { name: 'AI Build', values: [true, true, true] },
-  { name: 'Education Sessions', values: ['2/month', '4/month', 'Unlimited'] },
-  { name: 'Advisory Calls', values: ['Monthly', 'Bi-weekly', 'Weekly'] },
-  { name: 'Proprietary Software', values: [false, true, true] },
-  { name: 'Custom Workflows', values: [false, true, true] },
-  { name: 'Change Management', values: [false, false, true] },
-  { name: 'Ongoing Support', values: ['Email', 'Priority', 'Dedicated'] },
-  { name: 'Quarterly Reviews', values: [false, true, true] },
-]
+import { TIERS, FEATURES } from '@/data/pricing'
 
 function CheckIcon() {
   return (
@@ -66,7 +25,7 @@ function CellValue({ value }: { value: boolean | string }) {
   if (typeof value === 'boolean') {
     return value ? <CheckIcon /> : <XIcon />
   }
-  return <span className={styles.textValue}>{value}</span>
+  return <span className={clsx(styles.textValue, 'advizr-num')}>{value}</span>
 }
 
 interface PricingTableProps {
@@ -87,10 +46,10 @@ export function PricingTable({ className }: PricingTableProps) {
               className={clsx(styles.tierHeader, tier.recommended && styles.recommended)}
             >
               {tier.recommended && (
-                <span className={styles.badge}>Recommended</span>
+                <span className={styles.eyebrow}>Most Popular</span>
               )}
               <span className={styles.tierName}>{tier.name}</span>
-              <span className={styles.tierPrice}>{tier.price}</span>
+              <span className={clsx(styles.tierPrice, 'advizr-num')}>{tier.price}</span>
             </div>
           ))}
         </div>
@@ -136,10 +95,10 @@ export function PricingTable({ className }: PricingTableProps) {
           >
             <div className={styles.mobileCardHeader}>
               {tier.recommended && (
-                <span className={styles.badge}>Recommended</span>
+                <span className={styles.eyebrow}>Most Popular</span>
               )}
               <span className={styles.tierName}>{tier.name}</span>
-              <span className={styles.tierPrice}>{tier.price}</span>
+              <span className={clsx(styles.tierPrice, 'advizr-num')}>{tier.price}</span>
             </div>
             <div className={styles.mobileFeatures}>
               {FEATURES.map((feature) => {
@@ -147,7 +106,7 @@ export function PricingTable({ className }: PricingTableProps) {
                 return (
                   <div key={feature.name} className={styles.mobileFeatureRow}>
                     <span className={styles.mobileFeatureName}>{feature.name}</span>
-                    <span className={styles.mobileFeatureValue}>
+                    <span className={clsx(styles.mobileFeatureValue, 'advizr-num')}>
                       <CellValue value={value} />
                     </span>
                   </div>

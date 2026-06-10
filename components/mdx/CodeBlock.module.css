@@ -1,12 +1,16 @@
 /* ==========================================================================
-   CodeBlock - Always-dark code container (GitHub Dark style)
+   CodeBlock - Always-dark code container.
+   Surface: --advizr-bg-code + --advizr-ring-top top-light + subtle border.
+   Interior accents use the mode-stable brand tints (--advizr-tint-*) so the
+   block reads identically in light and dark mode.
    ========================================================================== */
 
 .codeBlock {
   margin: var(--advizr-space-6) 0;
   background: var(--advizr-bg-code);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--advizr-radius-lg);
+  border: 1px solid var(--advizr-border-subtle);
+  border-radius: var(--advizr-radius-xl);
+  box-shadow: var(--advizr-ring-top);
   overflow: hidden;
 }
 
@@ -18,8 +22,8 @@
   justify-content: space-between;
   gap: var(--advizr-space-3);
   padding: var(--advizr-space-2) var(--advizr-space-4);
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--advizr-tint-5);
+  border-bottom: 1px solid var(--advizr-tint-10);
   font-size: var(--advizr-text-xs);
   min-height: 40px;
 }
@@ -38,18 +42,19 @@
   flex-shrink: 0;
 }
 
-/* --- Label & description (light text on dark bg) ------------------------ */
+/* --- Filename / title & description -------------------------------------- */
 
 .label {
-  font-weight: var(--advizr-font-medium);
   font-family: var(--advizr-font-mono);
   font-size: var(--advizr-text-xs);
-  color: rgba(225, 228, 232, 0.9);
+  color: var(--advizr-text-secondary);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .description {
-  color: rgba(139, 148, 158, 0.8);
+  color: var(--advizr-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -60,30 +65,49 @@
 .language {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
-  background: rgba(10, 122, 255, 0.15);
+  padding: 2px var(--advizr-space-2);
+  background: var(--advizr-tint-10);
   color: var(--advizr-blue-300);
   border-radius: var(--advizr-radius-full);
   font-family: var(--advizr-font-mono);
-  font-size: 0.6875rem;
+  font-size: var(--advizr-text-xs);
+  line-height: var(--advizr-text-xs-lh);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--advizr-tracking-label);
   flex-shrink: 0;
 }
 
-/* --- CopyButton override for dark context ------------------------------- */
+/* --- CopyButton override for the always-dark context --------------------- */
 
 .copyBtn {
   background: transparent;
   border: 1px solid transparent;
-  color: rgba(225, 228, 232, 0.5);
+  color: var(--advizr-text-secondary);
   padding: var(--advizr-space-1);
+  transition:
+    transform var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    border-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    color var(--advizr-duration-fast) var(--advizr-ease-out),
+    box-shadow var(--advizr-duration-fast) var(--advizr-ease-out);
 }
 
 .copyBtn:hover {
-  color: rgba(225, 228, 232, 0.9);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--advizr-blue-300);
+  background: var(--advizr-tint-10);
   border-color: transparent;
+}
+
+.copyBtn:active {
+  transform: scale(0.97);
+}
+
+/* Two-ring focus grammar, inner ring matched to the code surface */
+.copyBtn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-code),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 /* Hide the text label when inside CodeBlock (icon-only) */
@@ -113,7 +137,20 @@
   line-height: 1.6;
 }
 
-/* --- Custom scrollbar for dark bg --------------------------------------- */
+/* --- Shiki line-highlighting hooks ---------------------------------------
+   Full-bleed rows: negative margins cancel the pre padding, padding restores
+   the gutter, an inset box-shadow draws the 2px brand-blue left border. */
+
+.body :global(pre [data-highlighted-line]),
+.body :global(pre .highlighted) {
+  display: block;
+  margin: 0 calc(-1 * var(--advizr-space-4));
+  padding: 0 var(--advizr-space-4);
+  background: var(--advizr-tint-10);
+  box-shadow: inset 2px 0 0 var(--advizr-blue-500);
+}
+
+/* --- Custom scrollbar (mode-stable brand tints) -------------------------- */
 
 .body :global(pre)::-webkit-scrollbar {
   height: 6px;
@@ -124,16 +161,16 @@
 }
 
 .body :global(pre)::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
+  background: var(--advizr-tint-15);
+  border-radius: var(--advizr-radius-full);
 }
 
 .body :global(pre)::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--advizr-tint-25);
 }
 
 /* Firefox scrollbar */
 .body :global(pre) {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  scrollbar-color: var(--advizr-tint-15) transparent;
 }

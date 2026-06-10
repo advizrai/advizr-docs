@@ -5,7 +5,7 @@ interface SectionProps {
   title?: string
   description?: string
   id?: string
-  variant?: 'default' | 'muted' | 'highlight'
+  variant?: 'default' | 'muted' | 'highlight' | 'cta'
   children: React.ReactNode
   className?: string
 }
@@ -14,6 +14,7 @@ const variantMap: Record<string, string | undefined> = {
   default: undefined,
   muted: styles.muted,
   highlight: styles.highlight,
+  cta: styles.cta,
 }
 
 export function Section({

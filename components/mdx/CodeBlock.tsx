@@ -1,6 +1,4 @@
-'use client'
-
-import { useRef, useState, useEffect } from 'react'
+import { isValidElement } from 'react'
 import clsx from 'clsx'
 import styles from './CodeBlock.module.css'
 import { CopyButton } from './CopyButton'
@@ -10,21 +8,35 @@ interface CodeBlockProps {
   description?: string
   language?: string
   filename?: string
+  /** Explicit text for the copy button; falls back to text derived from children. */
+  code?: string
   children: React.ReactNode
   className?: string
 }
 
-export function CodeBlock({ title, description, language, filename, children, className }: CodeBlockProps) {
-  const label = filename || title
-  const bodyRef = useRef<HTMLDivElement>(null)
-  const [codeText, setCodeText] = useState('')
+/** Recursively extract the plain-text content of a React node tree. */
+function getNodeText(node: React.ReactNode): string {
+  if (node == null || typeof node === 'boolean') return ''
+  if (typeof node === 'string' || typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(getNodeText).join('')
+  if (isValidElement(node)) {
+    const { children } = node.props as { children?: React.ReactNode }
+    return getNodeText(children)
+  }
+  return ''
+}
 
-  useEffect(() => {
-    const pre = bodyRef.current?.querySelector('pre')
-    if (pre) {
-      setCodeText(pre.textContent ?? '')
-    }
-  }, [children])
+export function CodeBlock({
+  title,
+  description,
+  language,
+  filename,
+  code,
+  children,
+  className,
+}: CodeBlockProps) {
+  const label = filename || title
+  const codeText = code ?? getNodeText(children)
 
   return (
     <div className={clsx(styles.codeBlock, className)}>
@@ -38,7 +50,7 @@ export function CodeBlock({ title, description, language, filename, children, cl
           <CopyButton text={codeText} className={styles.copyBtn} />
         </div>
       </div>
-      <div className={styles.body} ref={bodyRef}>{children}</div>
+      <div className={styles.body}>{children}</div>
     </div>
   )
 }

@@ -1,0 +1,10 @@
+.eyebrow {
+  display: block;
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  font-weight: var(--advizr-font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--advizr-tracking-label);
+  color: var(--section-accent, var(--advizr-blue-500));
+  margin-bottom: var(--advizr-space-3);
+}

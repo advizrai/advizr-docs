@@ -1,19 +1,150 @@
+/* ==========================================================================
+   VideoEmbed — lite facade. The iframe mounts only after the poster button
+   is activated. Hover/focus follow the Card/Button grammar (lift, border
+   lighten, two-ring focus). No glow: the play affordance is not one of the
+   four sanctioned glow sites.
+   ========================================================================== */
+
 .videoEmbed {
   margin: var(--advizr-space-6) 0;
+  position: relative;
   border-radius: var(--advizr-radius-xl);
   overflow: hidden;
-  box-shadow: var(--advizr-shadow-md);
   border: 1px solid var(--advizr-border);
-  transition: box-shadow var(--advizr-transition-fast);
-}
-
-.videoEmbed:hover {
-  box-shadow: var(--advizr-shadow-lg);
+  background: var(--advizr-bg-tertiary);
+  box-shadow: var(--advizr-shadow-md);
+  transition:
+    transform var(--advizr-duration-fast) var(--advizr-ease-out),
+    border-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    box-shadow var(--advizr-duration-fast) var(--advizr-ease-out);
 }
 
 :global(html[class~="dark"]) .videoEmbed {
   border-color: var(--advizr-border-strong);
 }
+
+/* Wrapper-level hover/press/focus driven by the inner facade button so the
+   two-ring focus shadow is not clipped by overflow: hidden. */
+.videoEmbed:has(.facade:hover) {
+  border-color: var(--advizr-border-strong);
+  box-shadow: var(--advizr-shadow-lg);
+}
+
+@media (hover: hover) {
+  .videoEmbed:has(.facade:hover) {
+    transform: translateY(-2px);
+  }
+}
+
+.videoEmbed:has(.facade:active) {
+  transform: scale(0.98);
+}
+
+.videoEmbed:has(.facade:focus-visible) {
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
+/* ---------------------------------------------------------------------------
+   Facade (poster button)
+   --------------------------------------------------------------------------- */
+
+.facade {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: var(--advizr-bg-tertiary);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.facade:focus-visible {
+  outline: none;
+}
+
+.poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title chip — overlay surface token + backdrop blur for legibility over
+   arbitrary thumbnails in both themes. */
+.posterTitle {
+  position: absolute;
+  top: var(--advizr-space-3);
+  left: var(--advizr-space-3);
+  max-width: calc(100% - (var(--advizr-space-3) * 2));
+  padding: var(--advizr-space-1) var(--advizr-space-3);
+  border-radius: var(--advizr-radius-md);
+  background: var(--advizr-surface-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--advizr-border-subtle);
+  color: var(--advizr-text-primary);
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Play button (brand blue circle, centered)
+   --------------------------------------------------------------------------- */
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--advizr-radius-full);
+  background: var(--advizr-blue-500);
+  color: #ffffff;
+  box-shadow: var(--advizr-shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition:
+    transform var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+.facade:hover .playButton {
+  background: var(--advizr-blue-600);
+}
+
+@media (hover: hover) {
+  .facade:hover .playButton {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+
+.facade:active .playButton {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+
+/* Optical centering: nudge the triangle toward the wide side */
+.playIcon {
+  display: block;
+  margin-left: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Iframe (mounted after activation)
+   --------------------------------------------------------------------------- */
 
 .iframe {
   display: block;
@@ -21,6 +152,10 @@
   aspect-ratio: 16 / 9;
   border: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Error state
+   --------------------------------------------------------------------------- */
 
 .error {
   margin: var(--advizr-space-4) 0;
@@ -33,5 +168,5 @@
 }
 
 :global(html[class~="dark"]) .error {
-  background: rgba(239, 68, 68, 0.1);
+  background: color-mix(in srgb, var(--advizr-error) 10%, transparent);
 }

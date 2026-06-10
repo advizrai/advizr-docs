@@ -1,8 +1,30 @@
+/* Hero — single top-center brand radial + masked dot-grid texture.
+   H1 paints statically (no entrance animation — LCP safety).
+   Gradient text is rationed to the optional `highlight` phrase only;
+   the title itself is solid --advizr-text-primary. */
+
 .hero {
   position: relative;
   overflow: hidden;
   padding: var(--advizr-space-24) var(--advizr-space-6) var(--advizr-space-16);
   text-align: center;
+}
+
+/* Masked dot-grid layer, fading out from the top center */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(17, 24, 39, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 0%, black, transparent);
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 0%, black, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global(html[class~="dark"]) .hero::after {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
 }
 
 .left {
@@ -46,25 +68,6 @@
   border-bottom: 1px solid var(--advizr-border);
 }
 
-/* ---- Glow decoration ---- */
-
-.glow {
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(10, 122, 255, 0.12) 0%, transparent 70%);
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-:global(html[class~="dark"]) .glow {
-  opacity: 0.3;
-}
-
 /* ---- Inner wrapper ---- */
 
 .inner {
@@ -74,36 +77,45 @@
   z-index: 1;
 }
 
-/* ---- Title with gradient text ---- */
+/* ---- Eyebrow ---- */
+
+.eyebrow {
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  letter-spacing: var(--advizr-tracking-label);
+  text-transform: uppercase;
+  color: var(--section-accent, var(--advizr-blue-500));
+  margin: 0 0 var(--advizr-space-4);
+}
+
+/* ---- Title (solid color; paints statically for LCP) ---- */
 
 .title {
   color: var(--advizr-text-primary);
-  font-size: 3.5rem;
-  font-weight: var(--advizr-font-extrabold);
-  letter-spacing: -0.04em;
+  font-family: var(--advizr-font-display);
+  font-size: clamp(var(--advizr-text-4xl), 4vw + 1rem, var(--advizr-text-6xl));
+  font-weight: var(--advizr-font-display-weight);
+  letter-spacing: var(--advizr-tracking-display);
   line-height: 1.1;
-  margin: 0 0 1.5rem;
-  background: linear-gradient(135deg, var(--advizr-text-primary) 0%, var(--advizr-text-secondary) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 0 0 var(--advizr-space-6);
 }
 
-:global(html[class~="dark"]) .title {
-  background: linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%);
+/* Gradient phrase inside the title (single phrase, never the whole title) */
+.highlight {
+  background: var(--advizr-gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ---- Description ---- */
 
 .description {
-  font-size: 1.25rem;
+  font-size: var(--advizr-text-xl);
   line-height: 1.7;
   color: var(--advizr-text-secondary);
   max-width: 720px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto var(--advizr-space-10);
   position: relative;
   z-index: 1;
 }
@@ -130,16 +142,7 @@
     padding: var(--advizr-space-16) var(--advizr-space-4) var(--advizr-space-12);
   }
 
-  .title {
-    font-size: 2rem;
-  }
-
   .description {
-    font-size: 1.05rem;
-  }
-
-  .glow {
-    width: 300px;
-    height: 200px;
+    font-size: var(--advizr-text-lg);
   }
 }

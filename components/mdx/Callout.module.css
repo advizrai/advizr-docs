@@ -43,13 +43,13 @@
    --------------------------------------------------------------------------- */
 
 .info {
-  background: rgba(10, 122, 255, 0.04);
-  border-color: rgba(10, 122, 255, 0.1);
-  border-left: 3px solid var(--advizr-blue-500, #0A7AFF);
+  background: color-mix(in srgb, var(--advizr-blue-500) 4%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-blue-500) 10%, transparent);
+  border-left: 3px solid var(--advizr-blue-500);
 }
 
 .info .icon {
-  color: var(--advizr-blue-500, #0A7AFF);
+  color: var(--advizr-blue-500);
 }
 
 /* ---------------------------------------------------------------------------
@@ -57,13 +57,13 @@
    --------------------------------------------------------------------------- */
 
 .warning {
-  background: rgba(245, 158, 11, 0.04);
-  border-color: rgba(245, 158, 11, 0.1);
-  border-left: 3px solid var(--advizr-warning, #F59E0B);
+  background: color-mix(in srgb, var(--advizr-warning) 4%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-warning) 10%, transparent);
+  border-left: 3px solid var(--advizr-warning);
 }
 
 .warning .icon {
-  color: var(--advizr-warning, #F59E0B);
+  color: var(--advizr-warning);
 }
 
 /* ---------------------------------------------------------------------------
@@ -71,13 +71,13 @@
    --------------------------------------------------------------------------- */
 
 .danger {
-  background: rgba(239, 68, 68, 0.04);
-  border-color: rgba(239, 68, 68, 0.1);
-  border-left: 3px solid var(--advizr-error, #EF4444);
+  background: color-mix(in srgb, var(--advizr-error) 4%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-error) 10%, transparent);
+  border-left: 3px solid var(--advizr-error);
 }
 
 .danger .icon {
-  color: var(--advizr-error, #EF4444);
+  color: var(--advizr-error);
 }
 
 /* ---------------------------------------------------------------------------
@@ -85,13 +85,13 @@
    --------------------------------------------------------------------------- */
 
 .tip {
-  background: rgba(16, 185, 129, 0.04);
-  border-color: rgba(16, 185, 129, 0.1);
-  border-left: 3px solid var(--advizr-accent-500, #10B981);
+  background: color-mix(in srgb, var(--advizr-success) 4%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-success) 10%, transparent);
+  border-left: 3px solid var(--advizr-success);
 }
 
 .tip .icon {
-  color: var(--advizr-accent-500, #10B981);
+  color: var(--advizr-success);
 }
 
 /* ---------------------------------------------------------------------------
@@ -113,23 +113,23 @@
    --------------------------------------------------------------------------- */
 
 :global(html[class~="dark"]) .info {
-  background: rgba(10, 122, 255, 0.08);
-  border-color: rgba(10, 122, 255, 0.15);
+  background: color-mix(in srgb, var(--advizr-blue-500) 8%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-blue-500) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .warning {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.15);
+  background: color-mix(in srgb, var(--advizr-warning) 8%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-warning) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .danger {
-  background: rgba(239, 68, 68, 0.08);
-  border-color: rgba(239, 68, 68, 0.15);
+  background: color-mix(in srgb, var(--advizr-error) 8%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-error) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .tip {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.15);
+  background: color-mix(in srgb, var(--advizr-success) 8%, transparent);
+  border-color: color-mix(in srgb, var(--advizr-success) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .content {

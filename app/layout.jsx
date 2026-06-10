@@ -4,6 +4,7 @@ import { getPageMap } from 'nextra/page-map'
 import localFont from 'next/font/local'
 import '../styles/app.css'
 import NavbarExtra from '../components/NavbarExtra'
+import { SkipLink } from '../components/SkipLink'
 import CustomFooter from '../components/CustomFooter'
 import BackToTop from '../components/BackToTop'
 import { Analytics } from '../components/Analytics'
@@ -125,6 +126,7 @@ export default async function RootLayout({ children }) {
     >
       <Head />
       <body>
+        <SkipLink />
         <Layout
           darkMode={true}
           nextThemes={{ defaultTheme: 'dark' }}

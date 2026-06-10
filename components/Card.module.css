@@ -1,12 +1,28 @@
+/* Card — hover/focus grammar source of truth for the design system.
+   Hover: lift + border-lighten (+ bg-lighten in dark). Press: scale 0.98.
+   Focus: two-ring focus-visible. Glow is NOT used on cards (rationing rule
+   in tokens.css); the cursor spotlight uses the faint brand tint only. */
+
 .card {
   display: block;
-  padding: 1.5rem;
-  border-radius: var(--advizr-radius-xl, 1rem);
+  padding: var(--advizr-space-6);
+  border-radius: var(--advizr-radius-xl);
   text-decoration: none;
   color: inherit;
   position: relative;
   overflow: hidden;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform var(--advizr-duration-fast) var(--advizr-ease-out),
+    border-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    box-shadow var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+a.card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .inner {
@@ -14,28 +30,34 @@
   z-index: 1;
 }
 
-/* Mouse-tracking glow */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(10, 122, 255, 0.04),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 300ms;
-  pointer-events: none;
+/* Cursor-tracking spotlight (desktop pointer devices only) */
+@media (hover: hover) {
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      var(--advizr-tint-5),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity var(--advizr-duration-slow) var(--advizr-ease-out);
+    pointer-events: none;
+  }
+
+  a.card:hover::before {
+    opacity: 1;
+  }
+
+  a.card:hover {
+    transform: translateY(-2px);
+  }
 }
 
-a.card:hover::before {
-  opacity: 1;
-}
-
-a.card:hover {
-  transform: translateY(-2px);
+a.card:active {
+  transform: scale(0.98);
 }
 
 /* Default variant */
@@ -46,7 +68,7 @@ a.card:hover {
 }
 
 .default:hover {
-  border-color: var(--advizr-blue-200);
+  border-color: var(--advizr-border-strong);
   box-shadow: var(--advizr-shadow-md);
 }
 
@@ -56,8 +78,8 @@ a.card:hover {
 }
 
 :global(html[class~="dark"]) .default:hover {
-  border-color: var(--advizr-blue-700);
-  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(10, 122, 255, 0.15));
+  border-color: var(--advizr-border-strong);
+  background: var(--advizr-surface-raised);
 }
 
 /* Action variant */
@@ -75,12 +97,12 @@ a.card:hover {
   right: 1rem;
   height: 2px;
   border-radius: 0 0 2px 2px;
-  background: var(--advizr-gradient-primary, linear-gradient(135deg, #0A7AFF 0%, #3AAFFF 100%));
+  background: var(--advizr-gradient-primary);
   z-index: 2;
 }
 
 .action:hover {
-  border-color: var(--advizr-blue-200);
+  border-color: var(--advizr-border-strong);
   box-shadow: var(--advizr-shadow-md);
 }
 
@@ -90,8 +112,8 @@ a.card:hover {
 }
 
 :global(html[class~="dark"]) .action:hover {
-  border-color: var(--advizr-blue-700);
-  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(10, 122, 255, 0.15));
+  border-color: var(--advizr-border-strong);
+  background: var(--advizr-surface-raised);
 }
 
 /* Outline variant */
@@ -102,12 +124,13 @@ a.card:hover {
 
 .outline:hover {
   background: var(--advizr-bg-secondary);
-  border-color: var(--advizr-blue-300);
+  border-color: var(--advizr-border-strong);
   box-shadow: var(--advizr-shadow-md);
 }
 
 :global(html[class~="dark"]) .outline:hover {
-  border-color: var(--advizr-blue-600);
+  background: var(--advizr-hover-lighten);
+  border-color: var(--advizr-border-strong);
 }
 
 /* Ghost variant */
@@ -120,6 +143,10 @@ a.card:hover {
   background: var(--advizr-bg-secondary);
 }
 
+:global(html[class~="dark"]) .ghost:hover {
+  background: var(--advizr-hover-lighten);
+}
+
 /* Icon */
 .icon {
   display: flex;
@@ -127,7 +154,7 @@ a.card:hover {
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: var(--advizr-radius-lg, 0.75rem);
+  border-radius: var(--advizr-radius-lg);
   background: color-mix(in srgb, var(--section-accent, var(--advizr-blue-500)) 10%, transparent);
   color: var(--section-accent, var(--advizr-blue-500));
   margin-bottom: 1rem;
@@ -149,8 +176,9 @@ a.card:hover {
 
 /* Title */
 .title {
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: var(--advizr-text-base);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
   margin: 0 0 0.5rem;
   color: var(--advizr-text-primary);
   display: flex;
@@ -162,8 +190,8 @@ a.card:hover {
 .arrow {
   display: inline-block;
   font-size: 0.875rem;
-  color: var(--advizr-blue-500, #0A7AFF);
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--advizr-blue-500);
+  transition: transform var(--advizr-duration-fast) var(--advizr-ease-out);
 }
 
 a.card:hover .arrow {
@@ -176,7 +204,7 @@ a.card:hover .arrow {
 
 /* Description / children */
 .body {
-  font-size: 0.875rem;
+  font-size: var(--advizr-text-sm);
   color: var(--advizr-text-secondary);
   line-height: 1.6;
   margin: 0;

@@ -30,40 +30,42 @@
   border-left: 1px solid var(--advizr-border);
 }
 
+/* Featured tier: faint brand tint fill + static 1px blue ring (inset so it
+   composes with the table grid borders). No glow here — see tokens.css
+   rationing rule; the table column tint is the only emphasis fill.
+   HOOK(phase: animated borders): the animated conic-gradient border mounts
+   on .recommended / .recommendedCard, replacing this static blue-500 ring. */
 .tierHeader.recommended {
-  background: var(--advizr-blue-50);
-  border-top: 3px solid var(--advizr-blue-500);
-  box-shadow: inset 0 3px 12px -4px rgba(10, 122, 255, 0.1);
+  background: var(--advizr-tint-5);
+  box-shadow: inset 0 0 0 1px var(--advizr-blue-500);
 }
 
-:global(html[class~="dark"]) .tierHeader.recommended {
-  background: rgba(10, 122, 255, 0.1);
-  box-shadow: inset 0 3px 12px -4px rgba(10, 122, 255, 0.15);
-}
-
-.badge {
-  display: inline-block;
-  padding: var(--advizr-space-1) var(--advizr-space-3);
+/* Eyebrow label on the featured tier */
+.eyebrow {
+  font-family: var(--advizr-font-mono);
   font-size: var(--advizr-text-xs);
-  font-weight: var(--advizr-font-semibold);
-  color: #ffffff;
-  background: var(--advizr-gradient-primary);
-  border-radius: var(--advizr-radius-full);
-  line-height: 1;
-  letter-spacing: 0.025em;
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-label);
   text-transform: uppercase;
+  color: var(--advizr-blue-700);
+  line-height: 1;
+}
+
+:global(html[class~="dark"]) .eyebrow {
+  color: var(--advizr-blue-400);
 }
 
 .tierName {
   font-size: var(--advizr-text-lg);
-  font-weight: var(--advizr-font-bold);
+  font-weight: var(--advizr-font-title);
   color: var(--advizr-text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--advizr-tracking-base);
 }
 
 .tierPrice {
   font-size: var(--advizr-text-sm);
   color: var(--advizr-text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Feature rows */
@@ -71,7 +73,7 @@
   display: grid;
   grid-template-columns: 1fr repeat(3, 1fr);
   border-top: 1px solid var(--advizr-border);
-  transition: background-color var(--advizr-transition-fast);
+  transition: background-color var(--advizr-duration-fast) var(--advizr-ease-out);
 }
 
 .altRow {
@@ -83,7 +85,7 @@
   align-items: center;
   padding: var(--advizr-space-3) var(--advizr-space-4);
   font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
   color: var(--advizr-text-primary);
 }
 
@@ -96,15 +98,15 @@
 }
 
 .recommendedCol {
-  background: rgba(10, 122, 255, 0.03);
-}
-
-:global(html[class~="dark"]) .recommendedCol {
-  background: rgba(10, 122, 255, 0.05);
+  background: var(--advizr-tint-5);
 }
 
 .checkIcon {
   color: var(--advizr-accent-600);
+}
+
+:global(html[class~="dark"]) .checkIcon {
+  color: var(--advizr-accent-400);
 }
 
 .xIcon {
@@ -114,7 +116,8 @@
 .textValue {
   font-size: var(--advizr-text-sm);
   color: var(--advizr-text-primary);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
+  font-variant-numeric: tabular-nums;
 }
 
 /* CTA row */
@@ -145,14 +148,14 @@
   overflow: hidden;
 }
 
+/* Featured tier card: tint fill + 1px blue border, no glow.
+   HOOK(phase: animated borders): conic border replaces this static ring. */
 .recommendedCard {
-  border-color: var(--advizr-blue-500);
-  border-width: 2px;
-  box-shadow: var(--advizr-shadow-glow);
+  border: 1px solid var(--advizr-blue-500);
 }
 
-:global(html[class~="dark"]) .recommendedCard {
-  box-shadow: var(--advizr-shadow-glow-lg);
+.recommendedCard .mobileCardHeader {
+  background: var(--advizr-tint-5);
 }
 
 .mobileCardHeader {
@@ -187,8 +190,9 @@
 
 .mobileFeatureValue {
   font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
   color: var(--advizr-text-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 .mobileCtaWrap {
@@ -198,9 +202,15 @@
   border-top: 1px solid var(--advizr-border);
 }
 
-/* ---------- Hover on rows ---------- */
-.featureRow:hover {
-  background: var(--advizr-bg-tertiary);
+/* ---------- Hover on rows (hover grammar: bg-lighten only; rows never lift) */
+@media (hover: hover) {
+  .featureRow:hover {
+    background: var(--advizr-bg-tertiary);
+  }
+
+  :global(html[class~="dark"]) .featureRow:hover {
+    background: var(--advizr-hover-lighten);
+  }
 }
 
 /* ---------- Responsive ---------- */
@@ -211,11 +221,5 @@
 
   .mobileCards {
     display: flex;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .featureRow {
-    transition: none;
   }
 }
