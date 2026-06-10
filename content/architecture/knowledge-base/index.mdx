@@ -1,0 +1,40 @@
+---
+title: Knowledge Base Overview
+description: "Advizr's three-tier knowledge system: agency SOPs, per-project directives, and output data — stored in a version-controlled vault and served to AI agents."
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Knowledge base
+
+Advizr's agents don't start from zero on every task. A central knowledge system gives them the agency's standard procedures, each project's specific rules, and the memory of what has worked and failed before. It's the reason quality compounds instead of resetting with every session.
+
+## Three tiers
+
+| Tier | Contents | Source of truth |
+|---|---|---|
+| **1 — Agency SOPs** | Universal procedures shared across all projects: how we operate, sell, build, and review | The knowledge vault |
+| **2 — Project directives** | Per-project rules and processes, synced from each project repository | Each project's `directives/` folder |
+| **3 — Outputs** | Project output data used to evaluate and optimize results over time | The knowledge-base API |
+
+The vault itself is a version-controlled Obsidian repository: human-readable markdown with structured frontmatter, reviewed like code. Errors, decisions, learnings, and session summaries get their own records — when something breaks once, the fix becomes a rule every future agent checks before repeating the operation.
+
+<FlowDiagram
+  stages={[
+    { label: 'Vault', sublabel: 'Markdown + git' },
+    { label: 'KB API', sublabel: 'Search + memory' },
+    { label: 'Agents', sublabel: 'MCP tools' }
+  ]}
+  caption="Knowledge flows from the version-controlled vault through the API to every agent"
+/>
+
+## Self-annealing
+
+The loop that makes this more than a wiki: when an agent hits a non-trivial failure, it logs the error with its root cause and prevention rule. Before any risky operation — deploys, migrations, bulk sends — agents query that error memory first. The same mistake doesn't happen twice; that's a design goal with infrastructure behind it, not a slogan.
+
+## In this section
+
+<CardGrid columns={2}>
+  <Card icon="wrench" title="MCP tools" description="The full tool surface agents use to read and write agency knowledge." href="/docs/architecture/knowledge-base/mcp-tools" arrow />
+  <Card icon="layers" title="The DOE framework" description="Where the knowledge base fits in the three-layer architecture." href="/docs/architecture/doe-framework" arrow />
+</CardGrid>

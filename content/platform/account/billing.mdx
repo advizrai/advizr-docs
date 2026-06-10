@@ -1,64 +1,101 @@
-# Billing
+---
+title: Billing
+description: "View your plan and invoices, update your payment method through Stripe, and learn how month-to-month cancellation works. For Client Admins only."
+---
 
-The Billing page shows your current subscription, payment history, and invoices. Only users with the Client Admin role can view and manage billing information. Payments are processed through Stripe, and you can cancel at any time with no long-term commitment.
+# Manage your billing
 
-<Screenshot
-  src="/images/platform/billing.png"
-  alt="Billing page"
-  caption="View your plan, invoices, and payment details."
-/>
+The Billing page shows your current subscription, payment history, and invoices. Only users with the Client Admin role can view and manage billing. Payments are processed through Stripe, and every tier is month-to-month after the initial build — there's no long-term commitment.
+
+{/* TODO: capture billing.png */}
+
+## Open the Billing page
+
+Billing doesn't appear in the main sidebar — it lives under Settings.
+
+<Steps>
+  <Step title="Open Settings">
+    Click **Settings** in the portal. {/* GATE0: confirm with James where Settings is opened from (sidebar footer vs profile menu) and that Billing lives under Settings -> Advanced mode */}
+  </Step>
+  <Step title="Select Billing">
+    If you don't see Billing, you don't have the Client Admin role — ask your organization's admin.
+  </Step>
+</Steps>
+
+You should now see your current plan, your next payment date, and a list of past invoices.
 
 ## Your subscription
 
-The Billing page shows your current plan, what is included, and when your next payment is due. Your subscription covers access to the platform, your FDE's time, workflow development, and ongoing support.
+The Billing page shows your current plan, what's included, and when your next payment is due. Your subscription covers access to the platform, your FDE's time, workflow development, and ongoing support. For the full breakdown of tiers and what each includes, see [Pricing](/docs/services/pricing).
 
-If you have questions about what is included in your plan or want to discuss upgrades, talk to your FDE in [Chat](/docs/platform/dashboard/chat) or [book a call](/docs/platform/dashboard/book).
+If you have questions about your plan or want to discuss upgrades, talk to your FDE in [Chat](/docs/platform/dashboard/chat) or [book a call](/docs/platform/dashboard/book).
 
-## Viewing invoices
+## Download an invoice
 
 All past invoices are listed on the Billing page in reverse chronological order. Each invoice shows:
 
 - Invoice date and number
 - Amount charged
 - Payment status (paid, pending, or failed)
-- A link to download the invoice as PDF
+- A link to download the invoice as a PDF
 
 Invoices are generated automatically by Stripe and emailed to the Client Admin on record.
 
-## Updating your payment method
+## Update your payment method
 
 <Steps>
   <Step title="Open the Billing page">
-    Navigate to Account and then Billing from the sidebar or Settings.
+    Open **Settings**, then select **Billing**.
   </Step>
   <Step title="Click Update Payment Method">
     This opens a secure Stripe form where you can enter new card details.
   </Step>
   <Step title="Enter your new card information">
-    Fill in the card number, expiry date, and CVC. Stripe handles the payment processing - your card details are never stored on the Advizr platform.
+    Fill in the card number, expiry date, and CVC. Stripe handles the payment processing — your card details are never stored on the Advizr platform.
   </Step>
   <Step title="Save changes">
-    Click Save. Your next invoice will be charged to the new card.
+    Click **Save**.
   </Step>
 </Steps>
 
+You should now see your new card on file. Your next invoice will be charged to it.
+
 <Callout type="info">
-  Only Client Admins can update payment methods and view billing details. If you need billing access and do not have the Client Admin role, ask your organisation's admin. See [Roles and Permissions](/docs/platform/account/roles-and-permissions) for details.
+  Only Client Admins can update payment methods and view billing details. If you need billing access and don't have the Client Admin role, ask your organization's admin. See [Roles and permissions](/docs/platform/account/roles-and-permissions) for details.
 </Callout>
 
-## Cancellation
+## Cancel your subscription
 
-You can cancel your subscription at any time. There are no long-term contracts or early termination fees. To cancel, contact your FDE in Chat or book a call to discuss. Your access continues until the end of the current billing period.
+Every tier is month-to-month after the initial build. You can cancel anytime with 30 days' notice — there are no termination fees and no lock-in periods. To cancel, contact your FDE in Chat or book a call to discuss. Your access continues until the end of the current billing period.
 
 <Callout type="tip">
   Before cancelling, consider whether pausing your engagement might be a better fit. Talk to your FDE about options.
 </Callout>
 
-## Questions about billing
+## If something goes wrong
 
-If you see an unexpected charge, have a question about your invoice, or need a receipt for accounting purposes, contact your Advizr team through [Chat](/docs/platform/dashboard/chat) or email your FDE directly.
+- **An invoice shows as failed.** Your card may have expired or been declined. Update your payment method, then message your FDE in Chat to confirm the payment went through.
+- **You can't see the Billing page.** Billing is only visible to Client Admins. Ask your organization's admin to update your role or handle the change for you.
+- **An invoice email didn't arrive.** Invoices go to the Client Admin on record. Check your spam folder, or download the PDF directly from the Billing page.
+- **You see an unexpected charge.** Don't dispute it with your card issuer first — message your FDE in Chat with the invoice number and they'll resolve it.
+
+Still stuck? Send your FDE a message in [Chat](/docs/platform/dashboard/chat) with your browser, a screenshot, and when it happened.
 
 ## Next steps
+
+<LinkCard
+  title="Pricing"
+  description="The full breakdown of Catalyst, Acceleration, and Partnership tiers in CAD."
+  href="/docs/services/pricing"
+  icon="credit-card"
+/>
+
+<LinkCard
+  title="Roles and permissions"
+  description="Understand what each role can see and do in the platform."
+  href="/docs/platform/account/roles-and-permissions"
+  icon="shield"
+/>
 
 <LinkCard
   title="General FAQ"

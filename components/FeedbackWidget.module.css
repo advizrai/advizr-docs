@@ -1,0 +1,66 @@
+.widget {
+  margin-top: var(--advizr-space-12);
+  padding: var(--advizr-space-4) var(--advizr-space-5);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-lg);
+  background: var(--advizr-bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--advizr-space-4);
+  flex-wrap: wrap;
+}
+
+:global(html[class~="dark"]) .widget {
+  box-shadow: var(--advizr-ring-top);
+}
+
+.question {
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-ui);
+  color: var(--advizr-text-primary);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--advizr-space-2);
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: var(--advizr-text-xs);
+  font-family: var(--advizr-font-sans);
+  color: var(--advizr-text-secondary);
+  background: var(--advizr-bg-primary);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-full);
+  padding: 0.3rem 0.85rem;
+  cursor: pointer;
+  transition:
+    color var(--advizr-duration-fast) var(--advizr-ease-out),
+    border-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+.btn:hover {
+  color: var(--advizr-text-primary);
+  border-color: var(--advizr-border-strong);
+}
+
+:global(html[class~="dark"]) .btn {
+  background: var(--advizr-bg-tertiary);
+}
+
+:global(html[class~="dark"]) .btn:hover {
+  background: var(--advizr-hover-lighten);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}

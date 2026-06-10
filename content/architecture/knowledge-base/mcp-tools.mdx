@@ -1,0 +1,57 @@
+---
+title: Knowledge Base MCP Tools
+description: "All 13 MCP tools Advizr agents use against the knowledge base: context priming, search, ingestion, error memory, learnings, session memory, and vault writes."
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Knowledge base MCP tools
+
+Agents reach the knowledge base through the Model Context Protocol — 13 tools across four jobs: priming context, searching, learning from failure, and remembering across sessions.
+
+## Context and search
+
+| Tool | What it does |
+|---|---|
+| `kb_context` | The first call of any task: decomposes the request into optimized queries, retrieves across all tiers in parallel, returns a synthesized briefing (~1,500 tokens instead of 6,000+) |
+| `kb_search` | Narrow follow-up queries on a specific topic after initial context is loaded |
+| `kb_status` | Health and index state of the knowledge base |
+
+## Ingestion and outputs
+
+| Tool | What it does |
+|---|---|
+| `kb_ingest` | Adds new documents to the knowledge base |
+| `kb_submit_output` | Records project output data (Tier 3) for later evaluation |
+| `kb_submit_outcome` | Records how an output performed, closing the optimization loop |
+
+## Error memory and learnings — the self-annealing surface
+
+| Tool | What it does |
+|---|---|
+| `kb_check_errors` | Called BEFORE risky operations (deploys, migrations, bulk sends): returns known errors matching the planned action, with root causes and prevention rules |
+| `kb_log_error` | Called AFTER resolving any non-trivial failure: severity (S1 prod-down / S2 blocked / S3 friction) plus exactly one resolution — prevention-rule, check-added, or accepted-risk |
+| `kb_update_learning` | Appends durable discoveries to the relevant directive's Learnings section |
+
+## Session memory
+
+| Tool | What it does |
+|---|---|
+| `memory_save` | Persists a discovery for future sessions |
+| `memory_search` | Recalls relevant past work |
+| `memory_timeline` | Reviews session history chronologically |
+
+## Vault writes
+
+| Tool | What it does |
+|---|---|
+| `vault_write` | Files notes into the bot-writable vault areas: errors, learnings, sessions, reviews, and inbox |
+
+## The two-lane rule
+
+Writes follow two lanes. **Lane A (automatic):** errors, learnings, sessions, and reviews go straight to the vault through the tools above. **Lane B (reviewed):** changes to directives and SOPs — the normative documents — go through a pull request in the owning repository, reviewed by a human. Agents record what happened freely; they don't rewrite the rules without review.
+
+## Next steps
+
+- [Knowledge base overview](/docs/architecture/knowledge-base) — the three-tier system these tools serve
+- [The DOE framework](/docs/architecture/doe-framework) — where agents sit in the architecture

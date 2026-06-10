@@ -1,12 +1,17 @@
-# Analytics
+---
+title: Track your results in Analytics
+description: "Read the Advizr analytics dashboard: workflow performance, goal progress, and usage metrics, plus how to change date ranges and export reports."
+---
 
-The Analytics section shows you how your Advizr engagement is performing. It brings together workflow metrics, goal progress, and usage data into a single dashboard. Use it to understand what is working, measure the return on your investment, and identify where to focus next.
+# Track your results in Analytics
 
-<Screenshot
-  src="/images/platform/analytics.png"
-  alt="Analytics dashboard"
-  caption="Track workflow performance and measure time saved."
-/>
+The Analytics view shows you how your Advizr engagement is performing. It brings together workflow metrics, goal progress, and usage data into a single dashboard. Use it to understand what is working, measure the return on your investment, and identify where to focus next.
+
+{/* TODO: capture analytics.png */}
+
+## Where to find Analytics
+
+Analytics does not appear in the main sidebar (Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, Help). It is part of Advanced mode, which you turn on in Settings. {/* GATE0: confirm Analytics lives under Settings -> Advanced mode */}
 
 ## What you can see
 
@@ -35,28 +40,64 @@ Understand how you and your team are using the platform:
 - Learning content completed
 
 <Callout type="info">
-  Analytics data is specific to your organisation. It reflects only your workflows, your goals, and your team's activity.
+  Analytics data is specific to your organization. It reflects only your workflows, your goals, and your team's activity.
 </Callout>
 
-## Reading the dashboard
+## Read the dashboard
 
-The dashboard defaults to a 30-day view. Use the date picker to change the time range. Charts update automatically to reflect the selected period.
+<Steps>
+  <Step title="Turn on Advanced mode">
+    Open **Settings** and switch the interface to Advanced mode so the Analytics view is visible. {/* GATE0: confirm exact toggle label and location with James */}
+  </Step>
+  <Step title="Open Analytics">
+    Open Analytics from the navigation. The dashboard defaults to a 30-day view.
+  </Step>
+  <Step title="Scan the summary cards">
+    Key numbers are displayed at the top as summary cards — total runs, hours saved, active goals, and team members.
+  </Step>
+  <Step title="Adjust the date range">
+    Use the date picker to change the time range. Charts update automatically to reflect the selected period, with detailed breakdowns by workflow and by time period below the summary cards.
+  </Step>
+</Steps>
 
-Key numbers are displayed at the top as summary cards - total runs, hours saved, active goals, and team members. Below the summary cards, detailed charts break down performance by workflow and by time period.
+You should now see summary cards across the top of the dashboard and charts below them reflecting your selected date range.
 
-## Exporting reports
+## Export reports
 
 You can export analytics data for use in your own reporting. Click **Export** to download a summary as CSV or PDF. Exports include the current date range and all visible metrics.
 
-## How analytics inform next steps
+<Details title="How analytics shape your engagement">
+  Your FDE reviews your analytics regularly and uses the data to recommend adjustments. If a workflow is underperforming, they investigate and propose changes. If a goal is progressing faster than expected, they may suggest expanding scope or adding new objectives. The same numbers you see are the numbers your team plans around, so the dashboard doubles as a shared scoreboard for the engagement.
+</Details>
 
-Your FDE reviews your analytics regularly and uses the data to recommend adjustments. If a workflow is underperforming, they will investigate and propose changes. If a goal is progressing faster than expected, they may suggest expanding scope or adding new objectives.
+## If something goes wrong
+
+- **You cannot find the Analytics view.** Check that Advanced mode is turned on in [Settings](/docs/platform/features/settings) — Analytics is hidden in Simple mode.
+- **The dashboard looks empty.** If your engagement is new, there may not be enough runs or goal activity yet to chart. Widen the date range to confirm.
+- **A number looks wrong.** Note the metric, date range, and what you expected, then send the details to your FDE in Chat — they can trace where the figure comes from.
+- **An export fails to download.** Check your browser's pop-up and download settings, then try again with a shorter date range.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
-<LinkCard
-  title="Team Management"
-  description="Add team members and manage roles and access."
-  href="/docs/platform/features/team-management"
-  icon="users"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Measuring ROI"
+    description="Learn how to turn time saved into a defensible return figure."
+    href="/docs/academy/workflow-mastery/measuring-roi"
+    icon="trending-up"
+  />
+  <LinkCard
+    title="Monitor runs and workflows"
+    description="See the individual runs behind your workflow performance numbers."
+    href="/docs/platform/features/runs-and-workflows"
+    icon="workflow"
+  />
+  <LinkCard
+    title="Goals"
+    description="Track progress on your objectives and connect work to outcomes."
+    href="/docs/platform/dashboard/goals"
+    icon="target"
+  />
+</CardGrid>

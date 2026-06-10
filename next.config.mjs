@@ -38,10 +38,8 @@ export default withNextra({
       { source: '/docs/architecture/_drafts/:path*', destination: '/docs/architecture', permanent: false },
       // Architecture subsections collapsed while pages are rebuilt with verified content;
       // remove each entry as its subsection returns to the sidebar
-      { source: '/docs/architecture/infrastructure/:path*', destination: '/docs/architecture', permanent: false },
       { source: '/docs/architecture/client-platform/:path*', destination: '/docs/architecture', permanent: false },
       { source: '/docs/architecture/database/:path*', destination: '/docs/architecture', permanent: false },
-      { source: '/docs/architecture/knowledge-base/:path*', destination: '/docs/architecture', permanent: false },
       { source: '/docs/architecture/automation-pipeline/:path*', destination: '/docs/architecture', permanent: false },
       { source: '/docs/architecture/engineering/:path*', destination: '/docs/architecture', permanent: false },
       { source: '/docs/architecture/api-reference/:path*', destination: '/docs/architecture', permanent: false }

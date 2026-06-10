@@ -1,6 +1,11 @@
-# Documents
+---
+title: Upload your documents
+description: How to upload, organize, download, and delete documents in the Advizr client portal, including supported formats and the 25 MB file size limit.
+---
 
-The Documents section is your file library. Every document you upload - during onboarding or at any point after - appears here with its processing status. Documents feed your organisation's knowledge base, which means the AI in Chat, your workflows, and your Advizr team all draw on the files you provide.
+# Upload your documents
+
+The Documents section is your file library. Every document you upload - during onboarding or at any point after - appears here with its processing status. Documents feed your organization's knowledge base, which means the AI in Chat, your workflows, and your Advizr team all draw on the files you provide.
 
 <Screenshot
   src="/images/platform/documents.png"
@@ -8,17 +13,24 @@ The Documents section is your file library. Every document you upload - during o
   caption="All your uploaded files and their processing status."
 />
 
-## Uploading new documents
+## Upload a document
 
-Click **Upload** at the top of the page to add files. You can drag and drop multiple files at once or click to browse your computer. Each file is processed individually - larger files may take a few minutes.
+<Steps>
+  <Step title="Open Documents from the sidebar">
+    Click **Documents** in the left sidebar. On mobile, tap the menu icon in the top-left corner first.
+  </Step>
+  <Step title="Click Upload">
+    The **Upload** button is at the top of the page.
+  </Step>
+  <Step title="Add your files">
+    Drag and drop one or more files, or click to browse your computer. Supported formats are PDF, DOCX, and TXT for documents; XLSX and CSV for spreadsheets; PNG, JPG, and JPEG for images. Maximum file size is 25 MB per file - if you need to upload something larger, contact your Advizr team.
+  </Step>
+  <Step title="Wait for processing">
+    Each file is processed individually; larger files may take a few minutes. A status indicator next to each file shows where it is: uploading, processing, or ready.
+  </Step>
+</Steps>
 
-Supported formats:
-
-- **Documents:** PDF, DOCX, TXT
-- **Spreadsheets:** XLSX, CSV
-- **Images:** PNG, JPG, JPEG
-
-Maximum file size is 25 MB per file. If you need to upload something larger, contact your Advizr team.
+You should now see each file listed in your library with a status of **ready**. From that point the AI can reference it in conversations and workflows.
 
 <Callout type="tip">
   Keep your documents up to date. If you update an SOP or financial report, upload the new version so the AI always works with current information.
@@ -30,20 +42,16 @@ When you upload a file, the platform:
 
 1. Stores the file securely in your isolated database
 2. Extracts the text content and key data points
-3. Adds the content to your organisation's knowledge base
+3. Adds the content to your organization's knowledge base
 4. Makes it available for Chat, workflows, and your Advizr team
 
-A status indicator next to each file shows where it is in this process: uploading, processing, or ready.
+You do not need to tell the AI which document to use - it automatically finds relevant content based on your question or request. If you want to focus on a specific document, mention it by name in Chat.
 
-## AI analysis
+<Details title="Why documents stay private to your organization">
+  Documents are stored in your isolated database - a dedicated database provisioned for your organization alone. They are never shared with other clients, never used to train AI models, and never used outside your engagement. Only your team and your assigned Advizr staff can see them. See [Data and privacy](/docs/platform/faq/data-and-privacy) for the full picture.
+</Details>
 
-Once a document is processed, the AI can reference it in conversations and workflows. You do not need to tell the AI which document to use - it automatically finds relevant content based on your question or request. If you want to focus on a specific document, mention it by name in Chat.
-
-<Callout type="info">
-  Documents are stored in your isolated database. They are never shared with other clients or used outside your engagement.
-</Callout>
-
-## Organising your library
+## Organize your library
 
 As your document library grows, you can:
 
@@ -51,15 +59,57 @@ As your document library grows, you can:
 - **Filter** by file type or upload date
 - **Sort** by name, date, or status
 
-## Downloading and sharing
+## Download and share
 
 You can download any document you have uploaded. Documents are automatically shared with your assigned Advizr team members - no separate sharing step is needed.
 
+## Delete a document
+
+If a file is outdated or was uploaded by mistake, remove it from your library:
+
+<Steps>
+  <Step title="Find the document">
+    Use search, filters, or sorting to locate the file in your library.
+  </Step>
+  <Step title="Delete it">
+    Open the document's actions and select **Delete**, then confirm. {/* GATE0: confirm the exact control label for deleting a document with James */}
+  </Step>
+</Steps>
+
+You should now see the document gone from your library, and the AI stops referencing it in new conversations and workflows.
+
+<Callout type="warning">
+  Deleting a document is permanent - there is no undo. If you delete the wrong file, re-upload it from your own copy. To have all processed data associated with your documents removed as well, ask your FDE for a complete deletion request; these are processed within 14 business days.
+</Callout>
+
+## If something goes wrong
+
+- **An upload fails immediately.** Check that the file is 25 MB or smaller and in a supported format. Rename files with unusual characters and try again.
+- **A file is stuck in processing.** Large files can take a few minutes. Refresh the page; if it is still processing after 15 minutes, flag it in Chat.
+- **The AI is not referencing a new document.** Confirm the file's status is **ready**, then mention the document by name in Chat to point the AI at it directly.
+- **You deleted the wrong document.** Deletion is permanent, so re-upload the file from your own copy. The new upload is processed like any other document.
+
+Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
+
 ## Next steps
 
-<LinkCard
-  title="Proposals"
-  description="Review transformation recommendations from your Advizr team."
-  href="/docs/platform/dashboard/proposals"
-  icon="clipboard-list"
-/>
+<CardGrid columns={3}>
+  <LinkCard
+    title="Proposals"
+    description="Review transformation recommendations from your Advizr team."
+    href="/docs/platform/dashboard/proposals"
+    icon="clipboard-list"
+  />
+  <LinkCard
+    title="Chat"
+    description="Ask questions about your uploaded documents in plain language."
+    href="/docs/platform/dashboard/chat"
+    icon="message-circle"
+  />
+  <LinkCard
+    title="Data and privacy"
+    description="How your documents are stored, protected, and deleted."
+    href="/docs/platform/faq/data-and-privacy"
+    icon="lock"
+  />
+</CardGrid>

@@ -1,3 +1,61 @@
+---
+title: Integrations Overview
+description: "How integrations work in an Advizr engagement: your FDE connects your tools during the build — what we connect, the access we request, and what to expect."
+---
+
+<Eyebrow>Integrations</Eyebrow>
+
 # Integrations
 
-Advizr connects with the tools your business already uses. This section covers supported integrations - Slack, Google Workspace, CRM systems, and custom connections - with setup instructions, configuration options, and troubleshooting guidance for each.
+Integrations at Advizr work differently from a typical SaaS product, and it's worth being clear about how. There is no marketplace of connect buttons in the client portal today. Instead, your **Fractional Digital Engineer (FDE)** connects your tools as part of building your systems — scoped during discovery, built and tested during sprints, and monitored after launch. You grant access; we do the wiring.
+
+That trade has a real upside: connections are built for your specific workflow rather than a lowest-common-denominator sync, and when a vendor changes their API, fixing it is our job, not yours.
+
+## How integrations fit into an engagement
+
+<Steps>
+  <Step title="Scoped during discovery and week 0">
+    When a workflow is scoped, the tools it touches are identified with it. Your FDE maps which systems need to be read from and written to, and how.
+  </Step>
+  <Step title="Access requested, explicitly">
+    You receive a specific access request: which tool, what level of access, and what it's for. Nothing is connected without your say-so, and responding quickly is one of the biggest things you can do to keep a build on pace — see [your first 30 days](/docs/resources/guides/first-30-days).
+  </Step>
+  <Step title="Built and tested in sprints">
+    The connection is built into your workflow, tested against real data, and shipped as part of a sprint deliverable.
+  </Step>
+  <Step title="Monitored and maintained after launch">
+    Integrations are not one-time setups. We monitor them, handle API changes from vendors, and update connections when your tools or workflows change. Every workflow execution is visible in [Runs](/docs/platform/features/runs-and-workflows).
+  </Step>
+</Steps>
+
+## What we connect
+
+If your tool has an API, we can connect it — most modern business software does. The guides in this section cover the most common connections in detail:
+
+<CardGrid columns={2}>
+  <Card icon="message-circle" title="Slack" description="Workflow notifications, approvals, and report delivery where your team already talks." href="/docs/resources/integrations/slack" arrow />
+  <Card icon="mail" title="Google Workspace" description="Gmail, Drive, Docs, and Sheets — email processing, document extraction, and report delivery." href="/docs/resources/integrations/google-workspace" arrow />
+  <Card icon="database" title="CRM systems" description="Salesforce, HubSpot, Pipedrive, and others — leads in, pipeline data out." href="/docs/resources/integrations/crm" arrow />
+  <Card icon="wrench" title="Custom integrations" description="Accounting, project management, proprietary and legacy systems — everything else." href="/docs/resources/integrations/custom" arrow />
+</CardGrid>
+
+Accounting tools (QuickBooks, Xero, FreshBooks), project management platforms (Asana, Monday, ClickUp, Jira), Microsoft Teams, and industry-specific or proprietary systems are all regularly connected — they route through the [custom integrations](/docs/resources/integrations/custom) conversation rather than a dedicated guide.
+
+## Access and security
+
+Every access request follows the same principles:
+
+- **Least privilege.** We ask for the narrowest access the workflow needs — a specific mailbox, a named folder, particular CRM objects — not blanket admin rights.
+- **You can revoke at any time.** Access is granted in your systems, under your control. Revoking it stops the connected workflows but costs you nothing else.
+- **Your data stays yours.** Connected data is processed under the same terms as everything else in your engagement — isolated per client, never used to train AI models. See [data and privacy](/docs/platform/faq/data-and-privacy).
+- **No vendor lock-in.** Connections and data flows are documented as they're built. If you ever bring integration management in-house, the documentation comes with you.
+
+<Callout type="info">
+  If you're unsure whether an access request is too broad, ask your FDE to justify it scope by scope — a request you don't understand shouldn't be approved.
+</Callout>
+
+## Next steps
+
+- [What we build: integrations](/docs/services/what-we-build/integrations) — the service view, with the full category list
+- [Custom integrations](/docs/resources/integrations/custom) — for any tool not covered above
+- [Data preparation guide](/docs/resources/guides/data-preparation) — getting your data ready before connections go live

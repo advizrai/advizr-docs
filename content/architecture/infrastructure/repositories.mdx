@@ -1,0 +1,55 @@
+---
+title: Repositories
+description: "The complete advizrai GitHub organization inventory: every repository, its purpose, its deployment target, and how the pieces relate to each other."
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Repositories
+
+Everything Advizr builds lives in private repositories under one GitHub organization. Each repo maps to one service or component — no monorepo sprawl, no mystery folders.
+
+## Core platform
+
+| Repository | Purpose | Deploys to |
+|---|---|---|
+| `advizr-internal` | Internal operations dashboard — finances, leads, campaigns, workflow runs, team | advizrinternal.com (Vercel) |
+| `advizrclients-router` | Domain router mapping advizrclients.com paths to per-client apps via rewrites | advizrclients.com (Vercel) |
+| `advizr-client-template` | The canonical template every client app is created from — auth, RBAC, runs, analytics, migrations, tests | none (template) |
+| `advizr-client-tools` | CLI that automates client infrastructure setup: repo creation, route registration, validation | none (CLI) |
+
+## Client applications
+
+One repository per client, created from the template, each with its own isolated database:
+
+| Repository | Status |
+|---|---|
+| `advizr-breez` | Live — lead-generation platform |
+| `advizr-merchanthouse` | Built, awaiting deployment |
+| `advizr-hungerford` | In development |
+
+## Knowledge and content
+
+| Repository | Purpose |
+|---|---|
+| `advizr-vault` | The agency knowledge vault — SOPs, project directives, decisions, learnings. Single source of truth for how we operate. |
+| `advizr-docs` | This documentation site |
+| `advizr-website` | The advizr.ca marketing site |
+
+## How they relate
+
+<FlowDiagram
+  stages={[
+    { label: 'Template', sublabel: 'client-template' },
+    { label: 'Client repo', sublabel: 'per-client fork' },
+    { label: 'Router', sublabel: 'advizrclients.com' }
+  ]}
+  caption="New client apps are stamped from the template and exposed through the router"
+/>
+
+Every client build starts from `advizr-client-template`, gets its own repository and database, and is exposed at `advizrclients.com/<client>` through the router. The template is the contract: improvements flow back into it, so every future client starts ahead of the last.
+
+## Next steps
+
+- [Tech stack](/docs/architecture/infrastructure/tech-stack) — what these repos are built with
+- [The DOE framework](/docs/architecture/doe-framework) — the architecture inside every build

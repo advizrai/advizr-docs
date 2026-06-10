@@ -1,0 +1,325 @@
+---
+title: Prompt library
+description: "Fifteen copy-and-paste AI prompts for SMB owners covering email, sales follow-up, analysis, SOPs, and hiring — each parameterized and ready to adapt."
+---
+
+<Eyebrow>Academy</Eyebrow>
+
+# Prompt library
+
+[Writing effective prompts](/docs/academy/prompt-engineering/effective-prompts) ends with one piece of advice: save your best prompts and build a personal toolkit. This page is that toolkit, started for you. Fifteen prompts across the five jobs every business runs on — email, sales, analysis, operations, and hiring — each following the role-context-task-format structure and ready to copy.
+
+## How to use this library
+
+Every prompt has [BRACKETED] fields marking where your specifics go. Copy the prompt with the button in its header, replace every bracket, paste it into your AI tool, and treat the first response as a draft — follow up with "shorter", "more formal", or "expand point 2" until it is right.
+
+<Callout type="tip">
+These prompts work in any major AI tool. If you have not settled on one yet, [Tools and models](/docs/academy/prompt-engineering/tools-and-models) compares the main options.
+</Callout>
+
+## Email and communication
+
+### Cold outreach email
+
+For first contact with a prospect who has never heard of you.
+
+<CodeBlock title="Cold outreach email" language="prompt">
+
+```text
+You are a B2B sales representative. I sell [PRODUCT OR SERVICE] to
+[TARGET CUSTOMER, e.g. "accounting firms with 10-50 employees"]. Write a
+cold outreach email to a [DECISION-MAKER TITLE]. Reference [SOMETHING
+SPECIFIC ABOUT THEIR BUSINESS]. Keep it under 100 words. End with a
+question, not a pitch. Do not use the words "synergy", "solution", or
+"reach out".
+```
+
+</CodeBlock>
+
+**Why it works:** the 100-word cap and the closing-question rule force a message that respects the reader's time instead of pitching at them.
+
+### Difficult news to a client
+
+For delays, price increases, mistakes — anything you would rather not send.
+
+<CodeBlock title="Difficult news to a client" language="prompt">
+
+```text
+You are an experienced account manager known for handling hard
+conversations well. I need to tell [CLIENT NAME], a client of [HOW LONG],
+that [THE BAD NEWS, e.g. "their project will be delivered two weeks
+late"]. The cause is [REASON]. What I can offer is [WHAT YOU WILL DO
+ABOUT IT]. Write the email: the news in the first sentence, no excuses,
+one concrete next step, under 150 words.
+```
+
+</CodeBlock>
+
+**Why it works:** "the news in the first sentence" overrides the model's instinct to bury bad news under three paragraphs of padding.
+
+### Meeting recap email
+
+For turning messy notes into a recap people will actually read.
+
+<CodeBlock title="Meeting recap email" language="prompt">
+
+```text
+You are an executive assistant. Here are my raw notes from a meeting
+about [TOPIC]: [PASTE NOTES]. Turn them into a recap email to attendees
+with three sections: decisions made, action items (each with an owner
+and a deadline), and open questions. Bullet points only, no preamble.
+```
+
+</CodeBlock>
+
+**Why it works:** forcing decisions, owners, and deadlines into separate sections means commitments cannot hide in prose.
+
+## Sales and follow-up
+
+### Follow-up sequence after no reply
+
+For prospects who went quiet after you sent a proposal or quote.
+
+<CodeBlock title="Follow-up sequence" language="prompt">
+
+```text
+You are a B2B salesperson who follows up without being annoying. I sent
+[PROSPECT NAME] at [COMPANY] a proposal for [WHAT YOU PROPOSED] on
+[DATE] and have heard nothing. Write three follow-up emails to send over
+two weeks: first a light nudge, then a new piece of value (an idea,
+article, or relevant result), then a polite close-the-loop message.
+Each under 75 words. Vary the structure so they do not read as a
+template.
+```
+
+</CodeBlock>
+
+**Why it works:** asking for the whole sequence at once produces three distinct messages instead of three versions of "just checking in".
+
+### Discovery call to proposal summary
+
+For converting call notes into a one-pager the prospect recognizes themselves in.
+
+<CodeBlock title="Proposal summary" language="prompt">
+
+```text
+You are a sales engineer who writes clear one-pagers. Here are my notes
+from a discovery call with [PROSPECT NAME] at [COMPANY]: [PASTE NOTES].
+Write a one-page summary with: their situation in their own words, the
+three problems we can solve, what we propose, and what happens next.
+Use their language from the notes wherever possible. No jargon from
+our side.
+```
+
+</CodeBlock>
+
+**Why it works:** "use their language from the notes" makes the prospect feel heard, which generic proposal copy never does.
+
+### Objection-handling prep
+
+For preparing before a sales call instead of improvising during it.
+
+<CodeBlock title="Objection-handling prep" language="prompt">
+
+```text
+You are a sales coach. I sell [PRODUCT OR SERVICE] at [PRICE POINT] to
+[TARGET CUSTOMER]. List the eight objections I am most likely to hear,
+ordered by how often they come up. For each one, give a two-sentence
+response that acknowledges the concern before answering it, and one
+follow-up question to keep the conversation going.
+```
+
+</CodeBlock>
+
+**Why it works:** requiring acknowledgement before the answer produces responses that sound like listening, not a script.
+
+## Analysis and summarization
+
+### Contract or document risk review
+
+For a first pass over a contract, lease, or supplier agreement before the professionals see it.
+
+<CodeBlock title="Document risk review" language="prompt">
+
+```text
+You are a commercial advisor reviewing a document for a small business
+owner. Here is the document: [PASTE DOCUMENT OR ATTACH FILE]. Identify
+the five clauses or sections that carry the most risk for me as the
+[YOUR ROLE, e.g. "buyer"]. For each: quote the relevant text, explain
+the risk in plain language, and rate it high, medium, or low. End with
+the three questions I should ask before signing. This is preparation
+for a professional review, not a replacement for one.
+```
+
+</CodeBlock>
+
+**Why it works:** asking the model to quote the text it flags makes the output checkable — you can verify every claim against the source.
+
+### Financial trend analysis
+
+For making sense of a P&L without waiting for your accountant.
+
+<CodeBlock title="Financial trend analysis" language="prompt">
+
+```text
+You are a CFO advisor to a [INDUSTRY] business with roughly [ANNUAL
+REVENUE] in revenue. Here is my P&L for the last [PERIOD]: [PASTE DATA].
+Identify the three line items with the largest change versus the prior
+period. Present them in a table with: line item, prior value, current
+value, percentage change, and one suggested action each. Flag anything
+that looks like a data error rather than a real change.
+```
+
+</CodeBlock>
+
+**Why it works:** "flag anything that looks like a data error" catches the copy-paste mistakes that would otherwise drive the whole analysis.
+
+### Customer feedback themes
+
+For finding the signal in a pile of reviews and survey responses.
+
+<CodeBlock title="Customer feedback themes" language="prompt">
+
+```text
+You are a customer insights analyst. Here are [NUMBER] customer reviews
+and survey responses for my [BUSINESS TYPE]: [PASTE FEEDBACK]. Group
+them into themes, ranked by how often each theme appears. For each
+theme: a one-line summary, one representative quote, and whether it is
+a complaint, a request, or praise. Finish with the single change that
+would address the most feedback.
+```
+
+</CodeBlock>
+
+**Why it works:** the ranking and the representative quotes turn a pile of anecdotes into something you can act on and defend.
+
+## Ops and SOPs
+
+### Turn a process into an SOP
+
+For getting the process out of your head and into a document someone else can follow.
+
+<CodeBlock title="Process to SOP" language="prompt">
+
+```text
+You are an operations manager who writes procedures people actually
+follow. I am going to describe a process we run at my [COMPANY TYPE]
+from memory: [DESCRIBE THE PROCESS, INCLUDING WHO DOES WHAT]. Turn it
+into a standard operating procedure with: purpose (one sentence), who
+does this and when, prerequisites, numbered steps with one action each,
+and a "common mistakes" section. Before writing, ask me up to five
+clarifying questions if anything is ambiguous.
+```
+
+</CodeBlock>
+
+**Why it works:** inviting clarifying questions first surfaces the steps you forgot to mention — which are exactly the ones new staff get wrong.
+
+### Weekly status report
+
+For turning scattered updates into a report your team or board can scan in a minute.
+
+<CodeBlock title="Weekly status report" language="prompt">
+
+```text
+You are a chief of staff. Here are my rough notes on what happened this
+week at [COMPANY OR TEAM]: [PASTE BULLET UPDATES]. Turn them into a
+status report with four sections: wins, in progress, blocked (with what
+is needed to unblock), and next week's priorities. Keep each item to
+one line. If something I wrote is vague, keep it but mark it with [?]
+so I know to firm it up.
+```
+
+</CodeBlock>
+
+**Why it works:** the [?] rule stops the model from inventing specifics to fill the gaps in your notes.
+
+### Decision memo
+
+For decisions big enough to deserve more than a gut call.
+
+<CodeBlock title="Decision memo" language="prompt">
+
+```text
+You are a strategy consultant who writes tight one-page memos. I need
+to decide: [THE DECISION, e.g. "whether to hire a second technician or
+outsource overflow work"]. The options are [OPTION A], [OPTION B], and
+doing nothing. Context: [RELEVANT FACTS, BUDGET, CONSTRAINTS]. Write a
+memo with: the decision in one sentence, a comparison table of the
+options (cost, effort, risk, reversibility), your recommendation with
+reasoning, and what would change your mind.
+```
+
+</CodeBlock>
+
+**Why it works:** "doing nothing" as an explicit option and "what would change your mind" force honest analysis instead of a justification for the choice you hinted at.
+
+## Hiring
+
+<Callout type="info">
+Resumes and interview notes contain personal information. If your company has rules about what can be pasted into AI tools — and it should: see [Writing your team's AI usage policy](/docs/academy/leadership/ai-usage-policy) — check them first, and keep every hiring decision with a human.
+</Callout>
+
+### Job description
+
+For a posting that attracts the right people and filters the wrong ones.
+
+<CodeBlock title="Job description" language="prompt">
+
+```text
+You are an HR manager at a [SIZE]-person [INDUSTRY] company. Write a
+job description for a [JOB TITLE]. Include: a two-sentence summary of
+why this role matters, day-to-day responsibilities, must-have
+requirements (no more than six), nice-to-haves, and the salary range
+of [SALARY RANGE]. Tone: straightforward and honest. No "rockstar",
+no "fast-paced environment", no "wear many hats".
+```
+
+</CodeBlock>
+
+**Why it works:** capping must-haves at six keeps the posting realistic, and banning the cliches keeps it readable.
+
+### Interview question bank
+
+For interviewing with a plan instead of winging it.
+
+<CodeBlock title="Interview question bank" language="prompt">
+
+```text
+You are an experienced hiring manager. I am interviewing candidates for
+a [JOB TITLE] role where the most important skills are [SKILL 1],
+[SKILL 2], and [SKILL 3]. Write ten interview questions: six
+behavioural ("tell me about a time..."), three practical or
+scenario-based, and one about how they would approach their first
+month. For each question, add one line describing what a strong answer
+sounds like.
+```
+
+</CodeBlock>
+
+**Why it works:** "what a strong answer sounds like" turns a question list into a scoring guide, so different interviewers judge consistently.
+
+### Candidate screening summary
+
+For comparing a resume against your requirements before booking a call.
+
+<CodeBlock title="Candidate screening summary" language="prompt">
+
+```text
+You are a recruitment screener. Here is the role's requirements list:
+[PASTE REQUIREMENTS]. Here is a candidate's resume: [PASTE RESUME].
+Produce a table matching each requirement to evidence from the resume
+— met, partially met, or no evidence — quoting the resume where
+possible. Then list three questions to probe the gaps in a screening
+call. Do not infer skills that are not stated.
+```
+
+</CodeBlock>
+
+**Why it works:** "do not infer skills that are not stated" stops the model from generously filling gaps the candidate never claimed.
+
+## Make these your own
+
+These prompts are starting points, not scripture. Swap the role, tighten the format, add your company's context — and when a modified version works, save it. Your edited library will beat this one within a month, because it will be tuned to your business.
+
+If you want to push further, [Advanced techniques](/docs/academy/prompt-engineering/advanced-techniques) covers chain-of-thought reasoning and few-shot examples, and [Exercises](/docs/academy/prompt-engineering/exercises) gives you practice tasks to build the habit.

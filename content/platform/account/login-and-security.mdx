@@ -1,6 +1,11 @@
-# Login and Security
+---
+title: Login and security
+description: "Log in at advizrclients.com, reset a forgotten password, and learn how sessions, encryption, and isolated databases keep your Advizr account secure."
+---
 
-Your Advizr account is secured through Supabase authentication. Login is email and password. Your credentials are stored in a master authentication database, while your organisation's business data lives in a separate, isolated database. This page covers how to log in, manage your password, and understand how your account is protected.
+# Log in to your account
+
+Your Advizr account is secured by our authentication provider. You sign in with your email and password at advizrclients.com. Your credentials are stored in a master authentication database, while your organization's business data lives in a separate, isolated database.
 
 <Screenshot
   src="/images/platform/login.png"
@@ -8,57 +13,96 @@ Your Advizr account is secured through Supabase authentication. Login is email a
   caption="Sign in at advizrclients.com."
 />
 
-## Logging in
-
-Visit advizrclients.com and enter your email address and password. After authentication, you are redirected to your organisation's dashboard. If your organisation has multiple team members, each person logs in with their own credentials.
-
-The platform works in all modern browsers - Chrome, Firefox, Safari, and Edge. On mobile, use your phone's browser and bookmark the page or add it to your home screen for quick access.
-
-## Resetting your password
-
-If you forget your password, you can reset it from the login page.
+## Log in
 
 <Steps>
-  <Step title="Click 'Forgot password'">
-    On the login page, click the "Forgot password" link below the password field.
+  <Step title="Go to advizrclients.com">
+    Use any modern browser — Chrome, Firefox, Safari, or Edge. On mobile, use your phone's browser and add the page to your home screen for quick access.
   </Step>
-  <Step title="Enter your email">
-    Type the email address associated with your account and click Submit.
+  <Step title="Enter your email and password">
+    If your organization has multiple team members, each person signs in with their own credentials.
   </Step>
-  <Step title="Check your inbox">
-    You will receive an email with a password reset link. Click the link to set a new password. The link expires after one hour.
-  </Step>
-  <Step title="Set your new password">
-    Choose a strong password and confirm it. You will be redirected to the login page where you can sign in with your new credentials.
+  <Step title="Click Sign in">
+    After authentication, you're redirected to your organization's dashboard.
   </Step>
 </Steps>
 
-## Session management
+You should now see your Home screen, with the sidebar on the left: Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, and Help.
 
-When you log in, the platform creates a session token that lasts 24 hours. After 24 hours, the token expires and you will need to log in again. The session renews automatically while you are actively using the platform, so you will only be prompted to log in again after extended periods of inactivity.
+## Reset your password
+
+If you've forgotten your password, reset it from the login page.
+
+<Steps>
+  <Step title="Click Forgot password">
+    The link sits below the password field on the login page.
+  </Step>
+  <Step title="Enter your email">
+    Type the email address associated with your account and click **Submit**.
+  </Step>
+  <Step title="Check your inbox">
+    You'll receive an email with a password reset link. Click it to set a new password.
+  </Step>
+  <Step title="Set your new password">
+    Choose a strong password and confirm it. You're redirected back to the login page.
+  </Step>
+</Steps>
+
+You should now be able to sign in with your new password.
 
 <Callout type="warning">
-  If you are logged out unexpectedly, your session has likely expired. Log in again with your email and password. If you are still having trouble, try clearing your browser cache or see [Troubleshooting](/docs/platform/faq/troubleshooting).
+  Password reset links expire after one hour. If your link has expired, request a new one from the login page.
 </Callout>
+
+## How sessions work
+
+When you log in, the platform creates a session token that lasts 24 hours. The session renews automatically while you're actively using the platform, so you're only prompted to log in again after extended periods of inactivity.
 
 ## How your account is secured
 
 The platform uses several layers of security:
 
-- **HTTPS encryption** - All traffic between your browser and the platform is encrypted in transit
-- **Encrypted storage** - Passwords are hashed and never stored in plain text
-- **Dual-database architecture** - Your login credentials are stored separately from your business data. Even if you access multiple services, your business data stays in your isolated client database
-- **Role-based access** - Each team member sees only what their role allows (see [Roles and Permissions](/docs/platform/account/roles-and-permissions))
+- **HTTPS encryption** — all traffic between your browser and the platform is encrypted in transit
+- **Encrypted storage** — passwords are hashed and never stored in plain text
+- **Isolated databases** — your login credentials are stored separately from your business data
+- **Role-based access** — each team member sees only what their role allows (see [Roles and permissions](/docs/platform/account/roles-and-permissions))
 
-## Browser compatibility
+<Details title="Why credentials and business data live in separate databases">
+  The platform uses a dual-database architecture. A master authentication database handles logins, while each organization's business data — documents, conversations, goals, and activity — lives in its own isolated database. Even if you access multiple services, your business data stays in your organization's database, separate from every other client.
+</Details>
+
+## Browser support
 
 The platform supports the latest two major versions of Chrome, Firefox, Safari, and Edge. Internet Explorer is not supported. For the best experience, keep your browser updated.
+
+## If something goes wrong
+
+- **You can't log in.** Double-check your email address, then use **Forgot password** to reset. If you still can't get in, email your FDE directly for a manual reset.
+- **The reset email never arrived.** Check your spam folder, and confirm you entered the email address your account was created with.
+- **The reset link doesn't work.** Links expire after one hour — request a fresh one from the login page.
+- **You were logged out unexpectedly.** Your 24-hour session expired. Log in again. If it keeps happening, clear your browser cache.
+
+Still stuck? Send your FDE a message in [Chat](/docs/platform/dashboard/chat) with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
 <LinkCard
-  title="Roles and Permissions"
+  title="Roles and permissions"
   description="Understand what each role can see and do in the platform."
   href="/docs/platform/account/roles-and-permissions"
   icon="shield"
+/>
+
+<LinkCard
+  title="Settings"
+  description="Manage your profile, preferences, and organization configuration."
+  href="/docs/platform/features/settings"
+  icon="settings"
+/>
+
+<LinkCard
+  title="Troubleshooting"
+  description="Fixes for login failures, slow pages, and other common issues."
+  href="/docs/platform/faq/troubleshooting"
+  icon="wrench"
 />

@@ -1,4 +1,5 @@
 export default {
+  index: 'Overview',
   'identifying-opportunities': 'Identifying Opportunities',
   'automation-basics': 'Automation Basics',
   'reading-your-dashboard': 'Reading Your Dashboard',

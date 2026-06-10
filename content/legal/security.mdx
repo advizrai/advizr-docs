@@ -1,3 +1,88 @@
-# Security Practices
+---
+title: Security & compliance
+description: "How Advizr secures client data: per-client database isolation, encryption in transit and at rest, access controls, and our honest compliance posture."
+---
 
-An overview of Advizr's security practices and controls. Covers infrastructure security, data encryption at rest and in transit, access controls, vulnerability management, incident response procedures, and our approach to third-party security assessments. This page provides the information commonly requested during client security reviews.
+<Eyebrow>Legal</Eyebrow>
+
+# Security and compliance
+
+Effective date: pending legal review
+
+<Callout type="warning">Draft pending legal review. These terms are provided for transparency while our counsel completes review; the signed agreement for your engagement governs.</Callout>
+
+This page describes the security measures protecting client data on the Advizr platform and our current compliance posture, stated plainly. It's written for the person running your vendor security review — if you need more depth than this page provides, we'll answer your security questionnaire directly.
+
+## Infrastructure
+
+Advizr systems run on established cloud infrastructure rather than self-managed servers:
+
+| Layer | Provider | What runs there |
+|---|---|---|
+| Web applications | Vercel | The client platform, internal dashboard, and this docs site |
+| Databases and authentication | Supabase (PostgreSQL) | Auth plus an isolated database instance per client |
+| Backend services | Railway | Python services and automation pipelines |
+| Source code | GitHub | All repositories, private, under one organization |
+
+These providers operate audited data centre infrastructure; our security model builds client isolation and access control on top of it.
+
+## Data isolation
+
+Two architectural decisions do most of the protective work:
+
+- **One database per client.** Each client organization gets its own dedicated database instance. Your data is never mixed with, visible to, or accessible by any other client — there is no shared data layer and no cross-client analytics.
+- **Dual-database separation.** Login credentials live in a master authentication database, separate from the per-client databases that hold business data. Compromise of one system doesn't expose the other.
+
+## Encryption
+
+- **In transit** — all traffic between your browser and the platform uses HTTPS (TLS)
+- **At rest** — database storage is encrypted using industry-standard encryption
+- **Passwords** — stored as secure hashes, never in plain text
+
+## Access control
+
+Access to your data is limited to two groups: your own team, governed by roles (Client Admin, Client Viewer, Client Consumer — see [Roles and permissions](/docs/platform/account/roles-and-permissions)), and the Advizr staff assigned to your engagement. No other clients and no Advizr staff outside your engagement can see your workspace.
+
+Sessions are managed with tokens that last 24 hours, renewing only during active use, so abandoned sessions expire on their own.
+
+## Authentication
+
+Login is email and password, handled by Supabase authentication. Two-factor authentication is not currently available on the platform — we say this plainly rather than implying otherwise. The compensating controls and account hygiene guidance are documented on the [account security page](/docs/platform/account/two-factor-authentication). {/* GATE0: confirm 2FA roadmap with James */}
+
+## AI and your data
+
+Content you submit to AI features is used only to generate responses within your own workspace. **Your data is never used to train, fine-tune, or improve AI models** — ours or anyone else's. AI model processing is performed by the providers named in our subprocessor list.
+
+## Subprocessors
+
+The third parties that process client data, what they do, and our notification commitments when the list changes are maintained in [Data processing](/docs/legal/data-processing). The current list: Vercel, Supabase, Railway, Stripe, Google (consent-gated website analytics only), Anthropic, and OpenAI.
+
+## Compliance posture
+
+Stated honestly:
+
+- **PIPEDA** is our governing privacy framework. As a Canadian company, we handle personal information under Canada's federal privacy law, including its breach reporting obligations. See the [Privacy policy](/docs/legal/privacy-policy).
+- **GDPR** — we apply GDPR-aligned practices for EU visitors (consent before analytics, data minimization, access and deletion rights), but we do not claim GDPR compliance certification.
+- **Third-party certifications** — Advizr does not currently hold SOC 2, ISO 27001, or similar third-party certifications. We're a small Canadian firm; we'd rather tell you that directly than imply an audit that hasn't happened. The architecture above — per-client isolation, encryption, role-based access — is the substance behind the claims we do make.
+
+<Callout type="info">If your procurement process requires a completed security questionnaire (SIG, CAIQ, or your own format), send it to legal@advizr.ca and we'll complete it. For anything architectural, a 30-minute call with the engineer who built the system is usually faster — [book one](https://cal.com/team/advizr/ai-strategy-call).</Callout>
+
+## Incident response
+
+If we become aware of a security incident affecting your data, we notify your Client Admin without undue delay after confirming it, including what happened, what data was affected, and what we're doing about it. Where an incident involving personal information creates a real risk of significant harm, PIPEDA requires reporting to the Office of the Privacy Commissioner of Canada and notifying affected individuals — we coordinate those obligations with you. The full notification commitment is in [Data processing](/docs/legal/data-processing). {/* GATE0: confirm documented incident response process and notification window with James */}
+
+## Reporting a vulnerability
+
+If you believe you've found a security vulnerability in an Advizr system, email legal@advizr.ca with the details and we'll respond promptly. {/* GATE0: confirm whether a dedicated security@ address should exist */} Please don't test vulnerabilities against production systems holding client data — describe what you found and we'll verify it safely. We don't operate a paid bug bounty program today.
+
+## Data retention and deletion
+
+Data is retained while your subscription is active, plus 30 days after cancellation for reactivation, then permanently deleted. Complete deletion requests are processed within 14 business days. Export options and the practical steps are covered in [data and privacy](/docs/platform/faq/data-and-privacy).
+
+## Governing law
+
+This page and our security commitments are governed by the laws of the Province of Ontario and the federal laws of Canada applicable in Ontario. {/* GATE0: confirm governing law with James */}
+
+## Contact
+
+Security questions, questionnaires, or vulnerability reports: email legal@advizr.ca. {/* GATE0: confirm contact address with James */} Active clients can also raise security questions with their assigned engineer through [Chat](/docs/platform/dashboard/chat).

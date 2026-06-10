@@ -1,98 +1,131 @@
-# Troubleshooting
+---
+title: Troubleshooting
+description: "Fix common Advizr platform issues — login failures, slow pages, unresponsive Chat, failed uploads, and missing notifications — symptom, cause, fix."
+---
 
-Solutions to common issues you may encounter on the platform. Each section describes the problem, the likely cause, and the steps to fix it. If none of these solve your issue, contact your FDE through [Chat](/docs/platform/dashboard/chat) or [book a support call](/docs/platform/dashboard/book).
+# Fix common issues
+
+Solutions to common issues on the platform. Each entry follows the same pattern: the symptom, the likely cause, and the steps to fix it. If none of these solve your issue, see [Report a bug](#report-a-bug) below.
 
 <Screenshot
   src="/images/platform/settings.png"
-  alt="Settings"
+  alt="Settings page of the client portal"
   caption="Many issues can be resolved from Settings or by refreshing your browser."
 />
 
-<Details title="I cannot log in">
-  **Likely cause:** Incorrect password or expired reset link.
+<Callout type="tip">
+  Before trying anything else, clear your browser cache. Many display and loading issues are caused by stale cached files. In Chrome: Settings, Privacy and security, Clear browsing data.
+</Callout>
 
-  1. Double-check that you are using the correct email address
-  2. Click "Forgot password" on the login page and follow the reset steps
-  3. Check your spam folder for the reset email
-  4. Make sure you are visiting advizrclients.com (not a different URL)
-  5. If you still cannot log in, contact your Advizr team at support for a manual reset
+<Details title="I can't log in">
+  **Likely cause:** incorrect password or an expired reset link.
+
+  **Fix:**
+
+  1. Double-check that you're using the correct email address
+  2. Click **Forgot password** on the login page and follow the reset steps
+  3. Check your spam folder for the reset email — links expire after one hour, so request a fresh one if needed
+  4. Make sure you're visiting advizrclients.com (not a different URL)
+  5. If you still can't log in, message your FDE for a manual reset
 </Details>
 
-<Details title="The page is not loading or loads slowly">
-  **Likely cause:** Browser cache, network issue, or outdated browser.
+<Details title="The page isn't loading or loads slowly">
+  **Likely cause:** browser cache, network issue, or an outdated browser.
+
+  **Fix:**
 
   1. Refresh the page (Ctrl+R or Cmd+R)
   2. Clear your browser cache and cookies for advizrclients.com
-  3. Try a different browser (Chrome, Firefox, Safari, or Edge)
+  3. Try a different browser — Chrome, Firefox, Safari, or Edge
   4. Check your internet connection
-  5. If the issue persists, the platform may be undergoing maintenance - wait a few minutes and try again
+  5. If the issue persists, the platform may be undergoing maintenance — wait a few minutes and try again
 </Details>
 
-<Details title="Chat is not responding">
-  **Likely cause:** Temporary processing delay or session timeout.
+<Details title="Chat isn't responding">
+  **Likely cause:** a temporary processing delay or session timeout.
 
-  1. Wait 10-15 seconds - some responses take time, especially for document analysis
-  2. Check if a loading indicator is visible (the AI may still be processing)
-  3. Refresh the page and try sending your message again
+  **Fix:**
+
+  1. Wait 10–15 seconds — some responses take time, especially for document analysis
+  2. Check whether a loading indicator is visible (the AI may still be processing)
+  3. Refresh the page and send your message again
   4. Start a new thread and retype your question
-  5. If Chat remains unresponsive, contact your FDE through email or book a call
+  5. If Chat remains unresponsive, email your FDE or [book a call](/docs/platform/dashboard/book)
 </Details>
 
-<Details title="Document upload is failing">
-  **Likely cause:** File too large, unsupported format, or network interruption.
+<Details title="A document upload fails">
+  **Likely cause:** the file is too large, in an unsupported format, or the connection dropped.
 
-  1. Check the file size - maximum is 25 MB per file
-  2. Check the file format - supported types are PDF, DOCX, TXT, XLSX, CSV, PNG, JPG, and JPEG
+  **Fix:**
+
+  1. Check the file size — the maximum is 25 MB per file
+  2. Check the format — supported types are PDF, DOCX, TXT, XLSX, CSV, PNG, JPG, and JPEG
   3. Try uploading a smaller file to confirm the upload function works
-  4. If uploading over a slow connection, try again on a faster network
+  4. If you're on a slow connection, try again on a faster network
   5. If the problem persists, try a different browser
 </Details>
 
-<Callout type="warning">
-  Before trying other fixes, clear your browser cache. Many display and loading issues are caused by stale cached files. In Chrome, go to Settings, Privacy and security, Clear browsing data.
-</Callout>
+<Details title="Notifications aren't arriving">
+  **Likely cause:** email digests are turned off, or emails are going to spam.
 
-<Details title="Notifications are not arriving">
-  **Likely cause:** Email digest is turned off, or emails are going to spam.
+  **Fix:**
 
   1. Check your [notification preferences](/docs/platform/features/notifications) to make sure email digests are enabled
   2. Check your spam or junk folder for emails from Advizr
-  3. Add the Advizr sender address to your email contacts or safe senders list
-  4. In-app notifications should still appear even if email is disabled - check the bell icon in the top bar
+  3. Add the Advizr sender address to your contacts or safe senders list
+  4. In-app notifications appear even if email is disabled — check the bell icon in the top bar
 </Details>
 
 <Details title="The display looks wrong on mobile">
-  **Likely cause:** Screen size or zoom level.
+  **Likely cause:** screen size or zoom level.
 
-  1. Make sure your browser zoom is set to 100%
-  2. Try rotating your phone to landscape mode
+  **Fix:**
+
+  1. Set your browser zoom to 100%
+  2. Rotate your phone to landscape mode
   3. If you added the site to your home screen, remove it and re-add it
   4. Update your browser to the latest version
-  5. The platform is optimised for screens 320px and wider - very small screens may have layout limitations
+  5. The platform is optimized for screens 320px and wider — very small screens may have layout limitations
 </Details>
 
 <Details title="My session keeps expiring">
-  **Likely cause:** The 24-hour session token has expired.
+  **Likely cause:** the 24-hour session token has expired.
 
-  Sessions last 24 hours and renew automatically while you are active. If you leave the platform idle for an extended period, you will need to log in again. This is a security feature, not a bug. See [Login and Security](/docs/platform/account/login-and-security) for more details.
+  **Fix:** log in again. Sessions last 24 hours and renew automatically while you're active, so this only happens after extended idle periods — it's a security feature, not a bug. If you're being logged out while actively working, clear your browser cache and try again. See [Login and security](/docs/platform/account/login-and-security) for how sessions work.
 </Details>
 
-<Details title="How do I report a bug?">
-  If you have found a bug or something that does not look right:
+## Report a bug
 
-  1. Take a screenshot of the issue
-  2. Note what you were doing when it happened
-  3. Open [Chat](/docs/platform/dashboard/chat) and describe the issue with the screenshot attached
-  4. Your FDE will investigate and follow up
+If a fix above didn't work, or you've found something that doesn't look right:
 
-  For urgent issues that prevent you from using the platform, email your FDE directly or book an ad-hoc call.
-</Details>
+1. Take a screenshot of the issue
+2. Note what you were doing when it happened, and which browser you're using
+3. Open [Chat](/docs/platform/dashboard/chat) and describe the issue with the screenshot attached
+4. Your FDE will investigate and follow up
+
+For urgent issues that prevent you from using the platform, email your FDE directly or [book an ad-hoc call](/docs/platform/dashboard/book).
+
+Still stuck? Send your FDE a message in [Chat](/docs/platform/dashboard/chat) with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
 <LinkCard
-  title="Data and Privacy"
-  description="Learn how your data is stored, protected, and managed."
+  title="Login and security"
+  description="Reset your password and learn how sessions and account security work."
+  href="/docs/platform/account/login-and-security"
+  icon="lock"
+/>
+
+<LinkCard
+  title="Data and privacy"
+  description="How your data is stored, protected, exported, and deleted."
   href="/docs/platform/faq/data-and-privacy"
   icon="lock-keyhole"
+/>
+
+<LinkCard
+  title="General FAQ"
+  description="Answers to common questions about the Advizr platform."
+  href="/docs/platform/faq/general"
+  icon="circle-help"
 />
