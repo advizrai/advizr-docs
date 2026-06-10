@@ -223,3 +223,74 @@
     display: flex;
   }
 }
+
+/* ==========================================================================
+   B6 set-piece: animated conic border on the featured tier.
+   The solid blue ring above stays as the base — when reduced-motion
+   flattens the spin, the static brand border is what remains.
+   ========================================================================== */
+
+@property --advizr-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes advizr-conic-spin {
+  to {
+    --advizr-angle: 360deg;
+  }
+}
+
+@supports (background: conic-gradient(from 0deg, #000, #fff)) {
+  .recommendedCard {
+    position: relative;
+  }
+
+  .recommendedCard::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--advizr-radius-xl);
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--advizr-angle),
+      transparent 0deg,
+      transparent 290deg,
+      var(--advizr-blue-300) 330deg,
+      transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: advizr-conic-spin 6s linear infinite;
+    pointer-events: none;
+  }
+
+  .tierHeader.recommended {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tierHeader.recommended::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--advizr-angle),
+      transparent 0deg,
+      transparent 290deg,
+      var(--advizr-blue-300) 330deg,
+      transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: advizr-conic-spin 6s linear infinite;
+    pointer-events: none;
+  }
+}
