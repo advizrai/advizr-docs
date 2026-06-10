@@ -39,6 +39,10 @@ test.describe('Visual baselines', () => {
             theme
           );
           await page.evaluate(() => document.fonts.ready);
+          // Reveal-on-scroll content must be visible in fullPage captures
+          await page.evaluate(() =>
+            document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'))
+          );
           await page.waitForTimeout(300);
           await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}.png`, {
             fullPage: true,

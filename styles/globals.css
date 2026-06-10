@@ -435,6 +435,82 @@ html[class~="dark"] [data-nextra-search] [role="listbox"] {
   border-color: var(--advizr-border-strong);
 }
 
+/* ==========================================================================
+   Motion layer (B5)
+   ========================================================================== */
+
+/* Scroll reveals — hidden state only applies when JS is available */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity var(--advizr-duration-reveal) var(--advizr-ease-out),
+      transform var(--advizr-duration-reveal) var(--advizr-ease-out);
+    transition-delay: calc(min(var(--reveal-i, 0), 6) * var(--advizr-stagger));
+  }
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Navbar: blurred surface + border that appears on scroll */
+.nextra-navbar nav,
+header nav[class*="nextra"] {
+  transition: border-color var(--advizr-duration-base) var(--advizr-ease-out);
+}
+
+header[data-scrolled] {
+  border-bottom: 1px solid var(--advizr-border);
+}
+
+/* TOC reading thumb (host element injected by TocThumb.tsx) */
+[data-toc-thumb] {
+  position: absolute;
+  left: 0;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--section-accent, var(--advizr-blue-500));
+  opacity: 0;
+  transition:
+    top var(--advizr-duration-base) var(--advizr-ease-inout),
+    height var(--advizr-duration-base) var(--advizr-ease-inout),
+    opacity var(--advizr-duration-base) var(--advizr-ease-out);
+  pointer-events: none;
+}
+
+/* Search results entrance */
+@keyframes advizr-search-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-nextra-search] [role="listbox"] {
+  animation: advizr-search-pop 180ms var(--advizr-ease-out) both;
+}
+
+/* View Transitions: fast cross-fade only (no slides); disabled for
+   reduced-motion users by the kill-switch in tokens.css */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
 /* Utility classes removed in B0 (advizr-container/section/card/grid/badge/btn-*):
    zero usages in content/, components/, or app/ — components own their styling
    via CSS modules. */

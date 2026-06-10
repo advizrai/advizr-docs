@@ -5,6 +5,9 @@ import localFont from 'next/font/local'
 import '../styles/app.css'
 import NavbarExtra from '../components/NavbarExtra'
 import { SkipLink } from '../components/SkipLink'
+import { MotionEffects } from '../components/MotionEffects'
+import { TocThumb } from '../components/TocThumb'
+import { ReadingProgress } from '../components/ReadingProgress'
 import CustomFooter from '../components/CustomFooter'
 import BackToTop from '../components/BackToTop'
 import { Analytics } from '../components/Analytics'
@@ -148,6 +151,9 @@ export default async function RootLayout({ children }) {
           {children}
         </Layout>
         <BackToTop />
+        <MotionEffects />
+        <TocThumb />
+        <ReadingProgress />
         <Analytics />
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         <CookieConsent />

@@ -17,6 +17,11 @@ const withNextra = nextra({
 export default withNextra({
   // Keep the dev indicator out of Playwright visual-baseline screenshots
   devIndicators: false,
+  experimental: {
+    // Native React/Next View Transitions for ~180ms cross-fade page nav
+    // (CSS in globals.css; disabled by the reduced-motion kill-switch)
+    viewTransition: true
+  },
   turbopack: {
     root: import.meta.dirname
   },
