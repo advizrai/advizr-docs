@@ -23,6 +23,8 @@ export default defineConfig({
     {
       name: 'mobile',
       use: { browserName: 'chromium', viewport: { width: 375, height: 812 } },
+      // visual-baseline manages its own viewports under the chromium project
+      testIgnore: /visual-baseline/,
     },
   ],
 });

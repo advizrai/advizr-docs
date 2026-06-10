@@ -15,6 +15,8 @@ const withNextra = nextra({
 })
 
 export default withNextra({
+  // Keep the dev indicator out of Playwright visual-baseline screenshots
+  devIndicators: false,
   turbopack: {
     root: import.meta.dirname
   },

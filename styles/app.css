@@ -1,0 +1,15 @@
+/* ==========================================================================
+   CSS entry point — cascade layers.
+
+   All Advizr CSS lives in the `advizr` layer, which is declared AFTER the
+   `nextra` layer, so every Advizr rule wins against the Nextra theme by
+   layer order regardless of selector specificity. This makes Nextra minor
+   version bumps non-events for our overrides: never rely on specificity
+   wars or import order against the theme again — put new global CSS in
+   globals.css (or another file imported into layer(advizr) here).
+   ========================================================================== */
+
+@layer nextra, advizr;
+
+@import 'nextra-theme-docs/style.css' layer(nextra);
+@import './globals.css' layer(advizr);
