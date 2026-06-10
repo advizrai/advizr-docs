@@ -128,14 +128,14 @@ a.card:hover {
   width: 44px;
   height: 44px;
   border-radius: var(--advizr-radius-lg, 0.75rem);
-  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(10, 122, 255, 0.08) 100%);
-  font-size: 1.25rem;
+  background: color-mix(in srgb, var(--section-accent, var(--advizr-blue-500)) 10%, transparent);
+  color: var(--section-accent, var(--advizr-blue-500));
   margin-bottom: 1rem;
   line-height: 1;
 }
 
 :global(html[class~="dark"]) .icon {
-  background: rgba(10, 122, 255, 0.1);
+  background: color-mix(in srgb, var(--section-accent, var(--advizr-blue-500)) 12%, transparent);
 }
 
 /* Image */
