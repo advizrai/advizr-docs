@@ -3,7 +3,9 @@ import { test, expect } from 'playwright/test';
 test.describe('MDX Media Components', () => {
 
   const platformPage = '/docs/platform';
-  const componentDemoPage = '/docs/resources/component-demo';
+  // TODO(B3/C3): no public page uses VideoEmbed yet; video tests are no-ops until
+  // real video content ships — point this at that page when it exists
+  const componentDemoPage = '/docs/platform/getting-started';
   const changelogPage = '/docs/resources/changelog';
 
   test('platform page loads without errors', async ({ page }) => {

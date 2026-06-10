@@ -8,3 +8,4 @@ public/_pagefind/
 analysis/
 .env
 .env.local
+test-results/
