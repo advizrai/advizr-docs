@@ -1,11 +1,31 @@
-# System Architecture
+---
+title: System Architecture
+description: "How the Advizr platform is built: the DOE framework separating AI judgment from deterministic code, plus the infrastructure behind every client system."
+---
 
-How the Advizr platform is built — starting with the DOE framework that separates AI judgment from deterministic code.
+<Eyebrow>Architecture</Eyebrow>
 
-We're rebuilding this section page by page with real commands, schemas, and diagrams pulled from the live systems. Sections reappear in the sidebar as they're completed; what's published here is verified, not aspirational.
+# System architecture
+
+How the Advizr platform is built, starting with the DOE framework that separates AI judgment from deterministic code. We're rebuilding this section page by page with real commands, schemas, and diagrams pulled from the live systems — what's published here is verified, not aspirational, and sections reappear in the sidebar as they're completed.
+
+## Start here
+
+<CardGrid columns={2}>
+  <Card icon="layers" title="The DOE framework" description="Directives, Orchestration, Execution — the three-layer architecture behind every Advizr build." href="/docs/architecture/doe-framework" arrow />
+  <Card icon="git-branch" title="Changelog" description="What shipped and when, across the platform." href="/docs/resources/changelog" arrow />
+</CardGrid>
 
 ## DOE at a glance
 
 The entire system is built on three layers. Directives define the goal. Orchestration (AI) routes work and handles errors. Execution (Python) runs deterministic code with no probabilistic AI.
 
 <Screenshot src="/images/architecture/doe-framework.svg" alt="DOE Architecture - three layers separating directives, orchestration, and execution" caption="The three layers of Advizr's DOE architecture" />
+
+## What's coming
+
+Infrastructure and repositories, deployment pipeline, database topology, the knowledge base, and the automation pipeline — each rebuilt from the live systems before it returns to the sidebar.
+
+<Callout type="info">
+  Technical question that isn't covered yet? [Book a call](https://cal.com/team/advizr/ai-strategy-call) — a 30-minute conversation with the engineer who built it beats any document.
+</Callout>

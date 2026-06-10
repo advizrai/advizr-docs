@@ -1,23 +1,73 @@
 ---
 title: Advizr Documentation
-description: Documentation, guides, pricing, and AI education from Advizr — your AI transformation partner.
+description: Documentation, pricing, and AI education from Advizr — your AI transformation partner.
 ---
 
 <Hero
-  title="Build with Advizr"
-  description="The complete platform for AI-powered business transformation. Documentation, guides, and technical reference for building smarter workflows."
+  eyebrow="Advizr Documentation"
+  title="Put AI to work in your business"
+  highlight="AI to work"
+  description="Everything about working with Advizr in one place — platform guides, services and pricing, hands-on AI education, and the technical reference behind it all."
   variant="gradient"
 >
-  <Button href="/docs/platform/getting-started" size="lg">Get Started</Button>
-  <Button href="/docs/services" variant="ghost" size="lg">Explore Services</Button>
+  <Button href="/docs/platform/getting-started" size="lg">Get started</Button>
+  <Button href="https://cal.com/team/advizr/ai-strategy-call" variant="ghost" size="lg">Talk to us</Button>
 </Hero>
 
-<Section title="Start building" description="Choose your path to get up and running.">
+<Section title="Where do you want to go?" description="Pick the path that matches why you're here.">
   <CardGrid columns={4}>
-    <Card icon="rocket" title="Quick Start" description="Get your account set up and explore the platform in minutes." href="/docs/platform/getting-started" variant="action" arrow />
-    <Card icon="wrench" title="Services" description="Discover what Advizr builds and delivers for your business." href="/docs/services" variant="action" arrow />
-    <Card icon="graduation-cap" title="Academy" description="Master AI fundamentals, prompt engineering, and workflow automation." href="/docs/academy" variant="action" arrow />
-    <Card icon="ruler" title="Architecture" description="Technical reference, APIs, integrations, and system design." href="/docs/architecture" variant="action" arrow />
+    <PathwayCard
+      audience="I'm a client"
+      title="Use the platform"
+      description="Get set up, navigate your portal, and get the most out of your engagement."
+      href="/docs/platform/getting-started"
+      icon="rocket"
+      section="platform"
+      links={[
+        { label: 'Getting started', href: '/docs/platform/getting-started' },
+        { label: 'Your dashboard', href: '/docs/platform/dashboard/home' },
+        { label: 'FAQ & troubleshooting', href: '/docs/platform/faq/general' }
+      ]}
+    />
+    <PathwayCard
+      audience="I'm evaluating Advizr"
+      title="Explore our services"
+      description="What we build, how engagements work, and exactly what they cost."
+      href="/docs/services"
+      icon="briefcase"
+      section="services"
+      links={[
+        { label: 'How it works', href: '/docs/services/how-it-works' },
+        { label: 'Pricing', href: '/docs/services/pricing' },
+        { label: 'Our guarantees', href: '/docs/services/guarantees' }
+      ]}
+    />
+    <PathwayCard
+      audience="I want to learn AI"
+      title="Study at the Academy"
+      description="Practical AI education for business owners — no coding required."
+      href="/docs/academy"
+      icon="graduation-cap"
+      section="academy"
+      links={[
+        { label: 'Learning paths', href: '/docs/academy/learning-paths' },
+        { label: 'Prompt engineering', href: '/docs/academy/prompt-engineering/basics' },
+        { label: 'Glossary', href: '/docs/academy/glossary' }
+      ]}
+    />
+    <PathwayCard
+      audience="I'm technical"
+      title="Read the architecture"
+      description="The systems, framework, and engineering behind every Advizr build."
+      href="/docs/architecture"
+      icon="ruler"
+      section="architecture"
+      links={[
+        { label: 'System overview', href: '/docs/architecture' },
+        { label: 'DOE framework', href: '/docs/architecture/doe-framework' },
+        { label: 'Changelog', href: '/docs/resources/changelog' }
+      ]}
+    />
   </CardGrid>
 </Section>
 
@@ -34,14 +84,14 @@ description: Documentation, guides, pricing, and AI education from Advizr — yo
   </CardGrid>
 </Section>
 
-<Section title="Built for scale" description="AI transformation services designed for real business outcomes.">
+<Section title="Three ways to work with us" description="Every tier includes both building and education — they reinforce each other.">
   <CardGrid columns={3}>
     <Card icon="sprout" title="Catalyst" description="A focused first build — one core workflow automated, with onboarding and training." href="/docs/services/pricing/catalyst" variant="outline" />
     <Card icon="zap" title="Acceleration" description="Multiple workflows, custom integrations, and ongoing optimization." href="/docs/services/pricing/acceleration" variant="outline" />
     <Card icon="building" title="Partnership" description="Full transformation — continuous builds, complete education arc, and advisory." href="/docs/services/pricing/partnership" variant="outline" />
   </CardGrid>
   <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-    <Button href="/docs/services/pricing" variant="secondary">View Full Pricing</Button>
+    <Button href="/docs/services/pricing" variant="secondary">View full pricing</Button>
   </div>
 </Section>
 
@@ -54,13 +104,9 @@ description: Documentation, guides, pricing, and AI education from Advizr — yo
   </CardGrid>
 </Section>
 
-<Section variant="highlight">
-  <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-    <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem' }}>Ready to get started?</h2>
-    <p style={{ marginBottom: '1.5rem', color: 'inherit' }}>Book a free consultation to see how Advizr transforms your workflows.</p>
-    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-      <Button href="https://cal.com/team/advizr/ai-strategy-call" size="lg">Book a Call</Button>
-      <Button href="/docs/services/how-it-works" variant="ghost" size="lg">How It Works</Button>
-    </div>
+<Section variant="cta" title="Ready to get started?" description="Book a free consultation to see how Advizr transforms your workflows.">
+  <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+    <Button href="https://cal.com/team/advizr/ai-strategy-call" size="lg">Book a call</Button>
+    <Button href="/docs/services/how-it-works" variant="ghost" size="lg">How it works</Button>
   </div>
 </Section>

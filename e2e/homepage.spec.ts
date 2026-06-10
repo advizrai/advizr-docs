@@ -7,7 +7,7 @@ test.describe('Homepage & Hero', () => {
     await expect(page).toHaveTitle(/Advizr/);
     const heroTitle = page.locator('h1').first();
     await expect(heroTitle).toBeVisible();
-    await expect(heroTitle).toContainText('Build with Advizr');
+    await expect(heroTitle).toContainText('Put AI to work in your business');
   });
 
   test('hero has gradient background elements', async ({ page }) => {
@@ -27,15 +27,15 @@ test.describe('Homepage & Hero', () => {
 
   test('hero has two action buttons', async ({ page }) => {
     await page.goto('/docs');
-    const getStarted = page.locator('a', { hasText: 'Get Started' });
-    const explore = page.locator('a', { hasText: 'Explore Services' });
+    const getStarted = page.locator('a', { hasText: 'Get started' });
+    const explore = page.locator('a', { hasText: 'Talk to us' });
     await expect(getStarted).toBeVisible();
     await expect(explore).toBeVisible();
   });
 
   test('Get Started button navigates to getting-started page', async ({ page }) => {
     await page.goto('/docs');
-    const btn = page.locator('a', { hasText: 'Get Started' });
+    const btn = page.locator('a', { hasText: 'Get started' });
     await btn.click();
     await page.waitForURL('**/getting-started**');
     expect(page.url()).toContain('getting-started');
@@ -43,7 +43,7 @@ test.describe('Homepage & Hero', () => {
 
   test('all content sections render on homepage', async ({ page }) => {
     await page.goto('/docs');
-    const sections = ['Start building', 'Your command center', 'Built for scale', 'Learn by doing', 'Ready to get started?'];
+    const sections = ['Where do you want to go?', 'Your command center', 'Three ways to work with us', 'Learn by doing', 'Ready to get started?'];
     for (const heading of sections) {
       const el = page.locator('h2', { hasText: heading });
       await expect(el).toBeVisible();
