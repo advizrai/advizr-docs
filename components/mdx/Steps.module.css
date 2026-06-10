@@ -13,11 +13,11 @@
 .steps::before {
   content: '';
   position: absolute;
-  left: 14px;
+  left: 15px;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--advizr-border, #E5E7EB);
+  background: var(--advizr-border);
 }
 
 /* ---------------------------------------------------------------------------
@@ -34,19 +34,21 @@
   padding-bottom: 0;
 }
 
-/* Numbered circle */
+/* Number chip — IconBox treatment (tinted square, mono tabular digits) */
 .step::before {
   content: counter(step);
   position: absolute;
   left: -2.5rem;
   top: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: var(--advizr-radius-full, 9999px);
-  background: var(--advizr-blue-500, #0A7AFF);
-  color: #fff;
-  font-size: var(--advizr-text-sm, 0.875rem);
-  font-weight: var(--advizr-font-semibold, 600);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--advizr-radius-md);
+  background: var(--advizr-tint-10);
+  color: var(--advizr-blue-500);
+  font-family: var(--advizr-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--advizr-text-sm);
+  font-weight: var(--advizr-font-semibold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +58,7 @@
 .stepTitle {
   font-weight: var(--advizr-font-semibold, 600);
   font-size: var(--advizr-text-base, 1rem);
-  line-height: 30px;
+  line-height: 32px;
   color: var(--advizr-text-primary);
 }
 
@@ -76,7 +78,8 @@
    --------------------------------------------------------------------------- */
 
 :global(html[class~="dark"]) .step::before {
-  background: var(--advizr-blue-400);
+  background: var(--advizr-tint-10);
+  color: var(--advizr-blue-300);
 }
 
 /* ---------------------------------------------------------------------------

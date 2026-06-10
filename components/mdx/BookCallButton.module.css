@@ -19,8 +19,10 @@
 }
 
 .bookCallButton:focus-visible {
-  outline: 2px solid var(--advizr-blue-500);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .bookCallButton:active {
@@ -47,7 +49,7 @@
 .primary:hover {
   background-position: 100% 50%;
   transform: translateY(-2px);
-  box-shadow: var(--advizr-shadow-glow), var(--advizr-shadow-md);
+  box-shadow: var(--advizr-shadow-glow);
 }
 
 .primary:active {
@@ -55,7 +57,7 @@
 }
 
 :global(html[class~="dark"]) .primary:hover {
-  box-shadow: var(--advizr-shadow-glow-lg), var(--advizr-shadow-md);
+  box-shadow: var(--advizr-shadow-glow-lg);
 }
 
 /* Secondary */
@@ -80,7 +82,7 @@
 }
 
 :global(html[class~="dark"]) .secondary:hover {
-  background: rgba(51, 153, 255, 0.1);
+  background: var(--advizr-tint-10);
 }
 
 /* Reduced motion */

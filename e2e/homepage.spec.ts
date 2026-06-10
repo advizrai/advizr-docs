@@ -16,11 +16,13 @@ test.describe('Homepage & Hero', () => {
     await expect(glow).toBeAttached();
   });
 
-  test('hero title uses gradient text (webkit-background-clip)', async ({ page }) => {
+  test('hero title is solid text (gradient reserved for highlight phrases)', async ({ page }) => {
     await page.goto('/docs');
     const title = page.locator('h1').first();
     const bgClip = await title.evaluate((el) => getComputedStyle(el).webkitBackgroundClip);
-    expect(bgClip).toBe('text');
+    expect(bgClip).not.toBe('text');
+    const color = await title.evaluate((el) => getComputedStyle(el).color);
+    expect(color).not.toBe('rgba(0, 0, 0, 0)');
   });
 
   test('hero has two action buttons', async ({ page }) => {

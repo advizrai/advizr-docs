@@ -103,6 +103,8 @@ export default function CustomFooter() {
         </div>
         <div className={styles.bottom}>
           <span>&copy; {new Date().getFullYear()} Advizr AI Inc. All rights reserved.</span>
+          {/* Empty slot: a live status badge mounts here in a later phase. */}
+          <span data-status-badge-slot hidden />
           <div className={styles.legalLinks}>
             <Link href="/docs/legal/terms-of-service">Terms</Link>
             <Link href="/docs/legal/privacy-policy">Privacy</Link>

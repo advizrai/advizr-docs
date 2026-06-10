@@ -25,6 +25,20 @@
   background: linear-gradient(135deg, rgba(10, 122, 255, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
 }
 
+/* CTA — centered closing block (homepage replaces inline styles with this) */
+.cta {
+  text-align: center;
+  padding-top: var(--advizr-space-20);
+  padding-bottom: var(--advizr-space-20);
+  background: var(--advizr-tint-5);
+  border-top: 1px solid var(--advizr-border-subtle);
+  border-bottom: 1px solid var(--advizr-border-subtle);
+}
+
+:global(html[class~="dark"]) .cta {
+  background: color-mix(in srgb, var(--advizr-blue-500) 6%, black);
+}
+
 /* ---- Title ---- */
 
 .title {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import clsx from 'clsx'
 import styles from './Details.module.css'
 
@@ -13,17 +13,26 @@ interface DetailsProps {
 
 export function Details({ title, defaultOpen = false, children, className }: DetailsProps) {
   const [open, setOpen] = useState(defaultOpen)
+  const id = useId()
+  const triggerId = `${id}-trigger`
+  const contentId = `${id}-content`
 
   return (
-    <details
+    <div
       className={clsx(styles.details, className)}
-      open={open}
-      onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
+      data-open={open ? '' : undefined}
     >
-      <summary className={styles.summary}>
+      <button
+        type="button"
+        id={triggerId}
+        className={styles.summary}
+        aria-expanded={open}
+        aria-controls={contentId}
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <span className={styles.summaryText}>{title}</span>
         <svg
-          className={clsx(styles.chevron, open && styles.chevronOpen)}
+          className={styles.chevron}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -38,8 +47,17 @@ export function Details({ title, defaultOpen = false, children, className }: Det
             strokeLinejoin="round"
           />
         </svg>
-      </summary>
-      <div className={styles.content}>{children}</div>
-    </details>
+      </button>
+      <div
+        id={contentId}
+        role="region"
+        aria-labelledby={triggerId}
+        className={styles.collapse}
+      >
+        <div className={styles.collapseInner}>
+          <div className={styles.content}>{children}</div>
+        </div>
+      </div>
+    </div>
   )
 }

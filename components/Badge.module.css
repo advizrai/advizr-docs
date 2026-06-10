@@ -3,8 +3,8 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.125rem 0.625rem;
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-size: var(--advizr-text-xs);
+  font-weight: var(--advizr-font-medium);
   letter-spacing: 0.02em;
   border-radius: var(--advizr-radius-full);
   line-height: 1.5;
@@ -60,6 +60,22 @@
 :global(html[class~="dark"]) .comingSoon {
   background: var(--advizr-bg-tertiary);
   color: var(--advizr-text-tertiary);
+  border-color: var(--advizr-border);
+}
+
+/* Mono — technical label treatment */
+.mono {
+  font-family: var(--advizr-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--advizr-tracking-label);
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-secondary);
+  border: 1px solid var(--advizr-border);
+}
+
+:global(html[class~="dark"]) .mono {
+  background: var(--advizr-bg-tertiary);
+  color: var(--advizr-text-secondary);
   border-color: var(--advizr-border);
 }
 

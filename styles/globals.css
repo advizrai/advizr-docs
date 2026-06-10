@@ -377,25 +377,44 @@ html[class~="dark"] .nextra-sidebar-container a[data-active="true"] {
    Nextra Search Overrides
    ========================================================================== */
 
+/* The search modal is one of the four sanctioned glow sites — the flagship
+   command-palette moment. Styling hooks only ([data-nextra-search] is a
+   documented Nextra attribute); never restructure its DOM. */
+
 [data-nextra-search] input {
   border: 1px solid var(--advizr-border);
   border-radius: var(--advizr-radius-xl);
   font-family: var(--advizr-font-sans);
+  font-size: var(--advizr-text-sm);
   transition: border-color var(--advizr-transition-fast),
               box-shadow var(--advizr-transition-fast);
 }
 
 [data-nextra-search] input:focus {
   border-color: var(--advizr-blue-500);
-  box-shadow: 0 0 0 3px rgba(10, 122, 255, 0.15);
+  box-shadow: 0 0 0 3px var(--advizr-tint-15), var(--advizr-shadow-glow);
+}
+
+/* Nextra's built-in kbd hint, styled as a command-palette chip */
+[data-nextra-search] kbd {
+  font-family: var(--advizr-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--advizr-tracking-label);
+  border: 1px solid var(--advizr-border);
+  border-bottom-width: 2px;
+  border-radius: var(--advizr-radius-sm);
+  background: var(--advizr-bg-secondary);
+  color: var(--advizr-text-secondary);
+  padding: 0.125rem 0.375rem;
 }
 
 [data-nextra-search] [role="listbox"] {
   border: 1px solid var(--advizr-border);
   border-radius: var(--advizr-radius-xl);
-  box-shadow: var(--advizr-shadow-xl);
-  background-color: var(--advizr-bg-primary);
-  backdrop-filter: blur(12px);
+  box-shadow: var(--advizr-shadow-xl), 0 0 0 3px var(--advizr-tint-10), var(--advizr-ring-top);
+  background-color: var(--advizr-surface-overlay);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 
 [data-nextra-search] [role="option"] {
@@ -403,19 +422,17 @@ html[class~="dark"] .nextra-sidebar-container a[data-active="true"] {
   transition: background-color var(--advizr-transition-fast);
 }
 
-html[class~="dark"] [data-nextra-search] input {
-  border-color: var(--advizr-border);
+[data-nextra-search] [role="option"]:hover {
+  background-color: var(--advizr-hover-lighten);
 }
 
 html[class~="dark"] [data-nextra-search] input:focus {
   border-color: var(--advizr-blue-400);
-  box-shadow: 0 0 0 3px rgba(10, 122, 255, 0.2);
+  box-shadow: 0 0 0 3px var(--advizr-tint-25), var(--advizr-shadow-glow);
 }
 
 html[class~="dark"] [data-nextra-search] [role="listbox"] {
-  border-color: var(--advizr-border);
-  box-shadow: var(--advizr-shadow-xl);
-  background-color: var(--advizr-bg-primary);
+  border-color: var(--advizr-border-strong);
 }
 
 /* Utility classes removed in B0 (advizr-container/section/card/grid/badge/btn-*):

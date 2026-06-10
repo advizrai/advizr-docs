@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--advizr-bg-secondary);
+  background: var(--advizr-surface-overlay);
   color: var(--advizr-text-primary);
   border: 1px solid var(--advizr-border);
   border-radius: var(--advizr-radius-full);
@@ -26,27 +26,24 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-:global(html[class~="dark"]) .button {
-  background: var(--advizr-surface-overlay);
-  border-color: var(--advizr-border);
-}
-
 .button:hover {
   background-color: var(--advizr-bg-tertiary);
-  border-color: var(--advizr-blue-400);
-  box-shadow: var(--advizr-shadow-glow);
+  border-color: var(--advizr-border-strong);
+  box-shadow: var(--advizr-shadow-lg);
   transform: translateY(0) scale(1.05);
 }
 
 :global(html[class~="dark"]) .button:hover {
-  background: rgba(28, 38, 64, 0.9);
-  border-color: var(--advizr-blue-500);
-  box-shadow: var(--advizr-shadow-glow);
+  background: var(--advizr-surface-raised);
+  border-color: var(--advizr-border-strong);
+  box-shadow: var(--advizr-shadow-lg);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--advizr-blue-500);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .button:active {

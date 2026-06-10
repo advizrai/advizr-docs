@@ -1,3 +1,13 @@
+/* NavbarExtra — section links + CTA rendered inside Nextra's Navbar children.
+   Desktop: inline link row with a per-link sliding 2px underline indicator
+   (scaleX(0) -> scaleX(1), origin left) tinted by each section's accent, plus
+   a subtle per-section radial glow on hover (decorative, hover-capable only).
+   Mobile (<768px): the same five links as a horizontally scrollable pill row
+   pinned just below the navbar (absolute against Nextra's sticky header).
+   Hover/focus grammar follows Card.module.css / Button.module.css; all
+   durations and easings come from tokens. Reduced-motion is flattened by the
+   global kill-switch in tokens.css (CSS-only — no JS animation here). */
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -6,64 +16,58 @@
   margin-right: auto;
 }
 
-/* ---- Glow Nav Container ---- */
+/* ---- Desktop nav container ---- */
 
 .glowNav {
   display: flex;
   align-items: center;
-  padding: 0.25rem;
+  padding: var(--advizr-space-1);
   border-radius: var(--advizr-radius-xl);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.02)
-  );
+  background: var(--advizr-hover-lighten);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--advizr-border);
-  box-shadow: var(--advizr-shadow-sm);
+  box-shadow: var(--advizr-shadow-sm), var(--advizr-ring-top);
   position: relative;
-  overflow: hidden;
 }
 
-:global(html[class~="dark"]) .glowNav {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.01)
-  );
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* ---- Outer Nav Glow (appears on hover of entire nav) ---- */
+/* ---- Outer nav glow (whole-nav hover, decorative) ---- */
 
 .navGlow {
   position: absolute;
-  inset: -0.5rem;
-  border-radius: 1.5rem;
+  inset: 0;
+  border-radius: inherit;
   z-index: 0;
+  opacity: 0;
   pointer-events: none;
-}
-
-.navGlowLight {
   background: radial-gradient(
     ellipse at center,
     transparent 20%,
-    rgba(10, 122, 255, 0.07) 50%,
+    var(--advizr-tint-5) 50%,
     transparent 100%
   );
 }
 
-.navGlowDark {
+:global(html[class~="dark"]) .navGlow {
   background: radial-gradient(
     ellipse at center,
     transparent 20%,
-    rgba(10, 122, 255, 0.13) 50%,
+    var(--advizr-tint-15) 50%,
     transparent 100%
   );
 }
 
-/* ---- Menu List ---- */
+@media (hover: hover) {
+  .navGlow {
+    transition: opacity var(--advizr-duration-reveal) var(--advizr-ease-out);
+  }
+
+  .glowNav:hover .navGlow {
+    opacity: 1;
+  }
+}
+
+/* ---- Menu list ---- */
 
 .menuList {
   display: flex;
@@ -73,92 +77,155 @@
   margin: 0;
   padding: 0;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
 .menuItem {
   position: relative;
 }
 
-/* ---- 3D Flip Container ---- */
-
-.flipContainer {
-  display: block;
-  border-radius: var(--advizr-radius-lg);
-  overflow: visible;
-  position: relative;
-}
-
-/* ---- Per-item Glow ---- */
+/* ---- Per-item radial glow (background set inline per section) ---- */
 
 .itemGlow {
   position: absolute;
   inset: 0;
   z-index: 0;
+  border-radius: var(--advizr-radius-md);
+  opacity: 0;
   pointer-events: none;
-  border-radius: 1rem;
 }
 
-/* ---- Front and Back faces ---- */
+@media (hover: hover) {
+  .itemGlow {
+    transition: opacity var(--advizr-duration-slow) var(--advizr-ease-out);
+  }
 
-.flipFront {
-  position: relative;
-  z-index: 10;
-  transform-style: preserve-3d;
-  transform-origin: center bottom;
+  .menuItem:hover .itemGlow {
+    opacity: 1;
+  }
 }
 
-.flipBack {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ---- Section Link ---- */
+/* ---- Section link + sliding underline indicator ---- */
 
 .sectionLink {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
   color: var(--advizr-text-secondary);
   text-decoration: none;
   padding: 0.375rem 0.75rem;
   border-radius: var(--advizr-radius-md);
-  transition: color var(--advizr-transition-fast);
   white-space: nowrap;
   background: transparent;
   position: relative;
-  z-index: 10;
+  z-index: 1;
+  transition:
+    color var(--advizr-duration-base) var(--advizr-ease-out),
+    transform var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+/* 2px underline — slides in from the left, tinted per section accent
+   (set via --link-accent inline on the parent list item) */
+.sectionLink::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.125rem;
+  height: 2px;
+  border-radius: var(--advizr-radius-full);
+  background: var(--link-accent, var(--advizr-blue-500));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--advizr-duration-base) var(--advizr-ease-out);
 }
 
 .sectionLink:hover {
   color: var(--advizr-text-primary);
   text-decoration: none;
-  box-shadow: none;
 }
 
-:global(html[class~="dark"]) .sectionLink {
-  color: var(--advizr-text-secondary);
+.sectionLink:hover::after {
+  transform: scaleX(1);
 }
 
-:global(html[class~="dark"]) .sectionLink:hover {
+.sectionLink:active {
+  transform: scale(0.98);
+}
+
+.sectionLink:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
+.sectionLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Active section: underline shown + primary text color */
+.sectionLinkActive {
   color: var(--advizr-text-primary);
 }
 
-.sectionLinkActive {
+.sectionLinkActive::after {
+  transform: scaleX(1);
+}
+
+/* ---- Mobile pill row (hidden on desktop) ---- */
+
+.pillNav {
+  display: none;
+}
+
+.pill {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-full);
+  font-size: var(--advizr-text-xs);
+  line-height: var(--advizr-text-xs-lh);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
+  color: var(--advizr-text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  transition:
+    color var(--advizr-duration-fast) var(--advizr-ease-out),
+    border-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    transform var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+.pill:active {
+  transform: scale(0.97);
+}
+
+.pill:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
+.pillActive {
+  background: var(--advizr-tint-10);
+  border-color: var(--advizr-tint-25);
   color: var(--advizr-blue-600);
 }
 
-:global(html[class~="dark"]) .sectionLinkActive {
+:global(html[class~="dark"]) .pillActive {
   color: var(--advizr-blue-300);
 }
 
-/* ---- CTA Button ---- */
+/* ---- CTA button ---- */
 
 .cta,
 .cta:link,
@@ -173,9 +240,10 @@
   border-radius: var(--advizr-radius-full);
   text-decoration: none;
   white-space: nowrap;
-  transition: transform var(--advizr-transition-fast),
-              box-shadow var(--advizr-transition-fast),
-              filter var(--advizr-transition-fast);
+  transition:
+    transform var(--advizr-duration-fast) var(--advizr-ease-out),
+    box-shadow var(--advizr-duration-fast) var(--advizr-ease-out),
+    filter var(--advizr-duration-fast) var(--advizr-ease-out);
   border: 1px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2),
@@ -203,10 +271,43 @@
   filter: brightness(0.95);
 }
 
+.cta:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
 /* ---- Responsive ---- */
 
 @media (max-width: 767px) {
   .glowNav {
+    display: none;
+  }
+
+  /* Pill row pinned below the navbar: positioned against Nextra's sticky
+     header (.nextra-navbar), which is the nearest positioned ancestor.
+     Scrollbar hidden; row scrolls horizontally. */
+  .pillNav {
+    display: flex;
+    align-items: center;
+    gap: var(--advizr-space-2);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: var(--advizr-space-2) max(env(safe-area-inset-left), var(--advizr-space-4));
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background: var(--advizr-surface-overlay);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--advizr-border-subtle);
+  }
+
+  .pillNav::-webkit-scrollbar {
     display: none;
   }
 }

@@ -3,14 +3,30 @@
   gap: 1rem;
   align-items: flex-start;
   padding: 1rem;
+  border: 1px solid transparent;
   border-radius: var(--advizr-radius-lg);
   text-decoration: none;
   color: inherit;
-  transition: background-color 200ms;
+  transition:
+    background-color var(--advizr-duration-base) var(--advizr-ease-out),
+    border-color var(--advizr-duration-base) var(--advizr-ease-out);
 }
 
 a.feature:hover {
   background: var(--advizr-bg-secondary);
+  border-color: var(--advizr-border-strong);
+}
+
+:global(html[class~="dark"]) a.feature:hover {
+  background: var(--advizr-hover-lighten);
+  border-color: var(--advizr-border-strong);
+}
+
+a.feature:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 a.feature:hover .title {

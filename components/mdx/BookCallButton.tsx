@@ -21,10 +21,12 @@ export function BookCallButton({
   href = 'https://cal.com/team/advizr/ai-strategy-call',
   className,
 }: BookCallButtonProps) {
+  const isExternal = /^https?:\/\//.test(href)
   return (
     <a
       href={href}
       className={clsx(styles.bookCallButton, variantMap[variant], className)}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
       {text}
       <svg

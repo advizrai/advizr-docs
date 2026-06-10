@@ -1,5 +1,5 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs'
-import { Hero, Card, CardGrid, Section, Button, Badge, Feature } from './components'
+import { Hero, Card, CardGrid, Section, Button, Badge, Feature, Icon, IconBox, Eyebrow } from './components'
 import {
   Callout, Steps, Step, Tabs, Tab,
   CodeBlock, Details, LinkCard, Screenshot,
@@ -18,6 +18,9 @@ export const useMDXComponents = components => ({
   Button,
   Badge,
   Feature,
+  Icon,
+  IconBox,
+  Eyebrow,
   Callout,
   Steps,
   Step,

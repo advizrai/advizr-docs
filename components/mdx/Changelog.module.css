@@ -1,84 +1,185 @@
-.timeline {
-  position: relative;
-  padding-left: var(--advizr-space-8);
-  margin: var(--advizr-space-6) 0;
-}
+/* Changelog — Linear-style release feed.
+   Left date rail (mono, tabular) | dot-and-line track | entry card.
+   Cards are static surfaces (not links), so the Card hover-lift grammar
+   does not apply; the interactive affordances are the title permalink
+   (hover reveals a # mark) and the RSS link. */
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 8px;
-  bottom: var(--advizr-space-10);
-  width: 2px;
-  background: var(--advizr-border);
+.changelog {
+  --changelog-rail-w: 8.5rem;
+  --changelog-track-w: var(--advizr-space-8);
+  /* Lines the dot/date up with the optical center of the card title
+     (card padding + half the title line-height). */
+  --changelog-dot-top: calc(var(--advizr-space-5) + 5px);
+  margin: var(--advizr-space-6) 0;
 }
 
 .entry {
   position: relative;
+  display: grid;
+  grid-template-columns: var(--changelog-rail-w) var(--changelog-track-w) 1fr;
   padding-bottom: var(--advizr-space-6);
+  scroll-margin-top: var(--advizr-space-24);
 }
 
-.entry:last-of-type {
-  padding-bottom: var(--advizr-space-4);
+/* Vertical connector line between entries; the dot's bg-colored border
+   punches it out where they overlap. */
+.entry::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--changelog-rail-w) + var(--changelog-track-w) / 2);
+  transform: translateX(-50%);
+  width: 1px;
+  background: var(--advizr-border);
+}
+
+.entry:first-of-type::before {
+  top: var(--changelog-dot-top);
+}
+
+.entry:last-of-type::before {
+  bottom: auto;
+  height: var(--changelog-dot-top);
+}
+
+.entry:first-of-type:last-of-type::before {
+  display: none;
+}
+
+/* Date rail */
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--advizr-space-1);
+  padding-top: var(--advizr-space-6);
+  min-width: 0;
+}
+
+.date {
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  line-height: var(--advizr-text-xs-lh);
+  font-variant-numeric: tabular-nums;
+  color: var(--advizr-text-tertiary);
+  white-space: nowrap;
+}
+
+.version {
+  font-family: var(--advizr-font-mono);
+  font-size: var(--advizr-text-xs);
+  line-height: var(--advizr-text-xs-lh);
+  font-variant-numeric: tabular-nums;
+  color: var(--advizr-text-tertiary);
+}
+
+/* Dot track */
+.track {
+  position: relative;
 }
 
 .dot {
   position: absolute;
-  left: calc(-1 * var(--advizr-space-8) + 3px);
-  top: 6px;
+  top: var(--changelog-dot-top);
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: content-box;
   width: 10px;
   height: 10px;
   border-radius: var(--advizr-radius-full);
   background: var(--advizr-blue-500);
   border: 2px solid var(--advizr-bg-primary);
-  box-shadow: 0 0 0 2px var(--advizr-border);
+  z-index: 1;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--advizr-space-1);
+/* Entry card */
+.card {
+  min-width: 0;
+  padding: var(--advizr-space-5);
+  background: var(--advizr-bg-primary);
+  border: 1px solid var(--advizr-border);
+  border-radius: var(--advizr-radius-xl);
+  box-shadow: var(--advizr-shadow-sm);
+  transition: border-color var(--advizr-duration-base) var(--advizr-ease-out);
 }
 
-.meta {
+:global(html[class~="dark"]) .card {
+  background: var(--advizr-bg-secondary);
+}
+
+/* Deep-link target highlight (luminance/border only — no glow) */
+.entry:target .card {
+  border-color: var(--advizr-blue-500);
+}
+
+.cardHeader {
   display: flex;
-  align-items: center;
-  gap: var(--advizr-space-2);
+  align-items: baseline;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: var(--advizr-space-2) var(--advizr-space-3);
+  margin-bottom: var(--advizr-space-2);
 }
 
-.date {
-  font-size: var(--advizr-text-sm);
-  color: var(--advizr-text-tertiary);
-  font-weight: var(--advizr-font-medium);
+.title {
+  margin: 0;
+  font-size: var(--advizr-text-base);
+  line-height: var(--advizr-text-base-lh);
+  font-weight: var(--advizr-font-title);
+  letter-spacing: var(--advizr-tracking-base);
 }
 
-.versionBadge {
+/* Permalink anchor — title text with a hover-revealed # affordance */
+.permalink {
+  color: var(--advizr-text-primary);
+  text-decoration: none;
+  border-radius: var(--advizr-radius-sm);
+}
+
+.permalink:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
+.hash {
   display: inline-block;
+  margin-left: var(--advizr-space-2);
+  color: var(--advizr-blue-500);
+  font-weight: var(--advizr-font-medium);
+  opacity: 0;
+  transition: opacity var(--advizr-duration-fast) var(--advizr-ease-out);
+}
+
+@media (hover: hover) {
+  .permalink:hover .hash {
+    opacity: 1;
+  }
+}
+
+.permalink:focus-visible .hash {
+  opacity: 1;
+}
+
+:global(html[class~="dark"]) .hash {
+  color: var(--advizr-blue-300);
+}
+
+/* Category tags — small mono badges */
+.tag {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
   padding: 2px var(--advizr-space-2);
   font-family: var(--advizr-font-mono);
   font-size: var(--advizr-text-xs);
-  font-weight: var(--advizr-font-semibold);
-  line-height: 1.4;
-  color: var(--advizr-text-secondary);
-  background: var(--advizr-bg-tertiary);
-  border: 1px solid var(--advizr-border);
-  border-radius: var(--advizr-radius-md);
-}
-
-:global(html[class~="dark"]) .versionBadge {
-  background: var(--advizr-bg-secondary);
-  border-color: var(--advizr-border-strong);
-}
-
-.categoryBadge {
-  display: inline-block;
-  padding: 2px var(--advizr-space-2);
-  font-size: var(--advizr-text-xs);
-  font-weight: var(--advizr-font-semibold);
-  border-radius: var(--advizr-radius-full);
-  line-height: 1.4;
+  line-height: var(--advizr-text-xs-lh);
+  font-weight: var(--advizr-font-medium);
+  letter-spacing: var(--advizr-tracking-label);
+  text-transform: uppercase;
+  border-radius: var(--advizr-radius-sm);
 }
 
 .catFeature {
@@ -102,53 +203,83 @@
 }
 
 :global(html[class~="dark"]) .catFeature {
-  color: #6ee7b7;
-  background: rgba(16, 185, 129, 0.15);
+  color: var(--advizr-accent-300);
+  background: color-mix(in srgb, var(--advizr-accent-500) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .catImprovement {
   color: var(--advizr-blue-300);
-  background: rgba(51, 153, 255, 0.15);
+  background: var(--advizr-tint-15);
 }
 
 :global(html[class~="dark"]) .catFix {
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.15);
+  color: color-mix(in srgb, var(--advizr-warning) 70%, white);
+  background: color-mix(in srgb, var(--advizr-warning) 15%, transparent);
 }
 
 :global(html[class~="dark"]) .catBreaking {
-  color: #fca5a5;
-  background: rgba(239, 68, 68, 0.15);
-}
-
-.title {
-  font-size: var(--advizr-text-base);
-  font-weight: var(--advizr-font-semibold);
-  color: var(--advizr-text-primary);
-  margin: 0;
-  line-height: var(--advizr-text-base-lh);
+  color: color-mix(in srgb, var(--advizr-error) 60%, white);
+  background: color-mix(in srgb, var(--advizr-error) 15%, transparent);
 }
 
 .description {
-  font-size: var(--advizr-text-sm);
-  color: var(--advizr-text-secondary);
   margin: 0;
+  font-size: var(--advizr-text-sm);
   line-height: var(--advizr-text-sm-lh);
+  color: var(--advizr-text-secondary);
 }
 
-.viewAll {
-  display: inline-block;
-  margin-top: var(--advizr-space-2);
+/* RSS link — aligned with the card column */
+.rssLink {
+  display: inline-flex;
+  align-items: center;
+  margin-left: calc(var(--changelog-rail-w) + var(--changelog-track-w));
   font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
   color: var(--advizr-blue-500);
   text-decoration: none;
+  border-radius: var(--advizr-radius-sm);
 }
 
-.viewAll:hover {
+.rssLink:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-:global(html[class~="dark"]) .viewAll {
+.rssLink:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+}
+
+:global(html[class~="dark"]) .rssLink {
   color: var(--advizr-blue-300);
+}
+
+/* Narrow viewports: collapse to a single column; date + version become an
+   inline row above the card and the connector track is hidden. */
+@media (max-width: 640px) {
+  .entry {
+    grid-template-columns: 1fr;
+    padding-bottom: var(--advizr-space-5);
+  }
+
+  .entry::before,
+  .track {
+    display: none;
+  }
+
+  .rail {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--advizr-space-3);
+    padding-top: 0;
+    margin-bottom: var(--advizr-space-2);
+  }
+
+  .rssLink {
+    margin-left: 0;
+  }
 }

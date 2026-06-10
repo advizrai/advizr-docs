@@ -1,8 +1,7 @@
-'use client'
-
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import clsx from 'clsx'
 import styles from './Changelog.module.css'
-import changelogData from '../../public/changelog.json'
 
 interface ChangelogEntry {
   date: string
@@ -26,13 +25,34 @@ const categoryStyles: Record<string, string> = {
   breaking: styles.catBreaking,
 }
 
+// Keep in sync with slugify() in app/changelog.xml/route.ts —
+// RSS item guids point at these permalink ids.
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-+|-+$)/g, '')
+}
+
+function entryId(entry: ChangelogEntry): string {
+  return slugify(`${entry.title}-${entry.date}`)
+}
+
 function formatDate(iso: string): string {
   const date = new Date(iso + 'T00:00:00')
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   })
+}
+
+// Server component: the JSON is read at build/render time so entry data
+// never ships in the client bundle.
+function loadEntries(): ChangelogEntry[] {
+  const raw = readFileSync(join(process.cwd(), 'public', 'changelog.json'), 'utf8')
+  const entries = JSON.parse(raw) as ChangelogEntry[]
+  return entries.slice().sort((a, b) => b.date.localeCompare(a.date))
 }
 
 interface ChangelogProps {
@@ -40,32 +60,44 @@ interface ChangelogProps {
 }
 
 export function Changelog({ className }: ChangelogProps) {
-  const entries = (changelogData as ChangelogEntry[]).slice(0, 5)
+  const entries = loadEntries()
 
   return (
-    <div className={clsx(styles.timeline, className)}>
-      {entries.map((entry) => (
-        <div key={entry.date + entry.title} className={styles.entry}>
-          <div className={styles.dot} />
-          <div className={styles.content}>
-            <div className={styles.meta}>
-              {entry.version && (
-                <span className={styles.versionBadge}>v{entry.version}</span>
-              )}
+    <div className={clsx(styles.changelog, className)}>
+      {entries.map((entry) => {
+        const id = entryId(entry)
+        return (
+          <article key={id} id={id} className={styles.entry}>
+            <div className={styles.rail}>
               <time className={styles.date} dateTime={entry.date}>
                 {formatDate(entry.date)}
               </time>
-              <span className={clsx(styles.categoryBadge, categoryStyles[entry.category])}>
-                {categoryLabels[entry.category] || entry.category}
-              </span>
+              {entry.version && <span className={styles.version}>v{entry.version}</span>}
             </div>
-            <h3 className={styles.title}>{entry.title}</h3>
-            <p className={styles.description}>{entry.description}</p>
-          </div>
-        </div>
-      ))}
-      <a href="#" className={styles.viewAll}>
-        View all updates
+            <div className={styles.track} aria-hidden="true">
+              <span className={styles.dot} />
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardHeader}>
+                <h3 className={styles.title}>
+                  <a href={`#${id}`} className={styles.permalink}>
+                    {entry.title}
+                    <span className={styles.hash} aria-hidden="true">
+                      #
+                    </span>
+                  </a>
+                </h3>
+                <span className={clsx(styles.tag, categoryStyles[entry.category])}>
+                  {categoryLabels[entry.category] || entry.category}
+                </span>
+              </div>
+              <p className={styles.description}>{entry.description}</p>
+            </div>
+          </article>
+        )
+      })}
+      <a href="/changelog.xml" className={styles.rssLink}>
+        Subscribe via RSS
       </a>
     </div>
   )

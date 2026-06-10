@@ -1,16 +1,21 @@
 /* ==========================================================================
-   Tabs - Vercel-style underline indicator
+   Tabs - sliding underline indicator (positioned from JS, animated by CSS)
    ========================================================================== */
 
 .tabs {
   margin: var(--advizr-space-4) 0;
 }
 
+/* The list is the offsetParent for both the tab buttons and the indicator,
+   so offsetLeft/offsetWidth map 1:1 onto the indicator's translateX/width.
+   Vertical padding leaves room for the focus ring inside the scrollport. */
 .tabList {
+  position: relative;
   display: flex;
+  gap: var(--advizr-space-1);
   border-bottom: 1px solid var(--advizr-border);
   margin: 0;
-  padding: 0;
+  padding: var(--advizr-space-1) 0 var(--advizr-space-2);
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -24,27 +29,18 @@
   position: relative;
   padding: var(--advizr-space-2) var(--advizr-space-4);
   font-size: var(--advizr-text-sm);
-  font-weight: var(--advizr-font-medium);
+  font-weight: var(--advizr-font-ui);
+  letter-spacing: var(--advizr-tracking-base);
   color: var(--advizr-text-secondary);
   background: none;
   border: none;
   cursor: pointer;
-  border-radius: var(--advizr-radius-md) var(--advizr-radius-md) 0 0;
-  transition: color var(--advizr-transition-fast),
-              background-color var(--advizr-transition-fast);
+  border-radius: var(--advizr-radius-md);
+  transition:
+    color var(--advizr-duration-fast) var(--advizr-ease-out),
+    background-color var(--advizr-duration-fast) var(--advizr-ease-out),
+    transform var(--advizr-duration-fast) var(--advizr-ease-out);
   white-space: nowrap;
-}
-
-.tab::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: transparent;
-  border-radius: 1px 1px 0 0;
-  transition: background-color var(--advizr-transition-fast);
 }
 
 .tab:hover {
@@ -52,42 +48,59 @@
   background-color: var(--advizr-bg-secondary);
 }
 
+:global(html[class~="dark"]) .tab:hover {
+  background-color: var(--advizr-hover-lighten);
+}
+
+.tab:active {
+  transform: scale(0.97);
+}
+
 .tab:focus-visible {
-  outline: 2px solid var(--advizr-blue-500);
-  outline-offset: -2px;
-  border-radius: var(--advizr-radius-sm);
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .tabActive {
   color: var(--advizr-blue-500);
 }
 
-.tabActive::after {
-  background: var(--advizr-blue-500);
-}
-
 :global(html[class~="dark"]) .tabActive {
   color: var(--advizr-blue-300);
 }
 
-:global(html[class~="dark"]) .tabActive::after {
-  background: var(--advizr-blue-300);
+/* Sliding active indicator — width/transform are set from measurements in
+   JS; the slide itself is this transition (auto-flattened by the global
+   reduced-motion kill-switch). Hidden until first measured. */
+.indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  border-radius: 1px 1px 0 0;
+  background: var(--advizr-blue-500);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--advizr-duration-base) var(--advizr-ease-out),
+    width var(--advizr-duration-base) var(--advizr-ease-out);
 }
 
-:global(html[class~="dark"]) .tab:hover {
-  background-color: var(--advizr-bg-secondary);
+:global(html[class~="dark"]) .indicator {
+  background: var(--advizr-blue-300);
 }
 
 .panel {
   padding-top: var(--advizr-space-4);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .tab {
-    transition: none;
-  }
-
-  .tab::after {
-    transition: none;
-  }
+.panel:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
+  border-radius: var(--advizr-radius-md);
 }

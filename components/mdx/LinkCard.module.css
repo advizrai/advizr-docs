@@ -19,14 +19,16 @@
 }
 
 .linkCard:hover {
-  border-color: var(--advizr-blue-400);
+  border-color: var(--advizr-border-strong);
   box-shadow: var(--advizr-shadow-md);
   transform: translateY(-2px);
 }
 
 .linkCard:focus-visible {
-  outline: 2px solid var(--advizr-blue-500);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .icon {
@@ -76,8 +78,9 @@
 }
 
 :global(html[class~="dark"]) .linkCard:hover {
-  border-color: var(--advizr-blue-400);
-  box-shadow: var(--advizr-shadow-md), 0 0 20px rgba(10, 122, 255, 0.08);
+  border-color: var(--advizr-border-strong);
+  background: var(--advizr-surface-raised);
+  box-shadow: var(--advizr-shadow-md);
 }
 
 :global(html[class~="dark"]) .linkCard:hover .arrow {

@@ -11,17 +11,17 @@
   justify-content: space-between;
   gap: var(--advizr-space-4);
   padding: var(--advizr-space-4) var(--advizr-space-5);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: var(--advizr-surface-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--advizr-border);
   border-radius: var(--advizr-radius-2xl);
   box-shadow: var(--advizr-shadow-xl);
-  animation: slideUpToast var(--advizr-transition-slow) ease-out;
+  animation: slideUpToast var(--advizr-duration-slow) var(--advizr-ease-out);
 }
 
 .bannerHiding {
-  animation: slideDownToast var(--advizr-transition-base) ease-in forwards;
+  animation: slideDownToast var(--advizr-duration-base) var(--advizr-ease-inout) forwards;
 }
 
 @keyframes slideUpToast {
@@ -47,7 +47,6 @@
 }
 
 :global(html[class~="dark"]) .banner {
-  background: var(--advizr-surface-overlay);
   border-color: var(--advizr-border-strong);
 }
 
@@ -82,7 +81,7 @@
 
 .accept:hover {
   background-color: var(--advizr-blue-600);
-  box-shadow: 0 2px 12px rgba(10, 122, 255, 0.3);
+  box-shadow: var(--advizr-shadow-md);
 }
 
 .accept:active {
@@ -90,8 +89,10 @@
 }
 
 .accept:focus-visible {
-  outline: 2px solid var(--advizr-blue-400);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 .decline {
@@ -114,12 +115,14 @@
 }
 
 :global(html[class~="dark"]) .decline:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--advizr-hover-lighten);
 }
 
 .decline:focus-visible {
-  outline: 2px solid var(--advizr-blue-400);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--advizr-bg-primary),
+    0 0 0 4px var(--advizr-blue-500);
 }
 
 @media (max-width: 640px) {
