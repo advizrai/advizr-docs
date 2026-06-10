@@ -37,15 +37,17 @@ export interface PricingFeature {
   values: (boolean | string)[]
 }
 
+// Rows mirror the detailed tables on services/pricing/whats-included —
+// if you change one, change both (audit 2026-06 found them contradicting).
 export const FEATURES: PricingFeature[] = [
-  { name: 'AI Build', values: [true, true, true] },
-  { name: 'Education Sessions', values: ['2/month', '4/month', 'Unlimited'] },
-  { name: 'Advisory Calls', values: ['Monthly', 'Bi-weekly', 'Weekly'] },
+  { name: 'AI Build', values: ['Single system', 'Multiple systems', 'Comprehensive'] },
+  { name: 'Live Sessions', values: ['Kickoff + workshop', '5 session types', 'All 9 session types'] },
+  { name: 'Coaching Calls', values: ['2-3', '4', '6-8'] },
+  { name: 'Monthly Advisory', values: [false, false, true] },
+  { name: 'Curriculum Phases', values: ['Phases 1-2', 'Phases 1-3', 'All 4 + change mgmt'] },
   { name: 'Proprietary Software', values: [false, true, true] },
-  { name: 'Custom Workflows', values: [false, true, true] },
-  { name: 'Change Management', values: [false, false, true] },
+  { name: 'Custom Workflows', values: ['Project scope', true, true] },
   { name: 'Ongoing Support', values: ['Email', 'Priority', 'Dedicated'] },
-  { name: 'Quarterly Reviews', values: [false, true, true] },
 ]
 
 /** Look up a tier by name (case-insensitive). */
