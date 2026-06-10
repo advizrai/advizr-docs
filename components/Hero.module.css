@@ -146,3 +146,30 @@
     font-size: var(--advizr-text-lg);
   }
 }
+
+/* ---- Entrance (B5): pure CSS, H1 stays static for LCP safety ---- */
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (scripting: enabled) {
+  .eyebrow {
+    animation: hero-fade-up 400ms var(--advizr-ease-out) both;
+  }
+
+  .description {
+    animation: hero-fade-up 400ms var(--advizr-ease-out) 80ms both;
+  }
+
+  .actions {
+    animation: hero-fade-up 400ms var(--advizr-ease-out) 160ms both;
+  }
+}

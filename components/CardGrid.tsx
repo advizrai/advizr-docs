@@ -1,9 +1,12 @@
+import { Children } from 'react'
 import clsx from 'clsx'
 import styles from './CardGrid.module.css'
 
 interface CardGridProps {
   columns?: 2 | 3 | 4
   gap?: 'sm' | 'md' | 'lg'
+  /** Staggered scroll-reveal of grid children (marketing surfaces only) */
+  reveal?: boolean
   children: React.ReactNode
   className?: string
 }
@@ -23,12 +26,21 @@ const gapMap: Record<string, string> = {
 export function CardGrid({
   columns = 3,
   gap = 'md',
+  reveal = false,
   children,
   className,
 }: CardGridProps) {
+  const content = reveal
+    ? Children.map(children, (child, i) => (
+        <div data-reveal="" style={{ display: 'grid', '--reveal-i': i } as React.CSSProperties}>
+          {child}
+        </div>
+      ))
+    : children
+
   return (
     <div className={clsx(styles.grid, colsMap[columns], gapMap[gap], className)}>
-      {children}
+      {content}
     </div>
   )
 }
