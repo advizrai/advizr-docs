@@ -47,7 +47,7 @@
 }
 
 :global(html[class~="dark"]) .banner {
-  background: rgba(19, 28, 46, 0.85);
+  background: var(--advizr-surface-overlay);
   border-color: var(--advizr-border-strong);
 }
 
@@ -82,7 +82,7 @@
 
 .accept:hover {
   background-color: var(--advizr-blue-600);
-  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 12px rgba(10, 122, 255, 0.3);
 }
 
 .accept:active {

@@ -26,15 +26,15 @@
 
 /* New */
 .new {
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(10, 122, 255, 0.08);
   color: var(--advizr-blue-600);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(10, 122, 255, 0.2);
 }
 
 :global(html[class~="dark"]) .new {
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(10, 122, 255, 0.12);
   color: var(--advizr-blue-300);
-  border-color: rgba(99, 102, 241, 0.25);
+  border-color: rgba(10, 122, 255, 0.25);
 }
 
 /* Beta */

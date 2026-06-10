@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+/* Fonts are self-hosted via next/font/local in app/layout.jsx — never
+   reintroduce a remote font @import here (render-blocking, kills LCP). */
 @import './tokens.css';
 
 /* ==========================================================================
@@ -34,11 +34,19 @@ html[class~="dark"] {
 
 body {
   font-family: var(--advizr-font-sans);
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-feature-settings: 'cv01' 1, 'ss03' 1;
   color: var(--advizr-text-primary);
   background-color: var(--advizr-bg-primary);
   font-size: var(--advizr-text-base);
+  letter-spacing: var(--advizr-tracking-base);
   line-height: 1.7;
+}
+
+/* Tabular numerals wherever figures align: prices, stats, dates, tables */
+.advizr-num,
+table td,
+table th {
+  font-variant-numeric: tabular-nums;
 }
 
 /* --------------------------------------------------------------------
@@ -46,7 +54,7 @@ body {
    -------------------------------------------------------------------- */
 
 ::selection {
-  background-color: rgba(99, 102, 241, 0.2);
+  background-color: var(--advizr-tint-25);
   color: inherit;
 }
 
@@ -57,9 +65,9 @@ body {
 h1 {
   font-size: var(--advizr-text-4xl);
   line-height: var(--advizr-text-4xl-lh);
-  font-weight: var(--advizr-font-bold);
+  font-weight: var(--advizr-font-display-weight);
   color: var(--advizr-text-primary);
-  letter-spacing: -0.025em;
+  letter-spacing: var(--advizr-tracking-3xl);
   margin-top: var(--advizr-space-12);
   margin-bottom: var(--advizr-space-6);
 }
@@ -67,9 +75,9 @@ h1 {
 h2 {
   font-size: var(--advizr-text-3xl);
   line-height: var(--advizr-text-3xl-lh);
-  font-weight: var(--advizr-font-bold);
+  font-weight: var(--advizr-font-title);
   color: var(--advizr-text-primary);
-  letter-spacing: -0.025em;
+  letter-spacing: var(--advizr-tracking-3xl);
   margin-top: var(--advizr-space-10);
   margin-bottom: var(--advizr-space-4);
 }
@@ -77,9 +85,9 @@ h2 {
 h3 {
   font-size: var(--advizr-text-2xl);
   line-height: var(--advizr-text-2xl-lh);
-  font-weight: var(--advizr-font-semibold);
+  font-weight: var(--advizr-font-title);
   color: var(--advizr-text-primary);
-  letter-spacing: -0.025em;
+  letter-spacing: var(--advizr-tracking-xl);
   margin-top: var(--advizr-space-8);
   margin-bottom: var(--advizr-space-3);
 }
@@ -87,7 +95,8 @@ h3 {
 h4 {
   font-size: var(--advizr-text-xl);
   line-height: var(--advizr-text-xl-lh);
-  font-weight: var(--advizr-font-semibold);
+  font-weight: var(--advizr-font-title);
+  letter-spacing: var(--advizr-tracking-xl);
   color: var(--advizr-text-primary);
   margin-top: var(--advizr-space-6);
   margin-bottom: var(--advizr-space-2);
@@ -352,7 +361,7 @@ aside[class*="nextra-sidebar"] a,
 nav[class*="nextra-sidebar"] a[data-active="true"],
 aside[class*="nextra-sidebar"] a[data-active="true"],
 .nextra-sidebar-container a[data-active="true"] {
-  background-color: rgba(99, 102, 241, 0.1);
+  background-color: rgba(10, 122, 255, 0.1);
   color: var(--advizr-blue-500);
   font-weight: var(--advizr-font-medium);
 }
@@ -360,7 +369,7 @@ aside[class*="nextra-sidebar"] a[data-active="true"],
 html[class~="dark"] nav[class*="nextra-sidebar"] a[data-active="true"],
 html[class~="dark"] aside[class*="nextra-sidebar"] a[data-active="true"],
 html[class~="dark"] .nextra-sidebar-container a[data-active="true"] {
-  background-color: rgba(99, 102, 241, 0.15);
+  background-color: rgba(10, 122, 255, 0.15);
   color: var(--advizr-blue-400);
 }
 
@@ -378,7 +387,7 @@ html[class~="dark"] .nextra-sidebar-container a[data-active="true"] {
 
 [data-nextra-search] input:focus {
   border-color: var(--advizr-blue-500);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 3px rgba(10, 122, 255, 0.15);
 }
 
 [data-nextra-search] [role="listbox"] {
@@ -400,7 +409,7 @@ html[class~="dark"] [data-nextra-search] input {
 
 html[class~="dark"] [data-nextra-search] input:focus {
   border-color: var(--advizr-blue-400);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(10, 122, 255, 0.2);
 }
 
 html[class~="dark"] [data-nextra-search] [role="listbox"] {

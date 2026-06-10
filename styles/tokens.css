@@ -1,6 +1,13 @@
 /* ==========================================================================
-   Advizr Design Tokens
+   Advizr Design Tokens v2
    All design tokens as CSS custom properties.
+
+   Accent rationing rule: ONE saturated element per viewport. Brand blue is
+   the only accent; emerald is demoted to success/semantic + Services section
+   identity. Glow shadows are permitted ONLY on: primary-CTA hover, the
+   featured pricing tier, the search-modal ring, and the hero radial.
+   Everything else expresses depth through luminance (borders/bg-lighten),
+   not shadow or glow.
    ========================================================================== */
 
 :root {
@@ -20,7 +27,17 @@
   --advizr-blue-900: #002966;
 
   /* --------------------------------------------------------------------
-     Color Palette - Accent (Emerald)
+     Brand alpha tints — components must use these instead of hand-rolled
+     rgba() so the brand hue can never drift again.
+     -------------------------------------------------------------------- */
+  --advizr-tint-5:  rgba(10, 122, 255, 0.05);
+  --advizr-tint-10: rgba(10, 122, 255, 0.10);
+  --advizr-tint-15: rgba(10, 122, 255, 0.15);
+  --advizr-tint-25: rgba(10, 122, 255, 0.25);
+  --advizr-accent-tint-10: rgba(16, 185, 129, 0.10);
+
+  /* --------------------------------------------------------------------
+     Color Palette - Accent (Emerald) — success/semantic + Services identity
      -------------------------------------------------------------------- */
   --advizr-accent-50:  #ECFDF5;
   --advizr-accent-100: #D1FAE5;
@@ -57,28 +74,32 @@
   --advizr-info:    #3B82F6;
 
   /* --------------------------------------------------------------------
-     Color Palette - Status (Green)
+     Color Palette - Status (Green / Amber / Red)
      -------------------------------------------------------------------- */
   --advizr-green-50:  #f0fdf4;
   --advizr-green-100: #dcfce7;
   --advizr-green-700: #15803d;
   --advizr-green-900: #14532d;
 
-  /* --------------------------------------------------------------------
-     Color Palette - Status (Amber)
-     -------------------------------------------------------------------- */
   --advizr-amber-50:  #fffbeb;
   --advizr-amber-100: #fef3c7;
   --advizr-amber-700: #b45309;
   --advizr-amber-900: #78350f;
 
-  /* --------------------------------------------------------------------
-     Color Palette - Status (Red)
-     -------------------------------------------------------------------- */
   --advizr-red-50:  #fef2f2;
   --advizr-red-100: #fee2e2;
   --advizr-red-700: #b91c1c;
   --advizr-red-900: #7f1d1d;
+
+  /* --------------------------------------------------------------------
+     Section identity — used ONLY for eyebrow text, IconBox tint, TOC thumb,
+     and OG accents. Never large surfaces. Resolved via [data-section].
+     -------------------------------------------------------------------- */
+  --section-platform:     var(--advizr-blue-500);
+  --section-services:     var(--advizr-accent-500);
+  --section-academy:      var(--advizr-warning);
+  --section-architecture: var(--advizr-slate-400);
+  --section-accent:       var(--advizr-blue-500);
 
   /* --------------------------------------------------------------------
      Surface Colors - Light Mode
@@ -86,18 +107,24 @@
   --advizr-bg-primary:     #FFFFFF;
   --advizr-bg-secondary:   #F9FAFB;
   --advizr-bg-tertiary:    #F3F4F6;
-  --advizr-bg-code:        #1E1E2E;
+  --advizr-surface-raised: #FFFFFF;
+  --advizr-surface-overlay: rgba(255, 255, 255, 0.85);
+  --advizr-bg-code:        #0B0D12; /* code surface stays dark in BOTH modes */
   --advizr-text-primary:   #111827;
   --advizr-text-secondary: #6B7280;
   --advizr-text-tertiary:  #9CA3AF;
+  --advizr-border-subtle:  #F1F3F5;
   --advizr-border:         #E5E7EB;
   --advizr-border-strong:  #D1D5DB;
+  --advizr-ring-top:       inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --advizr-hover-lighten:  rgba(17, 24, 39, 0.03);
 
   /* --------------------------------------------------------------------
-     Typography - Font Families
+     Typography - Font Families (self-hosted via next/font, see app/layout)
      -------------------------------------------------------------------- */
-  --advizr-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --advizr-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --advizr-font-sans: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --advizr-font-display: var(--font-inter-display), var(--advizr-font-sans);
+  --advizr-font-mono: var(--font-jetbrains), 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
 
   /* --------------------------------------------------------------------
      Typography - Font Sizes (with line heights)
@@ -125,12 +152,28 @@
 
   /* --------------------------------------------------------------------
      Typography - Font Weights
+     InterVariable enables the signature in-between weights:
+     510 = UI chrome (nav, buttons, card titles), 590 = headings,
+     640 = display/hero.
      -------------------------------------------------------------------- */
   --advizr-font-normal:   400;
   --advizr-font-medium:   500;
+  --advizr-font-ui:       510;
   --advizr-font-semibold: 600;
+  --advizr-font-title:    590;
+  --advizr-font-display-weight: 640;
   --advizr-font-bold:     700;
   --advizr-font-extrabold: 800;
+
+  /* --------------------------------------------------------------------
+     Typography - Tracking (tighter as size grows; mono labels track open)
+     -------------------------------------------------------------------- */
+  --advizr-tracking-display: -0.032em;
+  --advizr-tracking-3xl:     -0.025em;
+  --advizr-tracking-xl:      -0.017em;
+  --advizr-tracking-base:    -0.011em;
+  --advizr-tracking-sm:      0;
+  --advizr-tracking-label:   0.08em;
 
   /* --------------------------------------------------------------------
      Spacing Scale (base 4px)
@@ -147,6 +190,7 @@
   --advizr-space-16: 4rem;
   --advizr-space-20: 5rem;
   --advizr-space-24: 6rem;
+  --advizr-space-32: 8rem;
 
   /* --------------------------------------------------------------------
      Gradients
@@ -156,15 +200,15 @@
   --advizr-gradient-hero: linear-gradient(180deg, rgba(10,122,255,0.08) 0%, transparent 50%);
   --advizr-gradient-hero-dark: linear-gradient(180deg, rgba(10,122,255,0.15) 0%, transparent 50%);
   --advizr-gradient-surface: linear-gradient(180deg, var(--advizr-bg-secondary) 0%, var(--advizr-bg-primary) 100%);
-  --advizr-gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(10,122,255,0.06), transparent 40%);
+  --advizr-gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--advizr-tint-5), transparent 40%);
 
   /* --------------------------------------------------------------------
-     Shadows (light mode)
+     Shadows (light mode) — tinted with brand navy, never pure black
      -------------------------------------------------------------------- */
-  --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
-  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 41, 102, 0.04), 0 1px 3px 0 rgba(0, 41, 102, 0.03);
+  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 41, 102, 0.06), 0 2px 4px -2px rgba(0, 41, 102, 0.04);
+  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 41, 102, 0.07), 0 4px 6px -4px rgba(0, 41, 102, 0.04);
+  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 41, 102, 0.09), 0 8px 10px -6px rgba(0, 41, 102, 0.05);
   --advizr-shadow-glow: 0 0 20px rgba(10, 122, 255, 0.15);
   --advizr-shadow-glow-lg: 0 0 40px rgba(10, 122, 255, 0.2);
 
@@ -179,33 +223,86 @@
   --advizr-radius-full: 9999px;
 
   /* --------------------------------------------------------------------
-     Transitions
+     Motion
+     Entrances/hovers use ease-out (asymmetric, fast start); layout moves
+     use ease-inout. Nothing bounces; nothing exceeds 500ms.
      -------------------------------------------------------------------- */
-  --advizr-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --advizr-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --advizr-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --advizr-transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --advizr-ease-out:   cubic-bezier(0.165, 0.84, 0.44, 1);
+  --advizr-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --advizr-duration-fast:   150ms;
+  --advizr-duration-base:   200ms;
+  --advizr-duration-slow:   300ms;
+  --advizr-duration-reveal: 500ms;
+  --advizr-stagger: 60ms;
+
+  /* Legacy aliases (migrate call sites to duration/ease tokens over time) */
+  --advizr-transition-fast: var(--advizr-duration-fast) var(--advizr-ease-out);
+  --advizr-transition-base: var(--advizr-duration-base) var(--advizr-ease-out);
+  --advizr-transition-slow: var(--advizr-duration-slow) var(--advizr-ease-out);
 }
 
 /* ========================================================================
+   Section identity resolution (data-section set by the docs page wrapper)
+   ======================================================================== */
+
+[data-section='platform']     { --section-accent: var(--section-platform); }
+[data-section='services']     { --section-accent: var(--section-services); }
+[data-section='academy']      { --section-accent: var(--section-academy); }
+[data-section='architecture'] { --section-accent: var(--section-architecture); }
+
+/* ========================================================================
    Surface Colors - Dark Mode
+   Depth = luminance, not shadow: transparent-white border stack, hover
+   lightens the surface, shadows are disabled, popovers get a top-light ring.
    ======================================================================== */
 
 html[class~="dark"] {
-  --advizr-bg-primary:     #000000;
-  --advizr-bg-secondary:   #0A0A0A;
-  --advizr-bg-tertiary:    #141414;
-  --advizr-bg-code:        #0A0A0A;
+  --advizr-bg-primary:     #000000; /* OLED black — identity, keep */
+  --advizr-bg-secondary:   #0A0A0B;
+  --advizr-bg-tertiary:    #121214;
+  --advizr-surface-raised: #0E0E10;
+  --advizr-surface-overlay: rgba(10, 10, 11, 0.85);
+  --advizr-bg-code:        #0B0D12;
   --advizr-text-primary:   #F1F5F9;
   --advizr-text-secondary: #94A3B8;
-  --advizr-text-tertiary:  #64748B;
-  --advizr-border:         #1E293B;
-  --advizr-border-strong:  #334155;
+  --advizr-text-tertiary:  #7C8BA1;
+  --advizr-border-subtle:  rgba(255, 255, 255, 0.04);
+  --advizr-border:         rgba(255, 255, 255, 0.08);
+  --advizr-border-strong:  rgba(255, 255, 255, 0.14);
+  --advizr-ring-top:       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --advizr-hover-lighten:  rgba(255, 255, 255, 0.04);
 
-  --advizr-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  --advizr-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-  --advizr-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
-  --advizr-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.25);
+  /* Depth = luminance in dark mode. Transparent zero-shadows (not `none`)
+     keep composite box-shadow lists like `var(--advizr-shadow-glow),
+     var(--advizr-shadow-md)` valid CSS. */
+  --advizr-shadow-sm: 0 0 0 0 rgba(0, 0, 0, 0);
+  --advizr-shadow-md: 0 0 0 0 rgba(0, 0, 0, 0);
+  --advizr-shadow-lg: 0 0 0 0 rgba(0, 0, 0, 0);
+  --advizr-shadow-xl: 0 0 0 0 rgba(0, 0, 0, 0);
   --advizr-shadow-glow: 0 0 20px rgba(10, 122, 255, 0.25);
   --advizr-shadow-glow-lg: 0 0 40px rgba(10, 122, 255, 0.35);
+}
+
+/* ========================================================================
+   Global reduced-motion kill-switch.
+   0.01ms (not 0) preserves animation-fill-mode end states, so content
+   animated in by entrance keyframes still lands visible. JS-driven motion
+   must additionally gate via matchMedia('(prefers-reduced-motion: reduce)').
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

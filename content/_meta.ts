@@ -11,11 +11,11 @@ export default {
   services: {
     title: 'Services'
   },
-  architecture: {
-    title: 'Architecture'
-  },
   academy: {
     title: 'Academy'
+  },
+  architecture: {
+    title: 'Architecture'
   },
   resources: {
     title: 'Resources'

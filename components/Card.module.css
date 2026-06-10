@@ -22,7 +22,7 @@
   border-radius: inherit;
   background: radial-gradient(
     600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(99, 102, 241, 0.04),
+    rgba(10, 122, 255, 0.04),
     transparent 40%
   );
   opacity: 0;
@@ -57,7 +57,7 @@ a.card:hover {
 
 :global(html[class~="dark"]) .default:hover {
   border-color: var(--advizr-blue-700);
-  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(99, 102, 241, 0.15));
+  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(10, 122, 255, 0.15));
 }
 
 /* Action variant */
@@ -91,7 +91,7 @@ a.card:hover {
 
 :global(html[class~="dark"]) .action:hover {
   border-color: var(--advizr-blue-700);
-  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(99, 102, 241, 0.15));
+  box-shadow: var(--advizr-shadow-glow, 0 0 20px rgba(10, 122, 255, 0.15));
 }
 
 /* Outline variant */
@@ -128,14 +128,14 @@ a.card:hover {
   width: 44px;
   height: 44px;
   border-radius: var(--advizr-radius-lg, 0.75rem);
-  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(99, 102, 241, 0.08) 100%);
+  background: linear-gradient(135deg, var(--advizr-blue-50) 0%, rgba(10, 122, 255, 0.08) 100%);
   font-size: 1.25rem;
   margin-bottom: 1rem;
   line-height: 1;
 }
 
 :global(html[class~="dark"]) .icon {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(10, 122, 255, 0.1);
 }
 
 /* Image */

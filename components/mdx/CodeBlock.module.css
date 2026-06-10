@@ -4,7 +4,7 @@
 
 .codeBlock {
   margin: var(--advizr-space-6) 0;
-  background: #0D1117;
+  background: var(--advizr-bg-code);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--advizr-radius-lg);
   overflow: hidden;
@@ -61,7 +61,7 @@
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(10, 122, 255, 0.15);
   color: var(--advizr-blue-300);
   border-radius: var(--advizr-radius-full);
   font-family: var(--advizr-font-mono);

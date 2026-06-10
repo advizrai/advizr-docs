@@ -77,7 +77,7 @@
 
 :global(html[class~="dark"]) .linkCard:hover {
   border-color: var(--advizr-blue-400);
-  box-shadow: var(--advizr-shadow-md), 0 0 20px rgba(99, 102, 241, 0.08);
+  box-shadow: var(--advizr-shadow-md), 0 0 20px rgba(10, 122, 255, 0.08);
 }
 
 :global(html[class~="dark"]) .linkCard:hover .arrow {

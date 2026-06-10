@@ -43,8 +43,8 @@
    --------------------------------------------------------------------------- */
 
 .info {
-  background: rgba(99, 102, 241, 0.04);
-  border-color: rgba(99, 102, 241, 0.1);
+  background: rgba(10, 122, 255, 0.04);
+  border-color: rgba(10, 122, 255, 0.1);
   border-left: 3px solid var(--advizr-blue-500, #0A7AFF);
 }
 
@@ -113,8 +113,8 @@
    --------------------------------------------------------------------------- */
 
 :global(html[class~="dark"]) .info {
-  background: rgba(99, 102, 241, 0.08);
-  border-color: rgba(99, 102, 241, 0.15);
+  background: rgba(10, 122, 255, 0.08);
+  border-color: rgba(10, 122, 255, 0.15);
 }
 
 :global(html[class~="dark"]) .warning {

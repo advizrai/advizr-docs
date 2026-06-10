@@ -1,6 +1,7 @@
 import { Layout, Navbar } from 'nextra-theme-docs'
 import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
+import localFont from 'next/font/local'
 import '../styles/app.css'
 import NavbarExtra from '../components/NavbarExtra'
 import CustomFooter from '../components/CustomFooter'
@@ -9,6 +10,39 @@ import { Analytics } from '../components/Analytics'
 import { GoogleAnalytics } from '../components/GoogleAnalytics'
 import { CookieConsent } from '../components/CookieConsent'
 import { EventTracking } from '../components/EventTracking'
+
+// Self-hosted fonts (replaces the render-blocking Google Fonts @import).
+// InterVariable carries the full 100-900 weight axis, which is what makes
+// the in-between token weights (510/590/640) possible.
+const inter = localFont({
+  src: [
+    { path: '../public/fonts/InterVariable.woff2', weight: '100 900', style: 'normal' },
+    { path: '../public/fonts/InterVariable-Italic.woff2', weight: '100 900', style: 'italic' }
+  ],
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true
+})
+
+const interDisplay = localFont({
+  src: [
+    { path: '../public/fonts/InterDisplay-SemiBold.woff2', weight: '600', style: 'normal' },
+    { path: '../public/fonts/InterDisplay-Bold.woff2', weight: '700', style: 'normal' }
+  ],
+  variable: '--font-inter-display',
+  display: 'swap',
+  preload: false
+})
+
+const jetbrainsMono = localFont({
+  src: [
+    { path: '../public/fonts/JetBrainsMono-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/JetBrainsMono-Medium.woff2', weight: '500', style: 'normal' }
+  ],
+  variable: '--font-jetbrains',
+  display: 'swap',
+  preload: false
+})
 
 export const metadata = {
   title: {
@@ -83,9 +117,14 @@ export default async function RootLayout({ children }) {
   )
   const pageMap = await getPageMap()
   return (
-    <html lang="en" dir="ltr" className="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      dir="ltr"
+      className={`dark ${inter.variable} ${interDisplay.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <Head />
-      <body style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+      <body>
         <Layout
           darkMode={true}
           nextThemes={{ defaultTheme: 'dark' }}

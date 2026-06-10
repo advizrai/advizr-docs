@@ -18,19 +18,19 @@ const sections = [
     gradient: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(16,185,129,0.06) 50%, transparent 100%)',
   },
   {
-    label: 'Architecture',
-    href: '/docs/architecture',
-    gradient: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(139,92,246,0.06) 50%, transparent 100%)',
-  },
-  {
     label: 'Academy',
     href: '/docs/academy',
-    gradient: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(249,115,22,0.06) 50%, transparent 100%)',
+    gradient: 'radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.06) 50%, transparent 100%)',
+  },
+  {
+    label: 'Architecture',
+    href: '/docs/architecture',
+    gradient: 'radial-gradient(circle, rgba(148,163,184,0.15) 0%, rgba(148,163,184,0.06) 50%, transparent 100%)',
   },
   {
     label: 'Resources',
     href: '/docs/resources',
-    gradient: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(236,72,153,0.06) 50%, transparent 100%)',
+    gradient: 'radial-gradient(circle, rgba(10,122,255,0.12) 0%, rgba(10,122,255,0.05) 50%, transparent 100%)',
   },
 ]
 
