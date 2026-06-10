@@ -40,6 +40,16 @@ test.describe('Design gates', () => {
     }
   });
 
+  test('rendered pages contain zero emoji', async ({ page }) => {
+    const emojiPattern = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u;
+    for (const path of ['/docs', '/docs/platform', '/docs/services', '/docs/academy', '/docs/resources']) {
+      await page.goto(path);
+      const text = await page.evaluate(() => document.body.innerText);
+      const match = text.match(emojiPattern);
+      expect(match, `emoji "${match?.[0]}" rendered on ${path}`).toBeNull();
+    }
+  });
+
   test('no requests to Google Fonts at runtime', async ({ page }) => {
     const fontRequests: string[] = [];
     page.on('request', (req) => {

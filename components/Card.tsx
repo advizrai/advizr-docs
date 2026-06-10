@@ -1,15 +1,17 @@
 'use client'
 
-import { useRef, type MouseEvent } from 'react'
+import { useRef, type MouseEvent, type ReactNode } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { Icon } from './Icon'
 import styles from './Card.module.css'
 
 interface CardProps {
   title: string
   description?: string
   href?: string
-  icon?: string
+  /** Registry icon name (see icon-registry.ts) or a custom node. Emoji are banned. */
+  icon?: string | ReactNode
   image?: string
   variant?: 'default' | 'action' | 'outline' | 'ghost'
   arrow?: boolean
@@ -48,7 +50,11 @@ export function Card({
   const content = (
     <>
       {image && <img src={image} alt="" className={styles.image} />}
-      {icon && <span className={styles.icon}>{icon}</span>}
+      {icon && (
+        <span className={styles.icon}>
+          {typeof icon === 'string' ? <Icon name={icon} size={20} /> : icon}
+        </span>
+      )}
       <h3 className={styles.title}>
         {title}
         {arrow && <span className={styles.arrow}>&rarr;</span>}
