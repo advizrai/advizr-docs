@@ -17,5 +17,23 @@ const withNextra = nextra({
 export default withNextra({
   turbopack: {
     root: import.meta.dirname
+  },
+  async redirects() {
+    return [
+      // Internal component reference pages quarantined out of public content (2026-06)
+      { source: '/docs/resources/component-demo', destination: '/docs/resources', permanent: true },
+      { source: '/docs/resources/component-preview', destination: '/docs/resources', permanent: true },
+      // Placeholder status page removed until a real status provider ships
+      { source: '/docs/resources/status', destination: '/docs/resources', permanent: false },
+      // Architecture subsections collapsed while pages are rebuilt with verified content;
+      // remove each entry as its subsection returns to the sidebar
+      { source: '/docs/architecture/infrastructure/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/client-platform/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/database/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/knowledge-base/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/automation-pipeline/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/engineering/:path*', destination: '/docs/architecture', permanent: false },
+      { source: '/docs/architecture/api-reference/:path*', destination: '/docs/architecture', permanent: false }
+    ]
   }
 })

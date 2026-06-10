@@ -2,8 +2,8 @@ import { test, expect } from 'playwright/test';
 
 test.describe('MDX Feedback Components', () => {
 
-  // Component demo page contains all Callout variants, Steps, and Details
-  const contentPage = '/docs/resources/component-demo';
+  // Getting-started page contains Callout and Steps; FAQ pages cover Details
+  const contentPage = '/docs/platform/getting-started';
 
   test('page with MDX components loads without errors', async ({ page }) => {
     const errors: string[] = [];
@@ -115,7 +115,7 @@ test.describe('MDX Feedback Components', () => {
   });
 
   test('all MDX feedback components render on multiple pages', async ({ page }) => {
-    const pages = ['/docs/resources/component-demo', '/docs/platform/getting-started', '/docs/academy'];
+    const pages = ['/docs/platform/faq/general', '/docs/platform/getting-started', '/docs/academy'];
     for (const url of pages) {
       const errors: string[] = [];
       page.on('pageerror', (err) => {

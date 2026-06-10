@@ -294,7 +294,7 @@ test.describe('MDX Interactive Components', () => {
         '/docs/services/guarantees',
         '/docs/services/pricing/whats-included',
         '/docs/services/education/curriculum',
-        '/docs/resources/component-demo',
+        '/docs/platform/faq/general',
       ];
       for (const url of pages) {
         const response = await page.goto(url);

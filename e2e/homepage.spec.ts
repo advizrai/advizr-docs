@@ -26,7 +26,7 @@ test.describe('Homepage & Hero', () => {
   test('hero has two action buttons', async ({ page }) => {
     await page.goto('/docs');
     const getStarted = page.locator('a', { hasText: 'Get Started' });
-    const explore = page.locator('a', { hasText: 'Explore Platform' });
+    const explore = page.locator('a', { hasText: 'Explore Services' });
     await expect(getStarted).toBeVisible();
     await expect(explore).toBeVisible();
   });
