@@ -1,0 +1,29 @@
+/*
+  ── Instrument Grade — prose layer (PR-A placeholder; NOT imported yet) ────
+  Element fallbacks (headings, lists, tables, blockquotes, admonitions)
+  arrive in PR-C. This file holds only the pieces later PRs depend on.
+*/
+
+/* Shiki dual-theme bridge — docs is dark-first, so the DEFAULT paint is the
+   dark palette and .light swaps to the light one (the INVERSE of the current
+   site, which defaults light and swaps under .dark). */
+.nextra-code span {
+  color: var(--shiki-dark);
+}
+.light .nextra-code span {
+  color: var(--shiki-light);
+}
+
+/* Reduced-motion kill-switch — collapse transitions/animations to a frame.
+   Opacity fades are preserved (near-instant is fine; content must not be
+   stuck mid-animation or hidden). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

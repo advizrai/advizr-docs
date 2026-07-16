@@ -1,0 +1,325 @@
+/*
+  ── Instrument Grade — advizr-docs token system (PR-A: unwired) ─────────────
+  Paper & Signal translated to a documentation console.
+
+  World model — INVERSE polarity of advizr-client-template:
+  - BAND  (dark, DEFAULT at :root): warm near-black ops-console surfaces.
+    Designed, not inverted.
+  - PAPER (light, under .light): warm off-white surfaces, ink text,
+    hairline rules.
+  - SIGNAL: coral. Used for signal paths, port dots, focus rings, active
+    states, ONE stat per viewport. Never fills large areas.
+
+  Doctrine:
+  - Hierarchy via hairlines + surface swaps. Shadows exist only on transient
+    overlays (dropdowns/dialogs) as a single ink-tinted stack — hairlines,
+    never shadows, everywhere else.
+  - Radius: 0px structure (--radius-none), 2px controls (--radius-xs); full
+    radius reserved for port dots and avatars only.
+  - Type: Geist (body 15px/1.65 for reading; UI 13px), Geist Mono for
+    uppercase labels and tabular numerals. Emphasis by weight, never size.
+  - Motion: appear instantly, fade out ~150ms; ceiling 350ms; ease-out only.
+  - One signal per viewport.
+
+  Signal provenance: the coral values below are the PRECOMPUTED output of
+  buildSignalVars() in advizr-client-template lib/branding/css-vars.ts
+  (WCAG-clamped against each world). Docs is not white-labelled, so the
+  coral RESULT is pinned here as static tokens rather than injected:
+  band world 12 95% 66% (#FB7756) = 7.26:1 vs --band.
+
+  PR-A status: this file is intentionally NOT imported anywhere. It lands
+  with the tooling so later PRs can wire it with zero token churn.
+*/
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
+
+@theme {
+  /* Semantic color slots — same NAMES as advizr-client-template so ported
+     components run unmodified. Each references a base-layer variable. */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
+
+  --color-surface-0: hsl(var(--surface-0));
+  --color-surface-1: hsl(var(--surface-1));
+  --color-surface-2: hsl(var(--surface-2));
+  --color-surface-3: hsl(var(--surface-3));
+  --color-surface-4: hsl(var(--surface-4));
+
+  /* World tokens (theme-invariant anchors) + signal */
+  --color-paper: hsl(var(--paper));
+  --color-ink: hsl(var(--ink));
+  --color-hairline: hsl(var(--hairline));
+  --color-band: hsl(var(--band));
+  --color-band-card: hsl(var(--band-card));
+  --color-band-hairline: hsl(var(--band-hairline));
+  --color-signal: hsl(var(--signal));
+  --color-signal-text: hsl(var(--signal-text));
+  --color-signal-bright: hsl(var(--signal-bright));
+
+  /* Radius — zero-radius structure; 2px controls; full for port dots and
+     avatars ONLY. */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-full: 9999px;
+
+  /* Type scale — docs reads long-form: 15px body at 1.65; 13px UI chrome;
+     mono uppercase labels at 11px. */
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.65;
+  --text-ui: 0.8125rem;
+  --text-ui--line-height: 1.5;
+  --text-label: 0.6875rem;
+  --text-label--letter-spacing: 0.08em;
+  --text-h1: 1.75rem;
+  --text-h2: 1.3125rem;
+  --text-h3: 1.0625rem;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Motion — highlights appear instantly, fade out ~150ms; 350ms ceiling;
+     ease-out only. */
+  --speed-highlight-in: 0s;
+  --speed-highlight-out: 0.15s;
+  --speed-quick: 0.1s;
+  --speed-regular: 0.25s;
+  --speed-slow: 0.35s;
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@layer base {
+  :root {
+    /* BAND world (dark default) — docs is dark-first. */
+    --paper: 36 33.3% 97.1%;
+    --ink: 34.9 33.1% 4%;
+    --hairline: 40 20.5% 85.7%;
+    --band: 40 11.1% 5.3%;
+    --band-card: 40 7.4% 8.3%;
+    --band-hairline: 37.5 10.5% 14.9%;
+
+    /* Signal — precomputed coral. Derivation: buildSignalVars() in
+       advizr-client-template lib/branding/css-vars.ts (WCAG-clamped). Docs is
+       not white-labelled, so the coral RESULT is pinned here as static tokens.
+       12 95% 66% (#FB7756) = 7.26:1 vs band. */
+    --signal: 12 95% 66%;
+    --signal-text: 12 95% 66%;
+    --signal-bright: 12 95% 66%;
+
+    --background: var(--band);
+    --foreground: 40 20% 96%;
+    --card: var(--band-card);
+    --card-foreground: 40 20% 96%;
+    --popover: var(--band-card);
+    --popover-foreground: 40 20% 96%;
+    --primary: 40 20% 96%;
+    --primary-foreground: var(--band);
+    --secondary: 40 12% 11%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 40 12% 11%;
+    --muted-foreground: 40 3.8% 51.2%;
+    --accent: 40 12% 11%;
+    --accent-foreground: 40 20% 96%;
+    --border: var(--band-hairline);
+    --input: var(--band-hairline);
+    --ring: var(--signal);
+
+    /* Text ramp: t1 primary ink … t4 faint labels (3:1 floor). */
+    --text-1: 40 71.8% 97.1%;
+    --text-2: 40 8% 75.3%;
+    --text-3: 40 3.8% 51.2%;
+    --text-4: 40 4.6% 37.5%;
+
+    /* Surface depth ramp — band ladder. */
+    --surface-0: 40 8.6% 7%;
+    --surface-1: 40 7.4% 8.3%;
+    --surface-2: 40 6.5% 9.6%;
+    --surface-3: 40 5.8% 11%;
+    --surface-4: 40 5.2% 12.4%;
+
+    /* Status — band-bright fills, band-ink foregrounds (40 27% 5%). */
+    --success: 160 40% 52%;
+    --success-foreground: 40 27% 5%;
+    --warning: 38 80% 58%;
+    --warning-foreground: 40 27% 5%;
+    --info: 215 50% 62%;
+    --info-foreground: 40 27% 5%;
+    --destructive: 4 70% 58%;
+    --destructive-foreground: 40 27% 5%;
+
+    --sidebar-background: 40 12% 4%;
+    --grid-color: 40 11% 12%;
+    --shadow-dropdown: 0 0 0 1px hsl(var(--border)), 0 8px 24px -8px rgb(0 0 0 / 0.5);
+
+    /* Layout constants (theme-invariant). */
+    --sidebar-width: 244px;
+    --topbar-height: 48px;
+    --content-max: 46.5rem;
+    --toc-width: clamp(200px, 18vw, 260px);
+    --control-h: 28px;
+    --control-h-sm: 24px;
+    --control-h-lg: 32px;
+    --radius: 0px;
+  }
+
+  .light {
+    /* PAPER world — warm off-white, ink text, hairline rules. */
+    --signal: 8 88% 59%;
+    --signal-text: 8 88% 45%;
+    --signal-bright: 8 95% 59%;
+
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: 40 33% 99%;
+    --card-foreground: var(--ink);
+    --popover: 40 33% 99%;
+    --popover-foreground: var(--ink);
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: 38 28% 93%;
+    --secondary-foreground: var(--ink);
+    --muted: 38 28% 93%;
+    --muted-foreground: 36 4.6% 40.5%;
+    --accent: 38 28% 93%;
+    --accent-foreground: var(--ink);
+    --border: var(--hairline);
+    --input: var(--hairline);
+    --ring: var(--signal);
+
+    --text-1: 34.9 33.1% 4%;
+    --text-2: 36.1 6.8% 25.4%;
+    --text-3: 36 4.6% 40.5%;
+    --text-4: 36 4.4% 55.5%;
+
+    --surface-0: 36 51.9% 98.1%;
+    --surface-1: 38 30% 95.5%;
+    --surface-2: 38 22% 93%;
+    --surface-3: 37 14% 90.2%;
+    --surface-4: 36 7.6% 87.3%;
+
+    /* Status — warm-desaturated deeps, paper-white foregrounds. */
+    --success: 160 45% 30%;
+    --success-foreground: 36 33.3% 97.1%;
+    --warning: 36 80% 30%;
+    --warning-foreground: 36 33.3% 97.1%;
+    --info: 220 40% 42%;
+    --info-foreground: 36 33.3% 97.1%;
+    --destructive: 4 66% 44%;
+    --destructive-foreground: 36 33.3% 97.1%;
+
+    --sidebar-background: 38 30% 95%;
+    --grid-color: 40 21% 90%;
+    --shadow-dropdown: 0 0 0 1px hsl(var(--border)), 0 8px 24px -12px hsl(48 14% 7% / 0.18);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+  html.light {
+    color-scheme: light;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--signal));
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: hsl(var(--signal) / 0.16);
+  }
+}
+
+/* ── Instrument-grade utilities (ported from advizr-client-template
+      app/globals.css; hsl slots adapted to this file's variable set) ────── */
+
+@utility eyebrow {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+@utility hairline-t {
+  border-top: 1px solid hsl(var(--border));
+}
+
+@utility hairline-b {
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+@utility hairline-frame {
+  border: 1px solid hsl(var(--border));
+}
+
+@utility rule-double {
+  /* Ledger close — accounting double rule. */
+  border-bottom: 3px double hsl(var(--foreground));
+}
+
+@utility signal-edge {
+  border-left: 2px solid hsl(var(--signal));
+}
+
+@utility port-dot {
+  /* 6px signal port — one of the two sanctioned circles. */
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: hsl(var(--signal));
+}
+
+@utility bg-grid-fade {
+  /* Schematic grid watermark — hairline tint per world (--grid-color),
+     fades out. Donor uses ink/0.05; docs pins an explicit per-theme tint. */
+  background-image:
+    linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at 50% 0%,
+    black 30%,
+    transparent 70%
+  );
+}
+
+@utility font-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
