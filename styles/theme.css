@@ -31,14 +31,24 @@
   with the tooling so later PRs can wire it with zero token churn.
 */
 
+/* Establish the cascade-layer order BEFORE any layer gets content: the legacy
+   site layers (declared in styles/app.css) must sort BELOW Tailwind's layers,
+   or chunk load order decides who wins — this chunk loads before app.css on
+   routes that import it, and without this line `utilities` would be
+   established first and lose to `advizr`. */
+@layer nextra, advizr;
+
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant light (&:is(.light *));
 
-@theme {
+@theme inline {
   /* Semantic color slots — same NAMES as advizr-client-template so ported
-     components run unmodified. Each references a base-layer variable. */
+     components run unmodified. Each references a base-layer variable.
+     `inline` is load-bearing: utilities must substitute var(--card) etc. AT
+     THE ELEMENT so the .light world re-scope propagates — a plain @theme
+     freezes the hsl() at :root and the paper world never takes. */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -322,4 +332,21 @@
 @utility font-tabular {
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum' 1;
+}
+
+@utility status-dot-pulse {
+  /* StatusGlyph "running" pulse — ambient state indicator (donor:
+     advizr-client-template app/globals.css). Call sites disable it under
+     reduced motion via motion-reduce:animate-none. */
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
 }

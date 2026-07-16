@@ -30,6 +30,9 @@ export default withNextra({
       // Internal component reference pages quarantined out of public content (2026-06)
       { source: '/docs/resources/component-demo', destination: '/docs/resources', permanent: true },
       { source: '/docs/resources/component-preview', destination: '/docs/resources', permanent: true },
+      // Instrument Grade dev gallery (PR-B) quarantined the same way in production;
+      // stays reachable locally (next start) for visual verification
+      ...(process.env.VERCEL ? [{ source: '/design/preview', destination: '/docs', permanent: false }] : []),
       // Placeholder status page removed until a real status provider ships
       { source: '/docs/resources/status', destination: '/docs/resources', permanent: false },
       // _drafts briefly built as live pages (Nextra's underscore exclusion
