@@ -1,5 +1,7 @@
 [default]
 locale = "en"
+# Shipped-CSS bundle citations in docs/design/*.md (e.g. CopyPageButton.BwCUeWi3)
+extend-ignore-re = ["\\b\\w+\\.[A-Za-z0-9_-]{8}\\b"]
 
 [default.extend-words]
 # Advizr-specific terms
