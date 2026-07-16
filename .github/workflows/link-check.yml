@@ -17,6 +17,9 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
+          # Root-relative /docs/* links can't resolve against local files
+          # (content/foo.mdx serves /docs/foo), so remap them to the live site.
+          # The advizr.ca exclude is anchored so it no longer swallows docs.advizr.ca.
           args: >-
             --verbose
             --no-progress
@@ -24,7 +27,8 @@ jobs:
             --exclude-path node_modules
             --exclude-path .next
             --exclude-path package-lock.json
-            --exclude 'advizr\.ca'
+            --remap '^/docs(.*)$ https://docs.advizr.ca/docs$1'
+            --exclude '^https?://(www\.)?advizr\.ca'
             --exclude 'advizrclients\.com'
             --exclude 'localhost'
             'content/**/*.mdx'
