@@ -50,6 +50,16 @@ export default {
 }
 ```
 
+## Changelog / patch notes
+
+`public/changelog.json` is **generated** by the advizr-admin patch-notes
+publisher — never hand-edit it (the master-DB `patch_notes` table is
+canonical; the file is fully rewritten on every publish, so manual edits are
+silently reverted). Publish/retract entries via the admin portal at
+`/patch-notes`. `entries[].slug` is the public anchor id and RSS guid;
+`components/mdx/Changelog.tsx` and `app/changelog.xml/route.ts` consume it
+verbatim.
+
 ## Known issues
 
 - Nextra 4.6.x has a Layout Zod validation bug - pinned to 4.4.0
