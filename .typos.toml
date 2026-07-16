@@ -32,6 +32,8 @@ Airwallex = "Airwallex"
 Loom = "Loom"
 
 # Common abbreviations
+guid = "guid"
+guids = "guids"
 ROI = "ROI"
 SOP = "SOP"
 SOPs = "SOPs"
