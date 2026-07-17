@@ -1,0 +1,188 @@
+/*
+  ── Instrument Grade — prose layer (PR-C: element theme + shell CSS) ───────
+  Companion to components/mdx-theme/* (which skin the MDX-mapped elements);
+  this file carries what components can't reach: base article typography,
+  raw-HTML fallbacks, the fenced-frame world re-scope, task-list checkboxes,
+  and the shell's scroll-driven / drawer keyframes. Imported by the
+  preview-docs route in PR-C; the root layout adopts it in PR-D.
+*/
+
+/* Shiki dual-theme bridge — docs is dark-first, so the DEFAULT paint is the
+   dark palette and .light swaps to the light one (the INVERSE of the current
+   site, which defaults light and swaps under .dark). */
+.nextra-code span {
+  color: var(--shiki-dark);
+}
+.light .nextra-code span {
+  color: var(--shiki-light);
+}
+
+/* Reduced-motion kill-switch — collapse transitions/animations to a frame.
+   Opacity fades are preserved (near-instant is fine; content must not be
+   stuck mid-animation or hidden). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Article base (PR-C) ──────────────────────────────────────────────────
+   Two-step ink hierarchy: body prose reads at 15px/1.7 in --text-2 (AA at
+   10.85:1 band / 9.44:1 paper, adoption-map §3); headings/links take
+   --text-1 via the mdx-theme components. */
+.docs-prose {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: hsl(var(--text-2));
+}
+.docs-prose p:not(:first-child) {
+  margin-top: 1.25em;
+}
+.docs-prose p:not(:last-child) {
+  margin-bottom: 1.25em;
+}
+
+/* Task-list checkboxes — square, filled square = checked (StatusGlyph
+   vocabulary; adoption-map §4 "task-list checkboxes square"). */
+.docs-prose input[type='checkbox'] {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+  vertical-align: -2px;
+}
+.docs-prose input[type='checkbox']:checked {
+  background: hsl(var(--signal));
+  border-color: hsl(var(--signal));
+}
+
+/* ── Fenced-code frame (components/mdx-theme/pre.tsx) ─────────────────────
+   The frame is a band-card strip in BOTH worlds, so shiki must keep the
+   dark palette even under .light — this outranks the .light bridge above
+   (three class/attribute steps vs two, declared later). Inline-code chrome
+   from mdx-theme code.tsx is reset to a bare element inside the frame. */
+.light [data-docs-pre] .nextra-code span,
+.light [data-docs-pre] pre span {
+  color: var(--shiki-dark);
+}
+[data-docs-pre] pre code {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── Shell keyframes (components/shell) ───────────────────────────────── */
+
+/* Reading progress — scroll-driven scale under the sticky topbar. */
+@keyframes docs-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Mobile drawer slide-in ≤250ms ease-out; close is instant (no keyframe). */
+@keyframes docs-drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hover-reveal heading anchors render always-visible on coarse pointers —
+   hover-reveal has no hover on touch (adoption-map §6.6). */
+@media (pointer: coarse) {
+  [data-heading-anchor] {
+    opacity: 1;
+  }
+}
+
+/* ── Collapsibles (PR-E) — Details + changelog folded ledgers ──────────── */
+
+/* 150ms content fade when a native <details> opens. */
+@keyframes docs-details-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Patch-notes citability (PR-E, adoption-map §7.7) ───────────────────
+   ~3s :target highlight — signal tint at 6% alpha, held, then decaying over
+   the final ~.35s. A background fade, so the reduced-motion kill-switch
+   collapsing it to a frame stays legible. */
+@keyframes changelog-target {
+  0%,
+  88% {
+    background-color: hsl(var(--signal) / 0.06);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.changelog-entry:target {
+  animation: changelog-target 3s var(--ease-out-quad, ease-out) both;
+}
+
+/* ── Rules carried over from the deleted compat.css (PR-E) ──────────────
+   These are not legacy bridge aliases — they are live behavior with no
+   component home: scroll reveals (MotionEffects + Section/CardGrid
+   `reveal`) and the View Transitions cross-fade. Timings follow the motion
+   canon: 350ms ease-out reveal, 50ms stagger, 180ms cross-fade. */
+
+/* Hidden state only applies when JS is available. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: calc(min(var(--reveal-i, 0), 6) * 50ms);
+  }
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* View Transitions (next.config viewTransition): fast cross-fade only;
+   flattened by the reduced-motion kill-switch above. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

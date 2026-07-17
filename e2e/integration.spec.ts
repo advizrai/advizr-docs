@@ -140,7 +140,7 @@ test.describe('Integration - Full Site', () => {
     const pages = ['/docs', '/docs/platform', '/docs/services'];
     for (const url of pages) {
       await page.goto(url);
-      const footer = page.locator('footer[class*="Footer"]');
+      const footer = page.locator('footer').last();
       await expect(footer).toBeVisible();
     }
   });
@@ -174,21 +174,18 @@ test.describe('Integration - Full Site', () => {
     // Footer should be present
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(500);
-    const footer = page.locator('footer[class*="Footer"]');
+    const footer = page.locator('footer').last();
     await expect(footer).toBeVisible();
   });
 
-  test('font loading - Inter and JetBrains Mono', async ({ page }) => {
+  test('font loading - Geist and Geist Mono', async ({ page }) => {
     await page.goto('/docs');
-    // Check body uses Inter
     const bodyFont = await page.evaluate(() => getComputedStyle(document.body).fontFamily);
-    expect(bodyFont.toLowerCase()).toContain('inter');
-    // Check code uses JetBrains Mono
+    expect(bodyFont.toLowerCase()).toContain('geist');
     const code = page.locator('code, pre').first();
     if (await code.isVisible()) {
       const codeFont = await code.evaluate((el) => getComputedStyle(el).fontFamily);
-      const isMono = codeFont.toLowerCase().includes('jetbrains') || codeFont.toLowerCase().includes('mono');
-      expect(isMono).toBe(true);
+      expect(codeFont.toLowerCase()).toContain('mono');
     }
   });
 

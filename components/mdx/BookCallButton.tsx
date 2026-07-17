@@ -1,7 +1,6 @@
 'use client'
 
-import clsx from 'clsx'
-import styles from './BookCallButton.module.css'
+import { cn } from '@/lib/cn'
 
 interface BookCallButtonProps {
   text?: string
@@ -10,9 +9,16 @@ interface BookCallButtonProps {
   className?: string
 }
 
+/**
+ * BookCallButton — signal CTA control (PR-E): the ONE signal fill, ink text
+ * for contrast in both worlds, 2px radius, 32px control height. Secondary
+ * is a hairline card chip. Hover instant-in / 150ms-out; no glow, no lift.
+ */
 const variantMap: Record<string, string> = {
-  primary: styles.primary,
-  secondary: styles.secondary,
+  primary:
+    'border border-transparent bg-[hsl(var(--signal))] text-[hsl(var(--ink))] hover:bg-[hsl(var(--signal-bright))]',
+  secondary:
+    'border border-border bg-[hsl(var(--card))] text-[hsl(var(--text-1))] hover:bg-[hsl(var(--secondary))]',
 }
 
 export function BookCallButton({
@@ -25,26 +31,19 @@ export function BookCallButton({
   return (
     <a
       href={href}
-      className={clsx(styles.bookCallButton, variantMap[variant], className)}
+      className={cn(
+        'inline-flex h-8 items-center gap-2 whitespace-nowrap rounded-[2px] px-4 text-[0.8125rem] font-medium leading-none no-underline',
+        'transition-[background-color,border-color,color] duration-150 ease-out hover:duration-0 motion-reduce:transition-none',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]',
+        variantMap[variant],
+        className
+      )}
       {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
       {text}
-      <svg
-        className={styles.arrow}
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M6 3l5 5-5 5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <span aria-hidden="true" className="font-mono text-[0.875em] leading-none">
+        →
+      </span>
     </a>
   )
 }

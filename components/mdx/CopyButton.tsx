@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import clsx from 'clsx'
-import styles from './CopyButton.module.css'
 
 interface CopyButtonProps {
   text: string
@@ -10,6 +9,11 @@ interface CopyButtonProps {
   className?: string
 }
 
+/**
+ * CopyButton — mono hairline chip (PR-D), aligned with the mdx-theme
+ * copy-code-button grammar: 2px radius control, 10px mono uppercase,
+ * success-colored confirmation (no tinted fill).
+ */
 export function CopyButton({
   text,
   label = 'Copy',
@@ -45,24 +49,30 @@ export function CopyButton({
   return (
     <button
       type="button"
-      className={clsx(styles.copyButton, copied && styles.copied, className)}
+      className={clsx(
+        'inline-flex h-6 cursor-pointer items-center gap-1.5 rounded-[2px] border border-border bg-transparent px-1.5 font-mono text-[10px] uppercase tracking-[0.08em]',
+        'transition-[color,background-color] duration-150 ease-out hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--text-1))] hover:duration-0 motion-reduce:transition-none',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]',
+        copied ? 'text-[hsl(var(--success))]' : 'text-[hsl(var(--text-3))]',
+        className
+      )}
       onClick={handleCopy}
       aria-label={copied ? 'Copied' : label}
     >
       {copied ? (
         <>
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8.5l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className={styles.label}>Copied!</span>
+          <span>Copied</span>
         </>
       ) : (
         <>
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="5" y="5" width="9" height="9" rx="1" stroke="currentColor" strokeWidth="1.5" />
             <path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
-          <span className={styles.label}>{label}</span>
+          <span>{label}</span>
         </>
       )}
     </button>

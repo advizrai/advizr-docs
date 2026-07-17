@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import clsx from 'clsx'
-import styles from './FlowDiagram.module.css'
+import { cn } from '@/lib/cn'
 
 interface FlowStage {
   label: string
@@ -21,12 +20,14 @@ const NODE_W = 150
 const NODE_H = 64
 const GAP = 48
 const PAD = 8
+const PORT_R = 2.5
 
 /**
- * Animated SVG pipeline — one of the three B6 signature set-pieces.
- * Connectors draw in when scrolled into view, then a beam pulses along the
- * pipeline on an 8s loop. Reduced-motion renders the finished diagram
- * statically (no draw-in, no beams).
+ * FlowDiagram — hairline schematic (PR-E): 0-radius card nodes with mono
+ * uppercase labels, 1px hairline connectors with signal port-dots at each
+ * junction, and a signal beam tracing the pipeline. Connectors draw in when
+ * scrolled into view. Reduced-motion renders the finished diagram statically
+ * (no draw-in, no beam). The stages/caption API is unchanged.
  */
 export function FlowDiagram({ stages, caption, className }: FlowDiagramProps) {
   const ref = useRef<HTMLDivElement>(null)
@@ -56,66 +57,89 @@ export function FlowDiagram({ stages, caption, className }: FlowDiagramProps) {
   const height = NODE_H + PAD * 2 + 8
   const midY = PAD + NODE_H / 2
 
+  // Reduced motion (or pre-hydration SSR frame) paints the finished state.
+  const settled = visible || reduced
+
+  const drawIn = (delay: number): React.CSSProperties =>
+    reduced ? {} : { transitionDelay: `${delay}ms` }
+
   return (
-    <div
-      ref={ref}
-      className={clsx(styles.wrap, visible && styles.visible, reduced && styles.reduced, className)}
-    >
+    <div ref={ref} className={cn('my-8', className)}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         role="img"
         aria-label={`Pipeline: ${shown.map((s) => s.label).join(', then ')}`}
-        className={styles.svg}
+        className="block h-auto w-full"
       >
         {shown.map((stage, i) => {
           const x = PAD + i * (NODE_W + GAP)
           const lineX1 = x + NODE_W
           const lineX2 = lineX1 + GAP
+          const fade = cn(
+            'transition-opacity duration-300 ease-out motion-reduce:transition-none',
+            settled ? 'opacity-100' : 'opacity-0'
+          )
           return (
             <g key={i}>
+              {/* Node — 0-radius hairline card */}
               <rect
-                x={x}
-                y={PAD}
-                width={NODE_W}
-                height={NODE_H}
-                rx={10}
-                className={styles.node}
-                style={{ transitionDelay: `${i * 120}ms` }}
+                x={x + 0.5}
+                y={PAD + 0.5}
+                width={NODE_W - 1}
+                height={NODE_H - 1}
+                className={cn('fill-[hsl(var(--card))] stroke-[hsl(var(--border))]', fade)}
+                strokeWidth={1}
+                style={drawIn(i * 120)}
               />
               <text
                 x={x + NODE_W / 2}
-                y={stage.sublabel ? midY - 4 : midY + 4}
+                y={stage.sublabel ? midY - 3 : midY + 4}
                 textAnchor="middle"
-                className={styles.label}
-                style={{ transitionDelay: `${i * 120}ms` }}
+                className={cn('fill-[hsl(var(--text-1))] font-mono text-[11px] uppercase', fade)}
+                style={{ letterSpacing: '0.08em', ...drawIn(i * 120) }}
               >
                 {stage.label}
               </text>
               {stage.sublabel && (
                 <text
                   x={x + NODE_W / 2}
-                  y={midY + 16}
+                  y={midY + 15}
                   textAnchor="middle"
-                  className={styles.sublabel}
-                  style={{ transitionDelay: `${i * 120}ms` }}
+                  className={cn('fill-[hsl(var(--text-3))] font-mono text-[9px] uppercase', fade)}
+                  style={{ letterSpacing: '0.06em', ...drawIn(i * 120) }}
                 >
                   {stage.sublabel}
                 </text>
               )}
               {i < n - 1 && (
                 <>
+                  {/* 1px connector, drawn in left-to-right */}
                   <line
-                    x1={lineX1 + 4}
+                    x1={lineX1 + PORT_R + 2}
                     y1={midY}
-                    x2={lineX2 - 4}
+                    x2={lineX2 - PORT_R - 2}
                     y2={midY}
-                    className={styles.connector}
-                    style={{ transitionDelay: `${i * 120 + 80}ms` }}
+                    pathLength={1}
+                    strokeDasharray={1}
+                    strokeDashoffset={settled ? 0 : 1}
+                    className="stroke-[hsl(var(--border))] transition-[stroke-dashoffset] duration-300 ease-out motion-reduce:transition-none"
+                    strokeWidth={1}
+                    style={drawIn(i * 120 + 80)}
                   />
-                  <path
-                    d={`M ${lineX2 - 10} ${midY - 4} L ${lineX2 - 4} ${midY} L ${lineX2 - 10} ${midY + 4}`}
-                    className={styles.arrow}
-                    style={{ transitionDelay: `${i * 120 + 80}ms` }}
+                  {/* Port dots at each junction — the sanctioned signal circles */}
+                  <circle
+                    cx={lineX1 + PORT_R}
+                    cy={midY}
+                    r={PORT_R}
+                    className={cn('fill-[hsl(var(--signal))]', fade)}
+                    style={drawIn(i * 120 + 80)}
+                  />
+                  <circle
+                    cx={lineX2 - PORT_R}
+                    cy={midY}
+                    r={PORT_R}
+                    className={cn('fill-[hsl(var(--signal))]', fade)}
+                    style={drawIn(i * 120 + 160)}
                   />
                 </>
               )}
@@ -123,7 +147,7 @@ export function FlowDiagram({ stages, caption, className }: FlowDiagramProps) {
           )
         })}
         {!reduced && (
-          <circle r={3} className={styles.beam}>
+          <circle r={2} className="fill-[hsl(var(--signal))]">
             <animateMotion
               dur="8s"
               repeatCount="indefinite"
@@ -132,7 +156,11 @@ export function FlowDiagram({ stages, caption, className }: FlowDiagramProps) {
           </circle>
         )}
       </svg>
-      {caption && <p className={styles.caption}>{caption}</p>}
+      {caption && (
+        <p className="mt-2 text-center font-mono text-[11px] tracking-[0.04em] text-[hsl(var(--text-3))]">
+          {caption}
+        </p>
+      )}
     </div>
   )
 }

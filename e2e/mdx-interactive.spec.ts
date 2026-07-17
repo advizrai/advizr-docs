@@ -5,34 +5,39 @@ test.describe('MDX Interactive Components', () => {
   // --- BookCallButton Tests ---
 
   test.describe('BookCallButton', () => {
-    test('primary button has gradient background', async ({ page }) => {
+    test('primary button is a solid signal control (no gradient)', async ({ page }) => {
       await page.goto('/docs/services/pricing/whats-included');
       const btn = page.locator('a:has-text("Talk to Us About Pricing")').first();
       if (await btn.count() > 0 && await btn.isVisible()) {
-        const bg = await btn.evaluate((el) => getComputedStyle(el).backgroundImage);
-        expect(bg).toContain('linear-gradient');
+        const s = await btn.evaluate((el) => {
+          const cs = getComputedStyle(el);
+          return { bgImage: cs.backgroundImage, bgColor: cs.backgroundColor, radius: cs.borderRadius };
+        });
+        expect(s.bgImage).toBe('none');
+        expect(s.bgColor).toBe('rgb(251, 119, 86)'); // --signal, band world
+        expect(parseFloat(s.radius)).toBeLessThanOrEqual(2); // machined control
       }
     });
 
-    test('primary button has glow shadow on hover', async ({ page }) => {
+    test('primary button never glows or casts shadow (rest + hover)', async ({ page }) => {
       await page.goto('/docs/services/pricing/whats-included');
       const btn = page.locator('a:has-text("Talk to Us About Pricing")').first();
       if (await btn.count() > 0 && await btn.isVisible()) {
+        expect(await btn.evaluate((el) => getComputedStyle(el).boxShadow)).toBe('none');
         await btn.hover();
         await page.waitForTimeout(250);
-        const shadow = await btn.evaluate((el) => getComputedStyle(el).boxShadow);
-        expect(shadow).not.toBe('none');
+        expect(await btn.evaluate((el) => getComputedStyle(el).boxShadow)).toBe('none');
       }
     });
 
-    test('primary button lifts on hover', async ({ page }) => {
+    test('primary button does not lift on hover (surface shift only)', async ({ page }) => {
       await page.goto('/docs/services/pricing/whats-included');
       const btn = page.locator('a:has-text("Talk to Us About Pricing")').first();
       if (await btn.count() > 0 && await btn.isVisible()) {
         await btn.hover();
         await page.waitForTimeout(250);
         const transform = await btn.evaluate((el) => getComputedStyle(el).transform);
-        expect(transform).not.toBe('none');
+        expect(transform).toBe('none'); // doctrine: hover shifts color, never position
       }
     });
 
@@ -45,16 +50,14 @@ test.describe('MDX Interactive Components', () => {
       }
     });
 
-    test('button arrow shifts on hover', async ({ page }) => {
+    test('button carries a mono arrow affordance', async ({ page }) => {
       await page.goto('/docs/services/pricing/whats-included');
       const btn = page.locator('a:has-text("Talk to Us About Pricing")').first();
       if (await btn.count() > 0 && await btn.isVisible()) {
-        const arrow = btn.locator('svg');
-        const before = await arrow.evaluate((el) => getComputedStyle(el).transform);
-        await btn.hover();
-        await page.waitForTimeout(250);
-        const after = await arrow.evaluate((el) => getComputedStyle(el).transform);
-        expect(after).not.toBe(before);
+        const arrow = btn.locator('span[aria-hidden="true"]');
+        await expect(arrow).toHaveText('→');
+        const font = await arrow.evaluate((el) => getComputedStyle(el).fontFamily);
+        expect(font.toLowerCase()).toContain('mono');
       }
     });
   });
@@ -72,48 +75,51 @@ test.describe('MDX Interactive Components', () => {
       expect(await employeesSlider.count()).toBe(1);
     });
 
-    test('slider track has gradient background', async ({ page }) => {
+    test('slider track carries the signal fill', async ({ page }) => {
       await page.goto('/docs/services/guarantees');
       const slider = page.locator('#roi-hours');
       if (await slider.isVisible()) {
-        const bg = await slider.evaluate((el) => getComputedStyle(el).background);
-        expect(bg).toContain('linear-gradient');
+        // Chromium doesn't expose vendor slider pseudo styles via
+        // getComputedStyle — assert the class contract + live fill var instead.
+        const cls = await slider.evaluate((el) => el.className);
+        expect(cls).toContain('linear-gradient(to_right,hsl(var(--signal))');
+        const fill = await slider.evaluate((el) => el.style.getPropertyValue('--fill'));
+        expect(fill).toMatch(/%$/); // signal fill tracks the value
       }
     });
 
-    test('output cards have box shadow', async ({ page }) => {
+    test('output cells are hairline-framed, never shadowed', async ({ page }) => {
       await page.goto('/docs/services/guarantees');
-      const label = page.locator('text="Monthly cost of manual work"');
-      if (await label.count() > 0) {
-        const card = label.first().locator('..');
-        const shadow = await card.evaluate((el) => getComputedStyle(el).boxShadow);
-        expect(shadow).not.toBe('none');
+      const cell = page.locator('[data-slot="stat-numeral"]').first();
+      if (await cell.count() > 0) {
+        const shadow = await cell.evaluate((el) => getComputedStyle(el).boxShadow);
+        expect(shadow).toBe('none');
       }
     });
 
-    test('savings numbers use emerald color', async ({ page }) => {
+    test('savings numerals are neutral mono (emerald is dead)', async ({ page }) => {
       await page.goto('/docs/services/guarantees');
-      const label = page.locator('text="Projected monthly savings"');
-      if (await label.count() > 0) {
-        const parent = label.first().locator('..');
-        const number = parent.locator('span').last();
-        const color = await number.evaluate((el) => getComputedStyle(el).color);
-        // Emerald-500 (#10B981) = rgb(16, 185, 129) or Emerald-400 (#34D399) = rgb(52, 211, 153) in dark mode
-        const isEmerald = color.includes('16, 185, 129') || color.includes('52, 211, 153');
-        expect(isEmerald).toBe(true);
+      const cell = page
+        .locator('[data-slot="stat-numeral"]', { hasText: 'Projected monthly savings' })
+        .locator('[data-slot="stat-numeral-value"]');
+      if (await cell.count() > 0) {
+        const { color, font } = await cell.evaluate((el) => {
+          const cs = getComputedStyle(el);
+          return { color: cs.color, font: cs.fontFamily };
+        });
+        expect(color.includes('16, 185, 129') || color.includes('52, 211, 153')).toBe(false);
+        expect(font.toLowerCase()).toContain('mono');
       }
     });
 
-    test('annual ROI uses emerald color', async ({ page }) => {
+    test('annual ROI is the one signal stat', async ({ page }) => {
       await page.goto('/docs/services/guarantees');
-      const label = page.locator('text="Annual ROI"');
-      if (await label.count() > 0) {
-        const parent = label.first().locator('..');
-        const number = parent.locator('span').last();
-        const color = await number.evaluate((el) => getComputedStyle(el).color);
-        // Emerald-500 or Emerald-400 in dark mode
-        const isEmerald = color.includes('16, 185, 129') || color.includes('52, 211, 153');
-        expect(isEmerald).toBe(true);
+      const cell = page
+        .locator('[data-slot="stat-numeral"]', { hasText: 'Annual ROI' })
+        .locator('[data-slot="stat-numeral-value"]');
+      if (await cell.count() > 0) {
+        const color = await cell.evaluate((el) => getComputedStyle(el).color);
+        expect(color).toBe('rgb(251, 119, 86)'); // --signal-text, band world
       }
     });
 
@@ -121,7 +127,10 @@ test.describe('MDX Interactive Components', () => {
       await page.goto('/docs/services/guarantees');
       const slider = page.locator('#roi-hours');
       if (await slider.isVisible()) {
-        const outputBefore = await page.locator('[class*="outputNumber"]').first().textContent();
+        const outputBefore = await page
+          .locator('[data-slot="stat-numeral-value"]')
+          .first()
+          .textContent();
         // Scroll slider into view, focus it, and use arrow keys to change value
         await slider.scrollIntoViewIfNeeded();
         await slider.focus();
@@ -130,7 +139,10 @@ test.describe('MDX Interactive Components', () => {
           await page.keyboard.press('ArrowRight');
         }
         await page.waitForTimeout(600);
-        const outputAfter = await page.locator('[class*="outputNumber"]').first().textContent();
+        const outputAfter = await page
+          .locator('[data-slot="stat-numeral-value"]')
+          .first()
+          .textContent();
         expect(outputAfter).not.toBe(outputBefore);
       }
     });

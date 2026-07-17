@@ -1,10 +1,8 @@
-'use client'
-
-import { useRef, type MouseEvent, type ReactNode } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
+
 import { Icon } from './Icon'
-import styles from './Card.module.css'
 
 interface CardProps {
   title: string
@@ -19,11 +17,19 @@ interface CardProps {
   className?: string
 }
 
+/**
+ * Card — hairline frame, 0 radius, weight-based hierarchy (PR-D). Hover is a
+ * surface lighten (instant-in / 150ms-out) — no lift, no spotlight, no
+ * shadow. Icons sit in a 1px hairline square in neutral --text-2 ink (PR-E
+ * killed the section-accent hues).
+ */
+
 const variantMap: Record<string, string> = {
-  default: styles.default,
-  action: styles.action,
-  outline: styles.outline,
-  ghost: styles.ghost,
+  default: 'border border-border bg-[hsl(var(--card))]',
+  action:
+    'border border-border border-t-2 border-t-[hsl(var(--signal))] bg-[hsl(var(--card))]',
+  outline: 'border border-border bg-transparent',
+  ghost: 'border border-transparent bg-transparent',
 }
 
 export function Card({
@@ -37,30 +43,27 @@ export function Card({
   children,
   className,
 }: CardProps) {
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  const handleMouseMove = (e: MouseEvent) => {
-    const card = cardRef.current
-    if (!card) return
-    const rect = card.getBoundingClientRect()
-    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
-    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
-  }
-
   const content = (
     <>
-      {image && <img src={image} alt="" className={styles.image} />}
+      {image && <img src={image} alt="" className="mb-4 h-40 w-full object-cover" />}
       {icon && (
-        <span className={styles.icon}>
-          {typeof icon === 'string' ? <Icon name={icon} size={20} /> : icon}
+        <span
+          className="mb-4 flex size-9 items-center justify-center border border-border text-[hsl(var(--text-2))]"
+          aria-hidden="true"
+        >
+          {typeof icon === 'string' ? <Icon name={icon} size={16} /> : icon}
         </span>
       )}
-      <h3 className={styles.title}>
+      <h3 className="m-0 flex items-center gap-1.5 text-[0.9375rem] font-medium leading-snug text-[hsl(var(--text-1))]">
         {title}
-        {arrow && <span className={styles.arrow}>&rarr;</span>}
+        {arrow && (
+          <span className="text-[0.8125rem] text-[hsl(var(--text-3))]" aria-hidden="true">
+            &rarr;
+          </span>
+        )}
       </h3>
       {(description || children) && (
-        <div className={styles.body}>
+        <div className="mt-1.5 text-[0.8125rem] leading-relaxed text-[hsl(var(--text-3))]">
           {description}
           {children}
         </div>
@@ -68,21 +71,22 @@ export function Card({
     </>
   )
 
-  const cls = clsx(styles.card, variantMap[variant], className)
+  const cls = clsx(
+    'block p-5 text-inherit no-underline',
+    'transition-[background-color] duration-150 ease-out motion-reduce:transition-none',
+    variantMap[variant],
+    href &&
+      'hover:bg-[hsl(var(--secondary))] hover:duration-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]',
+    className
+  )
 
   if (href) {
     return (
       <Link href={href} className={cls}>
-        <div ref={cardRef} onMouseMove={handleMouseMove} className={styles.inner}>
-          {content}
-        </div>
+        {content}
       </Link>
     )
   }
 
-  return (
-    <div ref={cardRef} onMouseMove={handleMouseMove} className={cls}>
-      {content}
-    </div>
-  )
+  return <div className={cls}>{content}</div>
 }

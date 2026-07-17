@@ -18,6 +18,7 @@ const PAGES: Array<[name: string, path: string]> = [
   ['academy-lesson', '/docs/academy/foundations/what-is-ai'],
   ['architecture', '/docs/architecture'],
   ['platform-getting-started', '/docs/platform/getting-started'],
+  ['changelog', '/docs/resources/changelog'],
 ];
 
 const VIEWPORTS: Record<string, { width: number; height: number }> = {
@@ -57,12 +58,12 @@ test.describe('Visual baselines', () => {
   test('search-open desktop dark', async ({ page }) => {
     await page.setViewportSize(VIEWPORTS.desktop);
     await page.goto('/docs');
-    const input = page.locator('[data-nextra-search] input').first();
-    if ((await input.count()) > 0) {
-      await input.click();
-      await input.fill('workflow');
-      await page.waitForTimeout(800);
-    }
+    await page.evaluate(() => document.fonts.ready);
+    await page.keyboard.press('ControlOrMeta+k');
+    const dialog = page.locator('[data-docs-search]');
+    await expect(dialog).toBeVisible();
+    await dialog.locator('input').first().fill('workflow');
+    await page.waitForTimeout(800); // pagefind debounce + results
     await expect(page).toHaveScreenshot('search-open-desktop-dark.png', {
       animations: 'disabled',
       maxDiffPixelRatio: 0.02,

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import styles from './FeedbackWidget.module.css'
+import { ThumbsDown, ThumbsUp } from 'lucide-react'
+import { cn } from '@/lib/cn'
 
 type Stage = 'vote' | 'reason' | 'done' | 'hidden'
 
@@ -13,10 +14,20 @@ const REASONS: Array<[key: string, label: string]> = [
   ['inaccurate', 'Something is wrong'],
 ]
 
+const glyphButtonClass = cn(
+  'inline-flex size-7 cursor-pointer items-center justify-center rounded-[2px] border border-border bg-transparent text-[hsl(var(--text-2))]',
+  'transition-[color,background-color] duration-150 ease-out hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--text-1))] hover:duration-0 motion-reduce:transition-none',
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]'
+)
+
 /**
  * "Was this page helpful?" — the only direct comprehension signal we get
  * from readers. One-tap; a down-vote asks for a one-tap reason. Hides
  * itself if the storage endpoint isn't configured (503).
+ *
+ * PR-E reskin per adoption-map §4.6: mono eyebrow, two square glyph
+ * controls (lucide 16px — emoji are banned) separated by Notion's drawn
+ * vertical hairline divider, down-vote reason as a 28px select control.
  */
 export function FeedbackWidget() {
   const pathname = usePathname()
@@ -46,34 +57,69 @@ export function FeedbackWidget() {
   }
 
   return (
-    <aside className={styles.widget} aria-label="Page feedback">
+    <aside
+      aria-label="Page feedback"
+      className="mt-12 flex flex-wrap items-center gap-4 border border-border bg-[hsl(var(--card))] px-5 py-4"
+    >
       {stage === 'vote' && (
         <>
-          <span className={styles.question}>Was this page helpful?</span>
-          <div className={styles.buttons}>
-            <button type="button" className={styles.btn} onClick={() => send('up')}>
-              Yes
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[hsl(var(--text-3))]">
+            Was this helpful
+          </span>
+          <div className="flex items-center gap-2.5">
+            <button
+              type="button"
+              aria-label="Yes, this page was helpful"
+              className={glyphButtonClass}
+              onClick={() => send('up')}
+            >
+              <ThumbsUp size={16} strokeWidth={1.5} aria-hidden />
             </button>
-            <button type="button" className={styles.btn} onClick={() => send('down')}>
-              No
+            {/* Drawn vertical hairline divider between the two controls */}
+            <span aria-hidden="true" className="h-4 w-px bg-[hsl(var(--border))]" />
+            <button
+              type="button"
+              aria-label="No, this page was not helpful"
+              className={glyphButtonClass}
+              onClick={() => send('down')}
+            >
+              <ThumbsDown size={16} strokeWidth={1.5} aria-hidden />
             </button>
           </div>
         </>
       )}
       {stage === 'reason' && (
         <>
-          <span className={styles.question}>What was the problem?</span>
-          <div className={styles.buttons}>
+          <label
+            htmlFor="feedback-reason"
+            className="font-mono text-[11px] uppercase tracking-[0.08em] text-[hsl(var(--text-3))]"
+          >
+            What was the problem
+          </label>
+          <select
+            id="feedback-reason"
+            defaultValue=""
+            onChange={(e) => {
+              if (e.target.value) send('down', e.target.value)
+            }}
+            className={cn(
+              'h-7 cursor-pointer rounded-[2px] border border-border bg-[hsl(var(--background))] px-2 text-[0.8125rem] text-[hsl(var(--text-2))]',
+              'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]'
+            )}
+          >
+            <option value="" disabled>
+              Choose a reason…
+            </option>
             {REASONS.map(([key, label]) => (
-              <button key={key} type="button" className={styles.btn} onClick={() => send('down', key)}>
+              <option key={key} value={key}>
                 {label}
-              </button>
+              </option>
             ))}
-          </div>
+          </select>
         </>
       )}
       {stage === 'done' && (
-        <span className={styles.question} role="status">
+        <span className="text-[0.8125rem] text-[hsl(var(--text-2))]" role="status">
           Thanks — your feedback improves these docs.
         </span>
       )}

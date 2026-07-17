@@ -12,7 +12,29 @@ import {
 } from 'react'
 import clsx from 'clsx'
 import { Tab } from './Tab'
-import styles from './Tabs.module.css'
+
+/* Instrument Grade tab grammar (PR-D): 28px tabs over a hairline-b track;
+   active = 500 weight + the 2px signal underline (the JS-measured sliding
+   indicator IS the underline). */
+const styles = {
+  tabs: 'my-4',
+  tabList: clsx(
+    'relative flex gap-1 overflow-x-auto border-b border-border',
+    '[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+  ),
+  tab: clsx(
+    'relative h-7 cursor-pointer whitespace-nowrap border-none bg-transparent px-2.5 text-[0.8125rem] leading-none text-[hsl(var(--text-3))]',
+    'transition-[color] duration-150 ease-out hover:text-[hsl(var(--text-1))] hover:duration-0 motion-reduce:transition-none',
+    'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[hsl(var(--signal))]'
+  ),
+  tabActive: 'font-medium text-[hsl(var(--text-1))]',
+  indicator: clsx(
+    'pointer-events-none absolute bottom-0 left-0 h-0.5 w-0 bg-[hsl(var(--signal))] opacity-0',
+    'transition-[transform,width] duration-150 ease-out motion-reduce:transition-none'
+  ),
+  panel:
+    'pt-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--signal))]',
+}
 
 interface TabsProps {
   defaultIndex?: number

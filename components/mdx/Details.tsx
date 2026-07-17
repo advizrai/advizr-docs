@@ -1,8 +1,4 @@
-'use client'
-
-import { useId, useState } from 'react'
-import clsx from 'clsx'
-import styles from './Details.module.css'
+import { cn } from '@/lib/cn'
 
 interface DetailsProps {
   title: string
@@ -11,53 +7,38 @@ interface DetailsProps {
   className?: string
 }
 
+/**
+ * Details — native <details> styled (PR-E, adoption-map §3.3.3: collapsibles
+ * are native elements — keyboard and ARIA semantics for free). Hairline
+ * frame, mono square summary marker (+ closed / − open), 150ms content fade
+ * (keyframe in styles/prose.css). The title/defaultOpen API is unchanged;
+ * no more client-side state — the platform owns the toggle.
+ */
 export function Details({ title, defaultOpen = false, children, className }: DetailsProps) {
-  const [open, setOpen] = useState(defaultOpen)
-  const id = useId()
-  const triggerId = `${id}-trigger`
-  const contentId = `${id}-content`
-
   return (
-    <div
-      className={clsx(styles.details, className)}
-      data-open={open ? '' : undefined}
+    <details
+      className={cn('group my-4 border border-border bg-[hsl(var(--card))]', className)}
+      open={defaultOpen || undefined}
     >
-      <button
-        type="button"
-        id={triggerId}
-        className={styles.summary}
-        aria-expanded={open}
-        aria-controls={contentId}
-        onClick={() => setOpen((prev) => !prev)}
+      <summary
+        className={cn(
+          'flex min-h-10 cursor-pointer select-none list-none items-center gap-2.5 px-4 py-2 [&::-webkit-details-marker]:hidden',
+          'transition-[background-color] duration-150 ease-out hover:bg-[hsl(var(--secondary))] hover:duration-0 motion-reduce:transition-none',
+          'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[hsl(var(--signal))]'
+        )}
       >
-        <span className={styles.summaryText}>{title}</span>
-        <svg
-          className={styles.chevron}
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
+        <span
           aria-hidden="true"
+          className="flex size-4 shrink-0 items-center justify-center border border-border font-mono text-[11px] leading-none text-[hsl(var(--text-3))]"
         >
-          <path
-            d="M6 4l4 4-4 4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      <div
-        id={contentId}
-        role="region"
-        aria-labelledby={triggerId}
-        className={styles.collapse}
-      >
-        <div className={styles.collapseInner}>
-          <div className={styles.content}>{children}</div>
-        </div>
+          <span className="group-open:hidden">+</span>
+          <span className="hidden group-open:inline">−</span>
+        </span>
+        <span className="text-[0.875rem] font-medium text-[hsl(var(--text-1))]">{title}</span>
+      </summary>
+      <div className="border-t border-border px-4 py-3 text-[0.875rem] group-open:animate-[docs-details-fade_150ms_ease-out]">
+        {children}
       </div>
-    </div>
+    </details>
   )
 }

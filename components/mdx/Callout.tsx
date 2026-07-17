@@ -1,5 +1,7 @@
+import { Info, Lightbulb, OctagonAlert, PenLine, TriangleAlert } from 'lucide-react'
 import clsx from 'clsx'
-import styles from './Callout.module.css'
+
+import { Callout as ThemeCallout } from '@/components/mdx-theme/callout'
 
 type CalloutType = 'info' | 'warning' | 'danger' | 'tip' | 'note'
 
@@ -10,57 +12,60 @@ interface CalloutProps {
   className?: string
 }
 
-const icons: Record<CalloutType, React.ReactNode> = {
-  info: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M10 9v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="10" cy="6.5" r="1" fill="currentColor" />
-    </svg>
-  ),
-  warning: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M10 2L1 18h18L10 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M10 8v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="10" cy="14.5" r="1" fill="currentColor" />
-    </svg>
-  ),
-  danger: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <polygon points="10,1 18.66,5.5 18.66,14.5 10,19 1.34,14.5 1.34,5.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M7.5 7.5l5 5M12.5 7.5l-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  ),
-  tip: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M10 1a6 6 0 014 10.47V14a1 1 0 01-1 1H7a1 1 0 01-1-1v-2.53A6 6 0 0110 1z" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M7.5 17.5h5M8 15.5h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  ),
-  note: (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M12.5 2.5l5 5-10 10H2.5v-5l10-10z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-      <path d="M10.5 4.5l5 5" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
+/**
+ * Callout — kit wrapper over the mdx-theme callout (PR-D): ONE neutral
+ * card-surface variant; semantics are a 2px left rule + a 16px lucide glyph
+ * in the semantic color — never a tinted background. The legacy `type` API
+ * is kept so 60+ content usages render unchanged.
+ */
+
+const EDGE: Record<CalloutType, string> = {
+  note: '',
+  info: 'border-l-2 border-l-[hsl(var(--info))]',
+  tip: 'border-l-2 border-l-[hsl(var(--success))]',
+  warning: 'border-l-2 border-l-[hsl(var(--signal))]',
+  danger: 'border-l-2 border-l-[hsl(var(--destructive))]',
 }
 
-const variantMap: Record<CalloutType, string> = {
-  info: styles.info,
-  warning: styles.warning,
-  danger: styles.danger,
-  tip: styles.tip,
-  note: styles.note,
+const ICON_COLOR: Record<CalloutType, string> = {
+  note: 'text-[hsl(var(--text-3))]',
+  info: 'text-[hsl(var(--info))]',
+  tip: 'text-[hsl(var(--success))]',
+  warning: 'text-[hsl(var(--signal-text))]',
+  danger: 'text-[hsl(var(--destructive))]',
+}
+
+const ICONS: Record<CalloutType, React.ComponentType<{ size?: number | string; className?: string; 'aria-hidden'?: boolean }>> = {
+  note: PenLine,
+  info: Info,
+  tip: Lightbulb,
+  warning: TriangleAlert,
+  danger: OctagonAlert,
 }
 
 export function Callout({ type = 'info', title, children, className }: CalloutProps) {
+  const Glyph = ICONS[type]
   return (
-    <aside className={clsx(styles.callout, variantMap[type], className)} role="note">
-      <span className={styles.icon}>{icons[type]}</span>
-      <div className={styles.content}>
-        {title && <div className={styles.title}>{title}</div>}
-        {children}
+    <ThemeCallout
+      variant="note"
+      role="note"
+      className={clsx(EDGE[type], className)}
+    >
+      <div className="flex gap-3">
+        <Glyph
+          size={16}
+          aria-hidden
+          className={clsx('mt-0.5 shrink-0', ICON_COLOR[type])}
+        />
+        <div className="min-w-0 flex-1 [&>p+p]:mt-2 [&>p]:my-0">
+          {title && (
+            <div className="mb-1 text-[0.8125rem] font-medium text-[hsl(var(--text-1))]">
+              {title}
+            </div>
+          )}
+          {children}
+        </div>
       </div>
-    </aside>
+    </ThemeCallout>
   )
 }

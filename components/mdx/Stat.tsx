@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import clsx from 'clsx'
 import { useCountUp } from '../../hooks/useCountUp'
-import styles from './Stat.module.css'
+import { cn } from '@/lib/cn'
 
 interface StatProps {
   /** Numeric value to count up to (e.g. 4.1, 92, 1500) */
@@ -20,9 +19,9 @@ interface StatProps {
 }
 
 /**
- * Count-up statistic — one of the three B6 signature set-pieces.
- * Counts once when scrolled into view; tabular numerals prevent layout
- * shift; reduced-motion renders the final value immediately.
+ * Stat — StatNumeral treatment (PR-E): Geist Mono tabular numeral, mono
+ * uppercase 11px label, no color theatrics. Counts once when scrolled into
+ * view; reduced-motion renders the final value immediately.
  */
 export function Stat({ value, prefix = '', suffix = '', label, decimals, className }: StatProps) {
   const ref = useRef<HTMLDivElement>(null)
@@ -48,18 +47,37 @@ export function Stat({ value, prefix = '', suffix = '', label, decimals, classNa
   const display = useCountUp(value, inView)
 
   return (
-    <div ref={ref} className={clsx(styles.stat, className)}>
-      <span className={styles.value}>
+    <div
+      ref={ref}
+      className={cn('flex flex-col gap-1.5 bg-[hsl(var(--background))] px-5 py-4', className)}
+    >
+      <span className="font-mono tabular-nums text-[clamp(1.75rem,1.25rem+1.5vw,2.5rem)] font-medium leading-none text-[hsl(var(--foreground))]">
         {prefix}
         {display.toFixed(places)}
-        {suffix && <span className={styles.suffix}>{suffix}</span>}
+        {suffix && (
+          <span className="text-[0.6em] text-[hsl(var(--text-3))]">{suffix}</span>
+        )}
       </span>
-      <span className={styles.label}>{label}</span>
+      <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[hsl(var(--text-3))]">
+        {label}
+      </span>
     </div>
   )
 }
 
-/** Layout row for a group of Stats */
+/**
+ * StatRow — hairline-divided ledger strip: 1px gaps over the border token
+ * read as drawn dividers between the stat cells.
+ */
 export function StatRow({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <div className={clsx(styles.row, className)}>{children}</div>
+  return (
+    <div
+      className={cn(
+        'my-8 grid grid-cols-2 gap-px border border-border bg-[hsl(var(--border))] md:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]',
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
 }
