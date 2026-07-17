@@ -1,6 +1,5 @@
 import { Children } from 'react'
 import clsx from 'clsx'
-import styles from './CardGrid.module.css'
 
 interface CardGridProps {
   columns?: 2 | 3 | 4
@@ -12,15 +11,15 @@ interface CardGridProps {
 }
 
 const colsMap: Record<number, string> = {
-  2: styles.cols2,
-  3: styles.cols3,
-  4: styles.cols4,
+  2: 'sm:grid-cols-2',
+  3: 'sm:grid-cols-2 md:grid-cols-3',
+  4: 'sm:grid-cols-2 lg:grid-cols-4',
 }
 
 const gapMap: Record<string, string> = {
-  sm: styles.gapSm,
-  md: styles.gapMd,
-  lg: styles.gapLg,
+  sm: 'gap-3',
+  md: 'gap-4',
+  lg: 'gap-6',
 }
 
 export function CardGrid({
@@ -39,7 +38,7 @@ export function CardGrid({
     : children
 
   return (
-    <div className={clsx(styles.grid, colsMap[columns], gapMap[gap], className)}>
+    <div className={clsx('grid grid-cols-1', colsMap[columns], gapMap[gap], className)}>
       {content}
     </div>
   )

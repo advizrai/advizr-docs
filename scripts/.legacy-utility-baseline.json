@@ -1,27 +1,27 @@
 {
   "--advizr-gradient": {
-    "count": 15,
-    "files": 7
+    "count": 0,
+    "files": 0
   },
   "--advizr-shadow-glow": {
-    "count": 12,
-    "files": 5
+    "count": 0,
+    "files": 0
   },
   "advizr-gradient-glow": {
-    "count": 1,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "variant=\"gradient\"": {
-    "count": 1,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "box-shadow glow": {
-    "count": 3,
-    "files": 2
+    "count": 0,
+    "files": 0
   },
   "transition-all": {
-    "count": 1,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "rounded-(md..3xl)": {
     "count": 0,
@@ -32,23 +32,23 @@
     "files": 0
   },
   "hex #0A7AFF": {
-    "count": 3,
-    "files": 2
+    "count": 0,
+    "files": 0
   },
   "hex #0066FF": {
-    "count": 2,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "hex #10B981": {
-    "count": 3,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "font Inter": {
-    "count": 1,
-    "files": 1
+    "count": 0,
+    "files": 0
   },
   "font JetBrains": {
-    "count": 3,
-    "files": 2
+    "count": 0,
+    "files": 0
   }
 }

@@ -1,5 +1,5 @@
 /*
-  ── Instrument Grade — advizr-docs token system (PR-A: unwired) ─────────────
+  ── Instrument Grade — advizr-docs token system ─────────────────────────────
   Paper & Signal translated to a documentation console.
 
   World model — INVERSE polarity of advizr-client-template:
@@ -27,8 +27,8 @@
   coral RESULT is pinned here as static tokens rather than injected:
   band world 12 95% 66% (#FB7756) = 7.26:1 vs --band.
 
-  PR-A status: this file is intentionally NOT imported anywhere. It lands
-  with the tooling so later PRs can wire it with zero token churn.
+  Wiring: imported site-wide via styles/app.css since PR-D (the flip); the
+  /design/preview gallery also imports it directly.
 */
 
 /* Establish the cascade-layer order BEFORE any layer gets content: the legacy
@@ -262,6 +262,15 @@
   }
   html.light {
     color-scheme: light;
+  }
+
+  /* Site-wide base paint (wired in PR-D) — the shell re-asserts these on its
+     root, but body must carry them so non-shell routes and the pre-hydration
+     frame render in-world. */
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--text-2));
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   }
 
   :focus-visible {

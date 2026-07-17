@@ -3,7 +3,7 @@ import nextra from 'nextra'
 // Search: Nextra 4 uses Pagefind for client-side full-text search.
 // - Pagefind runs as a postbuild step (see package.json "postbuild")
 // - Index generated from built HTML into public/_pagefind/
-// - Search component customized via Layout search prop in app/layout.jsx
+// - UI is the shell's ⌘K palette (components/shell/search-dialog.tsx)
 //
 // Future options:
 // - Algolia DocSearch (free for docs sites, apply at docsearch.algolia.com)
@@ -33,9 +33,9 @@ export default withNextra({
       // Instrument Grade dev gallery (PR-B) quarantined the same way in production;
       // stays reachable locally (next start) for visual verification
       ...(process.env.VERCEL ? [{ source: '/design/preview', destination: '/docs', permanent: false }] : []),
-      // Instrument Grade shell preview (PR-C) — same quarantine; renders real
-      // content through the new shell, dev/preview only until PR-D flips /docs
-      ...(process.env.VERCEL ? [{ source: '/design/preview-docs/:path*', destination: '/docs', permanent: false }] : []),
+      // /design/preview-docs (PR-C's shell preview) retired in PR-D — the
+      // shell is live on every route now
+      { source: '/design/preview-docs/:path*', destination: '/docs', permanent: false },
       // Placeholder status page removed until a real status provider ships
       { source: '/docs/resources/status', destination: '/docs/resources', permanent: false },
       // _drafts briefly built as live pages (Nextra's underscore exclusion

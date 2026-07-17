@@ -40,16 +40,14 @@
 
 /* Primary */
 .primary {
-  background: var(--advizr-gradient-primary);
-  background-size: 200% 200%;
-  background-position: 0% 50%;
-  color: #ffffff;
+  background: hsl(var(--signal));
+  color: hsl(var(--ink));
 }
 
 .primary:hover {
   background-position: 100% 50%;
   transform: translateY(-2px);
-  box-shadow: var(--advizr-shadow-glow);
+  box-shadow: none;
 }
 
 .primary:active {
@@ -57,7 +55,7 @@
 }
 
 :global(html[class~="dark"]) .primary:hover {
-  box-shadow: var(--advizr-shadow-glow-lg);
+  box-shadow: none;
 }
 
 /* Secondary */

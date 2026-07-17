@@ -2,10 +2,10 @@ import * as React from 'react'
 import Link from 'next/link'
 
 /**
- * Footer — Instrument Grade replacement for components/CustomFooter.tsx.
- * NOT wired yet: the flip happens in a later PR; this ships with the same
- * link inventory (including the hidden data-status-badge-slot span a live
- * status badge mounts into later).
+ * Footer — Instrument Grade site footer (live on every route since PR-D,
+ * replacing the legacy footer component). Ships the full link inventory,
+ * including the hidden data-status-badge-slot span a live status badge
+ * mounts into later.
  *
  * Doctrine: hairline-top opening rule, mono eyebrow column headers,
  * ledger-style 13px link lists (--text-3 idle → --text-1 hover, instant-in /

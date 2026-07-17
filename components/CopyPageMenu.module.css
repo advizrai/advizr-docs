@@ -1,5 +1,8 @@
 .root {
   position: relative;
+  /* Above positioned siblings (the homepage Hero band is position:relative
+     and would otherwise paint over this float). */
+  z-index: 2;
   display: inline-flex;
   align-items: stretch;
   float: right;

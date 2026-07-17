@@ -1,0 +1,249 @@
+/* ==========================================================================
+   compat.css — temporary bridge, deleted per-component in PR-E.
+
+   PR-D flipped the shell + tokens (styles/theme.css) site-wide and deleted
+   styles/tokens.css. The MDX kit's CSS Modules still reference the legacy
+   --advizr-* vocabulary; this file aliases every referenced legacy variable
+   onto the Instrument Grade slots so un-reskinned components render
+   coherently in BOTH worlds (band default / .light paper) until each one is
+   rewritten in PR-E. Mapping doctrine: brand blue → --signal, emerald →
+   --success, radii → 0px structure / 2px controls, shadows → none
+   (transparent zero-shadows keep composite box-shadow lists valid).
+   Gradient and glow tokens are DEAD (census-gated) and intentionally have
+   no alias — remaining references resolve to nothing and paint nothing.
+   ========================================================================== */
+
+:root {
+  /* --- Brand blue → signal ------------------------------------------------ */
+  --advizr-blue-50:  hsl(var(--signal) / 0.08);
+  --advizr-blue-100: hsl(var(--signal) / 0.12);
+  --advizr-blue-200: hsl(var(--signal) / 0.2);
+  --advizr-blue-300: hsl(var(--signal-text));
+  --advizr-blue-400: hsl(var(--signal-text));
+  --advizr-blue-500: hsl(var(--signal));
+  --advizr-blue-600: hsl(var(--signal));
+  --advizr-blue-700: hsl(var(--signal-text));
+  --advizr-blue-800: hsl(var(--signal-text));
+  --advizr-blue-900: hsl(var(--signal-text));
+
+  --advizr-tint-5:  hsl(var(--signal) / 0.05);
+  --advizr-tint-10: hsl(var(--signal) / 0.1);
+  --advizr-tint-15: hsl(var(--signal) / 0.15);
+  --advizr-tint-25: hsl(var(--signal) / 0.25);
+  --advizr-accent-tint-10: hsl(var(--success) / 0.1);
+
+  /* --- Emerald accent → success ------------------------------------------- */
+  --advizr-accent-50:  hsl(var(--success) / 0.08);
+  --advizr-accent-100: hsl(var(--success) / 0.12);
+  --advizr-accent-200: hsl(var(--success) / 0.2);
+  --advizr-accent-300: hsl(var(--success));
+  --advizr-accent-400: hsl(var(--success));
+  --advizr-accent-500: hsl(var(--success));
+  --advizr-accent-600: hsl(var(--success));
+  --advizr-accent-700: hsl(var(--success));
+  --advizr-accent-800: hsl(var(--success));
+  --advizr-accent-900: hsl(var(--success));
+
+  /* --- Slate neutrals → surface/text ramp ---------------------------------- */
+  --advizr-slate-50:  hsl(var(--surface-1));
+  --advizr-slate-100: hsl(var(--surface-2));
+  --advizr-slate-200: hsl(var(--border));
+  --advizr-slate-300: hsl(var(--border));
+  --advizr-slate-400: hsl(var(--text-3));
+  --advizr-slate-500: hsl(var(--text-3));
+  --advizr-slate-600: hsl(var(--text-2));
+  --advizr-slate-700: hsl(var(--text-2));
+  --advizr-slate-800: hsl(var(--surface-3));
+  --advizr-slate-900: hsl(var(--surface-1));
+  --advizr-slate-950: hsl(var(--surface-0));
+
+  /* --- Semantic ------------------------------------------------------------ */
+  --advizr-success: hsl(var(--success));
+  --advizr-warning: hsl(var(--warning));
+  --advizr-error:   hsl(var(--destructive));
+  --advizr-info:    hsl(var(--info));
+
+  --advizr-green-50:  hsl(var(--success) / 0.1);
+  --advizr-green-100: hsl(var(--success) / 0.15);
+  --advizr-green-700: hsl(var(--success));
+  --advizr-green-900: hsl(var(--success));
+
+  --advizr-amber-50:  hsl(var(--warning) / 0.1);
+  --advizr-amber-100: hsl(var(--warning) / 0.15);
+  --advizr-amber-700: hsl(var(--warning));
+  --advizr-amber-900: hsl(var(--warning));
+
+  --advizr-red-50:  hsl(var(--destructive) / 0.1);
+  --advizr-red-100: hsl(var(--destructive) / 0.15);
+  --advizr-red-700: hsl(var(--destructive));
+  --advizr-red-900: hsl(var(--destructive));
+
+  /* --- Section identity (eyebrows, icon tints, quick links) --------------- */
+  --section-platform:     hsl(var(--signal));
+  --section-services:     hsl(var(--success));
+  --section-academy:      hsl(var(--warning));
+  --section-architecture: hsl(var(--text-3));
+  --section-accent:       hsl(var(--signal));
+
+  /* --- Surfaces ------------------------------------------------------------ */
+  --advizr-bg-primary:     hsl(var(--background));
+  --advizr-bg-secondary:   hsl(var(--surface-1));
+  --advizr-bg-tertiary:    hsl(var(--surface-2));
+  --advizr-surface-raised: hsl(var(--surface-2));
+  --advizr-surface-overlay: hsl(var(--popover));
+  --advizr-bg-code:        hsl(var(--band-card)); /* code stays band-dark in BOTH worlds */
+  --advizr-text-primary:   hsl(var(--text-1));
+  --advizr-text-secondary: hsl(var(--text-2));
+  --advizr-text-tertiary:  hsl(var(--text-3));
+  --advizr-border-subtle:  hsl(var(--border));
+  --advizr-border:         hsl(var(--border));
+  --advizr-border-strong:  hsl(var(--border));
+  --advizr-ring-top:       inset 0 0 0 0 transparent;
+  --advizr-hover-lighten:  hsl(var(--secondary));
+
+  /* --- Typography ----------------------------------------------------------
+     Geist stacks; the in-between weights (510/590/640) collapse onto the
+     standard 500/600 hierarchy — emphasis by weight, never size. */
+  --advizr-font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --advizr-font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --advizr-font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --advizr-text-xs:      0.75rem;
+  --advizr-text-xs-lh:   1rem;
+  --advizr-text-sm:      0.8125rem;
+  --advizr-text-sm-lh:   1.25rem;
+  --advizr-text-base:    0.9375rem;
+  --advizr-text-base-lh: 1.55rem;
+  --advizr-text-lg:      1.0625rem;
+  --advizr-text-lg-lh:   1.65rem;
+  --advizr-text-xl:      1.1875rem;
+  --advizr-text-xl-lh:   1.7rem;
+  --advizr-text-2xl:     1.3125rem;
+  --advizr-text-2xl-lh:  1.85rem;
+  --advizr-text-3xl:     1.5rem;
+  --advizr-text-3xl-lh:  2rem;
+  --advizr-text-4xl:     1.75rem;
+  --advizr-text-4xl-lh:  2.15rem;
+  --advizr-text-5xl:     2.25rem;
+  --advizr-text-5xl-lh:  1.15;
+  --advizr-text-6xl:     2.75rem;
+  --advizr-text-6xl-lh:  1.1;
+
+  --advizr-font-normal:   400;
+  --advizr-font-medium:   500;
+  --advizr-font-ui:       500;
+  --advizr-font-semibold: 600;
+  --advizr-font-title:    600;
+  --advizr-font-display-weight: 600;
+  --advizr-font-bold:     600;
+  --advizr-font-extrabold: 700;
+
+  --advizr-tracking-display: -0.02em;
+  --advizr-tracking-3xl:     -0.02em;
+  --advizr-tracking-xl:      -0.01em;
+  --advizr-tracking-base:    0;
+  --advizr-tracking-sm:      0;
+  --advizr-tracking-label:   0.08em;
+
+  /* --- Spacing (unchanged 4px scale) --------------------------------------- */
+  --advizr-space-1:  0.25rem;
+  --advizr-space-2:  0.5rem;
+  --advizr-space-3:  0.75rem;
+  --advizr-space-4:  1rem;
+  --advizr-space-5:  1.25rem;
+  --advizr-space-6:  1.5rem;
+  --advizr-space-8:  2rem;
+  --advizr-space-10: 2.5rem;
+  --advizr-space-12: 3rem;
+  --advizr-space-16: 4rem;
+  --advizr-space-20: 5rem;
+  --advizr-space-24: 6rem;
+  --advizr-space-32: 8rem;
+
+  /* --- Shadows → none (transparent zero keeps composite lists valid) ------ */
+  --advizr-shadow-sm: 0 0 0 0 transparent;
+  --advizr-shadow-md: 0 0 0 0 transparent;
+  --advizr-shadow-lg: 0 0 0 0 transparent;
+  --advizr-shadow-xl: 0 0 0 0 transparent;
+
+  /* --- Radius: 0px structure, 2px controls; full only for the two
+         sanctioned circles (port dots, avatars) ------------------------------ */
+  --advizr-radius-sm:   2px;
+  --advizr-radius-md:   2px;
+  --advizr-radius-lg:   0px;
+  --advizr-radius-xl:   0px;
+  --advizr-radius-2xl:  0px;
+  --advizr-radius-full: 9999px;
+
+  /* --- Motion: ease-out only, ceiling 350ms -------------------------------- */
+  --advizr-ease-out:   cubic-bezier(0.165, 0.84, 0.44, 1);
+  --advizr-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --advizr-duration-fast:   100ms;
+  --advizr-duration-base:   150ms;
+  --advizr-duration-slow:   250ms;
+  --advizr-duration-reveal: 350ms;
+  --advizr-stagger: 50ms;
+
+  --advizr-transition-fast: var(--advizr-duration-fast) var(--advizr-ease-out);
+  --advizr-transition-base: var(--advizr-duration-base) var(--advizr-ease-out);
+  --advizr-transition-slow: var(--advizr-duration-slow) var(--advizr-ease-out);
+}
+
+/* ========================================================================
+   Section identity resolution (data-section set by the docs page wrapper
+   and by PathwayCard) — eyebrows, icon boxes, quick-link hovers only.
+   ======================================================================== */
+
+[data-section='platform']     { --section-accent: var(--section-platform); }
+[data-section='services']     { --section-accent: var(--section-services); }
+[data-section='academy']      { --section-accent: var(--section-academy); }
+[data-section='architecture'] { --section-accent: var(--section-architecture); }
+
+/* ========================================================================
+   Load-bearing rules carried over from the deleted globals.css
+   ======================================================================== */
+
+/* Tabular numerals wherever figures align (PricingTable, Stat, Changelog). */
+.advizr-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scroll reveals (MotionEffects + Section/CardGrid `reveal`) — hidden state
+   only applies when JS is available; 350ms ease-out, 50ms stagger. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity var(--advizr-duration-reveal) var(--advizr-ease-out),
+      transform var(--advizr-duration-reveal) var(--advizr-ease-out);
+    transition-delay: calc(min(var(--reveal-i, 0), 6) * var(--advizr-stagger));
+  }
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* View Transitions (next.config viewTransition): fast cross-fade only;
+   flattened by the reduced-motion kill-switch in prose.css. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

@@ -67,8 +67,8 @@ export default async function Page(props) {
     : (metadata.title?.default || 'Advizr Docs')
 
   // display:contents keeps this wrapper out of layout while letting
-  // [data-section] resolve --section-accent (tokens.css) for everything
-  // inside the article tree — eyebrows, icon boxes, TOC tint.
+  // [data-section] resolve --section-accent (compat.css) for everything
+  // inside the article tree — eyebrows, icon boxes, quick-link hovers.
   const section = params.mdxPath?.[0]
 
   return (

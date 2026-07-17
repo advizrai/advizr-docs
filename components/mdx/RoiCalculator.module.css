@@ -67,8 +67,8 @@
   width: 22px;
   height: 22px;
   border-radius: var(--advizr-radius-full);
-  background: var(--advizr-gradient-primary);
-  border: 3px solid #ffffff;
+  background: hsl(var(--signal));
+  border: 3px solid hsl(var(--background));
   box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.1);
   cursor: pointer;
   transition: transform var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
@@ -76,7 +76,7 @@
 
 .slider::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  box-shadow: var(--advizr-shadow-md), var(--advizr-shadow-glow);
+  box-shadow: var(--advizr-shadow-md);
 }
 
 /* Firefox thumb */
@@ -84,8 +84,8 @@
   width: 22px;
   height: 22px;
   border-radius: var(--advizr-radius-full);
-  background: var(--advizr-gradient-primary);
-  border: 3px solid #ffffff;
+  background: hsl(var(--signal));
+  border: 3px solid hsl(var(--background));
   box-shadow: var(--advizr-shadow-md), 0 0 0 1px rgba(10, 122, 255, 0.1);
   cursor: pointer;
   transition: transform var(--advizr-transition-fast), box-shadow var(--advizr-transition-fast);
@@ -93,7 +93,7 @@
 
 .slider::-moz-range-thumb:hover {
   transform: scale(1.15);
-  box-shadow: var(--advizr-shadow-md), var(--advizr-shadow-glow);
+  box-shadow: var(--advizr-shadow-md);
 }
 
 /* Firefox track */

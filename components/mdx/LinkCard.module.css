@@ -39,8 +39,9 @@
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  background: var(--advizr-gradient-primary);
-  color: white;
+  background: transparent;
+  border: 1px solid var(--advizr-border);
+  color: var(--section-accent, hsl(var(--text-2)));
   border-radius: var(--advizr-radius-lg);
   box-shadow: var(--advizr-shadow-sm);
 }
