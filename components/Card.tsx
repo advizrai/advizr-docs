@@ -20,7 +20,8 @@ interface CardProps {
 /**
  * Card — hairline frame, 0 radius, weight-based hierarchy (PR-D). Hover is a
  * surface lighten (instant-in / 150ms-out) — no lift, no spotlight, no
- * shadow. Icons sit in a 1px hairline square tinted by --section-accent.
+ * shadow. Icons sit in a 1px hairline square in neutral --text-2 ink (PR-E
+ * killed the section-accent hues).
  */
 
 const variantMap: Record<string, string> = {
@@ -47,7 +48,7 @@ export function Card({
       {image && <img src={image} alt="" className="mb-4 h-40 w-full object-cover" />}
       {icon && (
         <span
-          className="mb-4 flex size-9 items-center justify-center border border-border text-[color:var(--section-accent,hsl(var(--text-2)))]"
+          className="mb-4 flex size-9 items-center justify-center border border-border text-[hsl(var(--text-2))]"
           aria-hidden="true"
         >
           {typeof icon === 'string' ? <Icon name={icon} size={16} /> : icon}

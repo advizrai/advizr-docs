@@ -1,13 +1,14 @@
 /* ==========================================================================
-   CSS entry point — Instrument Grade (PR-D: the flip).
+   CSS entry point — Instrument Grade (PR-E: compat bridge deleted).
 
    Layer order: `nextra` is declared FIRST so it loses to everything we own.
    nextra-theme-docs is kept CSS-only for the nextra core `x:` utilities the
    compiled MDX output (nextra-code, callout markup, etc.) still emits — do
    NOT mount its components; the package stays in package.json purely as this
-   stylesheet artifact. theme.css (tokens + Tailwind), prose.css (article
-   base + shell keyframes) and compat.css (temporary --advizr-* bridge,
-   deleted per-component in PR-E) are un-layered and therefore win.
+   stylesheet artifact. theme.css (tokens + Tailwind) and prose.css (article
+   base + shell keyframes + carried-over reveal/view-transition rules) are
+   un-layered and therefore win. compat.css (the --advizr-* bridge) died in
+   PR-E with the last legacy component.
    ========================================================================== */
 
 @layer nextra, advizr;
@@ -15,4 +16,3 @@
 @import 'nextra-theme-docs/style.css' layer(nextra);
 @import './theme.css';
 @import './prose.css';
-@import './compat.css';

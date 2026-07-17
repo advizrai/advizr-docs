@@ -8,6 +8,7 @@ import { useDocs } from '@/components/shell/docs-provider'
 import { EditLink } from '@/components/shell/edit-link'
 import { Pagination } from '@/components/shell/pagination'
 import { Toc, TocDisclosure, type TocEntry } from '@/components/shell/toc'
+import { FigureProvider } from '@/components/ui/figure-frame'
 
 /**
  * MdxThemeWrapper — the per-page layout inside DocsShell.
@@ -56,7 +57,7 @@ function MdxThemeWrapper({ toc = [], metadata = {}, children }: MdxThemeWrapperP
         data-pagefind-body={searchable || undefined}
         className="docs-prose min-w-0"
       >
-        {children}
+        <FigureProvider>{children}</FigureProvider>
       </main>
     )
   }
@@ -82,7 +83,7 @@ function MdxThemeWrapper({ toc = [], metadata = {}, children }: MdxThemeWrapperP
           data-pagefind-body={searchable || undefined}
           className="docs-prose"
         >
-          {children}
+          <FigureProvider>{children}</FigureProvider>
         </main>
         <div className="hairline-t mt-14 flex items-center justify-end pt-4 pb-6">
           <EditLink filePath={metadata.filePath} />

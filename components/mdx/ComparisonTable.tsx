@@ -1,5 +1,6 @@
-import clsx from 'clsx'
-import styles from './ComparisonTable.module.css'
+import { LedgerTable, type LedgerColumn } from '@/components/ui/ledger-table'
+import { cn } from '@/lib/cn'
+import { BooleanGlyph } from './BooleanGlyph'
 
 interface ComparisonRow {
   feature: string
@@ -12,52 +13,37 @@ interface ComparisonTableProps {
   className?: string
 }
 
-const CheckIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="Yes" role="img">
-    <circle cx="9" cy="9" r="8" fill="var(--advizr-accent-100)" />
-    <path d="M5.5 9l2.5 2.5 4.5-5" stroke="var(--advizr-accent-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-)
-
-const XIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="No" role="img">
-    <circle cx="9" cy="9" r="8" fill="var(--advizr-slate-100)" />
-    <path d="M6.5 6.5l5 5M11.5 6.5l-5 5" stroke="var(--advizr-slate-400)" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-)
-
+/**
+ * ComparisonTable — a straight LedgerTable composition (PR-E): mono
+ * uppercase headers over the strong open rule, hairline rows, boolean cells
+ * as square glyphs (filled = yes, hairline outline = no), double-rule close.
+ * Keeps the columns/rows MDX API unchanged.
+ */
 export function ComparisonTable({ columns, rows, className }: ComparisonTableProps) {
+  const ledgerColumns: LedgerColumn[] = columns.map((header, i) => ({
+    key: `c${i}`,
+    header,
+  }))
+
+  const ledgerRows = rows.map((row) =>
+    Object.fromEntries([
+      ['c0', row.feature],
+      ...row.values.map((value, i) => [
+        `c${i + 1}`,
+        typeof value === 'boolean' ? <BooleanGlyph value={value} /> : value,
+      ]),
+    ])
+  )
+
   return (
-    <div className={clsx(styles.wrapper, className)}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {columns.map((col, i) => (
-              <th key={col} className={clsx(styles.th, i === 0 && styles.stickyCol)}>
-                {col}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.feature}>
-              <td className={clsx(styles.td, styles.featureCell, styles.stickyCol)}>
-                {row.feature}
-              </td>
-              {row.values.map((val, i) => (
-                <td key={i} className={clsx(styles.td, styles.valueCell)}>
-                  {typeof val === 'boolean' ? (
-                    val ? <CheckIcon /> : <XIcon />
-                  ) : (
-                    <span>{val}</span>
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className={cn('my-8', className)}>
+      <LedgerTable
+        columns={ledgerColumns}
+        rows={ledgerRows}
+        // Ledger double-rule close — LedgerTable only draws it under totals,
+        // so a totals-less comparison closes on the table edge instead.
+        className="border-b-[3px] border-double border-foreground"
+      />
     </div>
   )
 }

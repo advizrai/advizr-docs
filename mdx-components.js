@@ -7,6 +7,11 @@ import {
   RoiCalculator, PricingTable, CopyButton, Changelog, BookCallButton,
   Stat, StatRow, FlowDiagram
 } from './components/mdx'
+import { DimensionLine } from './components/ui/dimension-line'
+import { FigureFrame } from './components/ui/figure-frame'
+import { LedgerTable } from './components/ui/ledger-table'
+import { RefCode } from './components/ui/ref-code'
+import { StatusGlyph } from './components/ui/status-glyph'
 
 /**
  * MDX component map (PR-D): nextra-theme-docs' element map is gone — the
@@ -14,6 +19,8 @@ import {
  * (wrapper with breadcrumbs/TOC/pagination/edit-link, headings, pre/code,
  * table, blockquote, lists, hr, anchor, image, kbd), and the custom MDX kit
  * keeps its component APIs so the 115 content pages render unchanged.
+ * PR-E adds the schematic kit (FigureFrame, RefCode, StatusGlyph,
+ * DimensionLine, LedgerTable) as content-authorable components.
  */
 export const useMDXComponents = components => ({
   ...mdxThemeComponents,
@@ -48,5 +55,10 @@ export const useMDXComponents = components => ({
   Stat,
   StatRow,
   FlowDiagram,
+  DimensionLine,
+  FigureFrame,
+  LedgerTable,
+  RefCode,
+  StatusGlyph,
   ...components
 })

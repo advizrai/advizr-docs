@@ -111,3 +111,78 @@
     opacity: 1;
   }
 }
+
+/* ── Collapsibles (PR-E) — Details + changelog folded ledgers ──────────── */
+
+/* 150ms content fade when a native <details> opens. */
+@keyframes docs-details-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Patch-notes citability (PR-E, adoption-map §7.7) ───────────────────
+   ~3s :target highlight — signal tint at 6% alpha, held, then decaying over
+   the final ~.35s. A background fade, so the reduced-motion kill-switch
+   collapsing it to a frame stays legible. */
+@keyframes changelog-target {
+  0%,
+  88% {
+    background-color: hsl(var(--signal) / 0.06);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.changelog-entry:target {
+  animation: changelog-target 3s var(--ease-out-quad, ease-out) both;
+}
+
+/* ── Rules carried over from the deleted compat.css (PR-E) ──────────────
+   These are not legacy bridge aliases — they are live behavior with no
+   component home: scroll reveals (MotionEffects + Section/CardGrid
+   `reveal`) and the View Transitions cross-fade. Timings follow the motion
+   canon: 350ms ease-out reveal, 50ms stagger, 180ms cross-fade. */
+
+/* Hidden state only applies when JS is available. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: calc(min(var(--reveal-i, 0), 6) * 50ms);
+  }
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* View Transitions (next.config viewTransition): fast cross-fade only;
+   flattened by the reduced-motion kill-switch above. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

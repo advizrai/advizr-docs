@@ -21,7 +21,7 @@ export function Feature({ icon, title, description, href, className }: FeaturePr
   const content = (
     <>
       <span
-        className="flex size-10 shrink-0 items-center justify-center border border-border text-[color:var(--section-accent,hsl(var(--text-2)))]"
+        className="flex size-10 shrink-0 items-center justify-center border border-border text-[hsl(var(--text-2))]"
         aria-hidden="true"
       >
         {typeof icon === 'string' ? <Icon name={icon} size={16} /> : icon}

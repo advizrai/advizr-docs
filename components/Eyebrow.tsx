@@ -7,17 +7,9 @@ interface EyebrowProps {
 
 /**
  * Mono uppercase section label — rendered above landing-page H1s.
- * Color follows --section-accent set by the page's data-section wrapper.
+ * Neutral --text-3 ink (PR-E killed the per-section accent hues; the
+ * breadcrumb RefCode carries section wayfinding, --signal stays rationed).
  */
 export function Eyebrow({ children, className }: EyebrowProps) {
-  return (
-    <span
-      className={clsx(
-        'eyebrow mb-3 block text-[color:var(--section-accent,hsl(var(--muted-foreground)))]',
-        className
-      )}
-    >
-      {children}
-    </span>
-  )
+  return <span className={clsx('eyebrow mb-3 block', className)}>{children}</span>
 }

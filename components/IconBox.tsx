@@ -10,14 +10,13 @@ interface IconBoxProps {
 
 /**
  * 1px hairline square for design-system icons (PR-D) — no tinted fill, 0
- * radius. Icon color follows --section-accent so icons pick up section
- * identity automatically (falls back to --text-2).
+ * radius. Neutral --text-2 icon ink (PR-E killed the section-accent hues).
  */
 export function IconBox({ name, size = 'md', className }: IconBoxProps) {
   return (
     <span
       className={clsx(
-        'inline-flex shrink-0 items-center justify-center border border-border text-[color:var(--section-accent,hsl(var(--text-2)))]',
+        'inline-flex shrink-0 items-center justify-center border border-border text-[hsl(var(--text-2))]',
         size === 'sm' ? 'size-8' : 'size-10',
         className
       )}
