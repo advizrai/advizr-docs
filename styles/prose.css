@@ -1,7 +1,10 @@
 /*
-  ── Instrument Grade — prose layer (PR-A placeholder; NOT imported yet) ────
-  Element fallbacks (headings, lists, tables, blockquotes, admonitions)
-  arrive in PR-C. This file holds only the pieces later PRs depend on.
+  ── Instrument Grade — prose layer (PR-C: element theme + shell CSS) ───────
+  Companion to components/mdx-theme/* (which skin the MDX-mapped elements);
+  this file carries what components can't reach: base article typography,
+  raw-HTML fallbacks, the fenced-frame world re-scope, task-list checkboxes,
+  and the shell's scroll-driven / drawer keyframes. Imported by the
+  preview-docs route in PR-C; the root layout adopts it in PR-D.
 */
 
 /* Shiki dual-theme bridge — docs is dark-first, so the DEFAULT paint is the
@@ -25,5 +28,86 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── Article base (PR-C) ──────────────────────────────────────────────────
+   Two-step ink hierarchy: body prose reads at 15px/1.7 in --text-2 (AA at
+   10.85:1 band / 9.44:1 paper, adoption-map §3); headings/links take
+   --text-1 via the mdx-theme components. */
+.docs-prose {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: hsl(var(--text-2));
+}
+.docs-prose p:not(:first-child) {
+  margin-top: 1.25em;
+}
+.docs-prose p:not(:last-child) {
+  margin-bottom: 1.25em;
+}
+
+/* Task-list checkboxes — square, filled square = checked (StatusGlyph
+   vocabulary; adoption-map §4 "task-list checkboxes square"). */
+.docs-prose input[type='checkbox'] {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+  vertical-align: -2px;
+}
+.docs-prose input[type='checkbox']:checked {
+  background: hsl(var(--signal));
+  border-color: hsl(var(--signal));
+}
+
+/* ── Fenced-code frame (components/mdx-theme/pre.tsx) ─────────────────────
+   The frame is a band-card strip in BOTH worlds, so shiki must keep the
+   dark palette even under .light — this outranks the .light bridge above
+   (three class/attribute steps vs two, declared later). Inline-code chrome
+   from mdx-theme code.tsx is reset to a bare element inside the frame. */
+.light [data-docs-pre] .nextra-code span,
+.light [data-docs-pre] pre span {
+  color: var(--shiki-dark);
+}
+[data-docs-pre] pre code {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── Shell keyframes (components/shell) ───────────────────────────────── */
+
+/* Reading progress — scroll-driven scale under the sticky topbar. */
+@keyframes docs-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Mobile drawer slide-in ≤250ms ease-out; close is instant (no keyframe). */
+@keyframes docs-drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hover-reveal heading anchors render always-visible on coarse pointers —
+   hover-reveal has no hover on touch (adoption-map §6.6). */
+@media (pointer: coarse) {
+  [data-heading-anchor] {
+    opacity: 1;
   }
 }
