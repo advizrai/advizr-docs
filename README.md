@@ -11,7 +11,7 @@ npm run dev
 
 ## Deployment
 
-Deployed via Vercel. Push to `main` to trigger a production deploy.
+Deployed via Vercel. Push to `master` to trigger a production deploy.
 
 ## Structure
 

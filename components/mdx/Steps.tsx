@@ -22,7 +22,7 @@ export function Step({ title, children, className }: StepProps) {
     <div
       className={clsx(
         'relative pb-8 [counter-increment:step] last:pb-0',
-        'before:absolute before:-left-12 before:top-0 before:flex before:size-8 before:items-center before:justify-center before:border before:border-border before:bg-[hsl(var(--card))] before:font-mono before:text-[0.8125rem] before:font-tabular before:text-[hsl(var(--text-2))] before:content-[counter(step)]',
+        'before:absolute before:-left-12 before:top-0 before:flex before:size-8 before:items-center before:justify-center before:border before:border-border before:bg-[hsl(var(--card))] before:font-mono before:text-[0.8125rem] before:tabular-nums before:text-[hsl(var(--text-2))] before:content-[counter(step)]',
         className
       )}
     >

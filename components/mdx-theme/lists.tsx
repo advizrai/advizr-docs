@@ -24,7 +24,7 @@ function Ol({ className, ...props }: React.ComponentProps<'ol'>) {
   return (
     <ol
       className={cn(
-        'my-5 list-decimal space-y-2 ps-6 marker:font-tabular marker:text-[hsl(var(--text-3))]',
+        'my-5 list-decimal space-y-2 ps-6 marker:tabular-nums marker:text-[hsl(var(--text-3))]',
         className
       )}
       {...props}

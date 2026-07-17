@@ -117,7 +117,7 @@ function Footer() {
         </div>
 
         <div className="hairline-t mt-12 flex flex-wrap items-center justify-between gap-3 pt-5 text-[0.75rem] text-[hsl(var(--text-3))]">
-          <span className="font-tabular">
+          <span className="tabular-nums">
             &copy; {new Date().getFullYear()} Advizr AI Inc. All rights reserved.
           </span>
           {/* Empty slot: a live status badge mounts here in a later phase. */}

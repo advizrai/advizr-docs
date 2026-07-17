@@ -50,7 +50,9 @@ test.describe('Utility Components', () => {
       const position = await btn.first().evaluate((el) => getComputedStyle(el).position);
       expect(position).toBe('fixed');
       const radius = await btn.first().evaluate((el) => getComputedStyle(el).borderRadius);
-      expect(parseFloat(radius)).toBeGreaterThanOrEqual(50); // Should be round
+      expect(parseFloat(radius)).toBeLessThanOrEqual(2); // machined square control
+      const border = await btn.first().evaluate((el) => getComputedStyle(el).borderWidth);
+      expect(parseFloat(border)).toBe(1); // hairline frame
     }
   });
 

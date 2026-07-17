@@ -86,7 +86,7 @@ function LedgerTable({
                   className={cn(
                     "px-2 py-2.5 align-middle whitespace-nowrap text-[0.8125rem]",
                     column.align === "right" && "text-right",
-                    column.mono && "font-mono font-tabular"
+                    column.mono && "font-mono tabular-nums"
                   )}
                 >
                   {row[column.key]}
@@ -107,7 +107,7 @@ function LedgerTable({
                   className={cn(
                     "px-2 py-2.5 align-middle whitespace-nowrap text-[0.8125rem]",
                     column.align === "right" && "text-right",
-                    column.mono && "font-mono font-tabular"
+                    column.mono && "font-mono tabular-nums"
                   )}
                 >
                   {totals[column.key]}

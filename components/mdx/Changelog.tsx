@@ -269,14 +269,14 @@ function CategoryChip({ category }: { category: string }) {
 
 function VersionChip({ version }: { version: string }) {
   return (
-    <span className="inline-flex items-center border border-border px-1.5 py-1 font-mono font-tabular text-[10px] leading-none tracking-[0.04em] text-[hsl(var(--text-3))]">
+    <span className="inline-flex items-center border border-border px-1.5 py-1 font-mono tabular-nums text-[10px] leading-none tracking-[0.04em] text-[hsl(var(--text-3))]">
       v{version}
     </span>
   )
 }
 
 const dateClass =
-  'font-mono font-tabular text-[0.8125rem] uppercase leading-tight tracking-[0.04em] text-[hsl(var(--text-2))]'
+  'font-mono tabular-nums text-[0.8125rem] uppercase leading-tight tracking-[0.04em] text-[hsl(var(--text-2))]'
 
 function Entry({
   entry,

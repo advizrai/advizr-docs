@@ -51,7 +51,7 @@ export function Stat({ value, prefix = '', suffix = '', label, decimals, classNa
       ref={ref}
       className={cn('flex flex-col gap-1.5 bg-[hsl(var(--background))] px-5 py-4', className)}
     >
-      <span className="font-mono font-tabular text-[clamp(1.75rem,1.25rem+1.5vw,2.5rem)] font-medium leading-none text-[hsl(var(--foreground))]">
+      <span className="font-mono tabular-nums text-[clamp(1.75rem,1.25rem+1.5vw,2.5rem)] font-medium leading-none text-[hsl(var(--foreground))]">
         {prefix}
         {display.toFixed(places)}
         {suffix && (

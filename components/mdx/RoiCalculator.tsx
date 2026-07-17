@@ -68,7 +68,7 @@ function SliderGroup({ id, label, min, max, step, value, display, onChange }: Sl
           onChange={(e) => onChange(Number(e.target.value))}
           style={{ '--fill': sliderPercent(value, min, max) } as React.CSSProperties}
         />
-        <span className="flex h-7 min-w-14 items-center justify-center border border-border px-2 font-mono font-tabular text-[0.8125rem] text-[hsl(var(--text-1))]">
+        <span className="flex h-7 min-w-14 items-center justify-center border border-border px-2 font-mono tabular-nums text-[0.8125rem] text-[hsl(var(--text-1))]">
           {display}
         </span>
       </div>
@@ -170,7 +170,7 @@ export function RoiCalculator({ className }: RoiCalculatorProps) {
           <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground">
             Payback period
           </span>
-          <span className="font-mono font-tabular text-[length:var(--text-kpi,clamp(1.75rem,1.25rem+1.5vw,2.5rem))] font-medium leading-none text-foreground">
+          <span className="font-mono tabular-nums text-[length:var(--text-kpi,clamp(1.75rem,1.25rem+1.5vw,2.5rem))] font-medium leading-none text-foreground">
             {paybackText}
           </span>
         </div>

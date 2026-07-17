@@ -1,12 +1,17 @@
 # Advizr Docs
 
-Documentation site for Advizr AI - built with Nextra 4 (docs theme).
+Documentation site for Advizr AI - Nextra 4 core (MDX pipeline + Pagefind)
+under a custom Instrument Grade shell. `nextra-theme-docs` is installed as a
+CSS-only artifact (its compiled stylesheet supplies nextra core's `x:`
+utilities); never mount its components.
 
 ## Stack
 
-- **Framework:** Nextra 4.4.0 + Next.js 16
+- **Framework:** Nextra 4.4.0 core + Next.js 16, custom shell in `components/shell/`
+- **Styling:** Tailwind v4 CSS-first — tokens in `styles/theme.css` (dark-first band world, paper light mode; design specs in `docs/design/`)
 - **Content:** MDX files in `content/` directory
 - **Hosting:** Vercel (target: `docs.advizr.ca`)
+- **Doctrine gate:** `npm run audit:legacy` (CI-enforced; no gradients/glow/radius>2px/off-palette hexes)
 
 ## Structure
 
@@ -20,9 +25,12 @@ content/          # All documentation content (MDX)
   resources/      # Guides, templates, changelog
   legal/          # Terms, privacy, licensing
 app/              # Next.js app router
-  layout.jsx      # Root layout with Nextra theme
+  layout.tsx      # Root layout: DocsShell + next-themes (dark-first)
   docs/[[...mdxPath]]/page.jsx  # Catch-all content renderer
   page.jsx        # Root redirect to /docs
+components/shell/ # Topbar, sidebar, TOC needle, search dialog, footer
+components/ui/    # Schematic kit (FigureFrame, LedgerTable, RefCode, …)
+components/mdx-theme/ # Markdown element skins (headings, pre, table, …)
 mdx-components.js # MDX component config
 ```
 

@@ -41,7 +41,7 @@ export function PricingTable({ className }: PricingTableProps) {
                 <span className="mt-1 block text-[0.9375rem] font-medium text-[hsl(var(--text-1))]">
                   {tier.name}
                 </span>
-                <span className="mt-0.5 block font-mono font-tabular text-[0.75rem] font-normal text-[hsl(var(--text-2))]">
+                <span className="mt-0.5 block font-mono tabular-nums text-[0.75rem] font-normal text-[hsl(var(--text-2))]">
                   {tier.price}
                 </span>
               </th>
@@ -64,7 +64,7 @@ export function PricingTable({ className }: PricingTableProps) {
                 <td
                   key={TIERS[i].name}
                   className={cn(
-                    'px-3 py-2.5 align-middle text-[0.8125rem] font-tabular',
+                    'px-3 py-2.5 align-middle text-[0.8125rem] tabular-nums',
                     featuredEdge(TIERS[i].recommended)
                   )}
                 >

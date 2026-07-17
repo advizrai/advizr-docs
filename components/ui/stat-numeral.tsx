@@ -70,7 +70,7 @@ function StatNumeral({
       <span
         data-slot="stat-numeral-value"
         className={cn(
-          "font-mono font-tabular",
+          "font-mono tabular-nums",
           size === "xl"
             ? "text-[clamp(2.5rem,2rem+2vw,3.5rem)] leading-none font-medium tracking-[-0.02em]"
             : "text-[length:var(--text-kpi,clamp(1.75rem,1.25rem+1.5vw,2.5rem))] leading-none font-medium",
