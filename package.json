@@ -7,7 +7,8 @@
     "build": "next build",
     "postbuild": "npx pagefind --site .next/server/app --output-path public/_pagefind && node scripts/generate-llms.mjs",
     "start": "next start",
-    "audit:legacy": "node scripts/audit-legacy-utilities.mjs --check"
+    "audit:legacy": "node scripts/audit-legacy-utilities.mjs --check",
+    "check:claims": "node scripts/check-claims.mjs"
   },
   "repository": {
     "type": "git",
