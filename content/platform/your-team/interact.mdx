@@ -1,0 +1,88 @@
+---
+title: Work with your team in Interact
+description: How Interact works in the Advizr platform - ask for an outcome, approve the plan, watch the work happen live, stop it, and mention a specific coworker.
+---
+
+# Work with your team in Interact
+
+Interact is the cockpit. It is where you ask your team for something, see what it intends to do, watch it work, and step in when you want to.
+
+It is not a chatbot. The distinction matters: a chatbot answers you, and your team does things on your behalf.
+
+<VideoEmbed
+  url="/videos/docs/interact-plan.mp4"
+  mode="tour"
+  poster="/images/docs/interact-plan-poster.png"
+  title="Asking for something, and approving the plan before anything runs."
+/>
+
+## Plan first, then work
+
+<Steps>
+  <Step title="Ask for an outcome">
+    Say what you want to be true. "Qualify the new inbound leads from this week" is a better ask than a list of steps, because your team can plan the steps and you cannot always know them.
+  </Step>
+  <Step title="Read the plan">
+    Anything non-trivial comes back as a plan before it runs: what your team intends to do, in what order, and what it will touch. Nothing has happened yet at this point.
+  </Step>
+  <Step title="Approve, or change it">
+    Approving releases the work. If the plan is wrong, say so in the same thread and it re-plans rather than stubbornly retrying.
+  </Step>
+  <Step title="Watch it happen">
+    The activity pane shows the work as it runs, step by step, with each coworker's contribution as it lands.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  The plan step is the cheapest place to catch a misunderstanding. Reading a five-line plan takes ten seconds; unpicking work that ran on the wrong assumption takes considerably longer.
+</Callout>
+
+## Stopping things
+
+Two controls, and the difference matters:
+
+- **Stop this** halts the piece of work you are looking at.
+- **Stop everything your team is doing** halts all in-flight work across the workspace.
+
+Both take effect immediately. Anything already completed stays done, and the run record shows where it was stopped and by whom.
+
+## Directing the work
+
+- **Mention a specific coworker** with `@` to route the ask to them rather than letting the team decide. Useful when you know who owns the area.
+- **Projects** group related threads, so a long-running piece of work keeps its context instead of starting cold each time.
+- **Attachments** can be added to an ask, and become part of what your team is reasoning over.
+- **Check-ins** can be scheduled, so a thread comes back to you at a set time rather than you remembering to chase it.
+
+## What you will not see
+
+Interact never shows which underlying model is doing the work, and it does not expose model selection. Your team routes work to the right capability tier itself. If that sounds like a limitation, it is the opposite: it means a model upgrade improves your workspace without you re-configuring anything.
+
+## If something goes wrong
+
+- **The plan is repeatedly wrong.** The gap is usually context, not capability. Check what your team actually knows in [Brain](/docs/platform/learn/brain).
+- **Work stalled mid-run.** Check [Inbox](/docs/platform/today/inbox); a stall is usually a question waiting on you.
+- **You stopped something by accident.** Ask again in the same thread. The context is still there.
+- **A coworker you mentioned did not respond.** Check they are still on your roster in [Team](/docs/platform/your-team/team).
+
+## Next steps
+
+<CardGrid columns={3}>
+  <LinkCard
+    title="Inbox"
+    description="Where your team asks permission before it acts."
+    href="/docs/platform/today/inbox"
+    icon="message-circle"
+  />
+  <LinkCard
+    title="Team"
+    description="Who is on your roster and what each one is for."
+    href="/docs/platform/your-team/team"
+    icon="users"
+  />
+  <LinkCard
+    title="Runs"
+    description="The record of everything the work produced."
+    href="/docs/platform/engagement/runs"
+    icon="activity"
+  />
+</CardGrid>

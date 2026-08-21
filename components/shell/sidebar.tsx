@@ -41,6 +41,27 @@ function PageRow({
   className?: string
 }) {
   const active = route === item.route
+
+  // An item carrying an absolute href points off this site. It is never the
+  // active row, it opens in a new tab, and it uses a plain anchor because a
+  // Next <Link> would try to client-navigate to another origin.
+  if (item.href) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(rowIdle, className)}
+      >
+        <span className="truncate">{item.title}</span>
+        <span aria-hidden="true" className="ml-1 font-mono text-[0.6875rem] opacity-60">
+          &#8599;
+        </span>
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
+    )
+  }
+
   return (
     <Link
       href={hrefFor(item.route)}

@@ -3,7 +3,11 @@ export default {
   quickstart: 'Quickstart',
   'getting-started': 'Getting Started',
   onboarding: 'Onboarding',
-  dashboard: 'Dashboard',
+  today: 'Today',
+  engagement: 'Engagement',
+  'your-team': 'Your Team',
+  value: 'Value',
+  learn: 'Learn',
   features: 'Features',
   account: 'Account',
   faq: 'FAQ'

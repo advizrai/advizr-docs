@@ -16,6 +16,17 @@ export default defineConfig({
   testDir: './e2e',
   timeout: 30000,
   retries: 1,
+  /**
+   * The visual-baseline goldens are committed as `-chromium-darwin`. On any
+   * other platform Playwright looks for `-chromium-win32` / `-chromium-linux`,
+   * finds nothing, and fails the run on a missing file rather than a real
+   * visual change - which makes the whole suite useless off a Mac.
+   *
+   * Skipping the comparison keeps every functional spec runnable everywhere.
+   * Set PW_VISUAL=1 on the machine that owns the goldens to compare and update
+   * them for real.
+   */
+  ignoreSnapshots: !process.env.PW_VISUAL && process.platform !== 'darwin',
   use: {
     baseURL: BASE_URL,
     screenshot: 'only-on-failure',

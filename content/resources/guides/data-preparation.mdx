@@ -7,9 +7,9 @@ description: "How to prepare documents and data for the Advizr platform: what to
 
 # Preparing your data for AI
 
-Everything the platform does for you — Chat answers, workflow builds, your FDE's understanding of your business — draws on the documents you upload. Clean, current, well-chosen documents produce specific answers and systems that work on day one; a dump of stale files produces generic advice and rework. This guide covers what to upload, how to prepare it, and how to handle sensitive information.
+Everything the platform does for you, from the answers your team gives to the workflows it builds, draws on the documents you add. Clean, current, well-chosen documents produce specific answers and systems that work on day one; a dump of stale files produces generic advice and rework. This guide covers what to upload, how to prepare it, and how to handle sensitive information.
 
-The mechanics of uploading are covered in [Upload your documents](/docs/platform/onboarding/uploading-documents) (during onboarding) and the [Documents section](/docs/platform/dashboard/documents) (any time after). This guide is about what to put in.
+The mechanics of uploading are covered in [Upload your documents](/docs/platform/onboarding/adding-sources) (during onboarding) and the [Documents section](/docs/platform/learn/brain) (any time after). This guide is about what to put in.
 
 ## Choose documents in priority order
 
@@ -55,7 +55,7 @@ customer-feedback-survey-2026-04.csv
 Two rules matter more than the exact pattern:
 
 - **Descriptive over clever.** "invoicing-sop" beats "process_doc_final_v2_FINAL".
-- **One current version per document.** Upload the version that reflects reality today. If you upload the wrong file, upload the correct one and tell your FDE in [Chat](/docs/platform/dashboard/chat) which to disregard.
+- **One current version per document.** Upload the version that reflects reality today. If you upload the wrong file, upload the correct one and tell your FDE in [Interact](/docs/platform/your-team/interact) which to disregard.
 
 ## Clean spreadsheets before uploading
 
@@ -72,12 +72,12 @@ Spreadsheets carry the most data and cause the most confusion. Five minutes of c
 Your documents are stored in a database provisioned for your organization alone, encrypted in transit and at rest, never shared with other clients, and never used to train AI models. [Data and privacy](/docs/platform/faq/data-and-privacy) covers the full picture. Within that boundary, two habits are still worth keeping:
 
 - **Anonymize where identity isn't needed.** If a customer list is going in as context for, say, a feedback analysis, names and emails usually add nothing — strip or pseudonymize them before export.
-- **Don't over-strip.** Systems are built against your real data, and systems built against fake data break against real data. If you're unsure whether a field is needed, ask your FDE in Chat before redacting it.
+- **Don't over-strip.** Systems are built against your real data, and systems built against fake data break against real data. If you're unsure whether a field is needed, ask your FDE in [Interact](/docs/platform/your-team/interact) before redacting it.
 
 If you need a document gone later, remove it from the Documents section; for complete deletion of processed data, your FDE can arrange it.
 
 <Callout type="warning">
-  Deleting a document removes it from your knowledge base — Chat and workflows stop drawing on it. If a workflow was built around a file, tell your FDE before removing it.
+  Deleting a document removes it from your Brain, so your team and its workflows stop drawing on it. If a workflow was built around a file, tell your FDE before removing it.
 </Callout>
 
 ## Keep documents current
@@ -89,7 +89,7 @@ Uploaded documents don't update themselves. When an SOP changes, a report cycle 
 | What Advizr does | What you do |
 |---|---|
 | Processes each upload and adds it to your knowledge base | Choose documents that describe repeatable processes first |
-| Draws on your documents in Chat, workflows, and build planning | Use clear file names and keep one current version per document |
+| Draws on your sources when answering, in workflows, and in build planning | Use clear file names and keep one current version per document |
 | Stores files in your isolated database; never trains models on them | Anonymize customer data where identity isn't needed |
 | Requests specific documents when the build needs more context | Respond to document requests within a couple of days |
 | Handles oversized files and unusual imports on request | Stay within supported formats and the 25 MB limit, or ask for help |
@@ -114,13 +114,13 @@ Clean
 
 Upload and maintain
 [ ] Upload via the wizard or the Documents section; confirm "ready" status
-[ ] Tell your FDE in Chat which documents matter most
+[ ] Tell your FDE which documents matter most
 [ ] Re-upload when a process or report changes
-[ ] Remove mistaken uploads and flag them in Chat
+[ ] Remove mistaken uploads and flag them to your FDE
 ```
 
 ## Keep going
 
-- [Upload your documents](/docs/platform/onboarding/uploading-documents) — the upload flow, step by step
-- [Documents](/docs/platform/dashboard/documents) — managing your library after onboarding
+- [Upload your documents](/docs/platform/onboarding/adding-sources) — the upload flow, step by step
+- [Documents](/docs/platform/learn/brain) — managing your library after onboarding
 - [Data and privacy](/docs/platform/faq/data-and-privacy) — where your data lives, who can see it, and how to export or delete it

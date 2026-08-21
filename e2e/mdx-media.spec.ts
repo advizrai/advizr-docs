@@ -9,7 +9,7 @@ import { test, expect } from 'playwright/test';
 
 const platformOverview = '/docs/platform';       // master tour (mode=tour)
 const homepage = '/docs';                        // 30s loop (mode=loop)
-const screenshotPage = '/docs/platform/dashboard/home';
+const screenshotPage = '/docs/platform/today/dashboard';
 
 test.describe('MDX Media Components', () => {
   test('platform overview loads without errors', async ({ page }) => {

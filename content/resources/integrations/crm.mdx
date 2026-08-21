@@ -57,14 +57,14 @@ Before anything is written to your CRM, you and your FDE agree on a mapping: whi
     The workflow runs against a small, agreed slice of records so you can verify behaviour in your real CRM before it touches everything.
   </Step>
   <Step title="Live, monitored, documented">
-    Full go-live, with runs visible in [Runs](/docs/platform/features/runs-and-workflows) and the mapping kept current as your CRM evolves.
+    Full go-live, with runs visible in [Runs](/docs/platform/engagement/runs) and the mapping kept current as your CRM evolves.
   </Step>
 </Steps>
 
 ## Troubleshooting basics
 
-- **Records stopped flowing.** Check whether the integration credential was deactivated (common during CRM user audits) and whether your CRM's API limits were hit. Then check [Runs](/docs/platform/features/runs-and-workflows) for failed executions.
-- **Data landing in the wrong fields.** Almost always a CRM-side change — a field renamed, a stage added, a required field introduced. Tell your FDE what changed in [Chat](/docs/platform/dashboard/chat); the mapping gets updated as part of the engagement.
+- **Records stopped flowing.** Check whether the integration credential was deactivated (common during CRM user audits) and whether your CRM's API limits were hit. Then check [Runs](/docs/platform/engagement/runs) for failed executions.
+- **Data landing in the wrong fields.** Almost always a CRM-side change — a field renamed, a stage added, a required field introduced. Tell your FDE what changed in [Interact](/docs/platform/your-team/interact); the mapping gets updated as part of the engagement.
 - **Duplicates appearing.** Revisit the duplicate-handling rule — it may be correct but mismatched to how your team actually enters records.
 - **Numbers on the dashboard don't match the CRM.** Usually a filter or stage-definition mismatch rather than missing data. Flag the specific record that looks wrong; one concrete example beats a general report.
 

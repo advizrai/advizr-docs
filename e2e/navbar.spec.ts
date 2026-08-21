@@ -81,9 +81,14 @@ test.describe('Topbar', () => {
   test('⌘K opens and closes the search palette', async ({ page }) => {
     await page.goto('/docs');
     const dialog = page.locator('dialog[data-docs-search]');
-    await page.keyboard.press('Meta+k');
+    // search-dialog.tsx picks the modifier off the user agent: Meta on a Mac,
+    // Control everywhere else. Hard-coding Meta made this test pass only on a
+    // Mac and fail on every other machine, which reads as a broken palette
+    // rather than a broken test.
+    const mod = process.platform === 'darwin' ? 'Meta' : 'Control';
+    await page.keyboard.press(`${mod}+k`);
     await expect(dialog).toBeVisible();
-    await page.keyboard.press('Meta+k');
+    await page.keyboard.press(`${mod}+k`);
     await expect(dialog).toBeHidden();
   });
 

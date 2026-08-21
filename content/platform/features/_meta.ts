@@ -1,7 +1,7 @@
 export default {
-  'runs-and-workflows': 'Runs & Workflows',
-  'analytics': 'Analytics',
-  'team-management': 'Team Management',
+  'command-palette': 'Getting Around',
   'notifications': 'Notifications',
+  'booking-and-scheduling': 'Booking & Scheduling',
+  'getting-help': 'Getting Help',
   'settings': 'Settings',
 }

@@ -1,7 +1,7 @@
 export default {
   'welcome': 'Welcome',
-  'setting-objectives': 'Setting Objectives',
-  'uploading-documents': 'Uploading Documents',
+  'setting-objectives': 'Setting Goals',
+  'adding-sources': 'Adding Sources',
   'booking-your-first-call': 'Booking Your First Call',
-  'using-chat': 'Using Chat',
+  'talking-to-your-team': 'Talking to Your Team',
 }

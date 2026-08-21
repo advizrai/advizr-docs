@@ -1,0 +1,85 @@
+---
+title: Approve and decide from Inbox
+description: How Inbox works in the Advizr platform - the Approvals, Needs a decision, Needs a fix, Your decisions and Messages lanes, and what each one is for.
+---
+
+# Approve and decide from Inbox
+
+Inbox is where your team comes to you. Every point at which the work needs a human, whether that is permission to act, a judgment call, or a fix only you can make, arrives here.
+
+It is organised by what the item wants from you, not by which system produced it.
+
+<Screenshot
+  src="/images/platform/inbox.png"
+  alt="The Inbox screen showing the approval lanes"
+  caption="Inbox lanes: what each item wants from you, rather than where it came from."
+/>
+
+## The lanes
+
+| Lane | What is in it |
+|---|---|
+| **Approvals** | Your team has prepared something and is waiting for permission to go ahead |
+| **Needs a decision** | Work that reached a fork it should not choose for you |
+| **Needs a fix** | Something failed or is blocked, and clearing it needs you |
+| **Your decisions** | A record of what you have already decided. Nothing to action |
+| **Messages** | Human conversations, kept separate from machine requests |
+| **All** | Everything above in one list, grouped by category |
+
+Each lane except **Your decisions** carries a live count. Your decisions is a ledger, so it never nags.
+
+## Approving something
+
+<Steps>
+  <Step title="Open the Approvals lane">
+    It is the first lane and the default landing spot when you arrive from a notification.
+  </Step>
+  <Step title="Read what is actually being asked">
+    An approval names the action, what it will touch, and why your team thinks it should happen. If that is not clear enough to decide on, ask in the thread rather than guessing.
+  </Step>
+  <Step title="Approve, or send it back">
+    Approving releases the work immediately. Sending it back returns it to your team with your reason attached, and they re-plan rather than retry the same thing.
+  </Step>
+</Steps>
+
+The item moves to **Your decisions** either way, with what you chose and when.
+
+<Callout type="tip">
+  Approvals are the safety rail on autonomy. If your team is asking about things you would rather it just did, that is a settings change, not a workflow change. See [Team rules](/docs/platform/features/settings).
+</Callout>
+
+## Why an approval exists at all
+
+Your team asks before it acts on anything you have told it to ask about. Which actions those are is configurable, and the defaults are cautious: anything that spends money, sends something outward, or deletes data asks first.
+
+Loosening that is a deliberate choice you make in settings, and the ledger in **Your decisions** is what lets you audit the result.
+
+## If something goes wrong
+
+- **An approval expired.** Some requests are time-bound because the thing they were preparing went stale. Your team will re-raise it if the work is still needed.
+- **You approved something by mistake.** Open it from **Your decisions** and say so in the thread. Whether it can be undone depends on what already happened.
+- **The count says one thing, the lane looks empty.** Refresh. Counts and lanes read from the same scan, so a mismatch is a stale page.
+- **You cannot see Approvals at all.** Approving needs the Client Admin role. See [Roles and permissions](/docs/platform/account/roles-and-permissions).
+
+## Next steps
+
+<CardGrid columns={3}>
+  <LinkCard
+    title="Team rules"
+    description="Set what your team checks with you about before acting."
+    href="/docs/platform/features/settings"
+    icon="shield"
+  />
+  <LinkCard
+    title="Runs"
+    description="The full record of work done, including everything you approved."
+    href="/docs/platform/engagement/runs"
+    icon="activity"
+  />
+  <LinkCard
+    title="Notifications"
+    description="How and when the platform tells you an item is waiting."
+    href="/docs/platform/features/notifications"
+    icon="bell"
+  />
+</CardGrid>

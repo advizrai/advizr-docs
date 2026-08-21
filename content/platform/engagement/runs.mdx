@@ -1,0 +1,85 @@
+---
+title: See what your team did in Runs
+description: How Runs work in the Advizr platform - the Live, History and Value lenses, what a run record contains, and how to give feedback that improves the next one.
+---
+
+# See what your team did in Runs
+
+A run is one execution by your team: an agent doing a job, a workflow firing, a schedule coming due. Runs is the complete record of them, and it is the page to open when you want evidence rather than a summary.
+
+<Screenshot
+  src="/images/platform/runs.png"
+  alt="The Runs screen"
+  caption="Runs: one page, three lenses onto the same record."
+/>
+
+## Three lenses, one page
+
+Runs is a single page you look at three ways:
+
+| Lens | Question it answers |
+|---|---|
+| **Live** | What is in motion right now |
+| **History** | Everything that has run, newest first. This is the default |
+| **Value** | What was actually delivered, as a ledger of outcomes |
+
+Switch lenses at the top of the page. Nothing filters differently underneath; you are looking at the same runs through a different frame.
+
+## Reading a run
+
+Opening a run gives you the outcome first, not the machinery.
+
+<Steps>
+  <Step title="Check the outcome and the Delivered badge">
+    A finished run states what it produced. The Delivered badge means the work reached its endpoint rather than merely finishing without error.
+  </Step>
+  <Step title="Read why it ran">
+    Every run carries its own reason: the goal, the schedule, the request, or the approval that started it.
+  </Step>
+  <Step title="Check what it asked you">
+    If the run paused for an approval, that request and your answer are part of the record.
+  </Step>
+  <Step title="Say whether it was helpful">
+    Every run has a feedback control. This is the highest-value thirty seconds you can spend in the platform.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Feedback on runs is what tunes your team. A thumbs-down with a sentence about what was wrong changes the next run; the same complaint raised in a meeting three weeks later does not.
+</Callout>
+
+## What a run record is not
+
+The client view shows the outcome, the reason, and the approvals. It does not show the internal execution trace, and it does not name the underlying models. That is deliberate: the record answers whether the work was right, not how the machinery was wired.
+
+If you need to go deeper on a specific run, ask your FDE in [Interact](/docs/platform/your-team/interact).
+
+## If something goes wrong
+
+- **A run failed.** Open it. Failures are written in plain words and name what was missing.
+- **A run shows Delivered but the output is wrong.** Use the feedback control and say what was wrong. Delivered means it completed, not that it was correct.
+- **A run you expected never happened.** Check the workflow's start condition in [Workflows](/docs/platform/engagement/workflows), or the schedule that should have triggered it.
+- **The Live lens is empty.** Nothing is running right now. That is normal outside working hours or between scheduled jobs.
+
+## Next steps
+
+<CardGrid columns={3}>
+  <LinkCard
+    title="Workflows"
+    description="The workflows that produce most of your scheduled runs."
+    href="/docs/platform/engagement/workflows"
+    icon="workflow"
+  />
+  <LinkCard
+    title="Analytics"
+    description="Runs aggregated into a view of whether this is paying off."
+    href="/docs/platform/value/analytics"
+    icon="bar-chart"
+  />
+  <LinkCard
+    title="Inbox"
+    description="Where a run comes to you when it needs a decision."
+    href="/docs/platform/today/inbox"
+    icon="message-circle"
+  />
+</CardGrid>

@@ -1,104 +1,90 @@
 ---
 title: Configure your settings
-description: "Manage your Advizr profile, switch between Simple and Advanced mode to reveal Runs, Analytics, and Team Management, and find admin-only options."
+description: The settings that matter in the Advizr platform - your profile, connections, notifications, trust and security, and the team rules that govern what your AI checks with you about.
 ---
 
 # Configure your settings
 
-Settings is where you manage your account, preferences, and organization configuration. What you see here depends on your role — Client Admins have access to organization-level settings, while other roles see personal settings only.
+Settings holds your profile, your workspace configuration, and the rules your AI team operates under. Open it from your avatar menu in the top right.
+
+What you see depends on your role. Client Admins get the workspace-level tabs; everyone else sees the personal ones.
 
 <Screenshot
   src="/images/platform/settings.png"
-  alt="Settings page"
-  caption="Manage your profile, preferences, and organization settings."
+  alt="The Settings screen"
+  caption="Settings: personal preferences on the left, workspace configuration below."
 />
 
-## Simple and Advanced mode
+## Team rules, the one worth reading
 
-The single most important setting to know about is the **Simple/Advanced toggle**, because it controls what your portal shows:
+**Team rules** is where you set what your team checks with you about before it acts. It is the single most consequential setting in the platform, because it decides how much your AI team does on its own.
 
-- **Simple mode** shows the core sidebar — Home, Chat, Goals, Documents, Proposals, Learn, Book a Call, and Help. This is the default, and it covers everything most clients do day to day.
-- **Advanced mode** reveals the additional views: **Runs**, **Analytics**, **Team Management**, and other technical settings. If you have read about a feature in these docs and cannot find it in your portal, this toggle is almost always the reason. {/* GATE0: confirm Runs/Analytics/Team Management live under Settings -> Advanced mode and the exact toggle label */}
-
-### Switch modes
+The defaults are cautious. Anything that spends money, sends something outward, or deletes data asks you first, and the request lands in [Inbox](/docs/platform/today/inbox).
 
 <Steps>
-  <Step title="Open Settings">
-    Click **Settings** in the portal. {/* GATE0: confirm with James where Settings is opened from (sidebar footer vs profile menu) */}
+  <Step title="Open Settings and go to Team rules">
+    From your avatar menu, then the Team rules tab.
   </Step>
-  <Step title="Find the Simple/Advanced toggle">
-    The toggle is in your preferences.
+  <Step title="Read the current rules">
+    Each rule is a plain sentence about a category of action, not a permission matrix.
   </Step>
-  <Step title="Switch to Advanced">
-    Turn on Advanced mode. The interface updates immediately.
+  <Step title="Loosen what is slowing you down">
+    If you are approving the same routine thing every day, that is the rule to relax.
+  </Step>
+  <Step title="Check the result in Your decisions">
+    The decisions ledger in Inbox is how you audit what changed after you loosened a rule.
   </Step>
 </Steps>
 
-You should now see the additional views — including Runs, Analytics, and Team Management — available in your portal navigation.
+<Callout type="tip">
+  Tighten first, loosen with evidence. Starting cautious and relaxing rules once you have seen a category of work done correctly is a better path than starting open and reacting to a surprise.
+</Callout>
 
-<Details title="Why the platform hides features by default">
-  Progressive disclosure keeps the portal approachable. Most clients interact through Chat, Goals, and Documents, and showing run logs or workflow metrics from day one adds noise without value. Advanced mode exists so the depth is there when you want it — switch over once you are comfortable, or stay in Simple mode and let your FDE surface anything that needs your attention.
-</Details>
+## The other tabs
 
-## Profile
+| Tab | What it holds |
+|---|---|
+| **Profile** | Your name, avatar, theme, density, and keyboard preferences |
+| **Password and sign-in** | Credentials and session security. See [Login and security](/docs/platform/account/login-and-security) |
+| **Connections** | The systems your team can reach, described as what it can do rather than which API it calls |
+| **Notifications** | What reaches you, and how. See [Notifications](/docs/platform/features/notifications) |
+| **Trust and security** | Data handling controls and the audit surface |
+| **Data and account** | Export and account closure |
+| **Feedback** | Send your FDE a note about the platform itself |
+| **What's new** | The release log for your workspace |
+| **Workspace** | Workspace name, branding and defaults. Client Admin only |
 
-Your profile settings control how you appear on the platform:
+## Connections
 
-- **Name** - Your display name, visible to your team and your Advizr FDE
-- **Email** - The email address used for login and notifications
-- **Avatar** - Upload a profile photo or use the default initials
+Connections is worth a visit early. It lists what your team can actually reach: your calendar, your document store, your CRM, whatever your engagement connected.
 
-Changes to your profile take effect immediately across the platform.
-
-## Preferences
-
-Preferences control how the platform looks and behaves for you:
-
-- **Theme** - Choose between light and dark mode, or follow your system setting
-- **Notification preferences** - Configure email digest frequency and mute specific notification types (see [Manage your notifications](/docs/platform/features/notifications) for details)
-- **Simple/Advanced mode** - The interface toggle described above
-
-## Organization settings (Client Admin only)
-
-If you have the Client Admin role, you also see organization-level settings:
-
-- **Company information** - Your company name, industry, and description as shown in the platform
-- **Team management** - Quick link to [Team Management](/docs/platform/features/team-management) for adding or removing members
-- **Billing** - Quick link to [Billing](/docs/platform/account/billing) for invoices and payment methods
-- **Connected integrations** - View and manage any third-party tools connected to your workspace
-
-## Security settings
-
-Security-related options are covered separately in [Login and security](/docs/platform/account/login-and-security). From Settings you can access the password change form and review your active sessions.
+A capability your team does not have is the most common reason for "it could not do that", and this tab is where you see the gap.
 
 ## If something goes wrong
 
-- **You cannot find Runs, Analytics, or Team Management.** Turn on Advanced mode using the steps above — those views are hidden in Simple mode.
-- **You do not see organization settings.** They are visible to Client Admins only. Ask your Client Admin to make the change or update your role.
-- **A change does not seem to save.** Refresh the page to confirm. If the old value comes back, note what you changed and tell your FDE.
-- **You switched modes and the interface looks unfamiliar.** Switch back to Simple mode — nothing is lost, the extra views are just hidden again.
-
-Still stuck? Send your FDE a message in Chat with your browser, a screenshot, and when it happened.
+- **A tab is missing.** Workspace-level tabs need the Client Admin role. See [Roles and permissions](/docs/platform/account/roles-and-permissions).
+- **A setting did not stick.** Some preferences are per device by design, including the theme. Others save to your profile. If a profile setting is not saving, sign out and back in.
+- **A connection shows as unhealthy.** Reconnect it from this tab. If it fails again, raise it in [Interact](/docs/platform/your-team/interact); some connections need work at the provider end.
 
 ## Next steps
 
 <CardGrid columns={3}>
   <LinkCard
-    title="Login and security"
-    description="Manage your password, sessions, and account security."
-    href="/docs/platform/account/login-and-security"
-    icon="lock"
+    title="Inbox"
+    description="Where the rules you set turn into actual approval requests."
+    href="/docs/platform/today/inbox"
+    icon="message-circle"
   />
   <LinkCard
-    title="Monitor runs and workflows"
-    description="Use your new Advanced mode access to follow automated work."
-    href="/docs/platform/features/runs-and-workflows"
-    icon="workflow"
-  />
-  <LinkCard
-    title="Add and manage team members"
-    description="Invite colleagues and control their access with roles."
-    href="/docs/platform/features/team-management"
+    title="Roles and permissions"
+    description="Who in your organization can change what."
+    href="/docs/platform/account/roles-and-permissions"
     icon="users"
+  />
+  <LinkCard
+    title="Data and privacy"
+    description="What happens to your data, and who can see it."
+    href="/docs/platform/faq/data-and-privacy"
+    icon="shield"
   />
 </CardGrid>

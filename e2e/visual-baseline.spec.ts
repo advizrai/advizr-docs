@@ -18,6 +18,9 @@ const PAGES: Array<[name: string, path: string]> = [
   ['academy-lesson', '/docs/academy/foundations/what-is-ai'],
   ['architecture', '/docs/architecture'],
   ['platform-getting-started', '/docs/platform/getting-started'],
+  // Added with the Platform IA rebuild (2026-08): Dashboard is the new front
+  // door of the section and the page most likely to regress visually.
+  ['platform-dashboard', '/docs/platform/today/dashboard'],
   ['changelog', '/docs/resources/changelog'],
 ];
 
