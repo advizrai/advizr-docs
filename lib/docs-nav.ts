@@ -23,6 +23,14 @@ export interface NavItem {
   children?: NavItem[]
   /** True when the item resolves to a real page (folders may not). */
   hasPage: boolean
+  /**
+   * An absolute URL, set by an `_meta.ts` entry of the form
+   * `{ title, href }`. The sidebar renders these as a plain external anchor
+   * rather than a Next <Link>, so a section can point at another property -
+   * the live Academy at advizr.ca/academy, for one - without that link
+   * having to live in body copy on every page.
+   */
+  href?: string
 }
 
 type DocsDirectory = NormalizedPages['docsDirectories'][number]
@@ -39,6 +47,7 @@ function toNavItem(item: DocsDirectory): NavItem {
     // normalizePages folds a folder's index page into the folder item and
     // sets frontMatter; a folder without an index has none.
     hasPage: Boolean((item as { frontMatter?: unknown }).frontMatter),
+    href: (item as { href?: string }).href,
   }
 }
 
