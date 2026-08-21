@@ -81,3 +81,49 @@ test.describe('Design gates', () => {
     expect(longAnimations).toHaveLength(0);
   });
 });
+
+/**
+ * Every icon name used in MDX must exist in components/icon-registry.ts.
+ *
+ * An unregistered name is not a build error and not a visible crash: the Icon
+ * component logs `[Icon] unknown icon name "x"` to the server console and
+ * renders nothing, so a card quietly loses its icon and nobody notices. Four
+ * names were shipping that way. A console warning nobody reads is not a gate.
+ */
+test.describe('Icon registry', () => {
+  test('every icon name used in content is registered', async () => {
+    const { readdirSync, readFileSync, statSync } = await import('node:fs');
+    const { join } = await import('node:path');
+
+    const walk = (dir: string): string[] =>
+      readdirSync(dir).flatMap((entry) => {
+        const full = join(dir, entry);
+        return statSync(full).isDirectory()
+          ? walk(full)
+          : full.endsWith('.mdx')
+            ? [full]
+            : [];
+      });
+
+    const registry = readFileSync('components/icon-registry.ts', 'utf8');
+    const registered = new Set(
+      Array.from(registry.matchAll(/^\s{2}'?([a-z-]+)'?:\s/gm), (m) => m[1]),
+    );
+
+    const unknown = new Map<string, string[]>();
+    for (const file of walk('content')) {
+      const body = readFileSync(file, 'utf8');
+      for (const m of body.matchAll(/icon="([a-z-]+)"/g)) {
+        if (!registered.has(m[1])) {
+          if (!unknown.has(m[1])) unknown.set(m[1], []);
+          unknown.get(m[1])!.push(file);
+        }
+      }
+    }
+
+    expect(
+      Array.from(unknown, ([name, files]) => `${name} (${files.length} refs, e.g. ${files[0]})`),
+      'unregistered icon names render nothing — add them to components/icon-registry.ts',
+    ).toEqual([]);
+  });
+});
