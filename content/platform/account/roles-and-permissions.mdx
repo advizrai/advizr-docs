@@ -41,7 +41,7 @@ Most organizations have one or two Client Admins — typically the business owne
 
 Client Viewers have read-only access. They can see everything in the dashboard but cannot make changes:
 
-- View the Home screen, goals, documents, and proposals
+- View the Dashboard, goals, and sources
 - Read chat history (but not start new threads)
 - Access learning content and track their own progress
 - View analytics and run history
@@ -50,9 +50,9 @@ Client Viewer is a good fit for team members who need visibility into the engage
 
 ### Client Consumer
 
-Client Consumer is a simplified experience designed for broader team access. The interface is streamlined with a reduced sidebar, focused primarily on Chat:
+Client Consumer is a simplified experience designed for broader team access. The rail is reduced, focused on asking your team for things:
 
-- Access Chat as their primary interaction point
+- Ask their team for work in Interact, their primary interaction point
 - View relevant dashboard content
 - Access learning content
 - Book calls with the Advizr team
@@ -69,7 +69,7 @@ Client Consumer is ideal for team members who want to use the AI tools without m
   columns={["Capability", "Client Admin", "Client Viewer", "Client Consumer"]}
   rows={[
     { feature: "View dashboard and Home", values: [true, true, true] },
-    { feature: "Use Chat", values: [true, "Read only", true] },
+    { feature: "Use Interact", values: [true, "Read only", true] },
     { feature: "Create and edit goals", values: [true, false, false] },
     { feature: "Upload documents", values: [true, false, false] },
     { feature: "Approve proposals", values: [true, false, false] },
@@ -85,7 +85,7 @@ Client Consumer is ideal for team members who want to use the AI tools without m
 
 ## Change a team member's role
 
-Only Client Admins can change roles. Team management doesn't appear in the main sidebar — it lives under Settings. {/* GATE0: confirm with James that Team management is opened from Settings -> Advanced mode */}
+Only Client Admins can change roles. Team management is reached from Settings rather than the rail.
 
 <Steps>
   <Step title="Open Settings, then select Team management">
@@ -107,16 +107,16 @@ If you need your own role changed and you're not a Client Admin, ask your organi
 
 - **You can't see Team management.** Only Client Admins can manage the team. Ask your organization's Client Admin to make the change, or have them update your role first.
 - **A role change doesn't seem to apply.** Ask the team member to refresh the page or log out and back in — their interface updates on the next load.
-- **None of the three client roles fits.** Roles are fixed, but your FDE can advise on the closest fit for what the person needs to do. Message them in Chat.
+- **None of the three client roles fits.** Roles are fixed, but your FDE can advise on the closest fit for what the person needs to do. Message them in [Interact](/docs/platform/your-team/interact).
 
-Still stuck? Send your FDE a message in [Chat](/docs/platform/dashboard/chat) with your browser, a screenshot, and when it happened.
+Still stuck? Message your FDE in [Interact](/docs/platform/your-team/interact) with your browser, a screenshot, and when it happened.
 
 ## Next steps
 
 <LinkCard
   title="Team management"
   description="Invite colleagues, assign roles, and remove team members."
-  href="/docs/platform/features/team-management"
+  href="/docs/platform/your-team/team"
   icon="users"
 />
 

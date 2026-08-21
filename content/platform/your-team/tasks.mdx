@@ -1,0 +1,76 @@
+---
+title: Run the workboard in Tasks
+description: How Tasks works in the Advizr platform - the shared board for people and AI coworkers, agent-ready work, approval-waiting rows, and grouping.
+---
+
+# Run the workboard in Tasks
+
+Tasks is the shared workboard. People and AI coworkers appear on the same board, holding the same kind of card, which is the point: the work is one queue, not a human queue and a robot queue that someone has to reconcile.
+
+<Screenshot
+  src="/images/platform/tasks.png"
+  alt="The Tasks board"
+  caption="Tasks: one board, with human and AI coworkers holding the same kind of card."
+/>
+
+## Views and grouping
+
+The board can be read as a **Board** or a **List**, and grouped by stage, owner, priority or due date. Grouping by owner is the fastest way to see what your AI coworkers are carrying versus what your people are carrying.
+
+## The states worth knowing
+
+- **Agent-ready.** Tagged as work an AI coworker can take. If nothing is agent-ready, your team has nothing to pick up, which is usually why a board looks busy while the workspace looks idle.
+- **Waiting on approval.** The card is blocked on a decision in [Inbox](/docs/platform/today/inbox). The board shows this rather than letting the card look stalled for no reason.
+- **In progress by a coworker.** Live work, traceable to a run.
+
+<Steps>
+  <Step title="Open Tasks from Your team">
+    The board opens on the default grouping.
+  </Step>
+  <Step title="Group by owner">
+    This splits the board into who is actually carrying what.
+  </Step>
+  <Step title="Tag work agent-ready">
+    Anything well-specified enough for a coworker to take can be tagged. Vague cards are the ones to leave with a person.
+  </Step>
+  <Step title="Open a card for its history">
+    A card opens to its detail, including the runs that have worked on it.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  A card that keeps bouncing back from a coworker is usually under-specified rather than too hard. Adding the missing constraint to the card fixes it more often than reassigning it to a person.
+</Callout>
+
+## Bulk changes
+
+Selecting multiple cards opens a bulk bar for stage, owner and priority. Useful after a planning session, when a batch of cards needs the same move.
+
+## If something goes wrong
+
+- **A card sits agent-ready and nothing picks it up.** Check whether your team is paused, and check [Inbox](/docs/platform/today/inbox) for a blocking approval.
+- **A coworker took a card and produced the wrong thing.** Give feedback on the run, not the card. See [Runs](/docs/platform/engagement/runs).
+- **Cards you did not create keep appearing.** Workflows create cards when their output needs a human. That is intended.
+
+## Next steps
+
+<CardGrid columns={3}>
+  <LinkCard
+    title="Interact"
+    description="Ask for work directly instead of writing a card."
+    href="/docs/platform/your-team/interact"
+    icon="message-square"
+  />
+  <LinkCard
+    title="Team"
+    description="Who can pick up agent-ready work."
+    href="/docs/platform/your-team/team"
+    icon="users"
+  />
+  <LinkCard
+    title="Runs"
+    description="What happened when a coworker worked a card."
+    href="/docs/platform/engagement/runs"
+    icon="activity"
+  />
+</CardGrid>

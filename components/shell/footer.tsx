@@ -17,7 +17,7 @@ type FooterLink = { label: string; href: string; external?: boolean }
 
 const platformLinks: FooterLink[] = [
   { label: 'Overview', href: '/docs/platform' },
-  { label: 'Dashboard', href: '/docs/platform/dashboard/home' },
+  { label: 'Dashboard', href: '/docs/platform/today/dashboard' },
   { label: 'Features', href: '/docs/platform/features' },
   { label: 'FAQ', href: '/docs/platform/faq' },
   { label: 'Onboarding', href: '/docs/platform/onboarding' },

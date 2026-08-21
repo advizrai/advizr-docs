@@ -1,0 +1,74 @@
+---
+title: Is this paying off? Analytics
+description: How Analytics works in the Advizr platform - the period band, the coworkers view, the outcomes view, and how to read it honestly.
+---
+
+# Is this paying off? Analytics
+
+Analytics exists to answer one question: is your AI team worth what it costs. It reports what was delivered over a period rather than how busy the workspace looked.
+
+<VideoEmbed
+  url="/videos/docs/analytics.mp4"
+  mode="loop"
+  poster="/images/docs/analytics-poster.png"
+  title="The period band and the delivered-outcome view."
+/>
+
+## What is on the page
+
+- **Your team this period.** The headline band: what the team delivered over the selected window.
+- **Coworkers.** The same period, split by who did the work.
+- **Outcomes.** Delivered results rather than activity counts. This is the view that matters when someone asks whether the engagement is working.
+
+## Reading it honestly
+
+Activity is not value. A period with many runs and few delivered outcomes is a signal, and the page is built so you can see that rather than have it smoothed over.
+
+<Steps>
+  <Step title="Start with Outcomes, not run counts">
+    Delivered outcomes tie to your goals. Run counts tie to nothing on their own.
+  </Step>
+  <Step title="Compare against the baseline">
+    Every outcome measured here is measured against the baseline you signed at the start of the engagement. See [How we measure ROI](/docs/services/roi-methodology).
+  </Step>
+  <Step title="Then look at Coworkers">
+    If one coworker is producing most of the delivered value, that is worth knowing, in both directions.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Bring Analytics to your monthly review with your FDE. It is the same data your [Reports](/docs/platform/value/reports) edition is compiled from, so the conversation starts from an agreed set of numbers.
+</Callout>
+
+## What you will not find here
+
+Client Analytics reports delivered work and outcomes. It does not break down infrastructure cost by model or vendor, and it never names the models your team uses. Cost questions belong with your FDE, where they come with the context to answer them properly.
+
+## If something goes wrong
+
+- **The period looks empty.** Check the window. A newly deployed system has nothing to report until it has run.
+- **The numbers disagree with your own.** That is worth raising immediately. Say so in [Interact](/docs/platform/your-team/interact) and your FDE will reconcile the baseline with you.
+- **Outcomes are lower than runs suggest.** That is the page working. Runs that did not deliver do not count as delivery.
+
+## Next steps
+
+<CardGrid columns={3}>
+  <LinkCard
+    title="Reports"
+    description="The written monthly edition compiled from this data."
+    href="/docs/platform/value/reports"
+    icon="file-text"
+  />
+  <LinkCard
+    title="Runs"
+    description="The individual runs behind every number here."
+    href="/docs/platform/engagement/runs"
+    icon="activity"
+  />
+  <LinkCard
+    title="How we measure ROI"
+    description="The baseline, the counting rules, and what we exclude."
+    href="/docs/services/roi-methodology"
+    icon="bar-chart"
+  />
+</CardGrid>
