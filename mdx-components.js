@@ -4,7 +4,7 @@ import {
   Callout, Steps, Step, Tabs, Tab,
   CodeBlock, Details, LinkCard, Screenshot,
   ComparisonTable, VideoEmbed,
-  RoiCalculator, PricingTable, CopyButton, Changelog, BookCallButton,
+  PricingTable, CopyButton, Changelog, BookCallButton,
   Stat, StatRow, FlowDiagram
 } from './components/mdx'
 import { DimensionLine } from './components/ui/dimension-line'
@@ -47,7 +47,6 @@ export const useMDXComponents = components => ({
   Screenshot,
   ComparisonTable,
   VideoEmbed,
-  RoiCalculator,
   PricingTable,
   CopyButton,
   Changelog,

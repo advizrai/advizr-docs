@@ -1,47 +1,63 @@
 ---
-title: ROI Calculator
-description: "An interactive calculator that estimates what manual work costs your business each month and what automating it is worth, with every assumption stated."
+title: ROI Worksheet
+description: "A worksheet for estimating what a manual workflow costs you in hours and what automating it is worth, with every assumption stated."
 ---
 
 <Eyebrow>Templates</Eyebrow>
 
-# ROI calculator
+# ROI worksheet
 
-Three inputs — hours of manual work per week, what an hour costs you, and how many people are affected — produce an estimate of what that work costs today and what automating it is worth. If you've completed the [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit), use the hours-per-week figures from your shortlist; they're better inputs than a gut estimate.
+Work the numbers in hours. Hours are the unit you can count honestly, they are the unit your team recognises, and they convert to money using your own loaded rates rather than an average we made up.
 
-<RoiCalculator />
+If you have completed the [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit), use the hours-per-week figures from your shortlist. They are better inputs than a gut estimate.
 
-## How to read the results
+## The worksheet
 
-The calculator is deliberately simple, and every assumption is visible:
+For each workflow on your shortlist, write down four numbers.
 
-- **Monthly cost of manual work** = hours per week × hourly cost × employees affected × 4.33 (the average number of weeks in a month).
-- **Projected monthly savings** assumes automation displaces **70%** of that cost — not 100%, because well-designed systems keep humans on review gates, exceptions, and judgment calls. See [How we work](/docs/services/how-it-works) for why.
-- **Annual ROI** is twelve months of projected savings.
-- **Payback period** divides a representative all-in investment of $15,000 CAD by your projected monthly savings. Your actual investment depends on tier and scope — see [pricing](/docs/services/pricing) for the real ranges.
+<Steps>
+  <Step title="Hours per week, per person">
+    Time the task for one real week. Not how long it should take. How long it took.
+  </Step>
+  <Step title="People affected">
+    Count everyone who touches the workflow, including the person who checks the work and the manager who chases the stragglers. The hidden hours are almost always in the handoffs.
+  </Step>
+  <Step title="Monthly hours at stake">
+    Hours per week × people affected × 4.33, which is the average number of weeks in a month.
+  </Step>
+  <Step title="Hours the system gives back">
+    Apply 70%, not 100%. A well-designed system keeps humans on review gates, exceptions and judgment calls, which is the reason it can be trusted at all. See [How we work](/docs/services/how-it-works).
+  </Step>
+</Steps>
 
-These are estimates based on industry averages, not a quote and not a guarantee. Actual results vary by engagement.
+That fourth number is your monthly hours reclaimed. Multiply by twelve for the annual figure.
 
-## Getting honest inputs
+## Turning hours into a decision
 
-- **Hourly cost should be loaded cost** — salary plus benefits, tools, and overhead — not base wage. Using base wage understates what manual work actually costs you.
-- **Count everyone who touches the workflow.** The hidden hours are usually in handoffs: the person who checks the work, the manager who chases the stragglers.
-- **If you're unsure, run it twice** — once with conservative numbers, once with realistic ones. If even the conservative case pays back quickly, the decision is easy.
+Convert to money in your own spreadsheet, using your own loaded hourly cost, which is salary plus benefits, tools and overhead rather than base wage. Base wage understates what manual work actually costs you, often by a third or more.
+
+Then compare that against the quote for the work. We do not publish prices, because a number that fits every business fits none of them, and you get a fixed number in writing before anything starts. See [How pricing works](/docs/services/pricing).
+
+If you are unsure of your inputs, run the worksheet twice, once conservative and once realistic. If even the conservative case pays back quickly, the decision is easy and you can stop analysing.
+
+## What this worksheet leaves out
+
+It counts displaced hours only. It does not model reduced error cost, or revenue impact from faster follow-up and wider reach. We count those in measured ROI only when they are directly attributable to the system, so treat your worksheet figure as a floor rather than a ceiling.
 
 ## From estimate to measured ROI
 
-This calculator models the question "is this worth a conversation?" An engagement answers it properly: we capture a baseline before anything is built, every deployed system logs its own runs, and your FDE reports measured hours displaced against that baseline monthly. The [ROI methodology](/docs/services/roi-methodology) documents the formula, and the [5x ROI guarantee](/docs/services/guarantees) is measured over the 30 days after deployment using it.
+This worksheet answers "is this worth a conversation?" An engagement answers it properly. We capture a baseline before anything is built, every deployed system logs its own runs, and your FDE reports measured hours displaced against that baseline every month.
 
-The calculator also leaves value out: it doesn't model reduced error cost or revenue impact (faster follow-up, more leads contacted). We only count those in measured ROI when they're directly attributable — so treat the number above as a floor, not a ceiling.
+The [ROI methodology](/docs/services/roi-methodology) documents the formula and the exclusions. The [5x ROI guarantee](/docs/services/guarantees) is measured over the 30 days after deployment using exactly that method.
 
 <Callout type="tip">
-  Screenshot your results before a discovery call. Walking in with "this workflow costs us roughly $4,000 CAD a month" makes the scoping conversation immediately concrete.
+  Bring the filled-in worksheet to a discovery call. Walking in with "this workflow eats about 60 hours a month across four people" makes the scoping conversation immediately concrete.
 </Callout>
 
 <BookCallButton text="Book a Discovery Call" />
 
 ## Next steps
 
-- [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit) — find the workflows worth running through this calculator
+- [AI opportunity audit](/docs/resources/templates/ai-opportunity-audit) — find the workflows worth running through this worksheet
 - [How we measure ROI](/docs/services/roi-methodology) — the measured version of this estimate
 - [Measuring ROI](/docs/academy/workflow-mastery/measuring-roi) — what to track once systems are live

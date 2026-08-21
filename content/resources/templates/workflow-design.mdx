@@ -48,7 +48,7 @@ A real pattern from the document-handling automations we build — extracting ke
 |---|---|---|---|
 | Is the attachment an invoice? | Classification confidence above threshold | Continue to extraction | Leave in inbox, notify office manager |
 | Is the supplier known? | Supplier matches an existing record | Continue | Flag for human review |
-| Is the amount under $5,000 CAD? | Amount field vs threshold | Create draft bill directly | Route to approval gate first |
+| Is the amount under your approval threshold? | Amount field vs threshold | Create draft bill directly | Route to approval gate first |
 
 **Data in / data out:**
 
@@ -60,7 +60,7 @@ A real pattern from the document-handling automations we build — extracting ke
 | Out | Archived PDF | Shared drive folder |
 | Out | Run log entry and exception notifications | Workflow system |
 
-**Human review gates:** new suppliers, amounts of $5,000 CAD or more, and any extraction below the confidence threshold. Everything else flows through and stays visible in the run log.
+**Human review gates:** new suppliers, anything at or above your approval threshold, and any extraction below the confidence threshold. Everything else flows through and stays visible in the run log.
 
 **Failure modes:**
 

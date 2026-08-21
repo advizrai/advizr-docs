@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 /**
  * Count from 0 to `target` once `start` becomes true (ease-out cubic, rAF).
- * If `target` changes after the first run (live controls — RoiCalculator
+ * If `target` changes after the first run (live controls
  * sliders driving StatNumeral), the value re-animates from its current
  * reading to the new target over a short 400ms glide instead of restarting
  * from 0. Reduced-motion users always see the final value immediately.

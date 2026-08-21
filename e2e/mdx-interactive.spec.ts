@@ -62,100 +62,30 @@ test.describe('MDX Interactive Components', () => {
     });
   });
 
-  // --- RoiCalculator Tests ---
+  // --- Price doctrine (rendered output) ---
 
-  test.describe('RoiCalculator', () => {
-    test('calculator renders with all sliders', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const hoursSlider = page.locator('#roi-hours');
-      const rateSlider = page.locator('#roi-rate');
-      const employeesSlider = page.locator('#roi-employees');
-      expect(await hoursSlider.count()).toBe(1);
-      expect(await rateSlider.count()).toBe(1);
-      expect(await employeesSlider.count()).toBe(1);
-    });
+  // The source-level gate is scripts/check-claims.mjs. This is the rendered
+  // counterpart: a component could compute or concatenate a price that never
+  // appears as a literal in the source. No dollar figure may reach the page.
+  test.describe('No published prices', () => {
+    const PRICED_PAGES = [
+      '/docs/services/pricing',
+      '/docs/services/pricing/whats-included',
+      '/docs/services/pricing/catalyst',
+      '/docs/services/pricing/acceleration',
+      '/docs/services/pricing/partnership',
+      '/docs/services/compare/in-house-hire',
+      '/docs/platform/faq/general',
+    ];
 
-    test('slider track carries the signal fill', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const slider = page.locator('#roi-hours');
-      if (await slider.isVisible()) {
-        // Chromium doesn't expose vendor slider pseudo styles via
-        // getComputedStyle — assert the class contract + live fill var instead.
-        const cls = await slider.evaluate((el) => el.className);
-        expect(cls).toContain('linear-gradient(to_right,hsl(var(--signal))');
-        const fill = await slider.evaluate((el) => el.style.getPropertyValue('--fill'));
-        expect(fill).toMatch(/%$/); // signal fill tracks the value
-      }
-    });
-
-    test('output cells are hairline-framed, never shadowed', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const cell = page.locator('[data-slot="stat-numeral"]').first();
-      if (await cell.count() > 0) {
-        const shadow = await cell.evaluate((el) => getComputedStyle(el).boxShadow);
-        expect(shadow).toBe('none');
-      }
-    });
-
-    test('savings numerals are neutral mono (emerald is dead)', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const cell = page
-        .locator('[data-slot="stat-numeral"]', { hasText: 'Projected monthly savings' })
-        .locator('[data-slot="stat-numeral-value"]');
-      if (await cell.count() > 0) {
-        const { color, font } = await cell.evaluate((el) => {
-          const cs = getComputedStyle(el);
-          return { color: cs.color, font: cs.fontFamily };
-        });
-        expect(color.includes('16, 185, 129') || color.includes('52, 211, 153')).toBe(false);
-        expect(font.toLowerCase()).toContain('mono');
-      }
-    });
-
-    test('annual ROI is the one signal stat', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const cell = page
-        .locator('[data-slot="stat-numeral"]', { hasText: 'Annual ROI' })
-        .locator('[data-slot="stat-numeral-value"]');
-      if (await cell.count() > 0) {
-        const color = await cell.evaluate((el) => getComputedStyle(el).color);
-        expect(color).toBe('rgb(251, 119, 86)'); // --signal-text, band world
-      }
-    });
-
-    test('output numbers update when slider changes', async ({ page }) => {
-      await page.goto('/docs/services/guarantees');
-      const slider = page.locator('#roi-hours');
-      if (await slider.isVisible()) {
-        const outputBefore = await page
-          .locator('[data-slot="stat-numeral-value"]')
-          .first()
-          .textContent();
-        // Scroll slider into view, focus it, and use arrow keys to change value
-        await slider.scrollIntoViewIfNeeded();
-        await slider.focus();
-        // Press ArrowRight many times to increase the value significantly
-        for (let i = 0; i < 30; i++) {
-          await page.keyboard.press('ArrowRight');
-        }
-        await page.waitForTimeout(600);
-        const outputAfter = await page
-          .locator('[data-slot="stat-numeral-value"]')
-          .first()
-          .textContent();
-        expect(outputAfter).not.toBe(outputBefore);
-      }
-    });
-
-    test('calculator is single column on mobile', async ({ page }, testInfo) => {
-      if (testInfo.project.name !== 'mobile') test.skip();
-      await page.goto('/docs/services/guarantees');
-      const calc = page.locator('[class*="calculator"]').first();
-      if (await calc.count() > 0) {
-        const cols = await calc.evaluate((el) => getComputedStyle(el).gridTemplateColumns);
-        expect(cols.split(' ').length).toBeLessThanOrEqual(1);
-      }
-    });
+    for (const path of PRICED_PAGES) {
+      test(`${path} renders no dollar figure`, async ({ page }) => {
+        await page.goto(path);
+        const body = await page.locator('main').innerText();
+        expect(body).not.toMatch(/\$\s?\d/);
+        expect(body).not.toMatch(/\d[\d,]*\s?(CAD|USD)/);
+      });
+    }
   });
 
   // --- PricingTable Tests ---

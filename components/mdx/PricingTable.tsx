@@ -10,7 +10,7 @@ interface PricingTableProps {
 /**
  * PricingTable — LedgerTable grammar (PR-E, adoption-map §4.3): mono
  * uppercase headers, strong 1px open rule under the header, hairline body
- * rows, double-rule close before the CTA row, tabular numerals on prices.
+ * rows, double-rule close before the CTA row.
  * The featured tier carries a 2px signal edge on its column — no glow, no
  * scale, no tinted fill. One responsive table in an overflow-x container
  * (§6.4) replaces the old desktop-grid + mobile-cards fork.
@@ -41,8 +41,8 @@ export function PricingTable({ className }: PricingTableProps) {
                 <span className="mt-1 block text-[0.9375rem] font-medium text-[hsl(var(--text-1))]">
                   {tier.name}
                 </span>
-                <span className="mt-0.5 block font-mono tabular-nums text-[0.75rem] font-normal text-[hsl(var(--text-2))]">
-                  {tier.price}
+                <span className="mt-0.5 block text-[0.75rem] font-normal text-[hsl(var(--text-2))]">
+                  {tier.positioning}
                 </span>
               </th>
             ))}
