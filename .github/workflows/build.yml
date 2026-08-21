@@ -33,6 +33,9 @@ jobs:
           node scripts/audit-legacy-utilities.mjs --gate
           node scripts/audit-legacy-utilities.mjs --check
 
+      - name: Claims gate self-test
+        run: node scripts/check-claims.mjs --self-test
+
       - name: Claims gate
         run: node scripts/check-claims.mjs
 

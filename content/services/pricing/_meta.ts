@@ -1,5 +1,5 @@
 export default {
-  'index': 'Overview',
+  'index': 'How Pricing Works',
   'partnership': 'Transformation Partnership',
   'acceleration': 'Acceleration',
   'catalyst': 'Catalyst',

@@ -7,7 +7,13 @@
 
 export interface PricingTier {
   name: string
-  price: string
+  /**
+   * What the tier is for, in plain words. There is deliberately no `price`
+   * field: no literal prices appear anywhere on this site (see the price-gate
+   * rule in scripts/check-claims.mjs). Engagements are fixed scope, quoted in
+   * writing after the audit call.
+   */
+  positioning: string
   description: string
   recommended?: boolean
 }
@@ -15,17 +21,17 @@ export interface PricingTier {
 export const TIERS: PricingTier[] = [
   {
     name: 'Catalyst',
-    price: '$3-5k initial + $500-1k/mo',
+    positioning: 'One system, built and running',
     description: 'Entry-level AI engagement to get started fast.',
   },
   {
     name: 'Acceleration',
-    price: '$5-10k initial + $1-3k/mo',
+    positioning: 'Several systems, plus training',
     description: 'Deeper builds with training and proprietary tools.',
   },
   {
     name: 'Partnership',
-    price: '$10k+ initial + $3-5k/mo',
+    positioning: 'Continuous build, full curriculum',
     description: 'Full transformation with dedicated support.',
     recommended: true,
   },

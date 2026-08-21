@@ -3,7 +3,7 @@ export default {
   'how-it-works': 'How We Work',
   'what-we-build': 'What We Build',
   education: 'Education',
-  pricing: 'Pricing',
+  pricing: 'How Pricing Works',
   'roi-methodology': 'ROI Methodology',
   compare: 'Compare',
   'case-studies': 'Case Studies',
