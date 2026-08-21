@@ -9,7 +9,10 @@ import { test, expect } from 'playwright/test';
 
 const platformOverview = '/docs/platform';       // master tour (mode=tour)
 const homepage = '/docs';                        // 30s loop (mode=loop)
-const screenshotPage = '/docs/platform/today/dashboard';
+// A page that still uses <Screenshot>. today/dashboard was the anchor until its
+// still was replaced by a recorded clip, at which point this spec started
+// failing for the right reason on the wrong page.
+const screenshotPage = '/docs/platform/engagement/objectives';
 
 test.describe('MDX Media Components', () => {
   test('platform overview loads without errors', async ({ page }) => {

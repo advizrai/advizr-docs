@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
 import {
+  Activity,
   BarChart3,
   Bell,
   BookOpen,
@@ -22,6 +23,7 @@ import {
   LockKeyhole,
   Mail,
   MessageCircle,
+  MessageSquare,
   PenLine,
   Plug,
   Rocket,
@@ -33,6 +35,8 @@ import {
   Sprout,
   Target,
   TrendingUp,
+  Upload,
+  UserPlus,
   Users,
   Workflow,
   Wrench,
@@ -48,6 +52,7 @@ import {
  * enforces this on rendered pages.
  */
 export const iconRegistry: Record<string, LucideIcon> = {
+  activity: Activity,
   'bar-chart': BarChart3,
   bell: Bell,
   'book-open': BookOpen,
@@ -70,6 +75,7 @@ export const iconRegistry: Record<string, LucideIcon> = {
   'lock-keyhole': LockKeyhole,
   mail: Mail,
   'message-circle': MessageCircle,
+  'message-square': MessageSquare,
   'pen-line': PenLine,
   plug: Plug,
   rocket: Rocket,
@@ -81,6 +87,8 @@ export const iconRegistry: Record<string, LucideIcon> = {
   sprout: Sprout,
   target: Target,
   'trending-up': TrendingUp,
+  upload: Upload,
+  'user-plus': UserPlus,
   users: Users,
   workflow: Workflow,
   wrench: Wrench,
