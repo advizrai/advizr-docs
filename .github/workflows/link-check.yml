@@ -34,6 +34,14 @@ jobs:
           # like broken content.
           #
           # The advizr.ca exclude is anchored so it no longer swallows docs.advizr.ca.
+          #
+          # openai.com answers a browser 200 and a link checker 403. That link is
+          # not broken; the host refuses bots. Excluded by host rather than with
+          # --accept 403, which would hide a genuine 403 anywhere else.
+          #
+          # Every comment about these arguments lives HERE, above the block. A
+          # '#' INSIDE a `>-` folded scalar is not a comment, it is text, and it
+          # gets handed to lychee as arguments. Learned by doing it.
           args: >-
             --verbose
             --no-progress
@@ -45,9 +53,6 @@ jobs:
             --exclude '^https?://(www\.)?advizr\.ca'
             --exclude 'advizrclients\.com'
             --exclude 'localhost'
-            # openai.com answers a browser 200 and a checker 403. The link is
-            # not broken; the host refuses bots. Excluded rather than accepted
-            # via --accept 403, which would hide a genuine 403 anywhere else.
             --exclude '^https?://(www\.)?openai\.com'
             'content/**/*.mdx'
             'content/**/*.md'
