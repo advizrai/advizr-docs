@@ -45,6 +45,10 @@ jobs:
             --exclude '^https?://(www\.)?advizr\.ca'
             --exclude 'advizrclients\.com'
             --exclude 'localhost'
+            # openai.com answers a browser 200 and a checker 403. The link is
+            # not broken; the host refuses bots. Excluded rather than accepted
+            # via --accept 403, which would hide a genuine 403 anywhere else.
+            --exclude '^https?://(www\.)?openai\.com'
             'content/**/*.mdx'
             'content/**/*.md'
           fail: true
