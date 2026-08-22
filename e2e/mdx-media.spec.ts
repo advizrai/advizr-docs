@@ -9,10 +9,14 @@ import { test, expect } from 'playwright/test';
 
 const platformOverview = '/docs/platform';       // master tour (mode=tour)
 const homepage = '/docs';                        // 30s loop (mode=loop)
-// A page that still uses <Screenshot>. today/dashboard was the anchor until its
-// still was replaced by a recorded clip, at which point this spec started
-// failing for the right reason on the wrong page.
-const screenshotPage = '/docs/platform/engagement/objectives';
+// A page that uses <Screenshot> and is NOT a candidate for a recorded clip.
+//
+// This anchor has now broken twice, both times because the page it pointed at
+// got a video: first today/dashboard, then engagement/objectives. Every surface
+// with interesting motion will eventually be filmed, so an anchor on one of
+// those is a slow leak. Login and security is a still-life by nature — a form,
+// a session list — so it keeps its screenshot.
+const screenshotPage = '/docs/platform/account/login-and-security';
 
 test.describe('MDX Media Components', () => {
   test('platform overview loads without errors', async ({ page }) => {
