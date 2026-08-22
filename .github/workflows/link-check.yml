@@ -18,8 +18,30 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           # Root-relative /docs/* links can't resolve against local files
-          # (content/foo.mdx serves /docs/foo), so remap them to the live site.
+          # (content/foo.mdx serves /docs/foo), so resolve them against the live
+          # site with --base-url.
+          #
+          # This used --remap alone and failed every run, including before the
+          # docs overhaul, with:
+          #
+          #   Cannot resolve root-relative link '/docs/academy/glossary':
+          #   To resolve root-relative links in local files, provide a root dir
+          #
+          # --remap rewrites a URI, and a bare "/docs/x" never becomes one: it
+          # fails to parse before remap can touch it. --base-url is the flag that
+          # gives a root-relative path something to be relative TO. A weekly gate
+          # that errors on config checks nothing and says so in a way that reads
+          # like broken content.
+          #
           # The advizr.ca exclude is anchored so it no longer swallows docs.advizr.ca.
+          #
+          # openai.com answers a browser 200 and a link checker 403. That link is
+          # not broken; the host refuses bots. Excluded by host rather than with
+          # --accept 403, which would hide a genuine 403 anywhere else.
+          #
+          # Every comment about these arguments lives HERE, above the block. A
+          # '#' INSIDE a `>-` folded scalar is not a comment, it is text, and it
+          # gets handed to lychee as arguments. Learned by doing it.
           args: >-
             --verbose
             --no-progress
@@ -27,10 +49,11 @@ jobs:
             --exclude-path node_modules
             --exclude-path .next
             --exclude-path package-lock.json
-            --remap '^/docs(.*)$ https://docs.advizr.ca/docs$1'
+            --base-url https://docs.advizr.ca
             --exclude '^https?://(www\.)?advizr\.ca'
             --exclude 'advizrclients\.com'
             --exclude 'localhost'
+            --exclude '^https?://(www\.)?openai\.com'
             'content/**/*.mdx'
             'content/**/*.md'
           fail: true
