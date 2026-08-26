@@ -3,12 +3,21 @@
  * Copy recorded platform clips and posters out of the client-platform repo and
  * into this one.
  *
- * The clips are produced by the docs-clips pipeline in advizr-client-template
- * (`npm run docs:media:record` then `docs:media:build`). That pipeline writes
- * into ITS OWN public/videos/docs for the in-product docs. Nothing existed to
- * carry those files across to docs.advizr.ca, so the 100-second tour currently
- * on this site was produced by hand, outside the pipeline, and cannot be
- * reproduced. This script is that missing hop.
+ * TWO pipelines feed this repo, and this script is the hop for both.
+ *
+ * The section clips come from docs-clips in advizr-client-template
+ * (`npm run docs:media:record` then `docs:media:build`), which writes into ITS
+ * OWN public/videos/docs for the in-product docs.
+ *
+ * The two hero videos on /docs and /docs/platform come from site-media
+ * (`npm run site:media:record` then `site:media:build`), which writes into
+ * site-media-out/final. This file used to say the 100-second tour "was produced
+ * by hand, outside the pipeline, and cannot be reproduced". That was true when
+ * it was written and is not true now: site-media grew a master stage that
+ * concatenates the six recorded segments, burns the captions and appends the
+ * end card. Believing the old comment is how the tour sat on the busiest page
+ * in the Platform section for five weeks showing a nav rail the product had
+ * retired.
  *
  * It also enforces a size budget, which this repo has never had. The platform
  * side gates every clip at 2.5MB; the docs side happily shipped an 8.7MB mp4 on
@@ -22,7 +31,7 @@
  */
 
 import { existsSync, mkdirSync, readdirSync, copyFileSync, statSync, readFileSync } from 'node:fs'
-import { join, resolve, basename } from 'node:path'
+import { join, resolve, basename, dirname } from 'node:path'
 
 const args = process.argv.slice(2)
 const fromIdx = args.indexOf('--from')
@@ -62,6 +71,38 @@ const BUDGET = {
  * content/platform/index.mdx and content/index.mdx reference them. Re-recording
  * their CONTENT while keeping their PATH means no call site churns.
  */
+
+/**
+ * The three hero assets, which RULES cannot express: they come from the
+ * site-media pipeline rather than docs-clips, they live under
+ * site-media-out/final rather than public/, and one is renamed on the way.
+ *
+ * e2e/mdx-media.spec.ts asserts /videos/platform-tour-master.mp4 and
+ * /videos/platform-tour-loop.mp4, and content/platform/index.mdx and
+ * content/index.mdx reference them. The CONTENT gets re-recorded; the PATH
+ * never moves.
+ */
+const HEROES = [
+  {
+    from: 'site-media-out/final/videos/platform-tour-master.mp4',
+    to: 'public/videos/platform-tour-master.mp4',
+    budget: 'heroBytes',
+  },
+  {
+    // site-media calls the loop platform-tour.mp4. This repo has always called
+    // it platform-tour-loop.mp4 and the e2e spec asserts that name, so the
+    // rename happens here rather than churning three call sites.
+    from: 'site-media-out/final/videos/platform-tour.mp4',
+    to: 'public/videos/platform-tour-loop.mp4',
+    budget: 'clipBytes',
+  },
+  {
+    from: 'site-media-out/final/images/product/platform-tour-poster.png',
+    to: 'public/images/platform/platform-tour-poster.png',
+    budget: 'posterBytes',
+  },
+]
+
 const RULES = [
   { from: 'public/videos/docs', to: 'public/videos/docs', ext: '.mp4', budget: 'clipBytes' },
   { from: 'public/images/docs', to: 'public/images/docs', ext: '.png', budget: 'posterBytes' },
@@ -153,6 +194,62 @@ for (const rule of RULES) {
     copied += 1
     console.log(`${DRY ? 'would copy' : 'copied'}  ${rule.to}/${name.padEnd(30)} ${fmt(bytes)}`)
   }
+}
+
+
+/**
+ * The heroes, judged on the same evidence as the clips.
+ *
+ * Their age comes from site-media's own manifest, and the encoder writes
+ * `recordedAt` there as the OLDEST segment in the cut rather than the build
+ * clock. A master tour is only as fresh as its stalest segment, and stamping a
+ * re-encode of old footage with today is precisely the lie this gate exists to
+ * catch.
+ */
+const SITE_MANIFEST_PATH = join(SRC, 'site-media-out', 'final', 'manifest.json')
+let siteManifest = null
+if (existsSync(SITE_MANIFEST_PATH)) {
+  siteManifest = JSON.parse(readFileSync(SITE_MANIFEST_PATH, 'utf8'))
+} else if (HEROES.some((h) => existsSync(join(SRC, h.from)))) {
+  console.warn(`warning: hero files present but no manifest at ${SITE_MANIFEST_PATH} — cannot judge their age`)
+}
+
+const heroAgeDays = siteManifest?.recordedAt
+  ? (NOW - Date.parse(siteManifest.recordedAt)) / 86400000
+  : null
+
+for (const hero of HEROES) {
+  const srcFile = join(SRC, hero.from)
+  if (!existsSync(srcFile)) {
+    console.log(`skip ${hero.to} (not built in source — run site:media:build)`)
+    continue
+  }
+  const bytes = statSync(srcFile).size
+  aggregate += bytes
+
+  if (heroAgeDays !== null && heroAgeDays > MAX_AGE_DAYS) {
+    stale += 1
+    console.log(`STALE   ${hero.to.padEnd(46)} recorded ${heroAgeDays.toFixed(0)}d ago — not copied`)
+    continue
+  }
+
+  const limit = BUDGET[hero.budget]
+  if (bytes > limit) {
+    failures.push(`${hero.to}: ${fmt(bytes)} over the ${fmt(limit)} budget`)
+    continue
+  }
+
+  const destFile = join(DEST, hero.to)
+  if (existsSync(destFile) && statSync(destFile).size === bytes) {
+    skipped += 1
+    continue
+  }
+  if (!DRY) {
+    mkdirSync(dirname(destFile), { recursive: true })
+    copyFileSync(srcFile, destFile)
+  }
+  copied += 1
+  console.log(`${DRY ? 'would copy' : 'copied'}  ${hero.to.padEnd(46)} ${fmt(bytes)}`)
 }
 
 if (aggregate > BUDGET.aggregateBytes) {
