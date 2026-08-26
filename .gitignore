@@ -13,3 +13,6 @@ test-results/
 public/llms.txt
 public/llms-full.txt
 public/docs/
+
+# Local build and install logs, never part of the site.
+*.log
