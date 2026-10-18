@@ -1,7 +1,7 @@
 export default {
   'index': 'Overview',
   'curriculum': 'Curriculum',
-  'session-formats': 'Session Formats',
-  'async-resources': 'Async Resources',
-  'ai-literacy': 'AI Literacy',
+  'session-formats': 'Session formats',
+  'async-resources': 'Async resources',
+  'ai-literacy': 'AI literacy',
 }

@@ -43,7 +43,7 @@ test.describe('Homepage & Hero', () => {
 
   test('all content sections render on homepage', async ({ page }) => {
     await page.goto('/docs');
-    const sections = ['Where do you want to go?', 'Your command center', 'Three ways to work with us', 'Learn by doing', 'Ready to get started?'];
+    const sections = ['Where do you want to go?', 'Your command center', 'One retainer, three layers', 'Learn by doing', 'Ready to get started?']
     for (const heading of sections) {
       const el = page.locator('h2', { hasText: heading });
       await expect(el).toBeVisible();

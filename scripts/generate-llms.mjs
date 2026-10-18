@@ -86,7 +86,7 @@ for (const p of pages) {
 
 let index = `# Advizr Documentation
 
-> Advizr is an AI transformation agency for small and mid-sized businesses: we build AI systems (lead generation, workflow automation, dashboards) and educate teams, under transparent monthly partnerships. This site documents the client platform, services and pricing, the Academy education program, and the technical architecture.
+> Advizr is the AI operating layer for enterprises. Each client gets the Advizr Platform on isolated infrastructure (its own repository, database and deployment), custom AI systems built on top, and forward deployed engineers who set the strategy, build the systems and train the team, under one monthly retainer. This site documents the client platform, services and pricing, the Academy education program, and the technical architecture.
 
 Every page is available as raw markdown by appending .md to its URL.
 

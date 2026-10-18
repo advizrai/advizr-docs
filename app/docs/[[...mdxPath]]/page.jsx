@@ -56,8 +56,7 @@ export default async function Page(props) {
   const {
     default: MDXContent,
     toc,
-    metadata,
-    sourceCode
+    metadata
   } = await importPage(params.mdxPath)
 
   const slug = params.mdxPath ? params.mdxPath.join('/') : ''
@@ -73,7 +72,12 @@ export default async function Page(props) {
 
   return (
     <div data-section={section} style={{ display: 'contents' }}>
-      <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
+      {/* No sourceCode prop. The wrapper is a client component and never
+          read it, but every prop is serialized into the page payload, so
+          each page shipped another page's raw MDX (the terms of service, or
+          the old pricing page) hidden in its HTML. Copy page reads the .md
+          mirror instead. */}
+      <Wrapper toc={toc} metadata={metadata}>
         <JsonLd
           title={title}
           description={metadata.description}

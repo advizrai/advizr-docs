@@ -28,6 +28,18 @@ export default withNextra({
   async redirects() {
     return [
       // ---------------------------------------------------------------
+      // Tier pages retired (2026-10-18). Advizr sells one monthly retainer,
+      // priced in the proposal after the mapping calls, so the three tier
+      // pages are gone. Their URLs, and the raw markdown mirrors that
+      // llms.txt used to list, land on the pricing page instead of a 404.
+      // ---------------------------------------------------------------
+      { source: '/docs/services/pricing/catalyst', destination: '/docs/services/pricing', permanent: true },
+      { source: '/docs/services/pricing/acceleration', destination: '/docs/services/pricing', permanent: true },
+      { source: '/docs/services/pricing/partnership', destination: '/docs/services/pricing', permanent: true },
+      { source: '/docs/services/pricing/catalyst.md', destination: '/docs/services/pricing.md', permanent: true },
+      { source: '/docs/services/pricing/acceleration.md', destination: '/docs/services/pricing.md', permanent: true },
+      { source: '/docs/services/pricing/partnership.md', destination: '/docs/services/pricing.md', permanent: true },
+      // ---------------------------------------------------------------
       // Platform IA rebuild (2026-08). The docs described an eight-tab
       // sidebar (Home / Chat / Goals / Documents / Proposals / Learn /
       // Book / Help) that the product replaced with five rail sections.
@@ -66,6 +78,9 @@ export default withNextra({
       { source: '/docs/platform/faq', destination: '/docs/platform/faq/general', permanent: false },
       { source: '/docs/platform/onboarding', destination: '/docs/platform/onboarding/welcome', permanent: false },
       { source: '/docs/platform/account', destination: '/docs/platform/account/login-and-security', permanent: false },
+      // The footer's What We Build link has pointed at this bare folder since
+      // the Instrument Grade rebuild and 404'd on every page. Same rule as above.
+      { source: '/docs/services/what-we-build', destination: '/docs/services/what-we-build/lead-generation', permanent: false },
       // Internal component reference pages quarantined out of public content (2026-06)
       { source: '/docs/resources/component-demo', destination: '/docs/resources', permanent: true },
       { source: '/docs/resources/component-preview', destination: '/docs/resources', permanent: true },

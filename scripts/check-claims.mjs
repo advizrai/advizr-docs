@@ -53,14 +53,57 @@ const BANNED = [
   {
     id: 'guarantee-2x',
     re: /\b2\s*[x×]\s*ROI\b|\bat least 2\s*[x×]\s*what you pay\b|\b2\s*[x×]\s*guarantee\b|\btwice its cost\b/i,
-    why: 'The guarantee is 5x ROI within 30 days of deployment (founder decision 2026-07-16). "2x ROI in 90 days" is superseded and still contradicts advizr.ca wherever it survives. The paraphrase "the 2x guarantee" is the same claim.',
+    why: 'Retired twice over. The guarantee is delivery speed: "We deliver your custom strategy and systems in under a month, or we keep working for free until they are done." (canon 2026-10-14, made a speed promise 2026-10-18). "2x ROI in 90 days" contradicts advizr.ca wherever it survives, and the paraphrase "the 2x guarantee" is the same claim.',
     fixture: 'the methodology behind the 2x guarantee is audited',
   },
   {
     id: 'guarantee-90-day',
     re: /\b90[-\s]day\s+guarantee\b|\b90[-\s]day\s+clock\b|\bwithin 90 days of deployment\b/i,
-    why: 'The window is 30 days, not 90 (founder decision 2026-07-16). Deliberately does NOT match "90-day roadmap" or "the first 90 days", which are real deliverables.',
+    why: 'Retired with every ROI clock. The guarantee is delivery in under a month, not a return measured over a window after deployment. Deliberately does NOT match "90-day roadmap" or "the first 90 days", which are real deliverables.',
     fixture: 'the methodology behind the 90-day guarantee',
+  },
+  {
+    id: 'guarantee-roi-multiple',
+    // Mirrors advizr-website scripts/preflight.sh gate 7, plus the bare "5x"
+    // and "ROI guarantee", which is how the multiple read on this site.
+    re: /\b\d+(\.\d+)?\s*[x×]\s*ROI\b|\b5\s*[x×](?![\w-])|\bROI guarantee\b|\b(five|5|two|2)\s+times\s+(its|the)\s+cost\b|\b(30|90) days of deployment\b|\b(30|90)-day clock\b/i,
+    why: 'Retired 2026-10-15 (canon 2026-10-14). No ROI multiple anywhere. Value is quantified per system in the proposal, in hours or dollars, and the guarantee is delivery in under a month. Mirrors advizr-website preflight gate 7.',
+    // content/legal is the founder and counsel's to amend, not this gate's.
+    // Remove this exclude once the terms of service stop citing the ROI guarantee.
+    exclude: ['content/legal/terms-of-service.mdx'],
+    fixture: 'backed by a 5x ROI guarantee',
+  },
+  {
+    id: 'stat-multiple-suffix',
+    re: /suffix=["'][x×]["']/,
+    why: 'A <Stat> with an "x" suffix renders a multiple, and no multiple may be published (canon 2026-10-14). <Stat value={5} suffix="x" label="ROI guarantee" /> rendered "5x" on /docs/services while no prose pattern could see it.',
+    fixture: '<Stat value={5} suffix="x" label="ROI guarantee" />',
+  },
+  {
+    id: 'retired-tiers',
+    re: /\bCatalyst\b|\bAcceleration\b|\bTransformation Partnership\b|\bPartnership (tier|plan)s?\b|\bthree engagement tiers\b|\b(higher|engagement|pricing) tiers?\b/,
+    why: 'Retired (canon 2026-10-14). There are no tiers. An engagement is one monthly retainer for the Advizr Platform, the custom systems and the forward deployed engineers, priced in the proposal after the mapping calls. The old tier URLs redirect to /docs/services/pricing in next.config.mjs.',
+    // Same reason as above: remove once the terms of service drop the tiers.
+    exclude: ['content/legal/terms-of-service.mdx'],
+    fixture: 'Start with Catalyst',
+  },
+  {
+    id: 'build-and-educate',
+    re: /\bBuild\s*(and|\+|&)\s*Educate\b|\btwo pillars\b|\bhalf of every Advizr engagement\b/i,
+    why: 'Retired (canon 2026-10-14). Advizr sells three layers as one: the Advizr Platform, custom systems built on top, and forward deployed engineers. Education serves adoption. It is not a second pillar sold beside the build.',
+    fixture: 'two pillars: Build and Educate',
+  },
+  {
+    id: 'own-cloud',
+    re: /\b(your|its|their|our) own cloud\b/i,
+    why: 'Canon: never say "your own cloud". Sign-in is a shared service. Each client gets isolated infrastructure: its own repository, database and deployment.',
+    fixture: 'it runs in your own cloud',
+  },
+  {
+    id: 'fractional-digital-engineer',
+    re: /\bFractional Digital Engineers?\b/i,
+    why: 'Retired name (canon 2026-10-14). The people layer is forward deployed engineers (FDE), the words advizr.ca uses.',
+    fixture: 'your Fractional Digital Engineer (FDE)',
   },
   {
     id: 'avg-roi-4.1x',
@@ -122,7 +165,7 @@ const BANNED = [
   {
     id: 'price-gate',
     re: /\$\s?\d|\b\d[\d,]*\s?(CAD|USD)\b/,
-    why: 'No literal prices anywhere on this site (advizr-website preflight gate 6 doctrine, extended here to every dollar figure). Engagements are fixed scope, quoted in writing after the audit call. This gate is deliberately stricter than the band-only website rule: docs.advizr.ca published full retainer tables for weeks. Illustrative examples belong in hours, headcount or counts of things, never dollars.',
+    why: 'No literal prices anywhere on this site (advizr-website preflight gate 6 doctrine, extended here to every dollar figure). An engagement is one monthly retainer, priced in the proposal after the mapping calls. This gate is deliberately stricter than the band-only website rule: docs.advizr.ca published full retainer tables for weeks. Illustrative examples belong in hours, headcount or counts of things, never dollars.',
     fixture: 'Catalyst is $3,000-5,000 to build',
   },
   {

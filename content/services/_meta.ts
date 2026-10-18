@@ -1,12 +1,12 @@
 export default {
   index: 'Overview',
-  'how-it-works': 'How We Work',
-  'what-we-build': 'What We Build',
+  'how-it-works': 'How we work',
+  'what-we-build': 'What we build',
   education: 'Education',
-  pricing: 'How Pricing Works',
-  'roi-methodology': 'ROI Methodology',
+  pricing: 'How pricing works',
+  'roi-methodology': 'How we measure value',
   compare: 'Compare',
-  'case-studies': 'Case Studies',
-  guarantees: 'Guarantees',
+  'case-studies': 'Case studies',
+  guarantees: 'Guarantee',
   faq: 'FAQ'
 }
