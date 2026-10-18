@@ -71,9 +71,6 @@ test.describe('MDX Interactive Components', () => {
     const PRICED_PAGES = [
       '/docs/services/pricing',
       '/docs/services/pricing/whats-included',
-      '/docs/services/pricing/catalyst',
-      '/docs/services/pricing/acceleration',
-      '/docs/services/pricing/partnership',
       '/docs/services/compare/in-house-hire',
       '/docs/platform/faq/general',
     ];
@@ -86,83 +83,6 @@ test.describe('MDX Interactive Components', () => {
         expect(body).not.toMatch(/\d[\d,]*\s?(CAD|USD)/);
       });
     }
-  });
-
-  // --- PricingTable Tests ---
-
-  test.describe('PricingTable', () => {
-    test('pricing table renders with three tiers', async ({ page }) => {
-      await page.goto('/docs/services/pricing/whats-included');
-      const tierNames = page.locator('text=/Catalyst|Acceleration|Partnership/');
-      expect(await tierNames.count()).toBeGreaterThanOrEqual(3);
-    });
-
-    test('recommended badge has gradient background', async ({ page }) => {
-      await page.goto('/docs/services/pricing/whats-included');
-      const badge = page.locator('text="Recommended"').first();
-      if (await badge.count() > 0 && await badge.isVisible()) {
-        const bg = await badge.evaluate((el) => getComputedStyle(el).backgroundImage);
-        expect(bg).toContain('linear-gradient');
-      }
-    });
-
-    test('recommended badge is uppercase', async ({ page }) => {
-      await page.goto('/docs/services/pricing/whats-included');
-      const badge = page.locator('text=/RECOMMENDED/i').first();
-      if (await badge.count() > 0 && await badge.isVisible()) {
-        const transform = await badge.evaluate((el) => getComputedStyle(el).textTransform);
-        expect(transform).toBe('uppercase');
-      }
-    });
-
-    test('check icons use emerald color', async ({ page }) => {
-      await page.goto('/docs/services/pricing/whats-included');
-      const check = page.locator('svg[aria-label="Included"]').first();
-      if (await check.count() > 0) {
-        const color = await check.evaluate((el) => getComputedStyle(el).color);
-        const [r, g, b] = (color.match(/\d+/g) || []).map(Number);
-        // Emerald in either mode: green channel dominates
-        expect(g).toBeGreaterThan(r);
-        expect(g).toBeGreaterThan(b);
-      }
-    });
-
-    test('feature rows have hover transition', async ({ page }) => {
-      await page.goto('/docs/services/pricing/whats-included');
-      const row = page.locator('[class*="featureRow"]').first();
-      if (await row.count() > 0) {
-        const transition = await row.evaluate((el) => getComputedStyle(el).transition);
-        expect(transition).toContain('background');
-      }
-    });
-
-    test('mobile cards show on small viewport', async ({ page }, testInfo) => {
-      if (testInfo.project.name !== 'mobile') test.skip();
-      await page.goto('/docs/services/pricing/whats-included');
-      // On mobile, the table is hidden and mobileCards are displayed
-      const mobileCards = page.locator('[class*="mobileCard"]');
-      await expect(mobileCards.first()).toBeVisible();
-      // Partnership tier should be visible within mobile cards
-      const partnership = page.locator('[class*="mobileCard"] >> text="Partnership"');
-      await expect(partnership.first()).toBeVisible();
-    });
-
-    test('recommended mobile card is highlighted with brand border (glow is rationed)', async ({ page }, testInfo) => {
-      if (testInfo.project.name !== 'mobile') test.skip();
-      await page.goto('/docs/services/pricing/whats-included');
-      const card = page.locator('[class*="recommendedCard"]').first();
-      if (await card.count() > 0 && await card.isVisible()) {
-        const { borderColor, borderWidth } = await card.evaluate((el) => {
-          const cs = getComputedStyle(el);
-          return { borderColor: cs.borderTopColor, borderWidth: cs.borderTopWidth };
-        });
-        expect(parseFloat(borderWidth)).toBeGreaterThanOrEqual(1);
-        const [r, g, b] = (borderColor.match(/\d+/g) || []).map(Number);
-        // Brand blue: blue channel dominates
-        expect(b).toBeGreaterThan(r);
-        expect(b).toBeGreaterThan(g);
-      }
-    });
   });
 
   // --- ComparisonTable Tests ---

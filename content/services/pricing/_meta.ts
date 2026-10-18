@@ -1,7 +1,4 @@
 export default {
-  'index': 'How Pricing Works',
-  'partnership': 'Transformation Partnership',
-  'acceleration': 'Acceleration',
-  'catalyst': 'Catalyst',
-  'whats-included': "What's Included",
+  'index': 'How pricing works',
+  'whats-included': "What's included",
 }

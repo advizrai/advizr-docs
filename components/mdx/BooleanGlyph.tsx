@@ -1,5 +1,5 @@
 /**
- * Boolean cell glyph for ledger tables (PricingTable / ComparisonTable) —
+ * Boolean cell glyph for ledger tables (ComparisonTable), in the
  * StatusGlyph vocabulary: state is a machined SHAPE, never a colored pill.
  * Included = solid ink square; not included = empty hairline square. Shape
  * (filled vs outline) carries the meaning, so the legend survives grayscale.

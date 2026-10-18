@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     default: 'Advizr Docs',
     template: '%s - Advizr Docs'
   },
-  description: 'Documentation for the Advizr AI transformation platform. Guides, courses, and technical reference for business owners.',
+  description: 'Documentation from Advizr, the AI operating layer for enterprises. Platform guides, services, AI courses and technical reference.',
   metadataBase: new URL('https://docs.advizr.ca'),
   applicationName: 'Advizr Docs',
   authors: [{ name: 'Advizr AI', url: 'https://advizr.ca' }],
@@ -65,12 +65,12 @@ export const metadata: Metadata = {
     url: 'https://docs.advizr.ca',
     siteName: 'Advizr Docs',
     title: 'Advizr Docs',
-    description: 'Documentation for the Advizr AI transformation platform. Guides, courses, and technical reference for business owners.'
+    description: 'Documentation from Advizr, the AI operating layer for enterprises. Platform guides, services, AI courses and technical reference.'
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Advizr Docs',
-    description: 'Documentation for the Advizr AI transformation platform.'
+    description: 'Documentation from Advizr, the AI operating layer for enterprises.'
   },
   robots: {
     index: true,

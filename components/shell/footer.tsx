@@ -28,7 +28,7 @@ const servicesLinks: FooterLink[] = [
   { label: 'What We Build', href: '/docs/services/what-we-build' },
   { label: 'Pricing', href: '/docs/services/pricing' },
   { label: 'Case Studies', href: '/docs/services/case-studies' },
-  { label: 'Guarantees', href: '/docs/services/guarantees' },
+  { label: 'Guarantee', href: '/docs/services/guarantees' },
 ]
 
 const academyLinks: FooterLink[] = [
@@ -107,7 +107,7 @@ function Footer() {
               <span className="port-dot" aria-hidden="true" />
             </span>
             <p className="mt-3 max-w-[26ch] text-[0.8125rem] leading-relaxed text-[hsl(var(--text-3))]">
-              AI transformation for business owners who want results, not buzzwords.
+              The AI operating layer for enterprises.
             </p>
           </div>
           <FooterColumn title="Platform" links={platformLinks} />
